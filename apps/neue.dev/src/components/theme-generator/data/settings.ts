@@ -153,3 +153,10 @@ export const singleSwatchColorClasses: Record<NeueDerivedColorNames, { base: str
     base: 'bg-surface-contrast-base',
   },
 }
+
+export const intensityMap: { [key: string]: number } = {
+  light: 2.5,
+  mlt: 1.75,
+  mdk: 1.75,
+  dark: 2.5,
+}

@@ -1,22 +1,23 @@
 <script lang="ts">
   // Local components
+  // Colors
   import ChipOptions from './partials/ChipOptions.svelte'
   import ColorPicker from './partials/ColorPicker.svelte'
   import ControlsLead from './partials/ControlsLead.svelte'
   import ControlsTrail from './partials/ControlsTrail.svelte'
   import Swatch from './partials/Swatch.svelte'
-
-  import classNames from 'classnames'
-
+  // Other Theme Opt Components
+  import ButtonMaker from './partials/ButtonMaker.svelte'
+  import RoundedMaker from './partials/RoundedMaker.svelte'
   // Local Helpers
   import { colorUtils, centers } from './helpers'
 
   // Local data
   import { storeThemeOptions, storeColorResults } from './data'
-  import { intensityMap } from './types'
+
   import type { ColorsCollection } from './types'
 
-  import { singleSwatchColorClasses } from './data/settings'
+  import { singleSwatchColorClasses, intensityMap } from './data/settings'
 
   // Svelte related
   import { setContext } from 'svelte'
@@ -24,13 +25,13 @@
   import { onMount } from 'svelte'
 
   // UI
-  import { myBtn } from '../../neue-classes'
+  import { btnNeue } from '../../neue-classes'
 
   // Import color utils by type
   const { useGetConvertedColor, useGetColorValue, useGenerateColor, useColorSchemes } = colorUtils
 
   // Get Converted Color Funcs
-  const { getRgbValues, getRgbString, getHueFromHex } = useGetConvertedColor()
+  const { getRgbString, getHueFromHex } = useGetConvertedColor()
 
   // Get Color Value Funcs
   const {
@@ -55,9 +56,23 @@
 
   const colorSchemeStore = writable('triad')
 
+  // Color options
   let primaryColorHex: string = '#FF007F'
-  let hashErrorMessage = ''
+  // Button options
+  let btnPaddingSizeScale: number = 40
+  let btnPaddingWidthScale: number = 3
+  let btnPaddingBase: number = 0.5
+  let btnFontSizes = {
+    sm: 'sm',
+    base: 'base',
+    lg: 'lg',
+  }
+  // Rounded options
+  let roundedSize = '8px'
+  // Previews
   let previewThemeString = ''
+  // Errors
+  let hashErrorMessage = ''
 
   // Make stores available to context they can be injected locally as needed in child components.
   setContext('colorSchemeStore', colorSchemeStore)
@@ -83,13 +98,30 @@
     }
   }
 
+  // Button Opts have been changed from controls.
+  function handleBtnOptsChange(event: CustomEvent) {
+    btnPaddingBase = event.detail.btnPaddingBase
+    btnFontSizes = event.detail.btnFontSizes
+    btnPaddingSizeScale = event.detail.btnPaddingSizeScale
+    btnPaddingWidthScale = event.detail.btnPaddingWidthScale
+
+    generateThemeOpts()
+  }
+
+  // Rounded Opts have been changed from controls.
+  function handleRoundedOptsChange(event: CustomEvent) {
+    roundedSize = event.detail.roundedSize
+
+    generateThemeOpts()
+  }
+
   // Random Hex as jumping off point to color scheme genration.
   function generateRandomHexValue() {
     primaryColorHex = generateRandomColor() as string
   }
 
   // Generate colors: create colors collection, fill in template options from colors collection and data output as string
-  function generateColors() {
+  function generateThemeOpts() {
     updateColorsCollection()
 
     storeThemeOptions.update((currentOptions) => {
@@ -134,11 +166,14 @@
       })
     })
 
-    previewThemeString = buildCSSVars('color', 'rgb')
+    previewThemeString = buildColorCSSVars('color', 'rgb')
+    previewThemeString += buildButtonCSSVars()
+    previewThemeString += `--rounded-neue: ${roundedSize};\n`
     previewThemeString = `<style>:root { \n ${previewThemeString} \n }</style>`
+    console.log(previewThemeString)
   }
 
-  function buildCSSVars(prefix: string, type: string) {
+  function buildColorCSSVars(prefix: string, type: string) {
     let cssVars = ''
 
     const types = {
@@ -155,6 +190,21 @@
       }
       cssVars += '\n'
     })
+    return cssVars
+  }
+
+  function buildButtonCSSVars() {
+    const btnPaddingSizeScalePercent = btnPaddingSizeScale / 100
+    const btnPaddingIncreased = btnPaddingBase + btnPaddingBase * btnPaddingSizeScalePercent
+    const btnPaddingDecreased = btnPaddingBase - btnPaddingBase * btnPaddingSizeScalePercent
+    const btnPaddingWidthDecreased = btnPaddingBase * btnPaddingWidthScale
+    const btnPaddingWidth = btnPaddingBase * btnPaddingWidthScale
+    const btnPaddingWidthIncreased = btnPaddingBase * btnPaddingWidthScale
+
+    let cssVars = ''
+    cssVars += `--btn-p-sm: ${btnPaddingDecreased}rem ${btnPaddingWidthDecreased}rem;\n`
+    cssVars += `--btn-p-base: ${btnPaddingBase}rem ${btnPaddingWidth}rem;\n`
+    cssVars += `--btn-p-lg: ${btnPaddingIncreased}rem; ${btnPaddingWidthIncreased}rem;\n`
     return cssVars
   }
 
@@ -247,7 +297,7 @@
   }
 
   onMount(() => {
-    generateColors()
+    generateThemeOpts()
   })
 </script>
 
@@ -255,21 +305,20 @@
 <svelte:head>{@html previewThemeString}</svelte:head>
 
 <div class="space-y-2 page-one-col">
-  <section class="flex flex-col items-center gap-2 p-4 bg-gray-200 lg:gap-4">
+  <section class="flex flex-col items-center gap-2 p-4 bg-gray-200 lg:gap-4 rounded-neue">
     <h2 class="text-center page-header">Color Generator</h2>
     <p class="w-2/3 text-center leading-[1.25rem]">
       <span class="hidden md:inline">Press Ctrl (or Windows Key) + space to generate a random color. </span>Enter a hex
       code or click to pick a hex code.
     </p>
-    <button on:click={generateRandomHexValue} class={`p-2 ${myBtn}`}>Random Color</button>
+    <button on:click={generateRandomHexValue} class={`p-2 ${btnNeue}`}>Random Color</button>
     <ColorPicker colorHex={primaryColorHex} on:colorChange={handleColorPickerChange} />
     <p class="text-xl text-error">{hashErrorMessage}</p>
     <ChipOptions />
-    <button class={`p-2 ${myBtn}`} on:click={generateColors}>Generate Preview</button>
-
-    <!-- <button class="btn variant-ghost-secondary" on:click={removeGeneratedCSS}>Remove</button> -->
+    <button class={`p-2 ${btnNeue}`} on:click={generateThemeOpts}>Generate Preview</button>
   </section>
-  <section>
+  <section class="hidden">
+    <h3 class="text-2xl uppercase">Colors</h3>
     <div class="grid grid-cols-1 gap-2 sm:gap-4">
       {#each $storeThemeOptions.colors.filter((colorRow) => colorRow.hex !== '') as colorRow, i}
         <div
@@ -299,6 +348,18 @@
       {/each}
     </div>
   </section>
+  <section>
+    <h3 class="text-2xl uppercase">Elements</h3>
+    <ButtonMaker
+      {btnPaddingBase}
+      {btnPaddingSizeScale}
+      {btnPaddingWidthScale}
+      {btnFontSizes}
+      on:btnOptsChange={handleBtnOptsChange}
+    />
+  </section>
+  <section><RoundedMaker on:roundedOptsChange={handleRoundedOptsChange} {roundedSize} /></section>
+  <button class={`${btnNeue} rounded-neue`}>asdf</button>
 
   <pre><code class="language-javascript"></code></pre>
 </div>
