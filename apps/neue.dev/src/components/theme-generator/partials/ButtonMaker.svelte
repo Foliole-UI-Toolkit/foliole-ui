@@ -1,7 +1,7 @@
 <script lang="ts">
   import { createEventDispatcher } from 'svelte'
   import type { BtnFontSizes } from '$lib/types'
-  import { neueBtn } from '../../../neue-classes'
+  import { btnNeue } from '../../../neue-classes'
 
   const dispatch = createEventDispatcher()
 
@@ -33,7 +33,7 @@
   <h4>Buttons</h4>
   <div>
     <p>Button Example</p>
-    <button class={neueBtn}>Example</button>
+    <button class={btnNeue}>Example</button>
   </div>
   <label for="sizeBase">Size Base (.1-1):</label>
   <input
