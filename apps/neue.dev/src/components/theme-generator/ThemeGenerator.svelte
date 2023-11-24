@@ -6,9 +6,9 @@
   import ControlsLead from './partials/ControlsLead.svelte'
   import ControlsTrail from './partials/ControlsTrail.svelte'
   import Swatch from './partials/Swatch.svelte'
-  // Button
+  // Other Theme Opt Components
   import ButtonMaker from './partials/ButtonMaker.svelte'
-
+  import RoundedMaker from './partials/RoundedMaker.svelte'
   // Local Helpers
   import { colorUtils, centers } from './helpers'
 
@@ -25,7 +25,7 @@
   import { onMount } from 'svelte'
 
   // UI
-  import { neueBtn } from '../../neue-classes'
+  import { btnNeue } from '../../neue-classes'
 
   // Import color utils by type
   const { useGetConvertedColor, useGetColorValue, useGenerateColor, useColorSchemes } = colorUtils
@@ -67,6 +67,8 @@
     base: 'base',
     lg: 'lg',
   }
+  // Rounded options
+  let roundedSize = '8px'
   // Previews
   let previewThemeString = ''
   // Errors
@@ -102,6 +104,13 @@
     btnFontSizes = event.detail.btnFontSizes
     btnPaddingSizeScale = event.detail.btnPaddingSizeScale
     btnPaddingWidthScale = event.detail.btnPaddingWidthScale
+
+    generateThemeOpts()
+  }
+
+  // Rounded Opts have been changed from controls.
+  function handleRoundedOptsChange(event: CustomEvent) {
+    roundedSize = event.detail.roundedSize
 
     generateThemeOpts()
   }
@@ -159,6 +168,7 @@
 
     previewThemeString = buildColorCSSVars('color', 'rgb')
     previewThemeString += buildButtonCSSVars()
+    previewThemeString += `--rounded-neue: ${roundedSize};\n`
     previewThemeString = `<style>:root { \n ${previewThemeString} \n }</style>`
     console.log(previewThemeString)
   }
@@ -194,7 +204,7 @@
     let cssVars = ''
     cssVars += `--btn-p-sm: ${btnPaddingDecreased}rem ${btnPaddingWidthDecreased}rem;\n`
     cssVars += `--btn-p-base: ${btnPaddingBase}rem ${btnPaddingWidth}rem;\n`
-    cssVars += `--btn-p-lg: ${btnPaddingIncreased}rem; ${btnPaddingWidthIncreased}rem\n`
+    cssVars += `--btn-p-lg: ${btnPaddingIncreased}rem; ${btnPaddingWidthIncreased}rem;\n`
     return cssVars
   }
 
@@ -295,21 +305,19 @@
 <svelte:head>{@html previewThemeString}</svelte:head>
 
 <div class="space-y-2 page-one-col">
-  <section class="flex flex-col items-center gap-2 p-4 bg-gray-200 lg:gap-4">
+  <section class="flex flex-col items-center gap-2 p-4 bg-gray-200 lg:gap-4 rounded-neue">
     <h2 class="text-center page-header">Color Generator</h2>
     <p class="w-2/3 text-center leading-[1.25rem]">
       <span class="hidden md:inline">Press Ctrl (or Windows Key) + space to generate a random color. </span>Enter a hex
       code or click to pick a hex code.
     </p>
-    <button on:click={generateRandomHexValue} class={`p-2 ${neueBtn}`}>Random Color</button>
+    <button on:click={generateRandomHexValue} class={`p-2 ${btnNeue}`}>Random Color</button>
     <ColorPicker colorHex={primaryColorHex} on:colorChange={handleColorPickerChange} />
     <p class="text-xl text-error">{hashErrorMessage}</p>
     <ChipOptions />
-    <button class={`p-2 ${neueBtn}`} on:click={generateThemeOpts}>Generate Preview</button>
-
-    <!-- <button class="btn variant-ghost-secondary" on:click={removeGeneratedCSS}>Remove</button> -->
+    <button class={`p-2 ${btnNeue}`} on:click={generateThemeOpts}>Generate Preview</button>
   </section>
-  <section>
+  <section class="hidden">
     <h3 class="text-2xl uppercase">Colors</h3>
     <div class="grid grid-cols-1 gap-2 sm:gap-4">
       {#each $storeThemeOptions.colors.filter((colorRow) => colorRow.hex !== '') as colorRow, i}
@@ -350,6 +358,8 @@
       on:btnOptsChange={handleBtnOptsChange}
     />
   </section>
+  <section><RoundedMaker on:roundedOptsChange={handleRoundedOptsChange} {roundedSize} /></section>
+  <button class={`${btnNeue} rounded-neue`}>asdf</button>
 
   <pre><code class="language-javascript"></code></pre>
 </div>
