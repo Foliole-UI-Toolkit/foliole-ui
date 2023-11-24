@@ -1,3 +1,3 @@
 import classNames from 'classnames'
 
-export const myBtn = classNames('btn-base', 'bg-primary-base')
+export const neueBtn = classNames('btn-base', 'btn-md', 'bg-primary-base')
