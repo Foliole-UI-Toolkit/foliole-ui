@@ -1,0 +1,56 @@
+---
+import "@neue/neue-css/styles/index.css"; 
+interface Props {
+	title: string;
+}
+const { title } = Astro.props; 
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body data-theme="example" class="min-h-screen shadow-theme rounded-theme bg-page-base">
+
+		<div class="app-shell">
+			<header class="site-header site-header-options" id="site-header">
+				<ul class="container flex p-2 mx-auto space-x-4 border-b">
+					<li>
+						<a  class="uppercase" href="/">home</a>
+					</li>
+					<li>
+						<a  class="uppercase" href="/theme-generator">theme generator</a>
+					</li>
+		
+				</ul>
+			</header>
+			<main class="container mx-auto ">
+				<slot />
+			</main>
+		</div>
+	</body>
+</html>
+<style is:global>
+
+	body {
+		background: white;
+	}
+	@tailwind components;
+
+	.hi {
+		@apply text-2xl;
+	}
+
+	@layer components	{
+			.my-btn {
+				@apply hi
+			}
+		}
+
+</style>

@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;
+
+html {
+  font-size: 18px;
+}
+
+.pramary-base {
+  background: var(--color-primary-base);
+}
+
+@layer components {
+}

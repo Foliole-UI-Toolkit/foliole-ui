@@ -1,0 +1,50 @@
+/* can provide optional scoping for styles - .neue-styles-v0 */
+.btn-sm {
+  font-size: var(--scale-0);
+  padding: var(--btn-p-base);
+}
+
+.btn-md {
+  font-size: var(--scale-0);
+  padding: var(--btn-p-base);
+}
+
+.btn-rounded {
+  border-radius: var(--rounded);
+}
+
+.btn-pill {
+  border-radius: var(--rounded-full);
+}
+
+.btn-base {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* .btn { */
+/* display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  white-space: nowrap; */
+/* btn-md */
+/* font-size: var(--scale-0);
+  padding: var(--btn-p-base); */
+/* } */
+
+/* .neue-btn { */
+/* display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  white-space: nowrap; */
+/* btn-md */
+/* font-size: var(--scale-0);
+  padding: var(--btn-p-base); */
+/* btn-pill */
+/* border-radius: var(--rounded-full); */
+/* } */
