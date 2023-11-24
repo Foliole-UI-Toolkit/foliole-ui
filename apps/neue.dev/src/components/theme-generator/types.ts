@@ -1,6 +1,12 @@
 // -- Color Generator
 
-import { neueColorNames, neueColorScale, neueDerivedColorNames, additionalColorSchemes } from './data/settings'
+import {
+  neueColorNames,
+  neueColorScale,
+  neueDerivedColorNames,
+  additionalColorSchemes,
+  intensityMap,
+} from './data/settings'
 
 export type NeueDerivedColorNames = (typeof neueDerivedColorNames)[number]
 
@@ -54,9 +60,8 @@ export interface ThemeOptionsCollection {
   borderBase: string
 }
 
-export const intensityMap: { [key: string]: number } = {
-  light: 2.5,
-  mlt: 1.75,
-  mdk: 1.75,
-  dark: 2.5,
+export interface BtnFontSizes {
+  sm: string
+  base: number
+  lg: string
 }
