@@ -13,10 +13,10 @@ module.exports = {
       padding: 'var(--btn-p-lg)',
     },
     '.btn-rounded': {
-      borderRadius: 'var(--rounded)',
+      borderRadius: 'var(--ui-rounded)',
     },
     '.btn-pill': {
-      borderRadius: 'var(--rounded-full)',
+      borderRadius: 'var(--radius-full)',
     },
     '.btn-base': {
       display: 'inline-flex',

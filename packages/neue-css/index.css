@@ -11,10 +11,10 @@
     padding: var(--btn-p-lg)
 }
 .btn-rounded {
-    border-radius: var(--rounded)
+    border-radius: var(--ui-rounded)
 }
 .btn-pill {
-    border-radius: var(--rounded-full)
+    border-radius: var(--radius-full)
 }
 .btn-base {
     display: inline-flex;
