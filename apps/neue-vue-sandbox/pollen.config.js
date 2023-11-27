@@ -1,15 +1,12 @@
-import { colors } from './theme'
+const color = require('./theme').colors
+const btn = require('./theme').btn
+const ui = require('./theme').ui
 
 module.exports = {
   output: './src/assets/pollen.css',
   modules: {
-    alpha: {
-      'full-opacity': 1,
-      'semi-translucent': 0.75,
-      translucent: 0.5,
-      'more-translucent': 0.25
-      // Add more alpha levels if needed
-    },
-    color: colors
+    color: color,
+    btn: btn,
+    ui: ui
   }
 }

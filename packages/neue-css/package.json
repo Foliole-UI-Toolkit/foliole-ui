@@ -2,13 +2,16 @@
   "name": "@neue/neue-css",
   "version": "0.0.0",
   "description": "",
-  "main": "styles/index.css",
+  "main": "index.css",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "node script/generate-css.js"
   },
   "keywords": [
     ""
   ],
   "author": "Aaron Crockett",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "postcss-js": "^4.0.1"
+  }
 }
