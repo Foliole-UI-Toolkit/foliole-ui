@@ -71,8 +71,8 @@
   // Rounded options
   let roundedSize = '8px'
   // Previews
-  let previewThemeString = ''
-  let themeOptsString = ''
+  let previewCSSVars = ''
+  let themeOptsJsInCSS = ''
   // Errors
   let hashErrorMessage = ''
 
@@ -132,11 +132,13 @@
         ...currentOptions,
         colors: currentOptions.colors.map((color, i) => {
           if ($colorsCollectionStore[color.key]) {
-            if ($colorsCollectionStore[color.key] !== null) {
+            if ($colorsCollectionStore[color.key] !== '') {
               color.hex = $colorsCollectionStore[color.key] as string
             }
+
             return color
           } else {
+            color.hex = ''
             return color
           }
         }),
@@ -154,6 +156,7 @@
     })
 
     $storeThemeOptions.colors.forEach((color) => {
+      if (color.hex === '') return
       const colorShades = buildColorShades(color)
 
       storeColorResults.update((results) => {
@@ -162,6 +165,7 @@
     })
 
     $storeThemeOptions.derivedColors.forEach((color) => {
+      if (color.hex === '') return
       const colorShades = buildColorShades(color)
 
       storeColorResults.update((results) => {
@@ -169,20 +173,23 @@
       })
     })
 
-    builtResults = buildColorCSSVars('color', 'rgb')
-    previewThemeString = builtResults.cssVars
-    themeOptsString = builtResults.jsInCSS
-    builtResults = buildButtonCSSVars()
-    previewThemeString += builtResults.cssVars
-    themeOptsString += builtResults.jsInCSS
-    previewThemeString += `--ui-rounded: ${roundedSize};\n`
-    previewThemeString = `<style>:root { \n ${previewThemeString} \n }</style>`
+    builtResults = buildColorCSSStrings('color', 'rgb')
+    previewCSSVars = builtResults.cssVars
+    themeOptsJsInCSS = builtResults.jsInCSS
+    builtResults = buildButtonCSSStrings()
 
-    themeOptsString += 'export const ui = {\n'
-    themeOptsString += `'rounded': '${roundedSize}'\n}\n`
+    previewCSSVars += builtResults.cssVars
+    themeOptsJsInCSS += builtResults.jsInCSS
+    builtResults = buildUICSSStrings()
+
+    previewCSSVars += builtResults.cssVars
+    themeOptsJsInCSS += builtResults.jsInCSS
+
+    previewCSSVars = `<style>\n:root { \n ${previewCSSVars}  }</style>`
   }
 
-  function buildColorCSSVars(prefix: string, type: string) {
+  // build CSSVars and Options JS
+  function buildColorCSSStrings(prefix: string, type: string) {
     let cssVars = ''
     let jsInCSS = 'export const color = { \n'
 
@@ -206,8 +213,8 @@
     jsInCSS += '} \n'
     return { cssVars, jsInCSS }
   }
-
-  function buildButtonCSSVars() {
+  // build CSSVars and Options JS
+  function buildButtonCSSStrings() {
     const btnPaddingSizeScalePercent = btnPaddingSizeScale / 100
     const btnPaddingIncreased = btnPaddingBase + btnPaddingBase * btnPaddingSizeScalePercent
     const btnPaddingDecreased = btnPaddingBase - btnPaddingBase * btnPaddingSizeScalePercent
@@ -228,6 +235,16 @@
     cssVars += `--btn-p-lg: ${btnPaddingIncreased}rem; ${btnPaddingWidthIncreased}rem;\n`
 
     jsInCSS += `'p-lg': '${btnPaddingIncreased}rem ${btnPaddingWidthIncreased}rem'\n}\n`
+    return { cssVars, jsInCSS }
+  }
+  // build CSSVars and Options JS
+  function buildUICSSStrings() {
+    let cssVars = ''
+    let jsInCSS = 'export const ui = { \n'
+    cssVars += `--ui-rounded: ${roundedSize};\n`
+
+    jsInCSS += `'rounded': '${roundedSize}'\n}\n`
+
     return { cssVars, jsInCSS }
   }
 
@@ -260,19 +277,26 @@
         case 'triad':
           baseColors = generateTriadColors(primaryColorHex)
           createPrimaries()
+          colorsCollection['quaternary'] = ''
+          colorsCollection['quinary'] = ''
           break
         case 'split-complimentary':
           baseColors = generateSplitComplimentaryColors(primaryColorHex)
           createPrimaries()
+          colorsCollection['quaternary'] = ''
+          colorsCollection['quinary'] = ''
           break
         case 'analogous-triad':
           baseColors = generateAnalogousColors(primaryColorHex, 20, 'analogous-triad')
           createPrimaries()
+          colorsCollection['quaternary'] = ''
+          colorsCollection['quinary'] = ''
           break
         case 'analogous-quad':
           baseColors = generateAnalogousColors(primaryColorHex, 20, 'analogous-quad')
           createPrimaries()
           colorsCollection['quaternary'] = baseColors[2]
+          colorsCollection['quinary'] = ''
           break
         case 'analogous-quin':
           baseColors = generateAnalogousColors(primaryColorHex, 20, 'analogous-quin')
@@ -283,6 +307,8 @@
         default:
           baseColors = generateTriadColors(primaryColorHex)
           createPrimaries()
+          colorsCollection['quaternary'] = ''
+          colorsCollection['quinary'] = ''
           break
       }
 
@@ -321,12 +347,12 @@
   }
 
   onMount(() => {
-    // generateThemeOpts()
+    generateThemeOpts()
   })
 </script>
 
 <svelte:window on:keydown={handleKeyDown} />
-<svelte:head>{@html previewThemeString}</svelte:head>
+<svelte:head>{@html previewCSSVars}</svelte:head>
 
 <div class="space-y-2 page-one-col">
   <section class="flex flex-col items-center gap-2 p-4 bg-gray-200 rounded lg:gap-4">
@@ -384,7 +410,7 @@
   </section>
   <section><RoundedMaker on:roundedOptsChange={handleRoundedOptsChange} {roundedSize} /></section>
 
-  <pre><code class="language-javascript">{themeOptsString}</code></pre>
+  <pre><code class="language-javascript">{themeOptsJsInCSS}</code></pre>
 </div>
 
 <style lang="postcss">
