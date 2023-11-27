@@ -11,14 +11,12 @@ export function toCSSVars(prefix: string, object: { [key: string]: string | numb
       // Check if the iteration is odd
 
       if (typeof value === 'string') {
-        console.log(value)
         if (iterationCount % 2 !== 0) {
           return prefix + value // Add prefix to odd iterations
         } else {
           return value
         }
       } else {
-        console.log(value)
         return stringify(value)
       }
     },

@@ -9,22 +9,23 @@
   // Other Theme Opt Components
   import ButtonMaker from './partials/ButtonMaker.svelte'
   import RoundedMaker from './partials/RoundedMaker.svelte'
+
   // Local Helpers
   import { colorUtils, centers } from './helpers'
 
   // Local data
   import { storeThemeOptions, storeColorResults } from './data'
-
-  import type { ColorsCollection } from './types'
-
   import { singleSwatchColorClasses, intensityMap } from './data/settings'
+
+  // Types
+  import type { ColorsCollection } from './types'
 
   // Svelte related
   import { setContext } from 'svelte'
   import { writable } from 'svelte/store'
   import { onMount } from 'svelte'
 
-  // UI
+  // UI related
   import { btnNeue } from '../../neue-classes'
 
   // Import color utils by type
@@ -71,10 +72,11 @@
   let roundedSize = '8px'
   // Previews
   let previewThemeString = ''
+  let themeOptsString = ''
   // Errors
   let hashErrorMessage = ''
 
-  // Make stores available to context they can be injected locally as needed in child components.
+  // Make stores available to context so they can be injected locally as needed in child components.
   setContext('colorSchemeStore', colorSchemeStore)
   setContext('colorsCollectionStore', colorsCollectionStore)
 
@@ -123,6 +125,7 @@
   // Generate colors: create colors collection, fill in template options from colors collection and data output as string
   function generateThemeOpts() {
     updateColorsCollection()
+    let builtResults
 
     storeThemeOptions.update((currentOptions) => {
       return {
@@ -166,15 +169,22 @@
       })
     })
 
-    previewThemeString = buildColorCSSVars('color', 'rgb')
-    previewThemeString += buildButtonCSSVars()
-    previewThemeString += `--rounded-neue: ${roundedSize};\n`
+    builtResults = buildColorCSSVars('color', 'rgb')
+    previewThemeString = builtResults.cssVars
+    themeOptsString = builtResults.jsInCSS
+    builtResults = buildButtonCSSVars()
+    previewThemeString += builtResults.cssVars
+    themeOptsString += builtResults.jsInCSS
+    previewThemeString += `--ui-rounded: ${roundedSize};\n`
     previewThemeString = `<style>:root { \n ${previewThemeString} \n }</style>`
-    console.log(previewThemeString)
+
+    themeOptsString += 'export const ui = {\n'
+    themeOptsString += `'rounded': '${roundedSize}'\n}\n`
   }
 
   function buildColorCSSVars(prefix: string, type: string) {
     let cssVars = ''
+    let jsInCSS = 'export const color = { \n'
 
     const types = {
       rgb: (rgb: string) => {
@@ -185,12 +195,16 @@
     $storeColorResults.forEach((element) => {
       if (element.level) {
         cssVars += `--${prefix}-${element.key}-${element.level}: ${types[type](element.rgb)};`
+        jsInCSS += `'${element.key}-${element.level}': '${types[type](element.rgb)}',`
       } else {
         cssVars += `--${prefix}-${element.key}: ${types[type](element.rgb)};`
+        jsInCSS += `'${element.key}': '${types[type](element.rgb)}',`
       }
       cssVars += '\n'
+      jsInCSS += '\n'
     })
-    return cssVars
+    jsInCSS += '} \n'
+    return { cssVars, jsInCSS }
   }
 
   function buildButtonCSSVars() {
@@ -202,10 +216,19 @@
     const btnPaddingWidthIncreased = btnPaddingBase * btnPaddingWidthScale
 
     let cssVars = ''
+    let jsInCSS = 'export const btn = { \n'
     cssVars += `--btn-p-sm: ${btnPaddingDecreased}rem ${btnPaddingWidthDecreased}rem;\n`
+
+    jsInCSS += `'p-sm': '${btnPaddingDecreased}rem ${btnPaddingWidthDecreased}rem',\n`
+
     cssVars += `--btn-p-base: ${btnPaddingBase}rem ${btnPaddingWidth}rem;\n`
+
+    jsInCSS += `'p-base': '${btnPaddingBase}rem ${btnPaddingWidth}rem',\n`
+
     cssVars += `--btn-p-lg: ${btnPaddingIncreased}rem; ${btnPaddingWidthIncreased}rem;\n`
-    return cssVars
+
+    jsInCSS += `'p-lg': '${btnPaddingIncreased}rem ${btnPaddingWidthIncreased}rem'\n}\n`
+    return { cssVars, jsInCSS }
   }
 
   // Update collection for theme options.
@@ -280,9 +303,10 @@
     ]
 
     ;['light', 'mlt', 'mdk', 'dark'].forEach((level) => {
-      const hex = level.includes('light')
-        ? generateLightenedValue(color.hex, intensityMap[level])
-        : generateDarkenedValue(color.hex, intensityMap[level])
+      const hex =
+        level.includes('light') || level.includes('mlt')
+          ? generateLightenedValue(color.hex, intensityMap[level])
+          : generateDarkenedValue(color.hex, intensityMap[level])
 
       response.push({
         key: color.key,
@@ -297,7 +321,7 @@
   }
 
   onMount(() => {
-    generateThemeOpts()
+    // generateThemeOpts()
   })
 </script>
 
@@ -305,19 +329,19 @@
 <svelte:head>{@html previewThemeString}</svelte:head>
 
 <div class="space-y-2 page-one-col">
-  <section class="flex flex-col items-center gap-2 p-4 bg-gray-200 lg:gap-4 rounded-neue">
+  <section class="flex flex-col items-center gap-2 p-4 bg-gray-200 rounded lg:gap-4">
     <h2 class="text-center page-header">Color Generator</h2>
     <p class="w-2/3 text-center leading-[1.25rem]">
       <span class="hidden md:inline">Press Ctrl (or Windows Key) + space to generate a random color. </span>Enter a hex
       code or click to pick a hex code.
     </p>
-    <button on:click={generateRandomHexValue} class={`p-2 ${btnNeue}`}>Random Color</button>
+    <button on:click={generateRandomHexValue} class={` ${btnNeue}`}>Random Color</button>
     <ColorPicker colorHex={primaryColorHex} on:colorChange={handleColorPickerChange} />
     <p class="text-xl text-error">{hashErrorMessage}</p>
     <ChipOptions />
-    <button class={`p-2 ${btnNeue}`} on:click={generateThemeOpts}>Generate Preview</button>
+    <button class={` ${btnNeue}`} on:click={generateThemeOpts}>Generate Preview</button>
   </section>
-  <section class="hidden">
+  <section>
     <h3 class="text-2xl uppercase">Colors</h3>
     <div class="grid grid-cols-1 gap-2 sm:gap-4">
       {#each $storeThemeOptions.colors.filter((colorRow) => colorRow.hex !== '') as colorRow, i}
@@ -359,9 +383,8 @@
     />
   </section>
   <section><RoundedMaker on:roundedOptsChange={handleRoundedOptsChange} {roundedSize} /></section>
-  <button class={`${btnNeue} rounded-neue`}>asdf</button>
 
-  <pre><code class="language-javascript"></code></pre>
+  <pre><code class="language-javascript">{themeOptsString}</code></pre>
 </div>
 
 <style lang="postcss">

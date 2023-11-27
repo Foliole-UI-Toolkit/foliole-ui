@@ -1,6 +1,6 @@
 ---
-import "@neue/neue-css/styles/index.css"; 
-import 'pollen-css';
+import "@neue/neue-css/index.css"; 
+import '../pollen.css'
 interface Props {
 	title: string;
 }
@@ -28,7 +28,6 @@ const { title } = Astro.props;
 					<li>
 						<a  class="uppercase" href="/theme-generator">theme generator</a>
 					</li>
-		
 				</ul>
 			</header>
 			<main class="container mx-auto ">
@@ -38,20 +37,16 @@ const { title } = Astro.props;
 	</body>
 </html>
 <style is:global>
+/* 
 
 	body {
 		background: white;
 	}
 	@tailwind components;
 
-	.hi {
-		@apply text-2xl;
-	}
 
-	@layer components	{
-			.my-btn {
-				@apply hi
-			}
-		}
+	/* @layer components	{
+		
+		} */
 
 </style>

@@ -68,13 +68,13 @@ export const color = {
   'surface-contrast-light': 'rgba(255, 255, 255, 1)',
   'surface-contrast-mlt': 'rgba(120, 120, 120, 1)',
   'surface-contrast-mdk': 'rgba(120, 120, 120, 1)',
-  'surface-contrast-dark': 'rgba(87, 87, 87, 1)'
+  'surface-contrast-dark': 'rgba(87, 87, 87, 1)',
 }
 export const btn = {
   'p-sm': '0.3rem 1.5rem',
   'p-base': '0.5rem 1.5rem',
-  'p-lg': '0.7rem 1.5rem'
+  'p-lg': '0.7rem 1.5rem',
 }
 export const ui = {
-  rounded: '8px'
+  rounded: '8px',
 }
