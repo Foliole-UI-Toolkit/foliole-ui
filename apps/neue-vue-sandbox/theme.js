@@ -50,25 +50,10 @@ export const color = {
   'warning-mdk': 'rgba(159, 167, 0, 1)',
   'warning-dark': 'rgba(120, 132, 0, 1)',
   'page-base': 'rgba(254, 246, 250, 1)',
-  'page-light': 'rgba(255, 255, 255, 1)',
-  'page-mlt': 'rgba(166, 159, 162, 1)',
-  'page-mdk': 'rgba(166, 159, 162, 1)',
-  'page-dark': 'rgba(131, 124, 127, 1)',
   'page-contrast-base': 'rgba(204, 204, 204, 1)',
-  'page-contrast-light': 'rgba(255, 255, 255, 1)',
-  'page-contrast-mlt': 'rgba(120, 120, 120, 1)',
-  'page-contrast-mdk': 'rgba(120, 120, 120, 1)',
-  'page-contrast-dark': 'rgba(87, 87, 87, 1)',
   'surface-base': 'rgba(235, 227, 230, 1)',
-  'surface-light': 'rgba(255, 255, 255, 1)',
-  'surface-mlt': 'rgba(149, 141, 144, 1)',
-  'surface-mdk': 'rgba(149, 141, 144, 1)',
-  'surface-dark': 'rgba(114, 107, 110, 1)',
   'surface-contrast-base': 'rgba(204, 204, 204, 1)',
-  'surface-contrast-light': 'rgba(255, 255, 255, 1)',
-  'surface-contrast-mlt': 'rgba(120, 120, 120, 1)',
-  'surface-contrast-mdk': 'rgba(120, 120, 120, 1)',
-  'surface-contrast-dark': 'rgba(87, 87, 87, 1)'
+  'surface-raised-base': 'rgba(235, 227, 230, 1)'
 }
 export const btn = {
   'p-sm': '0.3rem 1.5rem',

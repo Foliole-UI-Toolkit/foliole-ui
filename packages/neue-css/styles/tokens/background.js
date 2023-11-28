@@ -278,5 +278,18 @@ module.exports = {
     '.dark .bg-surface-contrast-base': {
       backgroundColor: 'var(--color-surface-base)',
     },
+    // Surface Raised
+    '.bg-surface-raised-base': {
+      backgroundColor: 'var(--color-surface-raised-base)',
+    },
+    '.dark .bg-surface-raised-base': {
+      backgroundColor: 'var(--color-surface-raised-contrast-base)',
+    },
+    '.bg-surface-raised-contrast-base': {
+      backgroundColor: 'var(--color-surface-raised-contrast-base)',
+    },
+    '.dark .bg-surface-raised-contrast-base': {
+      backgroundColor: 'var(--color-surface-raised-base)',
+    },
   },
 }

@@ -24,7 +24,14 @@ export const neueColorNames = [
 ]
 
 // Colors are split up because derived colors have no stops and are handled differently.
-export const neueDerivedColorNames = ['page', 'page-contrast', 'surface', 'surface-contrast'] as const
+export const neueDerivedColorNames = [
+  'page',
+  'page-contrast',
+  'surface',
+  'surface-contrast',
+  'surface-raised',
+  'surface-raised-contrast',
+] as const
 
 export const neueColorSchemes = ['triad', 'split-complimentary', 'analogous-triad', 'analogous-quad']
 
@@ -152,11 +159,17 @@ export const singleSwatchColorClasses: Record<NeueDerivedColorNames, { base: str
   'surface-contrast': {
     base: 'bg-surface-contrast-base',
   },
+  'surface-raised': {
+    base: 'bg-surface-raised-base',
+  },
+  'surface-raised-contrast': {
+    base: 'bg-surface-raised-contrast-base',
+  },
 }
 
 export const intensityMap: { [key: string]: number } = {
-  light: 2.5,
-  mlt: 1.75,
-  mdk: 1.75,
-  dark: 2.5,
+  light: 2.4,
+  mlt: 1.6,
+  mdk: 1.6,
+  dark: 2.4,
 }
