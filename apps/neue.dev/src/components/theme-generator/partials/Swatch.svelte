@@ -6,7 +6,7 @@
   export let stops: string[]
 </script>
 
-<div class="flex order-3 lg:order-2">
+<div class="flex order-3 md:order-2">
   {#each Object.entries(steppedSwatchColorClasses[color]).filter( ([shade]) => stops.includes(shade), ) as [shade, shadeClasses]}
     <div class="grid grid-rows-[1fr_40px] text-center w-full">
       <!-- Label -->

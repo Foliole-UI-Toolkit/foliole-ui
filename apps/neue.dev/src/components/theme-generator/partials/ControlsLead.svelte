@@ -1,12 +1,16 @@
 <script lang="ts">
-	export let label: string;
-	export let hex: string;
+  export let hex: string
+  export let label: string
 </script>
 
-<label class="label">
-	<span class="lg:font-normal font-bold">{label}</span>
-	<div class="grid grid-cols-[auto_1fr] gap-4 place-items-end">
-		<input class="input" type="color" bind:value={hex} />
-		<input class="input" type="text" bind:value={hex} placeholder="#BADA55" />
-	</div>
-</label>
+<div class="flex justify-center gap-2">
+  <div class="flex flex-col w-[50%] justify-center items-center">
+    <label class="text-center"> {label}</label>
+    <input class="input" type="color" bind:value={hex} />
+  </div>
+
+  <div class="flex flex-col w-[50%]">
+    <label>Input</label>
+    <input class="input input-base" type="text" bind:value={hex} placeholder="#BADA55" />
+  </div>
+</div>

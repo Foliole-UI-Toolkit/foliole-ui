@@ -1,22 +1,13 @@
 module.exports = {
   button: {
-    '.btn-sm': {
-      fontSize: 'var(--scale-00)',
+    '.btn-p-sm': {
       padding: 'var(--btn-p-sm)',
     },
-    '.btn-md': {
-      fontSize: 'var(--scale-0)',
+    '.btn-p-md': {
       padding: 'var(--btn-p-base)',
     },
-    '.btn-lg': {
-      fontSize: 'var(--scale-1)',
+    '.btn-p-lg': {
       padding: 'var(--btn-p-lg)',
-    },
-    '.btn-rounded': {
-      borderRadius: 'var(--ui-rounded)',
-    },
-    '.btn-pill': {
-      borderRadius: 'var(--radius-full)',
     },
     '.btn-base': {
       display: 'inline-flex',

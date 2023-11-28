@@ -25,9 +25,6 @@
   import { writable } from 'svelte/store'
   import { onMount } from 'svelte'
 
-  // UI related
-  import { btnNeue } from '../../neue-classes'
-
   // Import color utils by type
   const { useGetConvertedColor, useGetColorValue, useGenerateColor, useColorSchemes } = colorUtils
 
@@ -125,6 +122,7 @@
   // Generate colors: create colors collection, fill in template options from colors collection and data output as string
   function generateThemeOpts() {
     updateColorsCollection()
+    console.log($colorsCollectionStore)
     let builtResults
 
     storeThemeOptions.update((currentOptions) => {
@@ -149,6 +147,7 @@
             }
             return color
           } else {
+            color.hex = ''
             return color
           }
         }),
@@ -172,6 +171,9 @@
         return [...results, ...colorShades]
       })
     })
+
+    console.log($storeThemeOptions.derivedColors)
+    console.log($storeColorResults)
 
     builtResults = buildColorCSSStrings('color', 'rgb')
     previewCSSVars = builtResults.cssVars
@@ -263,8 +265,16 @@
       colorsCollection['warning'] = generateColorFromHSL(centers.yellow, newSaturation, 0.5)
       colorsCollection['success'] = generateColorFromHSL(centers.green, newSaturation, 0.5)
       colorsCollection['neutral'] = grays[0] = generateColorFromHSL(hue, 0.03, 0.5)
-      colorsCollection['page'] = generateLightenedValue(grays[0], intensityMap['light'])
-      colorsCollection['surface'] = generateLightenedValue(grays[0], 2.125)
+      // colorsCollection['neutral'] = grays[0] = generateColorFromHSL(hue, 0.0, 0.5)
+      // colorsCollection['page'] = generateLightenedValue(grays[0], 2.5)
+      // colorsCollection['surface'] = generateLightenedValue(grays[0], 2.3)
+      // colorsCollection['surface-raised'] = generateLightenedValue(grays[0], 2.1)
+      colorsCollection['page'] = generateLightenedValue(grays[0], 2.6)
+      colorsCollection['surface'] = generateLightenedValue(grays[0], 2.4)
+      colorsCollection['surface-raised'] = generateLightenedValue(grays[0], 2.1)
+      // colorsCollection['page'] = generateLightenedValue(grays[0], 3)
+      // colorsCollection['surface'] = generateLightenedValue(grays[0], 2.5)
+      // colorsCollection['surface-raised'] = generateLightenedValue(grays[0], 2.25)
 
       const createPrimaries = () => {
         colorsCollection['primary'] = primaryColorHex
@@ -355,47 +365,53 @@
 <svelte:head>{@html previewCSSVars}</svelte:head>
 
 <div class="space-y-2 page-one-col">
-  <section class="flex flex-col items-center gap-2 p-4 bg-gray-200 rounded lg:gap-4">
+  <section class="flex flex-col items-center gap-2 p-4 rounded bg-surface-base lg:gap-4">
     <h2 class="text-center page-header">Color Generator</h2>
+
     <p class="w-2/3 text-center leading-[1.25rem]">
       <span class="hidden md:inline">Press Ctrl (or Windows Key) + space to generate a random color. </span>Enter a hex
       code or click to pick a hex code.
     </p>
-    <button on:click={generateRandomHexValue} class={` ${btnNeue}`}>Random Color</button>
+    <button on:click={generateRandomHexValue} class="btn btn-base">Random Color</button>
     <ColorPicker colorHex={primaryColorHex} on:colorChange={handleColorPickerChange} />
     <p class="text-xl text-error">{hashErrorMessage}</p>
     <ChipOptions />
-    <button class={` ${btnNeue}`} on:click={generateThemeOpts}>Generate Preview</button>
+    <button class="btn btn-base" on:click={generateThemeOpts}>Generate Preview</button>
   </section>
   <section>
     <h3 class="text-2xl uppercase">Colors</h3>
-    <div class="grid grid-cols-1 gap-2 sm:gap-4">
+    <div class="grid grid-cols-1">
       {#each $storeThemeOptions.colors.filter((colorRow) => colorRow.hex !== '') as colorRow, i}
-        <div
-          class="grid grid-cols-1 lg:grid-cols-[160px_1fr_250px] gap-2 lg:gap-4 border-b-4 lg:border-b-0 border-surface-100 pb-6 lg:pb-0"
-        >
-          <ControlsLead label={colorRow.label} hex={colorRow.hex} />
-          <Swatch color={colorRow.key} stops={colorRow.stops.split(',')} />
-          <ControlsTrail colorOn={colorRow.on} stops={colorRow.stops} colorsIndex={i} />
-        </div>
-      {/each}
-
-      {#each $storeThemeOptions.derivedColors.filter((colorRow) => colorRow.hex !== '') as colorRow, i}
-        <div
-          class="grid grid-cols-1 lg:grid-cols-[160px_1fr_250px] gap-2 lg:gap-4 border-b-4 lg:border-b-0 border-surface-100 pb-6 lg:pb-0"
-        >
-          <div class="flex order-3 lg:order-2">
-            <div class="grid grid-rows-[1fr_40px] text-center w-full">
-              <div class="text-sm text-surface-mdk dark:text-surface-mlt" />
-              <div
-                class="flex items-center justify-center h-full {singleSwatchColorClasses[colorRow.key].base
-                  ? singleSwatchColorClasses[colorRow.key].base
-                  : ''}"
-              />
-            </div>
+        <div class="pb-2">
+          <div
+            class="grid grid-cols-1 md:grid-cols-[200px_1fr_240px] gap-2 md:gap-4 border-b-4 md:border-0 border-gray-100 pb-2"
+          >
+            <ControlsLead hex={colorRow.hex} label={colorRow.label} />
+            <Swatch color={colorRow.key} stops={colorRow.stops.split(',')} />
+            <ControlsTrail colorOn={colorRow.on} stops={colorRow.stops} colorsIndex={i} />
           </div>
         </div>
       {/each}
+
+      <!-- {#each $storeThemeOptions.derivedColors.filter((colorRow) => colorRow.hex !== '') as colorRow, i} -->
+      <div
+        class="flex items-center justify-center h-20 w-full m-4 p-4 border-2 border-neutral-base {singleSwatchColorClasses[
+          'page'
+        ].base}"
+      >
+        <div class="flex items-center justify-center h-10 w-1/2 {singleSwatchColorClasses['surface'].base}"></div>
+      </div>
+
+      <div
+        class="flex items-center justify-center h-20 w-full m-4 p-4 border-2 border-neutral-base {singleSwatchColorClasses[
+          'surface'
+        ].base}"
+      >
+        <div class="flex items-center justify-center h-10 w-1/2 {singleSwatchColorClasses['surface-raised'].base}">
+          asdf
+        </div>
+      </div>
+      <!-- {/each} -->
     </div>
   </section>
   <section>
@@ -410,7 +426,7 @@
   </section>
   <section><RoundedMaker on:roundedOptsChange={handleRoundedOptsChange} {roundedSize} /></section>
 
-  <pre><code class="language-javascript">{themeOptsJsInCSS}</code></pre>
+  <!-- <pre><code class="language-javascript">{themeOptsJsInCSS}</code></pre> -->
 </div>
 
 <style lang="postcss">

@@ -1,7 +1,6 @@
 <script lang="ts">
   import { createEventDispatcher } from 'svelte'
   import type { BtnFontSizes } from '$lib/types'
-  import { btnNeue } from '../../../neue-classes'
 
   const dispatch = createEventDispatcher()
 
@@ -33,7 +32,7 @@
   <h4>Buttons</h4>
   <div>
     <p>Button Example</p>
-    <button class={btnNeue}>Example</button>
+    <button class="btn btn-base">Example</button>
   </div>
   <label for="sizeBase">Size Base (.1-1):</label>
   <input
@@ -43,6 +42,7 @@
     min=".1"
     max="1"
     step=".1"
+    class="input input-base"
     bind:value={btnPaddingBase}
     on:input={emitBtnOptsChange}
   />
@@ -55,6 +55,7 @@
     min="10"
     max="100"
     step="10"
+    class="input input-base"
     bind:value={btnPaddingSizeScale}
     on:input={emitBtnOptsChange}
   />
@@ -67,6 +68,7 @@
     min="2"
     max="8"
     step=".5"
+    class="input input-base"
     bind:value={btnPaddingWidthScale}
     on:input={emitBtnOptsChange}
   />
@@ -75,7 +77,11 @@
     {#each ['sm', 'base', 'lg'] as column}
       <div class="">
         <p class="mt-2 text-center">{column}</p>
-        <select bind:value={btnFontSizes[column]} on:change={(e) => handleFontSizeSelect(e, column)}>
+        <select
+          class="select select-base"
+          bind:value={btnFontSizes[column]}
+          on:change={(e) => handleFontSizeSelect(e, column)}
+        >
           {#each fontSizeOptions as fontSize}
             <option value={fontSize}>{fontSize}</option>
           {/each}

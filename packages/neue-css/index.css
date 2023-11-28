@@ -1,20 +1,11 @@
-.btn-sm {
-    font-size: var(--scale-00);
+.btn-p-sm {
     padding: var(--btn-p-sm)
 }
-.btn-md {
-    font-size: var(--scale-0);
+.btn-p-md {
     padding: var(--btn-p-base)
 }
-.btn-lg {
-    font-size: var(--scale-1);
+.btn-p-lg {
     padding: var(--btn-p-lg)
-}
-.btn-rounded {
-    border-radius: var(--ui-rounded)
-}
-.btn-pill {
-    border-radius: var(--radius-full)
 }
 .btn-base {
     display: inline-flex;
@@ -22,6 +13,22 @@
     align-items: center;
     text-align: center;
     white-space: nowrap
+}
+.input-base {
+    flex-shrink: 1;
+    background: var(--color-surface-base)
+}
+.bg-surface-base .input-base {
+    background: var(--color-neutral-light)
+}
+.select-base {
+    flex-shrink: 1;
+    background: var(--color-surface-base);
+    --webkit-appearance: none;
+    appearance: none
+}
+.bg-surface-base .select-base {
+    background: var(--color-neutral-light)
 }
 .bg-primary-base {
     background-color: var(--color-primary-base)
@@ -289,6 +296,18 @@
 }
 .dark .bg-surface-contrast-base {
     background-color: var(--color-surface-base)
+}
+.bg-surface-raised-base {
+    background-color: var(--color-surface-raised-base)
+}
+.dark .bg-surface-raised-base {
+    background-color: var(--color-surface-raised-contrast-base)
+}
+.bg-surface-raised-contrast-base {
+    background-color: var(--color-surface-raised-contrast-base)
+}
+.dark .bg-surface-raised-contrast-base {
+    background-color: var(--color-surface-raised-base)
 }
 .rounded {
     border-radius: var(--ui-rounded)
