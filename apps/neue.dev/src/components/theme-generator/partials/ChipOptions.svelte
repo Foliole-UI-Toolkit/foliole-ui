@@ -62,12 +62,12 @@
       </button>
     {/each}
   </div>
-  <p class="pt-2 font-bold text-center">All used colors:</p>
+  <!-- <p class="pt-2 font-bold text-center">All used colors:</p>
   <div class="flex flex-wrap justify-center gap-2">
     {#each Object.keys($colorsCollectionStore) as key}
       <span class="text-base chip chip-static bg-surface-mlt">{key}</span>
     {/each}
-  </div>
+  </div> -->
 </div>
 
 <style lang="postcss">
