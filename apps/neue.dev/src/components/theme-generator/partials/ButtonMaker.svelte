@@ -32,7 +32,7 @@
   <h4>Buttons</h4>
   <div>
     <p>Button Example</p>
-    <button class="btn btn-base">Example</button>
+    <button class="btn-neue btn-base">Example</button>
   </div>
   <label for="sizeBase">Size Base (.1-1):</label>
   <input
@@ -42,7 +42,7 @@
     min=".1"
     max="1"
     step=".1"
-    class="input input-base"
+    class="input-neue input-base"
     bind:value={btnPaddingBase}
     on:input={emitBtnOptsChange}
   />
@@ -55,7 +55,7 @@
     min="10"
     max="100"
     step="10"
-    class="input input-base"
+    class="input-neue input-base"
     bind:value={btnPaddingSizeScale}
     on:input={emitBtnOptsChange}
   />
@@ -68,7 +68,7 @@
     min="2"
     max="8"
     step=".5"
-    class="input input-base"
+    class="input-neue input-base"
     bind:value={btnPaddingWidthScale}
     on:input={emitBtnOptsChange}
   />
@@ -78,7 +78,7 @@
       <div class="">
         <p class="mt-2 text-center">{column}</p>
         <select
-          class="select select-base"
+          class="select-neue select-base"
           bind:value={btnFontSizes[column]}
           on:change={(e) => handleFontSizeSelect(e, column)}
         >

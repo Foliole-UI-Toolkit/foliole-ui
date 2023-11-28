@@ -372,11 +372,11 @@
       <span class="hidden md:inline">Press Ctrl (or Windows Key) + space to generate a random color. </span>Enter a hex
       code or click to pick a hex code.
     </p>
-    <button on:click={generateRandomHexValue} class="btn btn-base">Random Color</button>
+    <button on:click={generateRandomHexValue} class="btn-neue btn-base">Random Color</button>
     <ColorPicker colorHex={primaryColorHex} on:colorChange={handleColorPickerChange} />
     <p class="text-xl text-error">{hashErrorMessage}</p>
     <ChipOptions />
-    <button class="btn btn-base" on:click={generateThemeOpts}>Generate Preview</button>
+    <button class="btn-neue btn-base" on:click={generateThemeOpts}>Generate Preview</button>
   </section>
   <section>
     <h3 class="text-2xl uppercase">Colors</h3>
@@ -395,20 +395,24 @@
 
       <!-- {#each $storeThemeOptions.derivedColors.filter((colorRow) => colorRow.hex !== '') as colorRow, i} -->
       <div
-        class="flex items-center justify-center h-20 w-full m-4 p-4 border-2 border-neutral-base {singleSwatchColorClasses[
+        class="flex flex-col items-center justify-center w-full m-4 p-4 border-2 border-neutral-base rounded {singleSwatchColorClasses[
           'page'
         ].base}"
       >
-        <div class="flex items-center justify-center h-10 w-1/2 {singleSwatchColorClasses['surface'].base}"></div>
+        <span class="pb-2">Background color: ---color-page-base</span>
+        <div class="text-center w-1/2 p-2 rounded {singleSwatchColorClasses['surface'].base}">
+          Element background color : --color-surface-base
+        </div>
       </div>
 
       <div
-        class="flex items-center justify-center h-20 w-full m-4 p-4 border-2 border-neutral-base {singleSwatchColorClasses[
+        class="flex flex-col items-center justify-center w-full m-4 p-4 border-2 border-neutral-base rounded {singleSwatchColorClasses[
           'surface'
         ].base}"
       >
-        <div class="flex items-center justify-center h-10 w-1/2 {singleSwatchColorClasses['surface-raised'].base}">
-          asdf
+        <span class="flex pb-2">Background color: ---color-surface-base</span>
+        <div class="text-center w-1/2 p-2 rounded {singleSwatchColorClasses['surface-raised'].base}">
+          Element background color : --color-raised-surface-base
         </div>
       </div>
       <!-- {/each} -->

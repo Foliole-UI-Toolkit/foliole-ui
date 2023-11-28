@@ -1,16 +1,16 @@
-.btn {
+.btn-neue {
   font-size: var(--scale-0);
   /* pill */
   border-radius: var(--radius-full);
   background: var(--color-primary-base);
   padding: var(--btn-p-base);
 }
-.input {
+.input-neue {
   padding: var(--size-2);
   border-radius: var(--ui-rounded);
   border: 2px solid var(--color-neutral-mlt);
 }
-.select {
+.select-neue {
   padding: var(--size-2);
   border: 2px solid var(--color-neutral-mlt);
   border-radius: var(--ui-rounded);
