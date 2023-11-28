@@ -10,8 +10,15 @@
   border-radius: var(--ui-rounded);
   border: 2px solid var(--color-neutral-mlt);
 }
+.bg-surface-base .input-neue {
+  border: 2px solid var(--color-neutral-base);
+}
 .select-neue {
   padding: var(--size-2);
   border: 2px solid var(--color-neutral-mlt);
   border-radius: var(--ui-rounded);
+}
+
+.bg-surface-base .select-neue {
+  border: 2px solid var(--color-neutral-base);
 }

@@ -5,7 +5,7 @@ module.exports = {
       background: 'var(--color-surface-base)',
     },
     '.bg-surface-base .input-base': {
-      background: 'var(--color-neutral-light)',
+      background: 'var(--color-neutral-mlt)',
     },
     '.select-base': {
       flexShrink: 1,
@@ -14,7 +14,7 @@ module.exports = {
       appearance: 'none',
     },
     '.bg-surface-base .select-base': {
-      background: 'var(--color-neutral-light)',
+      background: 'var(--color-neutral-mlt)',
     },
   },
 }

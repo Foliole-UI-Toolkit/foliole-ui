@@ -168,8 +168,28 @@ export const singleSwatchColorClasses: Record<NeueDerivedColorNames, { base: str
 }
 
 export const intensityMap: { [key: string]: number } = {
-  light: 2.4,
-  mlt: 1.6,
-  mdk: 1.6,
-  dark: 2.4,
+  light: 2.3,
+  mlt: 1.5,
+  mdk: 1.5,
+  dark: 2.3,
 }
+
+export const surfaceMap = {
+  white: {
+    page: 3,
+    surface: 2.4,
+    raised: 2.1,
+  },
+  low: {
+    page: 2.6,
+    surface: 2.3,
+    raised: 2,
+  },
+  high: {
+    page: 2.5,
+    surface: 2.2,
+    raised: 1.9,
+  },
+}
+
+export const grayHues = [0, 0.02, 0.04, 0.06]

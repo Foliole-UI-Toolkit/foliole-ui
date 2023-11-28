@@ -15,7 +15,7 @@
 
   // Local data
   import { storeThemeOptions, storeColorResults } from './data'
-  import { singleSwatchColorClasses, intensityMap } from './data/settings'
+  import { grayHues, singleSwatchColorClasses, intensityMap, surfaceMap } from './data/settings'
 
   // Types
   import type { ColorsCollection } from './types'
@@ -23,7 +23,6 @@
   // Svelte related
   import { setContext } from 'svelte'
   import { writable } from 'svelte/store'
-  import { onMount } from 'svelte'
 
   // Import color utils by type
   const { useGetConvertedColor, useGetColorValue, useGenerateColor, useColorSchemes } = colorUtils
@@ -55,7 +54,9 @@
   const colorSchemeStore = writable('triad')
 
   // Color options
-  let primaryColorHex: string = '#FF007F'
+  let primaryColorHex: string = '#4e7fef'
+  let selectedSurfaceLevel: string = 'low'
+  let grayHue = 0.02
   // Button options
   let btnPaddingSizeScale: number = 40
   let btnPaddingWidthScale: number = 3
@@ -76,6 +77,16 @@
   // Make stores available to context so they can be injected locally as needed in child components.
   setContext('colorSchemeStore', colorSchemeStore)
   setContext('colorsCollectionStore', colorsCollectionStore)
+
+  // Derived values
+
+  $: adjustedIntensityMap = intensityMap
+
+  $: {
+    if (selectedSurfaceLevel || primaryColorHex) {
+      generateThemeOpts()
+    }
+  }
 
   // Handles random color generation on correct keypress sequence.
   function handleKeyDown(e: KeyboardEvent) {
@@ -114,6 +125,11 @@
     generateThemeOpts()
   }
 
+  function handleGrayHueChange(event) {
+    grayHue = parseFloat(event.target.value)
+    generateThemeOpts()
+  }
+
   // Random Hex as jumping off point to color scheme genration.
   function generateRandomHexValue() {
     primaryColorHex = generateRandomColor() as string
@@ -121,8 +137,8 @@
 
   // Generate colors: create colors collection, fill in template options from colors collection and data output as string
   function generateThemeOpts() {
+    console.log('called generateThemeOpts')
     updateColorsCollection()
-    console.log($colorsCollectionStore)
     let builtResults
 
     storeThemeOptions.update((currentOptions) => {
@@ -154,14 +170,23 @@
       }
     })
 
-    $storeThemeOptions.colors.forEach((color) => {
-      if (color.hex === '') return
-      const colorShades = buildColorShades(color)
+    let allColorShades = []
 
-      storeColorResults.update((results) => {
-        return [...results, ...colorShades]
-      })
+    $storeThemeOptions.colors.forEach((color) => {
+      if (color.hex !== '') {
+        const colorShades = buildColorShades(color)
+        allColorShades = [...allColorShades, ...colorShades]
+      }
     })
+
+    $storeThemeOptions.derivedColors.forEach((color) => {
+      if (color.hex !== '') {
+        const colorShades = buildColorShades(color)
+        allColorShades = [...allColorShades, ...colorShades]
+      }
+    })
+
+    storeColorResults.set(allColorShades)
 
     $storeThemeOptions.derivedColors.forEach((color) => {
       if (color.hex === '') return
@@ -171,9 +196,6 @@
         return [...results, ...colorShades]
       })
     })
-
-    console.log($storeThemeOptions.derivedColors)
-    console.log($storeColorResults)
 
     builtResults = buildColorCSSStrings('color', 'rgb')
     previewCSSVars = builtResults.cssVars
@@ -188,6 +210,76 @@
     themeOptsJsInCSS += builtResults.jsInCSS
 
     previewCSSVars = `<style>\n:root { \n ${previewCSSVars}  }</style>`
+  }
+
+  // Update collection for theme options.
+  function updateColorsCollection() {
+    colorsCollectionStore.update((colorsCollection) => {
+      let baseColors = []
+      // Array because we will have multi gray options later.
+      const grays = []
+      const hue = getHueFromHex(primaryColorHex)
+      const baseSaturation = getSaturation(primaryColorHex)
+      const newSaturation = baseSaturation > 0.79 ? baseSaturation : baseSaturation + 0.2
+
+      // Create Colors used in every color scheme
+      colorsCollection['error'] = generateColorFromHSL(centers.red, newSaturation, 0.5)
+      colorsCollection['warning'] = generateColorFromHSL(centers.yellow, newSaturation, 0.5)
+      colorsCollection['success'] = generateColorFromHSL(centers.green, newSaturation, 0.5)
+      colorsCollection['neutral'] = grays[0] = generateColorFromHSL(hue, grayHue, 0.5)
+
+      colorsCollection['page'] = generateLightenedValue(grays[0], surfaceMap[selectedSurfaceLevel].page)
+      colorsCollection['surface'] = generateLightenedValue(grays[0], surfaceMap[selectedSurfaceLevel].surface)
+      colorsCollection['surface-raised'] = generateLightenedValue(grays[0], surfaceMap[selectedSurfaceLevel].raised)
+
+      const createPrimaries = () => {
+        colorsCollection['primary'] = primaryColorHex
+        colorsCollection['secondary'] = baseColors[0]
+        colorsCollection['tertiary'] = baseColors[1]
+      }
+
+      // Individual differences in color schemes.
+      switch ($colorSchemeStore) {
+        case 'triad':
+          baseColors = generateTriadColors(primaryColorHex)
+          createPrimaries()
+          colorsCollection['quaternary'] = ''
+          colorsCollection['quinary'] = ''
+          break
+        case 'split-complimentary':
+          baseColors = generateSplitComplimentaryColors(primaryColorHex)
+          createPrimaries()
+          colorsCollection['quaternary'] = ''
+          colorsCollection['quinary'] = ''
+          break
+        case 'analogous-triad':
+          baseColors = generateAnalogousColors(primaryColorHex, 40, 'analogous-triad')
+          createPrimaries()
+          colorsCollection['quaternary'] = ''
+          colorsCollection['quinary'] = ''
+          break
+        case 'analogous-quad':
+          baseColors = generateAnalogousColors(primaryColorHex, 40, 'analogous-quad')
+          createPrimaries()
+          colorsCollection['quaternary'] = baseColors[2]
+          colorsCollection['quinary'] = ''
+          break
+        case 'analogous-quin':
+          baseColors = generateAnalogousColors(primaryColorHex, 20, 'analogous-quin')
+          createPrimaries()
+          colorsCollection['quaternary'] = baseColors[2]
+          colorsCollection['quinary'] = baseColors[3]
+          break
+        default:
+          baseColors = generateTriadColors(primaryColorHex)
+          createPrimaries()
+          colorsCollection['quaternary'] = ''
+          colorsCollection['quinary'] = ''
+          break
+      }
+
+      return colorsCollection
+    })
   }
 
   // build CSSVars and Options JS
@@ -213,8 +305,10 @@
       jsInCSS += '\n'
     })
     jsInCSS += '} \n'
+
     return { cssVars, jsInCSS }
   }
+
   // build CSSVars and Options JS
   function buildButtonCSSStrings() {
     const btnPaddingSizeScalePercent = btnPaddingSizeScale / 100
@@ -239,6 +333,7 @@
     jsInCSS += `'p-lg': '${btnPaddingIncreased}rem ${btnPaddingWidthIncreased}rem'\n}\n`
     return { cssVars, jsInCSS }
   }
+
   // build CSSVars and Options JS
   function buildUICSSStrings() {
     let cssVars = ''
@@ -248,82 +343,6 @@
     jsInCSS += `'rounded': '${roundedSize}'\n}\n`
 
     return { cssVars, jsInCSS }
-  }
-
-  // Update collection for theme options.
-  function updateColorsCollection() {
-    colorsCollectionStore.update((colorsCollection) => {
-      let baseColors = []
-      // Array because we will have multi gray options later.
-      const grays = []
-      const hue = getHueFromHex(primaryColorHex)
-      const baseSaturation = getSaturation(primaryColorHex)
-      const newSaturation = baseSaturation > 0.79 ? baseSaturation : baseSaturation + 0.2
-
-      // Create Colors used in every color scheme
-      colorsCollection['error'] = generateColorFromHSL(centers.red, newSaturation, 0.5)
-      colorsCollection['warning'] = generateColorFromHSL(centers.yellow, newSaturation, 0.5)
-      colorsCollection['success'] = generateColorFromHSL(centers.green, newSaturation, 0.5)
-      colorsCollection['neutral'] = grays[0] = generateColorFromHSL(hue, 0.03, 0.5)
-      // colorsCollection['neutral'] = grays[0] = generateColorFromHSL(hue, 0.0, 0.5)
-      // colorsCollection['page'] = generateLightenedValue(grays[0], 2.5)
-      // colorsCollection['surface'] = generateLightenedValue(grays[0], 2.3)
-      // colorsCollection['surface-raised'] = generateLightenedValue(grays[0], 2.1)
-      colorsCollection['page'] = generateLightenedValue(grays[0], 2.6)
-      colorsCollection['surface'] = generateLightenedValue(grays[0], 2.4)
-      colorsCollection['surface-raised'] = generateLightenedValue(grays[0], 2.1)
-      // colorsCollection['page'] = generateLightenedValue(grays[0], 3)
-      // colorsCollection['surface'] = generateLightenedValue(grays[0], 2.5)
-      // colorsCollection['surface-raised'] = generateLightenedValue(grays[0], 2.25)
-
-      const createPrimaries = () => {
-        colorsCollection['primary'] = primaryColorHex
-        colorsCollection['secondary'] = baseColors[0]
-        colorsCollection['tertiary'] = baseColors[1]
-      }
-
-      // Individual differences in color schemes.
-      switch ($colorSchemeStore) {
-        case 'triad':
-          baseColors = generateTriadColors(primaryColorHex)
-          createPrimaries()
-          colorsCollection['quaternary'] = ''
-          colorsCollection['quinary'] = ''
-          break
-        case 'split-complimentary':
-          baseColors = generateSplitComplimentaryColors(primaryColorHex)
-          createPrimaries()
-          colorsCollection['quaternary'] = ''
-          colorsCollection['quinary'] = ''
-          break
-        case 'analogous-triad':
-          baseColors = generateAnalogousColors(primaryColorHex, 20, 'analogous-triad')
-          createPrimaries()
-          colorsCollection['quaternary'] = ''
-          colorsCollection['quinary'] = ''
-          break
-        case 'analogous-quad':
-          baseColors = generateAnalogousColors(primaryColorHex, 20, 'analogous-quad')
-          createPrimaries()
-          colorsCollection['quaternary'] = baseColors[2]
-          colorsCollection['quinary'] = ''
-          break
-        case 'analogous-quin':
-          baseColors = generateAnalogousColors(primaryColorHex, 20, 'analogous-quin')
-          createPrimaries()
-          colorsCollection['quaternary'] = baseColors[2]
-          colorsCollection['quinary'] = baseColors[3]
-          break
-        default:
-          baseColors = generateTriadColors(primaryColorHex)
-          createPrimaries()
-          colorsCollection['quaternary'] = ''
-          colorsCollection['quinary'] = ''
-          break
-      }
-
-      return colorsCollection
-    })
   }
 
   // Build Shades to make Pollen configs.
@@ -341,8 +360,8 @@
     ;['light', 'mlt', 'mdk', 'dark'].forEach((level) => {
       const hex =
         level.includes('light') || level.includes('mlt')
-          ? generateLightenedValue(color.hex, intensityMap[level])
-          : generateDarkenedValue(color.hex, intensityMap[level])
+          ? generateLightenedValue(color.hex, adjustedIntensityMap[level])
+          : generateDarkenedValue(color.hex, adjustedIntensityMap[level])
 
       response.push({
         key: color.key,
@@ -356,19 +375,20 @@
     return response
   }
 
-  onMount(() => {
-    generateThemeOpts()
-  })
+  // onMount(() => {
+  //   generateThemeOpts()
+  //   hasMounted = true
+  // })
 </script>
 
 <svelte:window on:keydown={handleKeyDown} />
 <svelte:head>{@html previewCSSVars}</svelte:head>
 
-<div class="space-y-2 page-one-col">
+<div class="space-y-4 page-one-col">
   <section class="flex flex-col items-center gap-2 p-4 rounded bg-surface-base lg:gap-4">
-    <h2 class="text-center page-header">Color Generator</h2>
+    <h2 class="text-6xl font-bold text-center page-header text-secondary-base">Color Generator</h2>
 
-    <p class="w-2/3 text-center leading-[1.25rem]">
+    <p class="w-2/3 text-sm text-center leading-[1.25rem]">
       <span class="hidden md:inline">Press Ctrl (or Windows Key) + space to generate a random color. </span>Enter a hex
       code or click to pick a hex code.
     </p>
@@ -378,44 +398,66 @@
     <ChipOptions />
     <button class="btn-neue btn-base" on:click={generateThemeOpts}>Generate Preview</button>
   </section>
-  <section>
-    <h3 class="text-2xl uppercase">Colors</h3>
+  <section class="p-4 rounded bg-surface-base">
+    <h3 class="mb-2 text-4xl font-bold text-secondary-base">Colors</h3>
     <div class="grid grid-cols-1">
       {#each $storeThemeOptions.colors.filter((colorRow) => colorRow.hex !== '') as colorRow, i}
-        <div class="pb-2">
-          <div
-            class="grid grid-cols-1 md:grid-cols-[200px_1fr_240px] gap-2 md:gap-4 border-b-4 md:border-0 border-gray-100 pb-2"
-          >
-            <ControlsLead hex={colorRow.hex} label={colorRow.label} />
-            <Swatch color={colorRow.key} stops={colorRow.stops.split(',')} />
-            <ControlsTrail colorOn={colorRow.on} stops={colorRow.stops} colorsIndex={i} />
-          </div>
+        <div
+          class="grid grid-cols-1 md:grid-cols-[200px_1fr_240px] gap-2 md:gap-4 border-b-4 md:border-0 border-gray-100 md:pb-2 pb-4"
+        >
+          <ControlsLead hex={colorRow.hex} label={colorRow.label} />
+          <Swatch color={colorRow.key} stops={colorRow.stops.split(',')} />
+          <ControlsTrail colorOn={colorRow.on} stops={colorRow.stops} colorsIndex={i} />
         </div>
       {/each}
 
       <!-- {#each $storeThemeOptions.derivedColors.filter((colorRow) => colorRow.hex !== '') as colorRow, i} -->
-      <div
-        class="flex flex-col items-center justify-center w-full m-4 p-4 border-2 border-neutral-base rounded {singleSwatchColorClasses[
-          'page'
-        ].base}"
-      >
-        <span class="pb-2">Background color: ---color-page-base</span>
-        <div class="text-center w-1/2 p-2 rounded {singleSwatchColorClasses['surface'].base}">
-          Element background color : --color-surface-base
+      <div class="pt-4 space-y-4">
+        <div
+          class="flex flex-col items-center justify-center w-full p-4 border-2 border-neutral-base rounded {singleSwatchColorClasses[
+            'page'
+          ].base}"
+        >
+          <span class="pb-2">Background color: ---color-page-base</span>
+          <div class="text-center w-1/2 p-2 rounded {singleSwatchColorClasses['surface'].base}">
+            Element background color : --color-surface-base
+          </div>
+        </div>
+        <div
+          class="flex flex-col items-center justify-center w-full p-4 border-2 border-neutral-base rounded {singleSwatchColorClasses[
+            'surface'
+          ].base}"
+        >
+          <span class="pb-2">Background color: ---color-surface-base</span>
+          <div class="text-center w-1/2 p-2 rounded {singleSwatchColorClasses['surface-raised'].base}">
+            Element background color : --color-raised-surface-base
+          </div>
+        </div>
+        <!-- {/each} -->
+        <p class="font-bold">Surface and hue relationships:</p>
+        <div class="flex flex-col space-y-4">
+          <div class="flex items-center space-x-2">
+            <p>Surface and background relationships:</p>
+            <label>
+              <input type="radio" bind:group={selectedSurfaceLevel} value="white" /> White
+            </label>
+            <label>
+              <input type="radio" bind:group={selectedSurfaceLevel} value="low" /> Low
+            </label>
+            <label>
+              <input type="radio" bind:group={selectedSurfaceLevel} value="high" /> High
+            </label>
+          </div>
+          <label class="space-x-2">
+            <span>Gray Hue Percent:</span>
+            <select class="select-neue select-base" bind:value={grayHue} on:change={handleGrayHueChange}>
+              {#each grayHues as hue}
+                <option value={hue}>{hue}</option>
+              {/each}
+            </select>
+          </label>
         </div>
       </div>
-
-      <div
-        class="flex flex-col items-center justify-center w-full m-4 p-4 border-2 border-neutral-base rounded {singleSwatchColorClasses[
-          'surface'
-        ].base}"
-      >
-        <span class="flex pb-2">Background color: ---color-surface-base</span>
-        <div class="text-center w-1/2 p-2 rounded {singleSwatchColorClasses['surface-raised'].base}">
-          Element background color : --color-raised-surface-base
-        </div>
-      </div>
-      <!-- {/each} -->
     </div>
   </section>
   <section>
@@ -429,8 +471,7 @@
     />
   </section>
   <section><RoundedMaker on:roundedOptsChange={handleRoundedOptsChange} {roundedSize} /></section>
-
-  <!-- <pre><code class="language-javascript">{themeOptsJsInCSS}</code></pre> -->
+  <pre><code class="language-javascript">{themeOptsJsInCSS}</code></pre>
 </div>
 
 <style lang="postcss">
