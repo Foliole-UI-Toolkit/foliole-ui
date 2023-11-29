@@ -19,7 +19,7 @@
   const fontSizeOptions: string[] = ['xs', 'sm', 'base', 'lg', 'xl']
 </script>
 
-<p class="mb-4 text-xl font-bold text-center">Buttons</p>
+<p class="pb-4 page-subheading">Buttons</p>
 <div class="space-y-4">
   <div class="flex flex-col space-y-4">
     <button class="self-center justify-self-center btn-sm">Btn sm</button>

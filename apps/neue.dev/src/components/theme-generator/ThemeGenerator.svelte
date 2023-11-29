@@ -6,6 +6,8 @@
   import ControlsLead from './partials/ControlsLead.svelte'
   import ControlsTrail from './partials/ControlsTrail.svelte'
   import Swatch from './partials/Swatch.svelte'
+  import SurfaceRelationships from './partials/SurfaceRelationships.svelte'
+
   // Other Theme Opt Components
   import ButtonMaker from './partials/ButtonMaker.svelte'
   import RoundedMaker from './partials/RoundedMaker.svelte'
@@ -15,7 +17,7 @@
 
   // Local data
   import { storeThemeOptions, storeColorResults } from './data'
-  import { grayHues, singleSwatchColorClasses, intensityMap, surfaceMap } from './data/settings'
+  import { intensityMap, surfaceMap } from './data/settings'
 
   // Types
   import type { ColorsCollection } from './types'
@@ -82,8 +84,6 @@
 
   // Derived values
 
-  $: adjustedIntensityMap = intensityMap
-
   $: {
     if (selectedSurfaceLevel || primaryColorHex) {
       generateThemeOpts()
@@ -120,19 +120,26 @@
     generateThemeOpts()
   }
 
-  // Handle Rounded Opts changed.
-  function handleRoundedOptsChange(event: CustomEvent) {
-    roundedSize = event.detail.roundedSize
-    buttonRoundLevel = event.detail.buttonRoundLevel
-    inputRoundLevel = event.detail.inputRoundLevel
-    console.log(buttonRoundLevel)
+  // Hanlde surface relationship changed.
+  function handleSurfaceRelationshipChange(event: CustomEvent) {
+    selectedSurfaceLevel = event.detail.selectedSurfaceLevel
 
     generateThemeOpts()
   }
 
   // Handle Gray Hue changed.
   function handleGrayHueChange(event) {
-    grayHue = parseFloat(event.target.value)
+    grayHue = parseFloat(event.detail.grayHue)
+
+    generateThemeOpts()
+  }
+
+  // Handle Rounded Opts changed.
+  function handleRoundedOptsChange(event: CustomEvent) {
+    roundedSize = event.detail.roundedSize
+    buttonRoundLevel = event.detail.buttonRoundLevel
+    inputRoundLevel = event.detail.inputRoundLevel
+
     generateThemeOpts()
   }
 
@@ -412,8 +419,8 @@
     ;['light', 'mlt', 'mdk', 'dark'].forEach((level) => {
       const hex =
         level.includes('light') || level.includes('mlt')
-          ? generateLightenedValue(color.hex, adjustedIntensityMap[level])
-          : generateDarkenedValue(color.hex, adjustedIntensityMap[level])
+          ? generateLightenedValue(color.hex, intensityMap[level])
+          : generateDarkenedValue(color.hex, intensityMap[level])
 
       response.push({
         key: color.key,
@@ -431,22 +438,23 @@
 <svelte:window on:keydown={handleKeyDown} />
 <svelte:head>{@html previewCSSVars}</svelte:head>
 
-<div class="space-y-4 page-one-col">
-  <section class="flex flex-col items-center gap-2 p-4 rounded bg-surface-base lg:gap-4">
-    <h2 class="text-6xl font-bold text-center page-header text-secondary-base">Color Generator</h2>
-
-    <p class="w-2/3 text-sm text-center leading-[1.25rem]">
-      <span class="hidden md:inline">Press Ctrl (or Windows Key) + space to generate a random color. </span>Enter a hex
-      code or click to pick a hex code.
-    </p>
-    <button on:click={generateRandomHexValue} class="btn-md">Random Color</button>
-    <ColorPicker colorHex={primaryColorHex} on:colorChange={handleColorPickerChange} />
-    <p class="text-xl text-error">{hashErrorMessage}</p>
-    <ChipOptions />
-    <button class="btn-md" on:click={generateThemeOpts}>Generate Preview</button>
+<div class="space-y-4">
+  <section class="page-section">
+    <h2 class="text-6xl page-heading">Color Generator</h2>
+    <div class="flex flex-col items-center space-y-4">
+      <p class="w-2/3 text-sm text-center leading-[1.25rem]">
+        <span class="hidden md:inline">Press Ctrl (or Windows Key) + space to generate a random color. </span>Enter a
+        hex code or click to pick a hex code.
+      </p>
+      <button on:click={generateRandomHexValue} class="btn-md">Random Color</button>
+      <ColorPicker colorHex={primaryColorHex} on:colorChange={handleColorPickerChange} />
+      <p class="text-xl text-error">{hashErrorMessage}</p>
+      <ChipOptions />
+      <button class="btn-md" on:click={generateThemeOpts}>Generate Preview</button>
+    </div>
   </section>
-  <section class="p-4 rounded bg-surface-base">
-    <h3 class="pb-4 text-3xl font-bold text-center text-secondary-base">Colors</h3>
+  <section class="page-section">
+    <h3 class="text-3xl page-heading">Colors</h3>
     <div class="space-y-4">
       <div class="pb-4">
         {#each $storeThemeOptions.colors.filter((colorRow) => colorRow.hex !== '') as colorRow, i}
@@ -460,69 +468,31 @@
         {/each}
       </div>
 
-      <p class="text-xl font-bold text-center">Surface and hue relationships.</p>
-      <div
-        class="flex flex-col items-center justify-center w-full p-4 border-2 border-gray-300 rounded {singleSwatchColorClasses[
-          'page'
-        ].base}"
-      >
-        <span class="pb-2">Background color: ---color-page-base</span>
-        <div class="text-center w-1/2 p-2 rounded {singleSwatchColorClasses['surface'].base}">
-          Element background color : --color-surface-base
-        </div>
-      </div>
-      <div
-        class="flex flex-col items-center justify-center w-full p-4 border-2 border-gray-300 rounded {singleSwatchColorClasses[
-          'surface'
-        ].base}"
-      >
-        <span class="pb-2">Background color: ---color-surface-base</span>
-        <div class="text-center w-1/2 p-2 rounded {singleSwatchColorClasses['surface-raised'].base}">
-          Element background color : --color-raised-surface-base
-        </div>
-      </div>
-      <!-- {/each} -->
-
-      <div class="flex items-center space-x-2">
-        <p>Surface and background relationships:</p>
-        <label>
-          <input class="input-radio-base" type="radio" bind:group={selectedSurfaceLevel} value="white" /> White
-        </label>
-        <label>
-          <input class="input-radio-base" type="radio" bind:group={selectedSurfaceLevel} value="low" /> Low
-        </label>
-        <label>
-          <input class="input-radio-base" type="radio" bind:group={selectedSurfaceLevel} value="high" /> High
-        </label>
-      </div>
-      <div>
-        <label class="space-x-2">
-          <span>Gray Hue Percent:</span>
-          <select class="w-20 select-neue select-base" bind:value={grayHue} on:change={handleGrayHueChange}>
-            {#each grayHues as hue}
-              <option value={hue}>{hue}</option>
-            {/each}
-          </select>
-        </label>
-      </div>
+      <h4 class="page-subheading">Surface and hue relationships.</h4>
+      <SurfaceRelationships
+        {selectedSurfaceLevel}
+        {grayHue}
+        on:surfaceRelationshipsChange={handleSurfaceRelationshipChange}
+        on:grayHueChange={handleGrayHueChange}
+      />
     </div>
   </section>
-  <section class="p-4 rounded bg-surface-base">
-    <h3 class="pb-4 text-3xl font-bold text-center text-secondary-base">UI Options</h3>
+  <section class="page-section">
+    <h3 class="text-3xl page-heading">UI Options</h3>
     <div class="grid grid-cols-2 gap-4">
-      <div class="p-4 border-4 rounded">
+      <div class="section-box">
         <RoundedMaker on:roundedOptsChange={handleRoundedOptsChange} {roundedSize} />
       </div>
-      <div class="p-4 border-4 rounded"><p>Shadows here</p></div>
+      <div class="section-box"><p>Shadows here</p></div>
     </div>
   </section>
-  <section class="p-4 rounded bg-surface-base">
-    <h3 class="pb-4 text-3xl font-bold text-center text-secondary-base">Elements</h3>
+  <section class="page-section">
+    <h3 class="text-3xl page-heading">Elements</h3>
     <div class="grid grid-cols-2 gap-4">
-      <div class="p-4 border-4 rounded">
+      <div class="section-box">
         <ButtonMaker {btnSizeScale} {btnPaddingBase} {btnPaddingWidthScale} on:btnOptsChange={handleBtnOptsChange} />
       </div>
-      <div class="p-4 border-4 rounded"><p>Inputs here</p></div>
+      <div class="section-box"><p>Inputs here</p></div>
     </div>
   </section>
 
@@ -534,5 +504,20 @@
   :global(input.nested-input) {
     box-shadow: none !important;
     border: none !important;
+  }
+  .page-section {
+    @apply p-4 rounded bg-surface-base;
+  }
+  .page-heading {
+    @apply font-bold text-center pb-4 text-secondary-base;
+  }
+  .page-subheading {
+    @apply font-bold text-center;
+  }
+  :global(.page-subheading) {
+    @apply text-xl font-bold text-center;
+  }
+  .section-box {
+    @apply p-4 border-4 rounded;
   }
 </style>
