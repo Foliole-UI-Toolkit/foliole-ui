@@ -1,11 +1,18 @@
 .btn-p-sm {
   padding: var(--btn-p-sm);
+  font-size: var(--scale-00);
 }
 .btn-p-md {
   padding: var(--btn-p-base);
+  font-size: var(--scale-0);
 }
 .btn-p-lg {
   padding: var(--btn-p-lg);
+  font-size: var(--scale-1);
+}
+.chip-p {
+  padding: var(--chip-p);
+  font-size: var(--scale-00);
 }
 .btn-base {
   display: inline-flex;

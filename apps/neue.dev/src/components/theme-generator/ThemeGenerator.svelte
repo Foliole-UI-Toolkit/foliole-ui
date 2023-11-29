@@ -58,7 +58,7 @@
   let selectedSurfaceLevel: string = 'low'
   let grayHue = 0.02
   // Button options
-  let btnPaddingSizeScale: number = 40
+  let btnSizeScale = 0.2
   let btnPaddingWidthScale: number = 3
   let btnPaddingBase: number = 0.5
   let btnFontSizes = {
@@ -114,8 +114,8 @@
   function handleBtnOptsChange(event: CustomEvent) {
     btnPaddingBase = event.detail.btnPaddingBase
     btnFontSizes = event.detail.btnFontSizes
-    btnPaddingSizeScale = event.detail.btnPaddingSizeScale
     btnPaddingWidthScale = event.detail.btnPaddingWidthScale
+    btnSizeScale = event.detail.btnSizeScale
 
     generateThemeOpts()
   }
@@ -206,7 +206,8 @@
     builtResults = buildColorCSSStrings('color', 'rgb')
     previewCSSVars = builtResults.cssVars
     themeOptsJsInCSS = builtResults.jsInCSS
-    builtResults = buildButtonCSSStrings()
+    const { btnPaddingWidth, smBtnCalcs, lgBtnCalcs, chipBtnCalcs } = calcBtnCSSStrings()
+    builtResults = buildBtnCSSStrings(btnPaddingWidth, smBtnCalcs, lgBtnCalcs, chipBtnCalcs)
 
     previewCSSVars += builtResults.cssVars
     themeOptsJsInCSS += builtResults.jsInCSS
@@ -315,28 +316,63 @@
     return { cssVars, jsInCSS }
   }
 
-  //Build CSSVars and Options JS - Buttons
-  function buildButtonCSSStrings() {
-    const btnPaddingSizeScalePercent = btnPaddingSizeScale / 100
-    const btnPaddingIncreased = btnPaddingBase + btnPaddingBase * btnPaddingSizeScalePercent
-    const btnPaddingDecreased = btnPaddingBase - btnPaddingBase * btnPaddingSizeScalePercent
-    const btnPaddingWidthDecreased = btnPaddingBase * btnPaddingWidthScale
+  // Calculations for button sizes.
+  function calcBtnCSSStrings() {
+    const smBtnSizeScale = 1 - btnSizeScale
+    const lgBtnSizeScale = 1 + btnSizeScale
+    const chipBtnSizeScale = 1 - (btnSizeScale + 0.3)
     const btnPaddingWidth = btnPaddingBase * btnPaddingWidthScale
-    const btnPaddingWidthIncreased = btnPaddingBase * btnPaddingWidthScale
 
+    const smBtnPaddingBase = btnPaddingBase * smBtnSizeScale
+    const smBtnPaddingWidth = btnPaddingWidth * smBtnSizeScale
+
+    const smBtnCalcs = {
+      smBtnPaddingBase,
+      smBtnPaddingWidth,
+    }
+    const lgBtnPaddingBase = btnPaddingBase * lgBtnSizeScale
+    const lgBtnPaddingWidth = btnPaddingWidth * lgBtnSizeScale
+
+    const lgBtnCalcs = {
+      lgBtnPaddingBase,
+      lgBtnPaddingWidth,
+    }
+
+    const chipBtnPaddingBase = btnPaddingBase * chipBtnSizeScale <= 0.1 ? 0.1 : btnPaddingBase * chipBtnSizeScale
+    const chipBtnPaddingWidth = btnPaddingWidth * chipBtnSizeScale <= 0.3 ? 0.3 : btnPaddingWidth * chipBtnSizeScale
+
+    const chipBtnCalcs = {
+      chipBtnPaddingBase,
+      chipBtnPaddingWidth,
+    }
+
+    return { btnPaddingWidth, smBtnCalcs, lgBtnCalcs, chipBtnCalcs }
+  }
+
+  //Build CSSVars and Options JS - Buttons
+  function buildBtnCSSStrings(
+    btnPaddingWidth: number,
+    smBtnCalcs: Record<string, number>,
+    lgBtnCalcs: Record<string, number>,
+    chipBtnCalcs: Record<string, number>,
+  ) {
     let cssVars = ''
     let jsInCSS = 'export const btn = { \n'
-    cssVars += `--btn-p-sm: ${btnPaddingDecreased}rem ${btnPaddingWidthDecreased}rem;\n`
+    cssVars += `--btn-p-sm: ${smBtnCalcs.smBtnPaddingBase}rem ${smBtnCalcs.smBtnPaddingWidth}rem;\n`
 
-    jsInCSS += `'p-sm': '${btnPaddingDecreased}rem ${btnPaddingWidthDecreased}rem',\n`
+    jsInCSS += `'p-sm': '${smBtnCalcs.smBtnPaddingBase}rem ${smBtnCalcs.smBtnPaddingWidth}rem',\n`
 
     cssVars += `--btn-p-base: ${btnPaddingBase}rem ${btnPaddingWidth}rem;\n`
 
     jsInCSS += `'p-base': '${btnPaddingBase}rem ${btnPaddingWidth}rem',\n`
 
-    cssVars += `--btn-p-lg: ${btnPaddingIncreased}rem; ${btnPaddingWidthIncreased}rem;\n`
+    cssVars += `--btn-p-lg: ${lgBtnCalcs.lgBtnPaddingBase}rem ${lgBtnCalcs.lgBtnPaddingWidth}rem;\n`
 
-    jsInCSS += `'p-lg': '${btnPaddingIncreased}rem ${btnPaddingWidthIncreased}rem'\n}\n`
+    jsInCSS += `'p-lg': '${lgBtnCalcs.lgBtnPaddingBase}rem ${lgBtnCalcs.lgBtnPaddingWidth}rem,'\n}\n`
+
+    cssVars += `--chip-p: ${chipBtnCalcs.chipBtnPaddingBase}rem ${chipBtnCalcs.chipBtnPaddingWidth}rem;\n`
+
+    jsInCSS += `'chip-p': '${chipBtnCalcs.chipBtnPaddingBase}rem ${chipBtnCalcs.chipBtnPaddingWidth}rem,'\n}\n`
     return { cssVars, jsInCSS }
   }
 
@@ -357,9 +393,6 @@
       cssVars += `--ui-input-roundness: var(${inputRoundLevel});\n`
       jsInCSS += `'input-roundness': 'var(${inputRoundLevel})'\n}\n`
     }
-
-    console.log(cssVars)
-    console.log(jsInCSS)
 
     return { cssVars, jsInCSS }
   }
@@ -393,11 +426,6 @@
 
     return response
   }
-
-  // onMount(() => {
-  //   generateThemeOpts()
-  //   hasMounted = true
-  // })
 </script>
 
 <svelte:window on:keydown={handleKeyDown} />
@@ -432,7 +460,7 @@
         {/each}
       </div>
 
-      <p class="text-lg font-bold text-center">Surface and hue relationships.</p>
+      <p class="text-xl font-bold text-center">Surface and hue relationships.</p>
       <div
         class="flex flex-col items-center justify-center w-full p-4 border-2 border-gray-300 rounded {singleSwatchColorClasses[
           'page'
@@ -490,13 +518,12 @@
   </section>
   <section class="p-4 rounded bg-surface-base">
     <h3 class="pb-4 text-3xl font-bold text-center text-secondary-base">Elements</h3>
-    <ButtonMaker
-      {btnPaddingBase}
-      {btnPaddingSizeScale}
-      {btnPaddingWidthScale}
-      {btnFontSizes}
-      on:btnOptsChange={handleBtnOptsChange}
-    />
+    <div class="grid grid-cols-2 gap-4">
+      <div class="p-4 border-4 rounded">
+        <ButtonMaker {btnSizeScale} {btnPaddingBase} {btnPaddingWidthScale} on:btnOptsChange={handleBtnOptsChange} />
+      </div>
+      <div class="p-4 border-4 rounded"><p>Inputs here</p></div>
+    </div>
   </section>
 
   <pre><code class="language-javascript">{themeOptsJsInCSS}</code></pre>

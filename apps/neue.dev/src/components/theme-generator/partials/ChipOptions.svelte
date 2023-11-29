@@ -71,14 +71,4 @@
 </div>
 
 <style lang="postcss">
-  .chip {
-    @apply p-3;
-  }
-  .chip-static {
-    @apply p-2;
-    cursor: default;
-  }
-  .chip-static:hover {
-    --tw-brightness: brightness(1);
-  }
 </style>
