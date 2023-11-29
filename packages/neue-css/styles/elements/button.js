@@ -15,6 +15,7 @@ module.exports = {
       alignItems: 'center',
       textAlign: 'center',
       whiteSpace: 'nowrap',
+      borderRadius: 'var(--ui-button-roundness)',
     },
   },
 }

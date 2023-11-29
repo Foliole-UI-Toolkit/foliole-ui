@@ -192,4 +192,19 @@ export const surfaceMap = {
   },
 }
 
-export const grayHues = [0, 0.02, 0.04, 0.06]
+export const grayHues = [0, 0.02, 0.04]
+
+export const roundedOpts = {
+  none: 'none',
+  xs: '--radius-xs',
+  sm: '--radius-sm',
+  md: '--radius-md',
+  lg: '--radius-lg',
+  xl: '--radius-xl',
+}
+
+export const elementRoundness = {
+  none: 'none',
+  rounded: '--ui-rounded',
+  circular: '--radius-full',
+}

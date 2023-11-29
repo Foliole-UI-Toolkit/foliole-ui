@@ -67,7 +67,9 @@
     lg: 'lg',
   }
   // Rounded options
-  let roundedSize = '8px'
+  let roundedSize = '--radius-md'
+  let buttonRoundLevel = '--ui-rounded'
+  let inputRoundLevel = '--ui-rounded'
   // Previews
   let previewCSSVars = ''
   let themeOptsJsInCSS = ''
@@ -121,6 +123,9 @@
   // Rounded Opts have been changed from controls.
   function handleRoundedOptsChange(event: CustomEvent) {
     roundedSize = event.detail.roundedSize
+    buttonRoundLevel = event.detail.buttonRoundLevel
+    inputRoundLevel = event.detail.inputRoundLevel
+    console.log(buttonRoundLevel)
 
     generateThemeOpts()
   }
@@ -338,9 +343,22 @@
   function buildUICSSStrings() {
     let cssVars = ''
     let jsInCSS = 'export const ui = { \n'
-    cssVars += `--ui-rounded: ${roundedSize};\n`
+    if (roundedSize === 'none') {
+      cssVars += `--ui-rounded: 0px;\n`
+      jsInCSS += `'rounded': '0px'\n}\n`
+      cssVars += `--ui-button-roundness: 0px;\n`
+      jsInCSS += `'button-roundness': '0px'\n}\n`
+    } else {
+      cssVars += `--ui-rounded: var(${roundedSize});\n`
+      jsInCSS += `'rounded': 'var(${roundedSize})'\n}\n`
+      cssVars += `--ui-button-roundness: var(${buttonRoundLevel});\n`
+      jsInCSS += `'button-roundness': 'var(${buttonRoundLevel})'\n}\n`
+      cssVars += `--ui-input-roundness: var(${inputRoundLevel});\n`
+      jsInCSS += `'input-roundness': 'var(${inputRoundLevel})'\n}\n`
+    }
 
-    jsInCSS += `'rounded': '${roundedSize}'\n}\n`
+    console.log(cssVars)
+    console.log(jsInCSS)
 
     return { cssVars, jsInCSS }
   }
@@ -399,65 +417,75 @@
     <button class="btn-neue btn-base" on:click={generateThemeOpts}>Generate Preview</button>
   </section>
   <section class="p-4 rounded bg-surface-base">
-    <h3 class="mb-2 text-4xl font-bold text-secondary-base">Colors</h3>
-    <div class="grid grid-cols-1">
-      {#each $storeThemeOptions.colors.filter((colorRow) => colorRow.hex !== '') as colorRow, i}
-        <div
-          class="grid grid-cols-1 md:grid-cols-[200px_1fr_240px] gap-2 md:gap-4 border-b-4 md:border-0 border-gray-100 md:pb-2 pb-4"
-        >
-          <ControlsLead hex={colorRow.hex} label={colorRow.label} />
-          <Swatch color={colorRow.key} stops={colorRow.stops.split(',')} />
-          <ControlsTrail colorOn={colorRow.on} stops={colorRow.stops} colorsIndex={i} />
-        </div>
-      {/each}
+    <h3 class="pb-4 text-3xl font-bold text-center text-secondary-base">Colors</h3>
+    <div class="space-y-4">
+      <div class="pb-4">
+        {#each $storeThemeOptions.colors.filter((colorRow) => colorRow.hex !== '') as colorRow, i}
+          <div
+            class="grid grid-cols-1 md:grid-cols-[200px_1fr_240px] gap-2 md:gap-4 border-b-4 md:border-0 border-gray-100 md:pb-2 pb-4"
+          >
+            <ControlsLead hex={colorRow.hex} label={colorRow.label} />
+            <Swatch color={colorRow.key} stops={colorRow.stops.split(',')} />
+            <ControlsTrail colorOn={colorRow.on} stops={colorRow.stops} colorsIndex={i} />
+          </div>
+        {/each}
+      </div>
 
       <!-- {#each $storeThemeOptions.derivedColors.filter((colorRow) => colorRow.hex !== '') as colorRow, i} -->
-      <div class="pt-4 space-y-4">
-        <div
-          class="flex flex-col items-center justify-center w-full p-4 border-2 border-neutral-base rounded {singleSwatchColorClasses[
-            'page'
-          ].base}"
-        >
-          <span class="pb-2">Background color: ---color-page-base</span>
-          <div class="text-center w-1/2 p-2 rounded {singleSwatchColorClasses['surface'].base}">
-            Element background color : --color-surface-base
-          </div>
-        </div>
-        <div
-          class="flex flex-col items-center justify-center w-full p-4 border-2 border-neutral-base rounded {singleSwatchColorClasses[
-            'surface'
-          ].base}"
-        >
-          <span class="pb-2">Background color: ---color-surface-base</span>
-          <div class="text-center w-1/2 p-2 rounded {singleSwatchColorClasses['surface-raised'].base}">
-            Element background color : --color-raised-surface-base
-          </div>
-        </div>
-        <!-- {/each} -->
-        <p class="font-bold">Surface and hue relationships:</p>
-        <div class="flex flex-col space-y-4">
-          <div class="flex items-center space-x-2">
-            <p>Surface and background relationships:</p>
-            <label>
-              <input type="radio" bind:group={selectedSurfaceLevel} value="white" /> White
-            </label>
-            <label>
-              <input type="radio" bind:group={selectedSurfaceLevel} value="low" /> Low
-            </label>
-            <label>
-              <input type="radio" bind:group={selectedSurfaceLevel} value="high" /> High
-            </label>
-          </div>
-          <label class="space-x-2">
-            <span>Gray Hue Percent:</span>
-            <select class="select-neue select-base" bind:value={grayHue} on:change={handleGrayHueChange}>
-              {#each grayHues as hue}
-                <option value={hue}>{hue}</option>
-              {/each}
-            </select>
-          </label>
+      <p class="text-lg font-bold text-center">Surface and hue relationships.</p>
+      <div
+        class="flex flex-col items-center justify-center w-full p-4 border-2 border-gray-300 rounded {singleSwatchColorClasses[
+          'page'
+        ].base}"
+      >
+        <span class="pb-2">Background color: ---color-page-base</span>
+        <div class="text-center w-1/2 p-2 rounded {singleSwatchColorClasses['surface'].base}">
+          Element background color : --color-surface-base
         </div>
       </div>
+      <div
+        class="flex flex-col items-center justify-center w-full p-4 border-2 border-gray-300 rounded {singleSwatchColorClasses[
+          'surface'
+        ].base}"
+      >
+        <span class="pb-2">Background color: ---color-surface-base</span>
+        <div class="text-center w-1/2 p-2 rounded {singleSwatchColorClasses['surface-raised'].base}">
+          Element background color : --color-raised-surface-base
+        </div>
+      </div>
+      <!-- {/each} -->
+
+      <div class="flex items-center space-x-2">
+        <p>Surface and background relationships:</p>
+        <label>
+          <input class="input-radio-base" type="radio" bind:group={selectedSurfaceLevel} value="white" /> White
+        </label>
+        <label>
+          <input class="input-radio-base" type="radio" bind:group={selectedSurfaceLevel} value="low" /> Low
+        </label>
+        <label>
+          <input class="input-radio-base" type="radio" bind:group={selectedSurfaceLevel} value="high" /> High
+        </label>
+      </div>
+      <div>
+        <label class="space-x-2">
+          <span>Gray Hue Percent:</span>
+          <select class="w-20 select-neue select-base" bind:value={grayHue} on:change={handleGrayHueChange}>
+            {#each grayHues as hue}
+              <option value={hue}>{hue}</option>
+            {/each}
+          </select>
+        </label>
+      </div>
+    </div>
+  </section>
+  <section class="p-4 rounded bg-surface-base">
+    <h3 class="pb-4 text-3xl font-bold text-center text-secondary-base">UI Options</h3>
+    <div class="grid grid-cols-2 gap-4">
+      <div class="p-4 border-4 rounded">
+        <RoundedMaker on:roundedOptsChange={handleRoundedOptsChange} {roundedSize} />
+      </div>
+      <div class="p-4 border-4 rounded"><p>Shadows here</p></div>
     </div>
   </section>
   <section>
@@ -470,7 +498,7 @@
       on:btnOptsChange={handleBtnOptsChange}
     />
   </section>
-  <section><RoundedMaker on:roundedOptsChange={handleRoundedOptsChange} {roundedSize} /></section>
+
   <pre><code class="language-javascript">{themeOptsJsInCSS}</code></pre>
 </div>
 
