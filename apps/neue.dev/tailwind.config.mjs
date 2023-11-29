@@ -2,8 +2,8 @@ const plugin = require('tailwindcss/plugin')
 const { button } = require('@neue/neue-css/styles/elements/button')
 const { inputs } = require('@neue/neue-css/styles/elements/inputs')
 const { background } = require('@neue/neue-css/styles/tokens/background')
-
-console.log(background)
+const { text } = require('@neue/neue-css/styles/tokens/text')
+const { ui } = require('@neue/neue-css/styles/tokens/ui')
 
 module.exports = {
   content: [
@@ -16,10 +16,11 @@ module.exports = {
         button,
         inputs,
         background,
-        // Add more custom components if needed
+        text,
+        ui,
       }
 
-      // Iterate through the custom component objects and register them as Tailwind CSS classes
+      // this will need to be a plugin within my package.
       for (const componentName in customComponents) {
         const component = customComponents[componentName]
         for (const className in component) {
