@@ -28,52 +28,62 @@
   }
 </script>
 
-<div>
-  <h4>Buttons</h4>
-  <div>
-    <p>Button Example</p>
-    <button class="btn-neue btn-base">Example</button>
+<p class="mb-4 text-lg font-bold text-primary-base">Buttons</p>
+<div class="grid grid-cols-3 gap-4 p-4">
+  <button class="justify-self-center btn-neue btn-base btn-p-sm">Example</button>
+  <button class="justify-self-center btn-neue btn-base btn-p-md">Example</button>
+  <button class="justify-self-center btn-neue btn-base btn-p-lg">Example</button>
+</div>
+
+<div class="grid grid-cols-2 gap-4">
+  <div class="p-4 border-4 rounded">
+    <div class="space-y-4">
+      <label class=" grid grid-cols-1 items-center md:grid-cols-[200px_1fr] gap-2" for="sizeBase"
+        >Size Base (.1-1):
+        <input
+          type="number"
+          id="sizeBase"
+          name="sizeBase"
+          min=".1"
+          max="1"
+          step=".1"
+          class="input-neue input-base"
+          bind:value={btnPaddingBase}
+          on:input={emitBtnOptsChange}
+        />
+      </label>
+      <label class=" grid grid-cols-1 items-center md:grid-cols-[200px_1fr] gap-2" for="sizeScaleIncrement"
+        >Size Scale Increment (10-100%):
+        <input
+          type="number"
+          id="sizeScaleIncrement"
+          name="sizeScaleIncrement"
+          min="10"
+          max="100"
+          step="10"
+          class="input-neue input-base"
+          bind:value={btnPaddingSizeScale}
+          on:input={emitBtnOptsChange}
+        />
+      </label>
+      <label class=" grid grid-cols-1 items-center md:grid-cols-[200px_1fr] gap-2" for="sizeScaleIncrement"
+        >Width Scale Increment (2-8x):
+        <input
+          type="number"
+          id="sizeWidthIncrement"
+          name="sizeWidthIncrement"
+          min="2"
+          max="8"
+          step=".5"
+          class="input-neue input-base"
+          bind:value={btnPaddingWidthScale}
+          on:input={emitBtnOptsChange}
+        />
+      </label>
+    </div>
   </div>
-  <label for="sizeBase">Size Base (.1-1):</label>
-  <input
-    type="number"
-    id="sizeBase"
-    name="sizeBase"
-    min=".1"
-    max="1"
-    step=".1"
-    class="input-neue input-base"
-    bind:value={btnPaddingBase}
-    on:input={emitBtnOptsChange}
-  />
 
-  <label for="sizeScaleIncrement">Size Scale Increment (10-100%):</label>
-  <input
-    type="number"
-    id="sizeScaleIncrement"
-    name="sizeScaleIncrement"
-    min="10"
-    max="100"
-    step="10"
-    class="input-neue input-base"
-    bind:value={btnPaddingSizeScale}
-    on:input={emitBtnOptsChange}
-  />
-
-  <label for="sizeScaleIncrement">Width Scale Increment (2-8x):</label>
-  <input
-    type="number"
-    id="sizeWidthIncrement"
-    name="sizeWidthIncrement"
-    min="2"
-    max="8"
-    step=".5"
-    class="input-neue input-base"
-    bind:value={btnPaddingWidthScale}
-    on:input={emitBtnOptsChange}
-  />
-
-  <div class="grid grid-cols-3">
+  <div class="p-4 border-4 rounded">
     {#each ['sm', 'base', 'lg'] as column}
       <div class="">
         <p class="mt-2 text-center">{column}</p>

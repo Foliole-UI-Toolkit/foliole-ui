@@ -97,7 +97,7 @@
     }
   }
 
-  // Color has been changed from color picker
+  // Color changed from color picker.
   function handleColorPickerChange(event: CustomEvent) {
     // comes from user input and may not include valid #.
     if (event?.detail.charAt(0) !== '#') {
@@ -110,7 +110,7 @@
     }
   }
 
-  // Button Opts have been changed from controls.
+  // Handle Button Opts changed.
   function handleBtnOptsChange(event: CustomEvent) {
     btnPaddingBase = event.detail.btnPaddingBase
     btnFontSizes = event.detail.btnFontSizes
@@ -120,7 +120,7 @@
     generateThemeOpts()
   }
 
-  // Rounded Opts have been changed from controls.
+  // Handle Rounded Opts changed.
   function handleRoundedOptsChange(event: CustomEvent) {
     roundedSize = event.detail.roundedSize
     buttonRoundLevel = event.detail.buttonRoundLevel
@@ -130,17 +130,18 @@
     generateThemeOpts()
   }
 
+  // Handle Gray Hue changed.
   function handleGrayHueChange(event) {
     grayHue = parseFloat(event.target.value)
     generateThemeOpts()
   }
 
-  // Random Hex as jumping off point to color scheme genration.
+  // Random Hex generated for color scheme genration.
   function generateRandomHexValue() {
     primaryColorHex = generateRandomColor() as string
   }
 
-  // Generate colors: create colors collection, fill in template options from colors collection and data output as string
+  // Generate colors: create colors collection, fill in template options from colors collection, build UI options as outputted strings for preview and themes.
   function generateThemeOpts() {
     console.log('called generateThemeOpts')
     updateColorsCollection()
@@ -287,7 +288,7 @@
     })
   }
 
-  // build CSSVars and Options JS
+  // Build CSSVars and Options JS - Color
   function buildColorCSSStrings(prefix: string, type: string) {
     let cssVars = ''
     let jsInCSS = 'export const color = { \n'
@@ -314,7 +315,7 @@
     return { cssVars, jsInCSS }
   }
 
-  // build CSSVars and Options JS
+  //Build CSSVars and Options JS - Buttons
   function buildButtonCSSStrings() {
     const btnPaddingSizeScalePercent = btnPaddingSizeScale / 100
     const btnPaddingIncreased = btnPaddingBase + btnPaddingBase * btnPaddingSizeScalePercent
@@ -339,7 +340,7 @@
     return { cssVars, jsInCSS }
   }
 
-  // build CSSVars and Options JS
+  // Build CSSVars and Options JS - UI Options
   function buildUICSSStrings() {
     let cssVars = ''
     let jsInCSS = 'export const ui = { \n'
@@ -363,7 +364,7 @@
     return { cssVars, jsInCSS }
   }
 
-  // Build Shades to make Pollen configs.
+  // Build Shades.
   function buildColorShades(color: any) {
     const hexValidation = new RegExp(/^#[0-9a-f]{6}$/i)
 
@@ -410,11 +411,11 @@
       <span class="hidden md:inline">Press Ctrl (or Windows Key) + space to generate a random color. </span>Enter a hex
       code or click to pick a hex code.
     </p>
-    <button on:click={generateRandomHexValue} class="btn-neue btn-base">Random Color</button>
+    <button on:click={generateRandomHexValue} class="btn-md">Random Color</button>
     <ColorPicker colorHex={primaryColorHex} on:colorChange={handleColorPickerChange} />
     <p class="text-xl text-error">{hashErrorMessage}</p>
     <ChipOptions />
-    <button class="btn-neue btn-base" on:click={generateThemeOpts}>Generate Preview</button>
+    <button class="btn-md" on:click={generateThemeOpts}>Generate Preview</button>
   </section>
   <section class="p-4 rounded bg-surface-base">
     <h3 class="pb-4 text-3xl font-bold text-center text-secondary-base">Colors</h3>
@@ -431,7 +432,6 @@
         {/each}
       </div>
 
-      <!-- {#each $storeThemeOptions.derivedColors.filter((colorRow) => colorRow.hex !== '') as colorRow, i} -->
       <p class="text-lg font-bold text-center">Surface and hue relationships.</p>
       <div
         class="flex flex-col items-center justify-center w-full p-4 border-2 border-gray-300 rounded {singleSwatchColorClasses[
@@ -488,8 +488,8 @@
       <div class="p-4 border-4 rounded"><p>Shadows here</p></div>
     </div>
   </section>
-  <section>
-    <h3 class="text-2xl uppercase">Elements</h3>
+  <section class="p-4 rounded bg-surface-base">
+    <h3 class="pb-4 text-3xl font-bold text-center text-secondary-base">Elements</h3>
     <ButtonMaker
       {btnPaddingBase}
       {btnPaddingSizeScale}

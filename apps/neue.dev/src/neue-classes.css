@@ -13,10 +13,10 @@ textarea {
 }
 .btn-neue {
   font-size: var(--scale-0);
+  line-height: var (--scale-00);
   /* pill */
   /* border-radius: var(--radius-full); */
   background: var(--color-primary-base);
-  padding: var(--btn-p-base);
 }
 .input-neue {
   padding: var(--size-2);

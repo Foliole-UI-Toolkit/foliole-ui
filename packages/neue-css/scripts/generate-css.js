@@ -1,6 +1,6 @@
 const postcssJs = require('postcss-js')
 const postcss = require('postcss')
-const fs = require('fs') // Import the fs module
+const fs = require('fs')
 
 const { button } = require('../styles/elements/button')
 const { input } = require('../styles/elements/inputs')

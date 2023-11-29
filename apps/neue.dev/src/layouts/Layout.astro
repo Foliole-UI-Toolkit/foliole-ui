@@ -21,6 +21,7 @@ const { title } = Astro.props;
 	<body data-theme="example" class="min-h-screen shadow-theme rounded-theme bg-page-base">
 
 		<div class="app-shell">
+			<button class="btn-sm">EXAMPLE</button>
 			<header class="site-header site-header-options" id="site-header">
 				<ul class="container flex p-2 mx-auto mb-4 space-x-4 border-b">
 					<li>
@@ -38,17 +39,17 @@ const { title } = Astro.props;
 	</body>
 </html>
 <style is:global>
-/* 
-
-	body {
-		background: white;
-	}
-	@tailwind components;
-
-
-	@layer components	{
-		
-		}
-		*/
+@tailwind components;
+@layer components {
+  .btn-sm {
+    @apply btn-p-sm btn-base bg-primary-base; 
+  }
+  .btn-md {
+		@apply btn-p-md btn-base bg-primary-base; 
+  }
+  .btn-lg {
+    @apply btn-p-lg; 
+  }
+}
 
 </style>
