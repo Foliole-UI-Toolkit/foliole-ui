@@ -4,6 +4,7 @@ module.exports = {
       flexShrink: 1,
       backgroundColor: 'var(--color-surface-base)',
       borderRadius: 'var(--ui-input-roundness)',
+      padding: '.5rem 1rem',
     },
     '.bg-surface-base .input-base': {
       backgroundColor: 'var(--color-neutral-mlt)',
@@ -16,8 +17,9 @@ module.exports = {
       appearance: 'none',
       backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M7 10l5 5 5-5z'/></svg>")`,
       backgroundRepeat: 'no-repeat',
-      backgroundPosition: 'right 0rem center',
+      backgroundPosition: 'right .25rem center',
       backgroundSize: '1.5rem',
+      padding: '.5rem 1rem',
     },
     '.bg-surface-base .select-base': {
       backgroundColor: 'var(--color-neutral-mlt)',

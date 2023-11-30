@@ -10,9 +10,9 @@
   export let colorHex: string = '#f00a0a'
 </script>
 
-<div class="flex w-2/3 p-1 bg-gray-100 rounded-md shadow-lg input-wrapper">
+<div class="flex w-2/3 p-1 shadow-lg border border-surface-base !bg-page-base my-input input-wrapper">
   {#if colorHex.length}
-    <input type="color" class="flex-none input" bind:value={colorHex} on:input={emitColorChange} />
+    <input type="color" class="flex-none input-color-base" bind:value={colorHex} on:input={emitColorChange} />
     <input
       class="w-full p-1 mx-2 bg-transparent border-0 nested-input"
       type="text"
@@ -23,7 +23,4 @@
 </div>
 
 <style>
-  .input-wrapper {
-    border: 2px solid var(--color-neutral-mlt);
-  }
 </style>

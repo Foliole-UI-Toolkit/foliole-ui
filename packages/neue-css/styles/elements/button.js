@@ -16,8 +16,8 @@ module.exports = {
       // temporary - will have have a specific class for this.
       fontSize: 'var(--scale-1)',
     },
-    '.chip-p': {
-      padding: 'var(--chip-p)',
+    '.btn-chip-p': {
+      padding: 'var(--btn-chip-p)',
       fontSize: 'var(--scale-00)',
     },
     '.btn-base': {

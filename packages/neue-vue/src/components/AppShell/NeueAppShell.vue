@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, withDefaults } from 'vue'
+import { ref, withDefaults } from 'vue'
 
 export interface AppShellProps {
   appShellClasses?: string

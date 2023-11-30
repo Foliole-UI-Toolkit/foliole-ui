@@ -21,7 +21,7 @@
 </script>
 
 <div
-  class="flex flex-col items-center justify-center w-full p-4 border-2 border-gray-300 rounded {singleSwatchColorClasses[
+  class="flex flex-col items-center justify-center w-full p-4 border-neutral-mlt rounded {singleSwatchColorClasses[
     'page'
   ].base}"
 >
@@ -31,7 +31,7 @@
   </div>
 </div>
 <div
-  class="flex flex-col items-center justify-center w-full p-4 border-2 border-gray-300 rounded {singleSwatchColorClasses[
+  class="flex flex-col items-center justify-center w-full p-4 border-neutral-mlt rounded {singleSwatchColorClasses[
     'surface'
   ].base}"
 >
@@ -75,7 +75,7 @@
 <div>
   <label class="space-x-2">
     <span>Gray Hue Percent:</span>
-    <select class="w-20 select-neue select-base" bind:value={grayHue} on:change={emitGrayHueChange}>
+    <select class="w-20 my-select" bind:value={grayHue} on:change={emitGrayHueChange}>
       {#each grayHues as hue}
         <option value={hue}>{hue}</option>
       {/each}

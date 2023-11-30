@@ -17,13 +17,13 @@
 <div class="flex order-2 gap-2 md:order-3">
   <label class="flex flex-col w-1/2 label">
     <span>Color Stops</span>
-    <select class="select-base select-neue" on:change={handleStopChange} bind:value={stops}>
+    <select class="my-select" on:change={handleStopChange} bind:value={stops}>
       {#each inputSettings.stops as s}<option value={s.value}>{s.label}</option>{/each}
     </select>
   </label>
   <label class="flex flex-col w-1/2 label">
     <span>Text Color</span>
-    <select class="select-base select-neue" bind:value={colorOn}>
+    <select class="my-select" bind:value={colorOn}>
       {#each inputSettings.colorProps as c}<option value={c.value}>{c.label}</option>{/each}
     </select>
   </label>

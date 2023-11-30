@@ -1,4 +1,4 @@
-import { type NeueDerivedColorNames, type NeueColorNames, type NeueColorScale } from '../types'
+import type { NeueDerivedColorNames, NeueColorNames, NeueColorScale, SurfaceLevelMap } from '../types'
 
 export const neueColorScale = ['light', 'mlt', 'base', 'mdk', 'dark'] as const
 
@@ -174,7 +174,7 @@ export const intensityMap: { [key: string]: number } = {
   dark: 2.3,
 }
 
-export const surfaceMap = {
+export const surfaceMap: SurfaceLevelMap = {
   white: {
     page: 3,
     surface: 2.4,

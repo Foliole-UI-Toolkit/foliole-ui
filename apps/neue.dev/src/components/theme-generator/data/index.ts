@@ -2,7 +2,7 @@ import type { Writable } from 'svelte/store'
 import { writable } from 'svelte/store'
 
 import { localStorageStore } from '@skeletonlabs/skeleton'
-import type { ThemeOptionsCollection } from '../types'
+import type { ThemeOptionsCollection, ColorSettings, ColorSettings } from '../types'
 
 export const storeThemeOptions: Writable<ThemeOptionsCollection> = localStorageStore('storeThemeOptions', {
   colors: [
@@ -139,4 +139,4 @@ export const storeThemeOptions: Writable<ThemeOptionsCollection> = localStorageS
   borderBase: '1px',
 })
 
-export const storeColorResults = writable([])
+export const colorResultsStore = writable<ColorSettings[]>([])

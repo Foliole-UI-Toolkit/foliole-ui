@@ -11,6 +11,6 @@
 
   <div class="flex flex-col w-[50%]">
     <label>Input</label>
-    <input class="input-base input-neue" type="text" bind:value={hex} placeholder="#BADA55" />
+    <input class="my-input" type="text" bind:value={hex} placeholder="#BADA55" />
   </div>
 </div>

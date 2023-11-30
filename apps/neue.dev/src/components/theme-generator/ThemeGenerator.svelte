@@ -14,13 +14,14 @@
 
   // Local Helpers
   import { colorUtils, centers } from './helpers'
+  import { buildColorStrings, buildBtnStrings, buildUIStrings, buildColorShades } from './helpers/stringBuilders'
 
   // Local data
-  import { storeThemeOptions, storeColorResults } from './data'
-  import { intensityMap, surfaceMap } from './data/settings'
+  import { storeThemeOptions, colorResultsStore } from './data'
+  import { surfaceMap } from './data/settings'
 
   // Types
-  import type { ColorsCollection } from './types'
+  import type { ColorsCollection, ColorSettings } from './types'
 
   // Svelte related
   import { setContext } from 'svelte'
@@ -30,16 +31,10 @@
   const { useGetConvertedColor, useGetColorValue, useGenerateColor, useColorSchemes } = colorUtils
 
   // Get Converted Color Funcs
-  const { getRgbString, getHueFromHex } = useGetConvertedColor()
+  const { getHueFromHex } = useGetConvertedColor()
 
   // Get Color Value Funcs
-  const {
-    generateA11yOnColor,
-    generateDarkenedValue,
-    generateLightenedValue,
-    generateRandomColor,
-    generateColorFromHSL,
-  } = useGenerateColor()
+  const { generateLightenedValue, generateRandomColor, generateColorFromHSL } = useGenerateColor()
 
   const { getSaturation } = useGetColorValue()
 
@@ -53,10 +48,10 @@
     tertiary: null,
   })
 
-  const colorSchemeStore = writable('triad')
+  const colorSchemeStore = writable('analogous-triad')
 
   // Color options
-  let primaryColorHex: string = '#4e7fef'
+  let primaryColorHex: string = '#ef4953'
   let selectedSurfaceLevel: string = 'low'
   let grayHue = 0.02
   // Button options
@@ -70,8 +65,8 @@
   }
   // Rounded options
   let roundedSize = '--radius-md'
-  let buttonRoundLevel = '--ui-rounded'
-  let inputRoundLevel = '--ui-rounded'
+  let buttonRoundLevel = '--radius-full'
+  let inputRoundLevel = '--radius-full'
   // Previews
   let previewCSSVars = ''
   let themeOptsJsInCSS = ''
@@ -82,17 +77,9 @@
   setContext('colorSchemeStore', colorSchemeStore)
   setContext('colorsCollectionStore', colorsCollectionStore)
 
-  // Derived values
-
-  $: {
-    if (selectedSurfaceLevel || primaryColorHex) {
-      generateThemeOpts()
-    }
-  }
-
   // Handles random color generation on correct keypress sequence.
-  function handleKeyDown(e: KeyboardEvent) {
-    if ((e.metaKey || e.ctrlKey) && e.code === 'Space') {
+  function handleKeyDown(event: KeyboardEvent) {
+    if ((event.metaKey || event.ctrlKey) && event.code === 'Space') {
       generateRandomHexValue()
     }
   }
@@ -120,7 +107,7 @@
     generateThemeOpts()
   }
 
-  // Hanlde surface relationship changed.
+  // Handle surface relationship changed.
   function handleSurfaceRelationshipChange(event: CustomEvent) {
     selectedSurfaceLevel = event.detail.selectedSurfaceLevel
 
@@ -128,7 +115,7 @@
   }
 
   // Handle Gray Hue changed.
-  function handleGrayHueChange(event) {
+  function handleGrayHueChange(event: CustomEvent) {
     grayHue = parseFloat(event.detail.grayHue)
 
     generateThemeOpts()
@@ -150,7 +137,6 @@
 
   // Generate colors: create colors collection, fill in template options from colors collection, build UI options as outputted strings for preview and themes.
   function generateThemeOpts() {
-    console.log('called generateThemeOpts')
     updateColorsCollection()
     let builtResults
 
@@ -183,7 +169,7 @@
       }
     })
 
-    let allColorShades = []
+    let allColorShades: ColorSettings[] = []
 
     $storeThemeOptions.colors.forEach((color) => {
       if (color.hex !== '') {
@@ -199,27 +185,32 @@
       }
     })
 
-    storeColorResults.set(allColorShades)
+    colorResultsStore.set(allColorShades)
 
     $storeThemeOptions.derivedColors.forEach((color) => {
       if (color.hex === '') return
       const colorShades = buildColorShades(color)
 
-      storeColorResults.update((results) => {
+      colorResultsStore.update((results) => {
         return [...results, ...colorShades]
       })
     })
 
-    builtResults = buildColorCSSStrings('color', 'rgb')
+    // Color Strings
+    builtResults = buildColorStrings($colorResultsStore, 'color', 'rgb')
     previewCSSVars = builtResults.cssVars
     themeOptsJsInCSS = builtResults.jsInCSS
-    const { btnPaddingWidth, smBtnCalcs, lgBtnCalcs, chipBtnCalcs } = calcBtnCSSStrings()
-    builtResults = buildBtnCSSStrings(btnPaddingWidth, smBtnCalcs, lgBtnCalcs, chipBtnCalcs)
 
+    // Calcs
+    const { btnPaddingWidth, smBtnCalcs, lgBtnCalcs, chipBtnCalcs } = calcBtnCSSStrings()
+
+    // Btn strings
+    builtResults = buildBtnStrings(btnPaddingBase, btnPaddingWidth, smBtnCalcs, lgBtnCalcs, chipBtnCalcs)
     previewCSSVars += builtResults.cssVars
     themeOptsJsInCSS += builtResults.jsInCSS
-    builtResults = buildUICSSStrings()
 
+    // Ui strings
+    builtResults = buildUIStrings(roundedSize, buttonRoundLevel, inputRoundLevel)
     previewCSSVars += builtResults.cssVars
     themeOptsJsInCSS += builtResults.jsInCSS
 
@@ -229,22 +220,25 @@
   // Update collection for theme options.
   function updateColorsCollection() {
     colorsCollectionStore.update((colorsCollection) => {
-      let baseColors = []
+      let baseColors: (string | null)[] = []
       // Array because we will have multi gray options later.
       const grays = []
       const hue = getHueFromHex(primaryColorHex)
       const baseSaturation = getSaturation(primaryColorHex)
       const newSaturation = baseSaturation > 0.79 ? baseSaturation : baseSaturation + 0.2
 
-      // Create Colors used in every color scheme
+      // Create Colors used in every color scheme.
       colorsCollection['error'] = generateColorFromHSL(centers.red, newSaturation, 0.5)
       colorsCollection['warning'] = generateColorFromHSL(centers.yellow, newSaturation, 0.5)
       colorsCollection['success'] = generateColorFromHSL(centers.green, newSaturation, 0.5)
       colorsCollection['neutral'] = grays[0] = generateColorFromHSL(hue, grayHue, 0.5)
-
-      colorsCollection['page'] = generateLightenedValue(grays[0], surfaceMap[selectedSurfaceLevel].page)
-      colorsCollection['surface'] = generateLightenedValue(grays[0], surfaceMap[selectedSurfaceLevel].surface)
-      colorsCollection['surface-raised'] = generateLightenedValue(grays[0], surfaceMap[selectedSurfaceLevel].raised)
+      // Surface colors.
+      colorsCollection['page'] = generateLightenedValue(grays[0] as string, surfaceMap[selectedSurfaceLevel].page)
+      colorsCollection['surface'] = generateLightenedValue(grays[0] as string, surfaceMap[selectedSurfaceLevel].surface)
+      colorsCollection['surface-raised'] = generateLightenedValue(
+        grays[0] as string,
+        surfaceMap[selectedSurfaceLevel].raised,
+      )
 
       const createPrimaries = () => {
         colorsCollection['primary'] = primaryColorHex
@@ -296,33 +290,6 @@
     })
   }
 
-  // Build CSSVars and Options JS - Color
-  function buildColorCSSStrings(prefix: string, type: string) {
-    let cssVars = ''
-    let jsInCSS = 'export const color = { \n'
-
-    const types = {
-      rgb: (rgb: string) => {
-        return `rgba(${rgb}, 1)`
-      },
-    }
-
-    $storeColorResults.forEach((element) => {
-      if (element.level) {
-        cssVars += `--${prefix}-${element.key}-${element.level}: ${types[type](element.rgb)};`
-        jsInCSS += `'${element.key}-${element.level}': '${types[type](element.rgb)}',`
-      } else {
-        cssVars += `--${prefix}-${element.key}: ${types[type](element.rgb)};`
-        jsInCSS += `'${element.key}': '${types[type](element.rgb)}',`
-      }
-      cssVars += '\n'
-      jsInCSS += '\n'
-    })
-    jsInCSS += '} \n'
-
-    return { cssVars, jsInCSS }
-  }
-
   // Calculations for button sizes.
   function calcBtnCSSStrings() {
     const smBtnSizeScale = 1 - btnSizeScale
@@ -330,6 +297,7 @@
     const chipBtnSizeScale = 1 - (btnSizeScale + 0.3)
     const btnPaddingWidth = btnPaddingBase * btnPaddingWidthScale
 
+    // Small Btns
     const smBtnPaddingBase = btnPaddingBase * smBtnSizeScale
     const smBtnPaddingWidth = btnPaddingWidth * smBtnSizeScale
 
@@ -337,6 +305,8 @@
       smBtnPaddingBase,
       smBtnPaddingWidth,
     }
+
+    // Large Btns
     const lgBtnPaddingBase = btnPaddingBase * lgBtnSizeScale
     const lgBtnPaddingWidth = btnPaddingWidth * lgBtnSizeScale
 
@@ -345,6 +315,7 @@
       lgBtnPaddingWidth,
     }
 
+    // Chips
     const chipBtnPaddingBase = btnPaddingBase * chipBtnSizeScale <= 0.1 ? 0.1 : btnPaddingBase * chipBtnSizeScale
     const chipBtnPaddingWidth = btnPaddingWidth * chipBtnSizeScale <= 0.3 ? 0.3 : btnPaddingWidth * chipBtnSizeScale
 
@@ -355,115 +326,37 @@
 
     return { btnPaddingWidth, smBtnCalcs, lgBtnCalcs, chipBtnCalcs }
   }
-
-  //Build CSSVars and Options JS - Buttons
-  function buildBtnCSSStrings(
-    btnPaddingWidth: number,
-    smBtnCalcs: Record<string, number>,
-    lgBtnCalcs: Record<string, number>,
-    chipBtnCalcs: Record<string, number>,
-  ) {
-    let cssVars = ''
-    let jsInCSS = 'export const btn = { \n'
-    cssVars += `--btn-p-sm: ${smBtnCalcs.smBtnPaddingBase}rem ${smBtnCalcs.smBtnPaddingWidth}rem;\n`
-
-    jsInCSS += `'p-sm': '${smBtnCalcs.smBtnPaddingBase}rem ${smBtnCalcs.smBtnPaddingWidth}rem',\n`
-
-    cssVars += `--btn-p-base: ${btnPaddingBase}rem ${btnPaddingWidth}rem;\n`
-
-    jsInCSS += `'p-base': '${btnPaddingBase}rem ${btnPaddingWidth}rem',\n`
-
-    cssVars += `--btn-p-lg: ${lgBtnCalcs.lgBtnPaddingBase}rem ${lgBtnCalcs.lgBtnPaddingWidth}rem;\n`
-
-    jsInCSS += `'p-lg': '${lgBtnCalcs.lgBtnPaddingBase}rem ${lgBtnCalcs.lgBtnPaddingWidth}rem,'\n}\n`
-
-    cssVars += `--chip-p: ${chipBtnCalcs.chipBtnPaddingBase}rem ${chipBtnCalcs.chipBtnPaddingWidth}rem;\n`
-
-    jsInCSS += `'chip-p': '${chipBtnCalcs.chipBtnPaddingBase}rem ${chipBtnCalcs.chipBtnPaddingWidth}rem,'\n}\n`
-    return { cssVars, jsInCSS }
-  }
-
-  // Build CSSVars and Options JS - UI Options
-  function buildUICSSStrings() {
-    let cssVars = ''
-    let jsInCSS = 'export const ui = { \n'
-    if (roundedSize === 'none') {
-      cssVars += `--ui-rounded: 0px;\n`
-      jsInCSS += `'rounded': '0px'\n}\n`
-      cssVars += `--ui-button-roundness: 0px;\n`
-      jsInCSS += `'button-roundness': '0px'\n}\n`
-    } else {
-      cssVars += `--ui-rounded: var(${roundedSize});\n`
-      jsInCSS += `'rounded': 'var(${roundedSize})'\n}\n`
-      cssVars += `--ui-button-roundness: var(${buttonRoundLevel});\n`
-      jsInCSS += `'button-roundness': 'var(${buttonRoundLevel})'\n}\n`
-      cssVars += `--ui-input-roundness: var(${inputRoundLevel});\n`
-      jsInCSS += `'input-roundness': 'var(${inputRoundLevel})'\n}\n`
-    }
-
-    return { cssVars, jsInCSS }
-  }
-
-  // Build Shades.
-  function buildColorShades(color: any) {
-    const hexValidation = new RegExp(/^#[0-9a-f]{6}$/i)
-
-    if (!hexValidation.test(color.hex)) color.hex = '#CCCCCC'
-
-    const hex500 = `#${color.hex}`.replace('##', '#')
-
-    const response: any[] = [
-      { key: color.key, level: 'base', hex: hex500, rgb: getRgbString(hex500), on: generateA11yOnColor(hex500) },
-    ]
-
-    ;['light', 'mlt', 'mdk', 'dark'].forEach((level) => {
-      const hex =
-        level.includes('light') || level.includes('mlt')
-          ? generateLightenedValue(color.hex, intensityMap[level])
-          : generateDarkenedValue(color.hex, intensityMap[level])
-
-      response.push({
-        key: color.key,
-        level,
-        hex,
-        rgb: getRgbString(hex as string),
-        on: generateA11yOnColor(hex),
-      })
-    })
-
-    return response
-  }
 </script>
 
 <svelte:window on:keydown={handleKeyDown} />
 <svelte:head>{@html previewCSSVars}</svelte:head>
 
-<div class="space-y-4">
-  <section class="page-section">
+<div class="container p-4 space-y-4">
+  <section class="p-8">
     <h2 class="text-6xl page-heading">Color Generator</h2>
     <div class="flex flex-col items-center space-y-4">
       <p class="w-2/3 text-sm text-center leading-[1.25rem]">
         <span class="hidden md:inline">Press Ctrl (or Windows Key) + space to generate a random color. </span>Enter a
         hex code or click to pick a hex code.
       </p>
-      <button on:click={generateRandomHexValue} class="btn-md">Random Color</button>
+      <button on:click={generateRandomHexValue} class="my-btn btn-md">Random Color</button>
       <ColorPicker colorHex={primaryColorHex} on:colorChange={handleColorPickerChange} />
       <p class="text-xl text-error">{hashErrorMessage}</p>
       <ChipOptions />
-      <button class="btn-md" on:click={generateThemeOpts}>Generate Preview</button>
+      <button class="btn-md my-btn" on:click={generateThemeOpts}>Generate Preview</button>
     </div>
   </section>
   <section class="page-section">
     <h3 class="text-3xl page-heading">Colors</h3>
     <div class="space-y-4">
-      <div class="pb-4">
+      <div class="pb-2">
         {#each $storeThemeOptions.colors.filter((colorRow) => colorRow.hex !== '') as colorRow, i}
           <div
-            class="grid grid-cols-1 md:grid-cols-[200px_1fr_240px] gap-2 md:gap-4 border-b-4 md:border-0 border-gray-100 md:pb-2 pb-4"
+            class="grid grid-cols-1 md:grid-cols-[200px_1fr_240px] gap-2 md:gap-4 border-b-2 md:border-0 border-neutral-mlt md:pb-2 pb-2"
           >
             <ControlsLead hex={colorRow.hex} label={colorRow.label} />
-            <Swatch color={colorRow.key} stops={colorRow.stops.split(',')} />
-            <ControlsTrail colorOn={colorRow.on} stops={colorRow.stops} colorsIndex={i} />
+            <Swatch color={colorRow.key} stops={colorRow?.stops?.split(',')} />
+            <ControlsTrail colorOn={colorRow.on} stops={colorRow.stops ?? ''} colorsIndex={i} />
           </div>
         {/each}
       </div>
@@ -481,7 +374,12 @@
     <h3 class="text-3xl page-heading">UI Options</h3>
     <div class="grid grid-cols-2 gap-4">
       <div class="section-box">
-        <RoundedMaker on:roundedOptsChange={handleRoundedOptsChange} {roundedSize} />
+        <RoundedMaker
+          on:roundedOptsChange={handleRoundedOptsChange}
+          {roundedSize}
+          {buttonRoundLevel}
+          {inputRoundLevel}
+        />
       </div>
       <div class="section-box"><p>Shadows here</p></div>
     </div>
@@ -501,23 +399,4 @@
 
 <style lang="postcss">
   /* only use when nested with a parent with an outline indicator as this removes visual que for accessibility otherwise */
-  :global(input.nested-input) {
-    box-shadow: none !important;
-    border: none !important;
-  }
-  .page-section {
-    @apply p-4 rounded bg-surface-base;
-  }
-  .page-heading {
-    @apply font-bold text-center pb-4 text-secondary-base;
-  }
-  .page-subheading {
-    @apply font-bold text-center;
-  }
-  :global(.page-subheading) {
-    @apply text-xl font-bold text-center;
-  }
-  .section-box {
-    @apply p-4 border-4 rounded;
-  }
 </style>

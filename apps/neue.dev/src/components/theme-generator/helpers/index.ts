@@ -87,30 +87,40 @@ export function generateColorFromHSL(hue: number, sat: number, lum: number, type
   if (type === 'hex') {
     return chroma(hue, sat, lum, 'hsl').hex()
   }
+  console.warn('You passed in an unsupported type.')
+  return null
 }
 
 export function generateDarkenedValue(color: string, by: number, type = 'hex') {
   if (type === 'hex') {
     return chroma(color).darken(by).hex()
   }
+  console.warn('You passed in an unsupported type.')
+  return null
 }
 
 export function generateLightenedValue(color: string, by: number, type = 'hex') {
   if (type === 'hex') {
     return chroma(color).brighten(by).hex()
   }
+  console.warn('You passed in an unsupported type.')
+  return null
 }
 
 export function generateRandomColor(type = 'hex') {
   if (type === 'hex') {
     return chroma.random().hex()
   }
+  console.warn('You passed in an unsupported type.')
+  return null
 }
 
 export function generateRotatedHue(color: string, by: string, type = 'hex') {
   if (type === 'hex') {
     return chroma(color).set('hsl.h', by).hex()
   }
+  console.warn('You passed in an unsupported type.')
+  return null
 }
 
 // ** Color Schemes ** //

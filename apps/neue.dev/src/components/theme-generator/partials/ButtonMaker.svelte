@@ -19,12 +19,12 @@
   const fontSizeOptions: string[] = ['xs', 'sm', 'base', 'lg', 'xl']
 </script>
 
-<p class="pb-4 page-subheading">Buttons</p>
+<p class="pb-2 page-subheading">Buttons</p>
 <div class="space-y-4">
   <div class="flex flex-col space-y-4">
-    <button class="self-center justify-self-center btn-sm">Btn sm</button>
-    <button class="self-center justify-self-center btn-md">Btn md</button>
-    <button class="self-center justify-self-center btn-lg">Btn lg</button>
+    <button class="self-center justify-self-center btn-sm my-btn">Btn sm</button>
+    <button class="self-center justify-self-center btn-md my-btn">Btn md</button>
+    <button class="self-center justify-self-center btn-lg my-btn">Btn lg</button>
     <button class="self-center justify-self-center chip">Chip</button>
     <label class=" grid grid-cols-1 items-center md:grid-cols-[200px_1fr] gap-2" for="sizeBase"
       >Size Base (.1-1):
@@ -35,7 +35,7 @@
         min=".3"
         max="1"
         step=".1"
-        class="input-neue input-base"
+        class="my-input"
         bind:value={btnPaddingBase}
         on:input={emitBtnOptsChange}
       />
@@ -50,7 +50,7 @@
         min="2"
         max="8"
         step=".5"
-        class="input-neue input-base"
+        class="my-input"
         bind:value={btnPaddingWidthScale}
         on:input={emitBtnOptsChange}
       />
@@ -65,7 +65,7 @@
         min=".1"
         max=".5"
         step=".1"
-        class="input-neue input-base"
+        class="my-input"
         bind:value={btnSizeScale}
         on:input={emitBtnOptsChange}
       />

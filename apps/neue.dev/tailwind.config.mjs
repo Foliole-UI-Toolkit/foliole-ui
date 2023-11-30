@@ -1,9 +1,10 @@
 const plugin = require('tailwindcss/plugin')
-const { button } = require('@neue/neue-css/styles/elements/button')
-const { inputs } = require('@neue/neue-css/styles/elements/inputs')
+const { border } = require('../../packages/neue-css/styles/tokens/border')
+const { button } = require('../../packages/neue-css/styles/elements/button')
+const { input } = require('../../packages/neue-css/styles/elements/input')
 const { background } = require('@neue/neue-css/styles/tokens/background')
 const { text } = require('@neue/neue-css/styles/tokens/text')
-const { ui } = require('@neue/neue-css/styles/tokens/ui')
+const { ui } = require('../../packages/neue-css/styles/tokens/ui')
 
 module.exports = {
   content: [
@@ -13,8 +14,9 @@ module.exports = {
   plugins: [
     plugin(function ({ addComponents }) {
       const customComponents = {
+        border,
         button,
-        inputs,
+        input,
         background,
         text,
         ui,
