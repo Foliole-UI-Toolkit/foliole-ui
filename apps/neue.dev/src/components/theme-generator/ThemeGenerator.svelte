@@ -34,7 +34,8 @@
   const { getHueFromHex } = useGetConvertedColor()
 
   // Get Color Value Funcs
-  const { generateLightenedValue, generateRandomColor, generateColorFromHSL } = useGenerateColor()
+  const { generateLightenedValue, generateDarkenedValue, generateRandomColor, generateColorFromHSL } =
+    useGenerateColor()
 
   const { getSaturation } = useGetColorValue()
 
@@ -197,6 +198,9 @@
     })
 
     // Color Strings
+
+    console.log($colorResultsStore)
+
     builtResults = buildColorStrings($colorResultsStore, 'color', 'rgb')
     previewCSSVars = builtResults.cssVars
     themeOptsJsInCSS = builtResults.jsInCSS
@@ -236,6 +240,19 @@
       colorsCollection['page'] = generateLightenedValue(grays[0] as string, surfaceMap[selectedSurfaceLevel].page)
       colorsCollection['surface'] = generateLightenedValue(grays[0] as string, surfaceMap[selectedSurfaceLevel].surface)
       colorsCollection['surface-raised'] = generateLightenedValue(
+        grays[0] as string,
+        surfaceMap[selectedSurfaceLevel].raised,
+      )
+
+      colorsCollection['page-contrast'] = generateDarkenedValue(
+        grays[0] as string,
+        surfaceMap[selectedSurfaceLevel].page,
+      )
+      colorsCollection['surface-contrast'] = generateDarkenedValue(
+        grays[0] as string,
+        surfaceMap[selectedSurfaceLevel].surface,
+      )
+      colorsCollection['surface-raised-contrast'] = generateDarkenedValue(
         grays[0] as string,
         surfaceMap[selectedSurfaceLevel].raised,
       )

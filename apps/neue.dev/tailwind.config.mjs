@@ -2,7 +2,7 @@ const plugin = require('tailwindcss/plugin')
 const { border } = require('../../packages/neue-css/styles/tokens/border')
 const { button } = require('../../packages/neue-css/styles/elements/button')
 const { input } = require('../../packages/neue-css/styles/elements/input')
-const { background } = require('@neue/neue-css/styles/tokens/background')
+const { background } = require('../../packages/neue-css/styles/tokens/background')
 const { text } = require('@neue/neue-css/styles/tokens/text')
 const { ui } = require('../../packages/neue-css/styles/tokens/ui')
 

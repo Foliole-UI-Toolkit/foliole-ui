@@ -15,20 +15,15 @@ export function buildColorStrings(store: ColorSettings[], prefix: string, type: 
   let cssVars = ''
   let jsInCSS = 'export const color = { \n'
 
-  const types: { [key: string]: (rgb: string) => string } = {
-    rgb: (rgb: string) => {
-      return `rgba(${rgb}, 1)`
-    },
-    // You can add more key-function pairs here if needed
-  }
-
   store.forEach((element) => {
     if (element.stops) {
-      cssVars += `--${prefix}-${element.key}-${element.stops}: ${types[type](element.rgb)};`
-      jsInCSS += `  '${element.key}-${element.stops}': '${types[type](element.rgb)}',`
+      // Define the CSS variable for the color with stops
+      cssVars += `--${prefix}-${element.key}-${element.stops}: ${element.rgb};`
+      jsInCSS += `  '${element.key}-${element.stops}': 'var(--${prefix}-${element.key}-${element.stops})',`
     } else {
-      cssVars += `--${prefix}-${element.key}: ${types[type](element.rgb)};`
-      jsInCSS += `  '${element.key}': '${types[type](element.rgb)}',`
+      // Define the CSS variable for the color without stops
+      cssVars += `--${prefix}-${element.key}: ${element.rgb};`
+      jsInCSS += `  '${element.key}': 'var(--${prefix}-${element.key})',`
     }
     cssVars += '\n'
     jsInCSS += '\n'
@@ -109,15 +104,24 @@ function buildColorShades(color: any) {
   ]
 
   ;['light', 'mlt', 'mdk', 'dark'].forEach((stop) => {
-    const hex =
-      stop.includes('light') || stop.includes('mlt')
-        ? (generateLightenedValue(color.hex, intensityMap[stop]) as string)
-        : (generateDarkenedValue(color.hex, intensityMap[stop]) as string)
+    console.log(color)
+    let hex
 
+    if (color.key.startsWith('neutral')) {
+      hex =
+        stop.includes('light') || stop.includes('mlt')
+          ? (generateLightenedValue(color.hex, intensityMap[stop] - 0.8) as string)
+          : (generateDarkenedValue(color.hex, intensityMap[stop] - 0.8) as string)
+    } else {
+      hex =
+        stop.includes('light') || stop.includes('mlt')
+          ? (generateLightenedValue(color.hex, intensityMap[stop]) as string)
+          : (generateDarkenedValue(color.hex, intensityMap[stop]) as string)
+    }
     response.push({
       label: color.label,
       key: color.key,
-      stop,
+      stops: stop,
       hex,
       rgb: getRgbString(hex as string),
       on: generateA11yOnColor(hex),
