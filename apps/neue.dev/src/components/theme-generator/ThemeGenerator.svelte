@@ -13,19 +13,23 @@
   import RoundedMaker from './partials/RoundedMaker.svelte'
 
   // Local Helpers
-  import { colorUtils, centers } from './helpers'
+  import { colorUtils, centers, updateColorsColl } from './helpers'
   import { buildColorStrings, buildBtnStrings, buildUIStrings, buildColorShades } from './helpers/stringBuilders'
 
   // Local data
-  import { storeThemeOptions, colorResultsStore } from './data'
+  import { setStoreThemeOptions } from './data'
   import { surfaceMap } from './data/settings'
 
   // Types
-  import type { ColorsCollection, ColorSettings } from './types'
+  import type { NeueAdditionalColorSchemesMapKeys, ColorsCollection, ColorSettings } from './types'
 
   // Svelte related
-  import { setContext } from 'svelte'
+  import { onMount, setContext } from 'svelte'
   import { writable } from 'svelte/store'
+  import type { Writable } from 'svelte/store'
+  // Other
+
+  import { localStorageStore } from '@skeletonlabs/skeleton'
 
   // Import color utils by type
   const { useGetConvertedColor, useGetColorValue, useGenerateColor, useColorSchemes } = colorUtils
@@ -48,8 +52,16 @@
     secondary: null,
     tertiary: null,
   })
+  const colorResultsStore = writable<ColorSettings[]>([])
 
   const colorSchemeStore = writable('analogous-triad')
+
+  // Call a function to keep store from being global.
+  // Not sure if this is necessary here but I prefer to default to avoiding globals.
+  // Here I use this approach to get the large data object out of the file.
+  const storeThemeOptions = setStoreThemeOptions()
+
+  const additionalColorsStore: Writable<NeueAdditionalColorSchemesMapKeys> = localStorageStore('additionalColors', {})
 
   // Color options
   let primaryColorHex: string = '#ef4953'
@@ -59,11 +71,6 @@
   let btnSizeScale = 0.2
   let btnPaddingWidthScale: number = 3
   let btnPaddingBase: number = 0.5
-  let btnFontSizes = {
-    sm: 'sm',
-    base: 'base',
-    lg: 'lg',
-  }
   // Rounded options
   let roundedSize = '--radius-md'
   let buttonRoundLevel = '--radius-full'
@@ -77,11 +84,14 @@
   // Make stores available to context so they can be injected locally as needed in child components.
   setContext('colorSchemeStore', colorSchemeStore)
   setContext('colorsCollectionStore', colorsCollectionStore)
+  setContext('primaryColorHex', primaryColorHex)
+  setContext('additionalColorsStore', additionalColorsStore)
 
   // Handles random color generation on correct keypress sequence.
   function handleKeyDown(event: KeyboardEvent) {
     if ((event.metaKey || event.ctrlKey) && event.code === 'Space') {
       generateRandomHexValue()
+      generateThemeOpts()
     }
   }
 
@@ -96,12 +106,12 @@
     if (event?.detail.length === 7) {
       primaryColorHex = event?.detail
     }
+    generateThemeOpts()
   }
 
   // Handle Button Opts changed.
   function handleBtnOptsChange(event: CustomEvent) {
     btnPaddingBase = event.detail.btnPaddingBase
-    btnFontSizes = event.detail.btnFontSizes
     btnPaddingWidthScale = event.detail.btnPaddingWidthScale
     btnSizeScale = event.detail.btnSizeScale
 
@@ -138,7 +148,8 @@
 
   // Generate colors: create colors collection, fill in template options from colors collection, build UI options as outputted strings for preview and themes.
   function generateThemeOpts() {
-    updateColorsCollection()
+    updateColorsCollWColorScheme()
+
     let builtResults
 
     storeThemeOptions.update((currentOptions) => {
@@ -199,9 +210,7 @@
 
     // Color Strings
 
-    console.log($colorResultsStore)
-
-    builtResults = buildColorStrings($colorResultsStore, 'color', 'rgb')
+    builtResults = buildColorStrings($colorResultsStore, 'color')
     previewCSSVars = builtResults.cssVars
     themeOptsJsInCSS = builtResults.jsInCSS
 
@@ -222,19 +231,20 @@
   }
 
   // Update collection for theme options.
-  function updateColorsCollection() {
+  function updateColorsCollWColorScheme() {
     colorsCollectionStore.update((colorsCollection) => {
       let baseColors: (string | null)[] = []
       // Array because we will have multi gray options later.
       const grays = []
+
       const hue = getHueFromHex(primaryColorHex)
+
       const baseSaturation = getSaturation(primaryColorHex)
-      const newSaturation = baseSaturation > 0.79 ? baseSaturation : baseSaturation + 0.2
+      const saturation = baseSaturation > 0.79 ? baseSaturation : baseSaturation + 0.2
 
       // Create Colors used in every color scheme.
-      colorsCollection['error'] = generateColorFromHSL(centers.red, newSaturation, 0.5)
-      colorsCollection['warning'] = generateColorFromHSL(centers.yellow, newSaturation, 0.5)
-      colorsCollection['success'] = generateColorFromHSL(centers.green, newSaturation, 0.5)
+      colorsCollection['error'] = generateColorFromHSL(centers.red, saturation, 0.5)
+      colorsCollection['success'] = generateColorFromHSL(centers.green, saturation, 0.5)
       colorsCollection['neutral'] = grays[0] = generateColorFromHSL(hue, grayHue, 0.5)
       // Surface colors.
       colorsCollection['page'] = generateLightenedValue(grays[0] as string, surfaceMap[selectedSurfaceLevel].page)
@@ -264,43 +274,44 @@
       }
 
       // Individual differences in color schemes.
-      switch ($colorSchemeStore) {
-        case 'triad':
-          baseColors = generateTriadColors(primaryColorHex)
-          createPrimaries()
-          colorsCollection['quaternary'] = ''
-          colorsCollection['quinary'] = ''
-          break
-        case 'split-complimentary':
-          baseColors = generateSplitComplimentaryColors(primaryColorHex)
-          createPrimaries()
-          colorsCollection['quaternary'] = ''
-          colorsCollection['quinary'] = ''
-          break
-        case 'analogous-triad':
-          baseColors = generateAnalogousColors(primaryColorHex, 40, 'analogous-triad')
-          createPrimaries()
-          colorsCollection['quaternary'] = ''
-          colorsCollection['quinary'] = ''
-          break
-        case 'analogous-quad':
-          baseColors = generateAnalogousColors(primaryColorHex, 40, 'analogous-quad')
-          createPrimaries()
-          colorsCollection['quaternary'] = baseColors[2]
-          colorsCollection['quinary'] = ''
-          break
-        case 'analogous-quin':
-          baseColors = generateAnalogousColors(primaryColorHex, 20, 'analogous-quin')
-          createPrimaries()
-          colorsCollection['quaternary'] = baseColors[2]
-          colorsCollection['quinary'] = baseColors[3]
-          break
-        default:
-          baseColors = generateTriadColors(primaryColorHex)
-          createPrimaries()
-          colorsCollection['quaternary'] = ''
-          colorsCollection['quinary'] = ''
-          break
+      if ($colorSchemeStore === 'triad') {
+        baseColors = generateTriadColors(primaryColorHex)
+        createPrimaries()
+        colorsCollection['quaternary'] = ''
+        colorsCollection['quinary'] = ''
+        return colorsCollection
+      }
+
+      if ($colorSchemeStore === 'split-complimentary') {
+        baseColors = generateSplitComplimentaryColors(primaryColorHex)
+        createPrimaries()
+        colorsCollection['quaternary'] = ''
+        colorsCollection['quinary'] = ''
+        return colorsCollection
+      }
+
+      if ($colorSchemeStore === 'analogous-triad') {
+        baseColors = generateAnalogousColors(primaryColorHex, 40, 'analogous-triad')
+        createPrimaries()
+        colorsCollection['quaternary'] = ''
+        colorsCollection['quinary'] = ''
+        return colorsCollection
+      }
+
+      if ($colorSchemeStore === 'analogous-quad') {
+        baseColors = generateAnalogousColors(primaryColorHex, 40, 'analogous-quad')
+        createPrimaries()
+        colorsCollection['quaternary'] = baseColors[2]
+        colorsCollection['quinary'] = ''
+        return colorsCollection
+      }
+
+      if ($colorSchemeStore === 'analogous-quin') {
+        baseColors = generateAnalogousColors(primaryColorHex, 20, 'analogous-quin')
+        createPrimaries()
+        colorsCollection['quaternary'] = baseColors[2]
+        colorsCollection['quinary'] = baseColors[3]
+        return colorsCollection
       }
 
       return colorsCollection
@@ -343,6 +354,25 @@
 
     return { btnPaddingWidth, smBtnCalcs, lgBtnCalcs, chipBtnCalcs }
   }
+
+  function initCachedColors() {
+    if ($storeThemeOptions.colors[0].hex) {
+      primaryColorHex = $storeThemeOptions.colors[0].hex
+    }
+
+    if ($additionalColorsStore.warning) {
+      updateColorsColl(colorsCollectionStore, 'warning', $additionalColorsStore.warning)
+    }
+
+    if ($additionalColorsStore.info) {
+      updateColorsColl(colorsCollectionStore, 'info', $additionalColorsStore.info)
+    }
+  }
+
+  onMount(() => {
+    initCachedColors()
+    generateThemeOpts()
+  })
 </script>
 
 <svelte:window on:keydown={handleKeyDown} />
@@ -359,8 +389,13 @@
       <button on:click={generateRandomHexValue} class="my-btn btn-md">Random Color</button>
       <ColorPicker colorHex={primaryColorHex} on:colorChange={handleColorPickerChange} />
       <p class="text-xl text-error">{hashErrorMessage}</p>
-      <ChipOptions />
-      <button class="btn-md my-btn" on:click={generateThemeOpts}>Generate Preview</button>
+      <div class="mx-auto space-y-4 text-center page-section">
+        <ChipOptions
+          on:colorSchemeChange={() => generateThemeOpts()}
+          on:colorAdditionChange={() => generateThemeOpts(false)}
+        />
+        <button class="btn-md my-btn" on:click={() => generateThemeOpts()}>Generate Preview</button>
+      </div>
     </div>
   </section>
   <section class="page-section">
@@ -413,7 +448,3 @@
 
   <pre><code class="language-javascript">{themeOptsJsInCSS}</code></pre>
 </div>
-
-<style lang="postcss">
-  /* only use when nested with a parent with an outline indicator as this removes visual que for accessibility otherwise */
-</style>

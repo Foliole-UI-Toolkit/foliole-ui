@@ -1,6 +1,6 @@
 import type { ColorSettings } from '../types'
 
-import { intensityMap } from '../data/settings'
+import { intensityMap, intensityMapGray } from '../data/settings'
 
 import { colorUtils } from './index'
 
@@ -11,7 +11,7 @@ const { getRgbString } = useGetConvertedColor()
 
 const { generateA11yOnColor, generateDarkenedValue, generateLightenedValue } = useGenerateColor()
 
-export function buildColorStrings(store: ColorSettings[], prefix: string, type: string) {
+export function buildColorStrings(store: ColorSettings[], prefix: string) {
   let cssVars = ''
   let jsInCSS = 'export const color = { \n'
 
@@ -19,11 +19,11 @@ export function buildColorStrings(store: ColorSettings[], prefix: string, type: 
     if (element.stops) {
       // Define the CSS variable for the color with stops
       cssVars += `--${prefix}-${element.key}-${element.stops}: ${element.rgb};`
-      jsInCSS += `  '${element.key}-${element.stops}': 'var(--${prefix}-${element.key}-${element.stops})',`
+      jsInCSS += `  '${element.key}-${element.stops}': '${element.rgb}',`
     } else {
       // Define the CSS variable for the color without stops
       cssVars += `--${prefix}-${element.key}: ${element.rgb};`
-      jsInCSS += `  '${element.key}': 'var(--${prefix}-${element.key})',`
+      jsInCSS += `  '${element.key}': '${element.rgb}',`
     }
     cssVars += '\n'
     jsInCSS += '\n'
@@ -51,7 +51,7 @@ export function buildBtnStrings(
   jsInCSS += `  'p-base': '${btnPaddingBase}rem ${btnPaddingWidth}rem',\n`
   //chips
   cssVars += `--btn-chip-p: ${chipBtnCalcs.chipBtnPaddingBase}rem ${chipBtnCalcs.chipBtnPaddingWidth}rem;\n`
-  jsInCSS += `  'btn-chip-p': '${chipBtnCalcs.chipBtnPaddingBase}rem ${chipBtnCalcs.chipBtnPaddingWidth}rem',\n`
+  jsInCSS += `  'chip-p': '${chipBtnCalcs.chipBtnPaddingBase}rem ${chipBtnCalcs.chipBtnPaddingWidth}rem',\n`
   //btn padding lg
   cssVars += `--btn-p-lg: ${lgBtnCalcs.lgBtnPaddingBase}rem ${lgBtnCalcs.lgBtnPaddingWidth}rem;\n`
   jsInCSS += `  'p-lg': '${lgBtnCalcs.lgBtnPaddingBase}rem ${lgBtnCalcs.lgBtnPaddingWidth}rem',\n`
@@ -104,14 +104,13 @@ function buildColorShades(color: any) {
   ]
 
   ;['light', 'mlt', 'mdk', 'dark'].forEach((stop) => {
-    console.log(color)
     let hex
 
     if (color.key.startsWith('neutral')) {
       hex =
         stop.includes('light') || stop.includes('mlt')
-          ? (generateLightenedValue(color.hex, intensityMap[stop] - 0.8) as string)
-          : (generateDarkenedValue(color.hex, intensityMap[stop] - 0.8) as string)
+          ? (generateLightenedValue(color.hex, intensityMapGray[stop]) as string)
+          : (generateDarkenedValue(color.hex, intensityMapGray[stop]) as string)
     } else {
       hex =
         stop.includes('light') || stop.includes('mlt')

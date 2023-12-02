@@ -76,7 +76,6 @@ module.exports = {
       backgroundColor: 'rgba(var(--color-primary-mdk), 0.9)',
     },
     // Dark versions
-
     '.bg-primary-dark': {
       backgroundColor: 'rgba(var(--color-primary-dark), 1)',
     },
@@ -95,7 +94,6 @@ module.exports = {
     '.bg-primary-dark-90': {
       backgroundColor: 'rgba(var(--color-primary-dark), 0.9)',
     },
-
     // Dynamic light/darks
     '.dark .bg-primary-light-dark': {
       backgroundColor: 'rgba(var(--color-primary-dark), 1)',
@@ -239,7 +237,6 @@ module.exports = {
     '.bg-secondary-dark-90': {
       backgroundColor: 'rgba(var(--color-secondary-dark), 0.9)',
     },
-
     // Dynamic light/darks
     '.dark .bg-secondary-light-dark': {
       backgroundColor: 'rgba(var(--color-secondary-dark), 1)',
@@ -271,7 +268,6 @@ module.exports = {
     '.bg-secondary-mlt-mdk-10': {
       backgroundColor: 'rgba(var(--color-secondary-mlt), 0.1)',
     },
-
     // Dark mode for mlt-mdk
     '.dark .bg-secondary-mlt-mdk': {
       backgroundColor: 'rgba(var(--color-secondary-mdk), 1)',
@@ -365,7 +361,6 @@ module.exports = {
       backgroundColor: 'rgba(var(--color-tertiary-mdk), 0.9)',
     },
     // Dark versions
-
     '.bg-tertiary-dark': {
       backgroundColor: 'rgba(var(--color-tertiary-dark), 1)',
     },
@@ -384,7 +379,6 @@ module.exports = {
     '.bg-tertiary-dark-90': {
       backgroundColor: 'rgba(var(--color-tertiary-dark), 0.9)',
     },
-
     // Dynamic light/darks
     '.dark .bg-tertiary-light-dark': {
       backgroundColor: 'rgba(var(--color-tertiary-dark), 1)',
@@ -416,7 +410,6 @@ module.exports = {
     '.bg-tertiary-mlt-mdk-10': {
       backgroundColor: 'rgba(var(--color-tertiary-mlt), 0.1)',
     },
-
     // Dark mode for mlt-mdk
     '.dark .bg-tertiary-mlt-mdk': {
       backgroundColor: 'rgba(var(--color-tertiary-mdk), 1)',
@@ -1158,6 +1151,151 @@ module.exports = {
     '.dark .bg-error-mlt-mdk-10': {
       backgroundColor: 'rgba(var(--color-error-mdk), 0.1)',
     },
+    // info
+    '.bg-info-base': {
+      backgroundColor: 'rgba(var(--color-info-base), 1)',
+    },
+    '.bg-info-base-10': {
+      backgroundColor: 'rgba(var(--color-info-base), .1)',
+    },
+    '.bg-info-base-25': {
+      backgroundColor: 'rgba(var(--color-info-base), .25)',
+    },
+    '.bg-info-base-50': {
+      backgroundColor: 'rgba(var(--color-info-base), .50)',
+    },
+    '.bg-info-base-75': {
+      backgroundColor: 'rgba(var(--color-info-base), .75)',
+    },
+    '.bg-info-base-90': {
+      backgroundColor: 'rgba(var(--color-info-base), .90)',
+    },
+    // Light versions
+    '.bg-info-light': {
+      backgroundColor: 'rgba(var(--color-info-light), 1)',
+    },
+    '.bg-info-light-10': {
+      backgroundColor: 'rgba(var(--color-info-light), 0.1)',
+    },
+    '.bg-info-light-25': {
+      backgroundColor: 'rgba(var(--color-info-light), 0.25)',
+    },
+    '.bg-info-light-50': {
+      backgroundColor: 'rgba(var(--color-info-light), 0.5)',
+    },
+    '.bg-info-light-75': {
+      backgroundColor: 'rgba(var(--color-info-light), 0.75)',
+    },
+    '.bg-info-light-90': {
+      backgroundColor: 'rgba(var(--color-info-light), 0.9)',
+    },
+    // MLT versions
+    '.bg-info-mlt': {
+      backgroundColor: 'rgba(var(--color-info-mlt), 1)',
+    },
+    '.bg-info-mlt-10': {
+      backgroundColor: 'rgba(var(--color-info-mlt), 0.1)',
+    },
+    '.bg-info-mlt-25': {
+      backgroundColor: 'rgba(var(--color-info-mlt), 0.25)',
+    },
+    '.bg-info-mlt-50': {
+      backgroundColor: 'rgba(var(--color-info-mlt), 0.5)',
+    },
+    '.bg-info-mlt-75': {
+      backgroundColor: 'rgba(var(--color-info-mlt), 0.75)',
+    },
+    '.bg-info-mlt-90': {
+      backgroundColor: 'rgba(var(--color-info-mlt), 0.9)',
+    },
+    // MDK versions
+    '.bg-info-mdk': {
+      backgroundColor: 'rgba(var(--color-info-mdk), 1)',
+    },
+    '.bg-info-mdk-10': {
+      backgroundColor: 'rgba(var(--color-info-mdk), 0.1)',
+    },
+    '.bg-info-mdk-25': {
+      backgroundColor: 'rgba(var(--color-info-mdk), 0.25)',
+    },
+    '.bg-info-mdk-50': {
+      backgroundColor: 'rgba(var(--color-info-mdk), 0.5)',
+    },
+    '.bg-info-mdk-75': {
+      backgroundColor: 'rgba(var(--color-info-mdk), 0.75)',
+    },
+    '.bg-info-mdk-90': {
+      backgroundColor: 'rgba(var(--color-info-mdk), 0.9)',
+    },
+    // Dark versions
+
+    '.bg-info-dark': {
+      backgroundColor: 'rgba(var(--color-info-dark), 1)',
+    },
+    '.bg-info-dark-10': {
+      backgroundColor: 'rgba(var(--color-info-dark), 0.1)',
+    },
+    '.bg-info-dark-25': {
+      backgroundColor: 'rgba(var(--color-info-dark), 0.25)',
+    },
+    '.bg-info-dark-50': {
+      backgroundColor: 'rgba(var(--color-info-dark), 0.5)',
+    },
+    '.bg-info-dark-75': {
+      backgroundColor: 'rgba(var(--color-info-dark), 0.75)',
+    },
+    '.bg-info-dark-90': {
+      backgroundColor: 'rgba(var(--color-info-dark), 0.9)',
+    },
+
+    // Dynamic light/darks
+    '.dark .bg-info-light-dark': {
+      backgroundColor: 'rgba(var(--color-info-dark), 1)',
+    },
+    '.dark .bg-info-light-dark-90': {
+      backgroundColor: 'rgba(var(--color-info-dark), 0.9)',
+    },
+    '.dark .bg-info-light-dark-75': {
+      backgroundColor: 'rgba(var(--color-info-dark), 0.75)',
+    },
+    '.dark .bg-info-light-dark-50': {
+      backgroundColor: 'rgba(var(--color-info-dark), 0.5)',
+    },
+    '.dark .bg-info-light-dark-10': {
+      backgroundColor: 'rgba(var(--color-info-dark), 0.1)',
+    },
+    '.bg-info-mlt-mdk': {
+      backgroundColor: 'rgba(var(--color-info-mlt), 1)',
+    },
+    '.bg-info-mlt-mdk-90': {
+      backgroundColor: 'rgba(var(--color-info-mlt), 0.9)',
+    },
+    '.bg-info-mlt-mdk-75': {
+      backgroundColor: 'rgba(var(--color-info-mlt), 0.75)',
+    },
+    '.bg-info-mlt-mdk-50': {
+      backgroundColor: 'rgba(var(--color-info-mlt), 0.5)',
+    },
+    '.bg-info-mlt-mdk-10': {
+      backgroundColor: 'rgba(var(--color-info-mlt), 0.1)',
+    },
+
+    // Dark mode for mlt-mdk
+    '.dark .bg-info-mlt-mdk': {
+      backgroundColor: 'rgba(var(--color-info-mdk), 1)',
+    },
+    '.dark .bg-info-mlt-mdk-90': {
+      backgroundColor: 'rgba(var(--color-info-mdk), 0.9)',
+    },
+    '.dark .bg-info-mlt-mdk-75': {
+      backgroundColor: 'rgba(var(--color-info-mdk), 0.75)',
+    },
+    '.dark .bg-info-mlt-mdk-50': {
+      backgroundColor: 'rgba(var(--color-info-mdk), 0.5)',
+    },
+    '.dark .bg-info-mlt-mdk-10': {
+      backgroundColor: 'rgba(var(--color-info-mdk), 0.1)',
+    },
     // Neutral
     '.bg-neutral-base': {
       backgroundColor: 'rgba(var(--color-neutral-base), 1)',
@@ -1307,24 +1445,114 @@ module.exports = {
     '.bg-page-base': {
       backgroundColor: 'rgba(var(--color-page-base),1)',
     },
+    '.bg-page-base-10': {
+      backgroundColor: 'rgba(var(--color-page-base), .1)',
+    },
+    '.bg-page-base-25': {
+      backgroundColor: 'rgba(var(--color-page-base), .25)',
+    },
+    '.bg-page-base-50': {
+      backgroundColor: 'rgba(var(--color-page-base), .50)',
+    },
+    '.bg-page-base-75': {
+      backgroundColor: 'rgba(var(--color-page-base), .75)',
+    },
+    '.bg-page-base-90': {
+      backgroundColor: 'rgba(var(--color-page-base), .90)',
+    },
+    // Dark Page
     '.dark .bg-page-base': {
       backgroundColor: 'rgba(var(--color-page-contrast-base),1)',
     },
+    '.dark .bg-page-base-10': {
+      backgroundColor: 'rgba(var(--color-page-base-contrast), .1)',
+    },
+    '.dark .bg-page-base-25': {
+      backgroundColor: 'rgba(var(--color-page-base-contrast), .25)',
+    },
+    '.dark .bg-page-base-50': {
+      backgroundColor: 'rgba(var(--color-page-base-contrast), .50)',
+    },
+    '.dark .bg-page-base-75': {
+      backgroundColor: 'rgba(var(--color-page-base-contrast), .75)',
+    },
+    '.dark .bg-page-base-90': {
+      backgroundColor: 'rgba(var(--color-page-base-contrast), .90)',
+    },
+    //Page Contrast
     '.bg-page-contrast-base': {
       backgroundColor: 'rgba(var(--color-page-contrast-base),1)',
     },
+    '.bg-page-contrast-base-10': {
+      backgroundColor: 'rgba(var(--color-page-contrast-base), .1)',
+    },
+    '.bg-page-contrast-base-25': {
+      backgroundColor: 'rgba(var(--color-page-contrast-base), .25)',
+    },
+    '.bg-page-contrast-base-50': {
+      backgroundColor: 'rgba(var(--color-page-contrast-base), .50)',
+    },
+    '.bg-page-contrast-base-75': {
+      backgroundColor: 'rgba(var(--color-page-contrast-base), .75)',
+    },
+    '.bg-page-contrast-base-90': {
+      backgroundColor: 'rgba(var(--color-page-contrast-base), .90)',
+    },
+    // Dark Page Contrast
     '.dark .bg-page-contrast-base': {
-      backgroundColor: 'rgba(var(--color-page-base), 1)',
+      backgroundColor: 'rgba(var(--color-page-base),1)',
+    },
+    '.dark .bg-page-contrast-base-10': {
+      backgroundColor: 'rgba(var(--color-page-base), .1)',
+    },
+    '.dark .bg-page-contrast-base-25': {
+      backgroundColor: 'rgba(var(--color-page-base), .25)',
+    },
+    '.dark .bg-page-contrast-base-50': {
+      backgroundColor: 'rgba(var(--color-page-base), .50)',
+    },
+    '.dark .bg-page-contrast-base-75': {
+      backgroundColor: 'rgba(var(--color-page-base), .75)',
+    },
+    '.dark .bg-page-contrast-base-90': {
+      backgroundColor: 'rgba(var(--color-page-base), .90)',
     },
     // Surface
     '.bg-surface-base': {
       backgroundColor: 'rgba(var(--color-surface-base), 1)',
     },
+    '.bg-surface-base-10': {
+      backgroundColor: 'rgba(var(--color-surface-base), .1)',
+    },
+    '.bg-surface-base-25': {
+      backgroundColor: 'rgba(var(--color-surface-base), .25)',
+    },
+    '.bg-surface-base-50': {
+      backgroundColor: 'rgba(var(--color-surface-base), .50)',
+    },
+    '.bg-surface-base-75': {
+      backgroundColor: 'rgba(var(--color-surface-base), .75)',
+    },
+    '.bg-surface-base-90': {
+      backgroundColor: 'rgba(var(--color-surface-base), .90)',
+    },
     '.dark .bg-surface-base': {
       backgroundColor: 'rgba(var(--color-surface-contrast-base), 1)',
     },
-    '.bg-surface-contrast-base': {
-      backgroundColor: 'rgba(var(--color-surface-contrast-base), 1)',
+    '.dark .bg-surface-base-10': {
+      backgroundColor: 'rgba(var(--color-surface-contrast-base), .1)',
+    },
+    '.dark .bg-surface-contrast-base-25': {
+      backgroundColor: 'rgba(var(--color-surface-contrast-base), .25)',
+    },
+    '.dark .bg-surface-contrast-base-50': {
+      backgroundColor: 'rgba(var(--color-surface-contrast-base), .50)',
+    },
+    '.dark .bg-surface-contrast-base-75': {
+      backgroundColor: 'rgba(var(--color-surface-contrast-base), .75)',
+    },
+    '.dark .bg-surface-contrast-base-90': {
+      backgroundColor: 'rgba(var(--color-surface-contrast-base), .90)',
     },
     '.dark .bg-surface-contrast-base': {
       backgroundColor: 'rgba(var(--color-surface-base), 1)',
@@ -1333,14 +1561,65 @@ module.exports = {
     '.bg-surface-raised-base': {
       backgroundColor: 'rgba(var(--color-surface-raised-base), 1)',
     },
-    '.dark .bg-surface-raised-base': {
-      backgroundColor: 'rgba(var(--color-surface-raised-contrast-base),1)',
+    '.bg-surface-raised-base-10': {
+      backgroundColor: 'rgba(var(--color-surface-raised-base), .1)',
     },
-    '.bg-surface-raised-contrast-base': {
-      backgroundColor: 'rgba(var(--color-surface-raised-contrast-base),1)',
+    '.bg-surface-raised-base-25': {
+      backgroundColor: 'rgba(var(--color-surface-raised-base), .25)',
     },
-    '.dark .bg-surface-raised-contrast-base': {
-      backgroundColor: 'rgba(var(--color-surface-raised-base), 1)',
+    '.bg-surface-raised-base-50': {
+      backgroundColor: 'rgba(var(--color-surface-raised-base), .50)',
+    },
+    '.bg-surface-raised-base-75': {
+      backgroundColor: 'rgba(var(--color-surface-raised-base), .75)',
+    },
+    '.bg-surface-raised-base-90': {
+      backgroundColor: 'rgba(var(--color-surface-raised-base), .90)',
+    },
+    '.dark .bg-surface-raised-base-10': {
+      backgroundColor: 'rgba(var(--color-surface-raised-contrast-base), .1)',
+    },
+    '.dark .bg-surface-raised-base-25': {
+      backgroundColor: 'rgba(var(--color-surface-raised-contrast-base), .25)',
+    },
+    '.dark .bg-surface-raised-base-50': {
+      backgroundColor: 'rgba(var(--color-surface-raised-contrast-base), .50)',
+    },
+    '.dark .bg-surface-raised-base-75': {
+      backgroundColor: 'rgba(var(--color-surface-raised-contrast-base), .75)',
+    },
+    '.dark .bg-surface-raised-base-90': {
+      backgroundColor: 'rgba(var(--color-surface-raised-contrast-base), .90)',
+    },
+    '.bg-surface-raised-contrast-base-10': {
+      backgroundColor: 'rgba(var(--color-surface-raised-contrast-base), .1)',
+    },
+    '.bg-surface-raised-contrast-base-25': {
+      backgroundColor: 'rgba(var(--color-surface-raised-contrast-base), .25)',
+    },
+    '.bg-surface-raised-contrast-base-50': {
+      backgroundColor: 'rgba(var(--color-surface-raised-contrast-base), .50)',
+    },
+    '.bg-surface-raised-contrast-base-75': {
+      backgroundColor: 'rgba(var(--color-surface-raised-contrast-base), .75)',
+    },
+    '.bg-surface-raised-contrast-base-90': {
+      backgroundColor: 'rgba(var(--color-surface-raised-contrast-base), .90)',
+    },
+    '.dark .bg-surface-raised-contrast-base-10': {
+      backgroundColor: 'rgba(var(--color-surface-raised-base), .1)',
+    },
+    '.dark .bg-surface-raised-contrast-base-25': {
+      backgroundColor: 'rgba(var(--color-surface-raised-base), .25)',
+    },
+    '.dark .bg-surface-raised-contrast-base-50': {
+      backgroundColor: 'rgba(var(--color-surface-raised-base), .50)',
+    },
+    '.dark .bg-surface-raised-contrast-base-75': {
+      backgroundColor: 'rgba(var(--color-surface-raised-base), .75)',
+    },
+    '.dark .bg-surface-raised-contrast-base-90': {
+      backgroundColor: 'rgba(var(--color-surface-raised-base), .90)',
     },
   },
 }

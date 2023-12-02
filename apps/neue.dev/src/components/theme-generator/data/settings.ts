@@ -174,6 +174,13 @@ export const intensityMap: { [key: string]: number } = {
   dark: 3,
 }
 
+export const intensityMapGray: { [key: string]: number } = {
+  light: 2,
+  mlt: 1.2,
+  mdk: 1.2,
+  dark: 2,
+}
+
 export const surfaceMap: SurfaceLevelMap = {
   white: {
     page: 3,

@@ -1,5 +1,8 @@
 import chroma from 'chroma-js'
 
+import type { Writable } from 'svelte/store'
+import type { ColorsCollection } from '../types'
+
 type ColorInput = string
 
 type ColorName = 'red' | 'orange' | 'yellow' | 'green' | 'cyan' | 'blue' | 'purple'
@@ -11,7 +14,33 @@ export const centers = {
   green: 105,
   cyan: 165,
   blue: 225,
+  'blue-info': 200,
   purple: 300,
+}
+
+export function createSaturation(hex: string) {
+  const baseSaturation = getSaturation(hex)
+  return baseSaturation > 0.79 ? baseSaturation : baseSaturation + 0.2
+}
+
+export function updateColorsColl(store: Writable<ColorsCollection>, color: string, hex: string) {
+  const saturation = createSaturation(hex)
+
+  if (color === 'warning') {
+    store.update((colorsCollection) => {
+      colorsCollection['warning'] = generateColorFromHSL(centers.yellow, saturation, 0.5)
+      return colorsCollection
+    })
+    return
+  }
+
+  if (color === 'info') {
+    store.update((colorsCollection) => {
+      colorsCollection['info'] = generateColorFromHSL(centers['blue-info'], saturation, 0.6)
+      return colorsCollection
+    })
+    return
+  }
 }
 
 // ** useGetConvertedColor ** //

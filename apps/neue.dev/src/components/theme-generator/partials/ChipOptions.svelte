@@ -1,28 +1,49 @@
 <script lang="ts">
-  import { getContext } from 'svelte'
-  import type { Writable } from 'svelte/store'
-  //
+  // Local
+  import { updateColorsColl } from '../helpers'
   import { additionalColorSchemes, neueColorSchemes } from '../data/settings'
   import type { ColorsCollection } from '../types'
+  // Svelte related
+  import { createEventDispatcher, getContext } from 'svelte'
+  import { type Writable } from 'svelte/store'
 
   const colorSchemeStore = getContext('colorSchemeStore') as Writable<string>
   const colorsCollectionStore = getContext('colorsCollectionStore') as Writable<ColorsCollection>
+  const hex = getContext('primaryColorHex') as string
+  const additionalColorsStore = getContext('additionalColorsStore') as Writable<string[]>
+
+  const dispatch = createEventDispatcher()
+
+  function emitColorAdditionChange() {
+    dispatch('colorAdditionChange', {
+      colorAdditionChange: true,
+    })
+  }
+
+  function emitColorSchemeChange() {
+    dispatch('colorSchemeChange', {
+      colorSchemeChange: true,
+    })
+  }
 
   function toggleOptionalColors(colorKey: string): void {
     if ($colorsCollectionStore[colorKey] !== undefined) {
       delete $colorsCollectionStore[colorKey]
+      additionalColorsStore.update((colors) => {
+        return { ...colors, [colorKey]: false }
+      })
     } else {
-      $colorsCollectionStore[colorKey] = null
+      updateColorsColl(colorsCollectionStore, colorKey, hex)
+      additionalColorsStore.update((colors) => {
+        return { ...colors, [colorKey]: hex }
+      })
     }
-    colorsCollectionStore.set($colorsCollectionStore)
+    emitColorAdditionChange()
   }
+
   function chooseColorScheme(colorKey: string): void {
     $colorSchemeStore = colorKey
-    $colorsCollectionStore['primary'] = null
-    $colorsCollectionStore['secondary'] = null
-    $colorsCollectionStore['tertiary'] = null
-    $colorsCollectionStore['quaternary'] = null
-    $colorsCollectionStore['quinary'] = null
+    emitColorSchemeChange()
   }
 </script>
 
@@ -31,9 +52,7 @@
   <div class="flex flex-wrap justify-center gap-2">
     {#each neueColorSchemes as colorKey}
       <button
-        class={`chip text-base ${
-          $colorSchemeStore === colorKey ? 'variant-filled-secondary' : 'variant-ghost-secondary'
-        }`}
+        class={`my-chip text-base ${$colorSchemeStore === colorKey ? 'bg-primary-base' : 'bg-neutral-light'}`}
         on:click={() => {
           chooseColorScheme(colorKey)
         }}
@@ -49,10 +68,10 @@
   <div class="flex flex-wrap justify-center gap-2">
     {#each additionalColorSchemes as colorKey}
       <button
-        class={`chip text-base ${
+        class={`my-chip text-base ${
           $colorsCollectionStore[colorKey] || $colorsCollectionStore[colorKey] === null
-            ? 'variant-filled-secondary'
-            : 'variant-ghost-secondary'
+            ? 'bg-primary-base'
+            : 'bg-neutral-light'
         }`}
         on:click={() => {
           toggleOptionalColors(colorKey)
@@ -62,12 +81,6 @@
       </button>
     {/each}
   </div>
-  <!-- <p class="pt-2 font-bold text-center">All used colors:</p>
-  <div class="flex flex-wrap justify-center gap-2">
-    {#each Object.keys($colorsCollectionStore) as key}
-      <span class="text-base chip chip-static bg-surface-mlt">{key}</span>
-    {/each}
-  </div> -->
 </div>
 
 <style lang="postcss">

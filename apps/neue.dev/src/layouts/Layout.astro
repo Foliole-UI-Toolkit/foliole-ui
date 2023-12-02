@@ -7,6 +7,7 @@ import AppShell from  '../components/AppShell.vue'
 interface Props {
 	title: string;
 }
+
 const { title } = Astro.props; 
 ---
 
@@ -17,8 +18,10 @@ const { title } = Astro.props;
 		<meta name="description" content="Astro description" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+		<link rel="stylesheet" href="https://use.typekit.net/tqq6mmg.css" />
 	</head>
 	<body data-theme="example" class="min-h-screen bg-page-base">
 
@@ -30,23 +33,37 @@ const { title } = Astro.props;
 	</body>
 </html>
 <style is:global lang="postcss">
+
 @tailwind components;
+@tailwind base;
+
+@layer base {
+  h1, h2, h3, h4, h5, h6, ul, li, p, button, span {
+    font-family: "brandon-grotesque", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  }
+	.my-list {
+		@apply list-disc ml-6
+	}
+}
 @layer components {
 	.my-btn {
 		@apply btn-base bg-primary-base border-2 button-roundness border-primary-mlt shadow-md; 
+		/* &:hover {
+        @apply bg-primary-mlt border-primary-base;
+    } */
+
 	}
   .btn-sm {
     @apply btn-p-sm; 
   }
-
   .btn-md {
 		@apply btn-p-md; 
   }
   .btn-lg {
 		@apply btn-p-lg ; 
   }
-	.chip {
-		@apply btn-chip-p btn-base bg-surface-raised-base; 
+	.my-chip {
+		@apply btn-chip-p btn-base; 
   }
 	.my-input {
 		@apply input-base input-roundness;
@@ -55,20 +72,21 @@ const { title } = Astro.props;
 		@apply select-base input-roundness;
 	}
 	.app-wrapper {
-		/* background-image: linear-gradient(
-      to bottom right,
-      rgba(239, 73, 83, 0.05),
-      rgba(239, 174, 73, 0.05)
-    ); */
-
 		@apply bg-page-base;
-		
+		background-image: linear-gradient(
+      to right,
+      rgba(var(--color-primary-base), 0.1),
+      rgba(var(--color-secondary-base), 0.1),
+      rgba(var(--color-primary-base), 0.1)
+    );
 	}
 	input.nested-input {
     box-shadow: none !important;
     border: none !important;
   }
-
+	.page-section {
+    @apply p-4 neue-rounded shadow-sm bg-page-base-75 border-surface-raised-base border;
+  }
   .page-heading {
     @apply font-bold text-center pb-2;
   }
@@ -79,12 +97,8 @@ const { title } = Astro.props;
     @apply text-xl font-bold text-center;
   }
   .section-box {
-    @apply p-4 neue-rounded border-2 border-neutral-base;
+    @apply p-4 neue-rounded border-2 border-neutral-light;
   }
-	.page-section {
-    @apply p-4 neue-rounded shadow-sm bg-page-base border-surface-base border;
-  }
-
 }
 
 </style>

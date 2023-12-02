@@ -1,11 +1,21 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Example from '../components/Example.vue'
-
 ---
 
 <Layout title="Welcome to Astro.">
-	<main>
-		Home page.
-	</main>
+	<div class="container p-4 mx-auto space-y-4">
+		<h1 class="text-2xl text-center">Welcome to the Alpha version of Neue UI!</h1>
+		<p>
+			 This is an early demo site for testing and feedback from colleagues, family and friends. Please feel free to share this with others who can would like to help out and or can provide constructive feedback. The framework specific compoments will be made in Vue and Svelte first as these are the frameworks I know. 
+		</p>
+		<p>Testing coming soon. Semver starting on the next few commits. A roadmap at some point.</p>
+	 	<p>Areas this project could use more help with:</p>
+		<ul class="my-list">
+			<li>TypeScript.</li>
+			<li>Testing.</li>
+			<li>Accessibility.</li>
+			<li>Other frontend frameworks especially React.</li>
+			<li>General ideas, points of view and feedback.</li>
+		</ul>
+	</div>
 </Layout>

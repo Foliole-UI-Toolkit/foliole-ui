@@ -5,33 +5,40 @@ import NeueAppShell from '@neue/neue-vue/src/components/AppShell/NeueAppShell.vu
   <NeueAppShell
     siteCentralWrapperClasses="site-central-wrapper mx-auto "
     siteHeaderClasses="my-header siteheader site-header-options"
-    pageClasses="page"
+    pageClasses="page relative z-0"
+    siteSidebarLeftClasses="sidebar-left site-sidebar-left-options shadow-sm border-r border-surface-netural-base bg-page-base-75 sidebar-left-custom"
   >
     <template #header>
-      <div class="flex flex-wrap">
-        <div class="w-full">
+      <div class="flex flex-wrap border-primary-light bg-neutral-mlt-10">
+        <div class="w-full px-2 py-4">
           <div class="container flex items-center justify-start mx-auto">
-            <span class="self-center justify-center flex-shrink-0 inline-block w-8 h-8 rounded-full bg-gradient-to-br">
+            <span
+              class="self-center justify-center flex-shrink-0 inline-block w-[40px] h-[40px] mr-2 rounded-full shadow-md logo"
+            >
             </span>
-            <h1 class="whitespace-nowrap">NEUE: A UI TOOLKIT</h1>
+            <h1 class="text-4xl font-bold whitespace-nowrap">
+              <a href="/"><span class="text-primary-base">NEUE </span><span>UI</span></a>
+            </h1>
+            <ul class="container flex justify-end w-full p-2 pb-0 mx-auto space-x-4 font-bold">
+              <li>
+                <a class="uppercase" href="/">home</a>
+              </li>
+              <!-- This theme generator is written in svelte! Inside of a Vue component due to Astro's features! -->
+              <li>
+                <a class="uppercase" href="/theme-generator">theme generator</a>
+              </li>
+            </ul>
           </div>
         </div>
-        <ul class="container flex justify-end w-full p-2 mx-auto space-x-4">
-          <li>
-            <a class="uppercase" href="/">home</a>
-          </li>
-          <!-- This theme generator is written in svelte! Inside of a Vue component due to Astro's features! -->
-          <li>
-            <a class="uppercase" href="/theme-generator">theme generator</a>
-          </li>
-        </ul>
       </div>
-      <div class="h-[.2rem] header-bottom"></div>
+      <div class="h-4 border-t-2 header-bottom border-primary-mlt"></div>
     </template>
     <template #sidebar-left>
-      <div class="p-4 sidebar">
-        <h2 class="text-2xl font-bold">Sidebar Left</h2>
-        <p class="text-lg">This is the left sidebar.</p>
+      <div class="sidebar">
+        <div class="p-4">
+          <h2 class="text-2xl font-bold">Sidebar Left</h2>
+          <p class="text-lg">This is the left sidebar.</p>
+        </div>
       </div>
     </template>
     <slot></slot>
@@ -45,28 +52,31 @@ import NeueAppShell from '@neue/neue-vue/src/components/AppShell/NeueAppShell.vu
 
   .my-header {
     @apply mx-auto w-full bg-page-base;
-    @apply shadow-lg;
+    @apply shadow-xl;
   }
   .header-bottom {
     background-image: linear-gradient(
       to right,
-      rgba(239, 73, 83, 0.95),
-      rgba(239, 140, 76, 0.95),
-      rgba(194, 239, 73, 0.95),
-      rgba(239, 73, 83, 0.95)
+      rgba(var(--color-primary-base), 0.95),
+      rgba(var(--color-secondary-base), 0.95),
+      rgba(var(--color-tertiary-base), 0.95),
+      rgba(var(--color-primary-base), 0.95)
     );
   }
-  .sidebar {
-    @apply border-r-2  border-neutral-base shadow-xl;
-    /* background-image: linear-gradient(to bottom right, rgba(239, 73, 83, 0.1), rgba(239, 174, 73, 0.1)); */
+  .logo {
+    background-image: linear-gradient(
+      to top right,
+      rgba(var(--color-primary-base), 0.95),
+      rgba(var(--color-secondary-base), 0.95)
+    );
   }
-
-  /* With vanilla css we make out own class, pass in Neue classes and viola. We passed in 3 classes rather than props. */
-  /* .my-header {
-    margin: 0 auto;
-    width: 100%;
-    border-bottom: 2px solid #000;
-    margin-bottom: 1rem;
-  } */
+  .sidebar-left-custom {
+    background-image: linear-gradient(
+      to right,
+      rgba(var(--color-primary-base), 0.05),
+      rgba(var(--color-secondary-base), 0.05),
+      rgba(var(--color-primary-base), 0.05)
+    );
+  }
 }
 </style>

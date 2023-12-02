@@ -1,15 +1,15 @@
 import type { Writable } from 'svelte/store'
-import { writable } from 'svelte/store'
+import { setContext } from 'svelte'
 
 import { localStorageStore } from '@skeletonlabs/skeleton'
-import type { ThemeOptionsCollection, ColorSettings, ColorSettings } from '../types'
+import type { ThemeOptionsCollection } from '../types'
 
-export const storeThemeOptions: Writable<ThemeOptionsCollection> = localStorageStore('storeThemeOptions', {
+const storeThemeOptions: Writable<ThemeOptionsCollection> = localStorageStore('storeThemeOptions', {
   colors: [
     {
       key: 'primary',
       label: 'Primary',
-      hex: '#f00a0a',
+      hex: '',
       rgb: '0 0 0',
       on: '0 0 0',
       stops: 'light,mlt,base,mdk,dark',
@@ -86,6 +86,14 @@ export const storeThemeOptions: Writable<ThemeOptionsCollection> = localStorageS
       on: '0 0 0',
       stops: 'mlt,base,mdk',
     },
+    {
+      key: 'info',
+      label: 'Info',
+      hex: '',
+      rgb: '0 0 0',
+      on: '0 0 0',
+      stops: 'mlt,base,mdk',
+    },
   ],
   derivedColors: [
     {
@@ -94,6 +102,7 @@ export const storeThemeOptions: Writable<ThemeOptionsCollection> = localStorageS
       hex: '',
       rgb: '0 0 0',
       on: '0 0 0',
+      stops: '',
     },
     {
       key: 'page-contrast',
@@ -101,6 +110,7 @@ export const storeThemeOptions: Writable<ThemeOptionsCollection> = localStorageS
       hex: '',
       rgb: '0 0 0',
       on: '0 0 0',
+      stops: '',
     },
     {
       key: 'surface',
@@ -108,6 +118,7 @@ export const storeThemeOptions: Writable<ThemeOptionsCollection> = localStorageS
       hex: '',
       rgb: '0 0 0',
       on: '0 0 0',
+      stops: '',
     },
     {
       key: 'surface-contrast',
@@ -115,6 +126,7 @@ export const storeThemeOptions: Writable<ThemeOptionsCollection> = localStorageS
       hex: '',
       rgb: '0 0 0',
       on: '0 0 0',
+      stops: '',
     },
     {
       key: 'surface-raised',
@@ -122,6 +134,7 @@ export const storeThemeOptions: Writable<ThemeOptionsCollection> = localStorageS
       hex: '',
       rgb: '0 0 0',
       on: '0 0 0',
+      stops: '',
     },
     {
       key: 'surface-raised-contrast',
@@ -129,6 +142,7 @@ export const storeThemeOptions: Writable<ThemeOptionsCollection> = localStorageS
       hex: '',
       rgb: '0 0 0',
       on: '0 0 0',
+      stops: '',
     },
   ],
   fontBase: 'system',
@@ -139,4 +153,7 @@ export const storeThemeOptions: Writable<ThemeOptionsCollection> = localStorageS
   borderBase: '1px',
 })
 
-export const colorResultsStore = writable<ColorSettings[]>([])
+export function setStoreThemeOptions() {
+  setContext('storeThemeOptions', storeThemeOptions)
+  return storeThemeOptions
+}

@@ -16,6 +16,10 @@ export type DerivedColorShades = { base: string }
 
 export type NeueAdditionalColorSchemes = (typeof additionalColorSchemes)[number]
 
+export type NeueAdditionalColorSchemesMapKeys = {
+  [Key in NeueAdditionalColorSchemes]?: string
+}
+
 export type NeueColorSchemes = (typeof neueColorSchemes)[number]
 
 export type IntensityMap = (typeof intensityMap)[number]

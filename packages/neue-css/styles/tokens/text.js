@@ -2,7 +2,7 @@ module.exports = {
   text: {
     // Primary Text Colors
     '.text-primary-base': {
-      color: 'var(--color-primary-base)',
+      color: 'rgba(var(--color-primary-base))',
     },
     '.text-primary-light': {
       color: 'var(--color-primary-light)',

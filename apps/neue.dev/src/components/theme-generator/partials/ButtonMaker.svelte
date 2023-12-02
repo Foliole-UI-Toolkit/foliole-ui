@@ -14,9 +14,6 @@
   export let btnPaddingWidthScale: number = 3
   export let btnPaddingBase: number = 0.5
   export let btnSizeScale: number = 0.2
-
-  // Create an array of font size options
-  const fontSizeOptions: string[] = ['xs', 'sm', 'base', 'lg', 'xl']
 </script>
 
 <p class="pb-2 page-subheading">Buttons</p>
@@ -25,7 +22,7 @@
     <button class="self-center justify-self-center btn-sm my-btn">Btn sm</button>
     <button class="self-center justify-self-center btn-md my-btn">Btn md</button>
     <button class="self-center justify-self-center btn-lg my-btn">Btn lg</button>
-    <button class="self-center justify-self-center chip">Chip</button>
+    <button class="self-center justify-self-center my-chip bg-neutral-light">Chip</button>
     <label class=" grid grid-cols-1 items-center md:grid-cols-[200px_1fr] gap-2" for="sizeBase"
       >Size Base (.1-1):
       <input
