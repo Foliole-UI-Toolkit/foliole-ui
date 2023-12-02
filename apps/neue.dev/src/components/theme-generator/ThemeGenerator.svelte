@@ -392,7 +392,7 @@
       <div class="mx-auto space-y-4 text-center page-section">
         <ChipOptions
           on:colorSchemeChange={() => generateThemeOpts()}
-          on:colorAdditionChange={() => generateThemeOpts(false)}
+          on:colorAdditionChange={() => generateThemeOpts()}
         />
         <button class="btn-md my-btn" on:click={() => generateThemeOpts()}>Generate Preview</button>
       </div>
