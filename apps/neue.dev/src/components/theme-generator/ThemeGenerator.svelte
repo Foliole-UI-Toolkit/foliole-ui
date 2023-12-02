@@ -159,6 +159,7 @@
   // Random Hex generated for color scheme genration.
   function generateRandomHexValue() {
     primaryColorHex = generateRandomColor() as string
+    generateThemeOpts()
   }
 
   // Generate colors: create colors collection, fill in template options from colors collection, build UI options as outputted strings for preview and themes.
