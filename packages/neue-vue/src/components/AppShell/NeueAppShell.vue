@@ -14,7 +14,7 @@ export interface AppShellProps {
   siteFooterClasses?: string
 }
 
-const props = withDefaults(defineProps<AppShellProps>(), {
+withDefaults(defineProps<AppShellProps>(), {
   appShellClasses: 'app-shell',
   siteHeaderClasses: 'site-header site-header-options',
   siteCentralWrapperClasses: 'site-central-wrapper',
