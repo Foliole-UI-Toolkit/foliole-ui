@@ -27,6 +27,15 @@ module.exports = {
       textAlign: 'center',
       whiteSpace: 'nowrap',
       borderRadius: 'var(--ui-button-roundness)',
+      transition: 'filter 0.2s ease-in-out, transform 0.2s ease-in-out',
+    },
+    '.btn-base:hover': {
+      filter: 'brightness(95%)',
+      transform: 'scale(.98)',
+    },
+    '.btn-base:active': {
+      transform: 'scale(1.05)',
+      filter: 'brightness(101%)',
     },
   },
 }
