@@ -2,29 +2,34 @@
   "name": "@neue/neue-ui",
   "version": "0.0.1",
   "main": "index.js",
+  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Aaron Crockett",
-  "description": "Neue - Open source Tools.",
+  "description": "Neue - UI. Toolkit. CSS agnostic solution tailwind support. Framework flexible, built to be easily ported to any framework.",
   "license": "MIT",
-  "dependencies": {
-    "@changesets/cli": "^2.26.2",
-    "autoprefixer": "^10.4.16"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "cspell": "^6.31.1"
+    "cspell": "^6.31.1",
+    "@changesets/cli": "^2.26.2"
   },
+  "homepage": "https://neue-ui.dev/",
   "keywords": [
     "components",
     "ui",
-    "component",
     "vue",
+    "svelte",
+    "react",
     "component-library",
     "ui-components",
     "ui-framework",
+    "css-agnostic",
+    "css-variables",
+    "pollen",
     "tailwind",
     "tailwindcss",
-    "components-library"
+    "components-library",
+    "ui-library"
   ]
 }

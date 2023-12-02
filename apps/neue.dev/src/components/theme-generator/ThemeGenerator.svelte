@@ -68,9 +68,17 @@
   let selectedSurfaceLevel: string = 'low'
   let grayHue = 0.02
   // Button options
-  let btnSizeScale = 0.2
-  let btnPaddingWidthScale: number = 3
   let btnPaddingBase: number = 0.5
+  let btnPaddingWidthScale: number = 3
+  let btnSizeScale = 0.2
+  let btnHoverScale = 0.98
+  let btnActiveScale = 1.05
+  let btnHoverBrightness = 95
+  let btnActiveBrightness = 102
+  let btnFontSmSize = '--scale-00'
+  let btnFontSize = '--scale-0'
+  let btnFontLgSize = '--scale-1'
+
   // Rounded options
   let roundedSize = '--radius-md'
   let buttonRoundLevel = '--radius-full'
@@ -114,6 +122,13 @@
     btnPaddingBase = event.detail.btnPaddingBase
     btnPaddingWidthScale = event.detail.btnPaddingWidthScale
     btnSizeScale = event.detail.btnSizeScale
+    btnHoverScale = event.detail.btnHoverScale
+    btnActiveScale = event.detail.btnActiveScale
+    btnHoverBrightness = event.detail.btnHoverBrightness
+    btnActiveBrightness = event.detail.btnActiveBrightness
+    btnFontSmSize = event.detail.btnFontSmSize
+    btnFontSize = event.detail.btnFontSize
+    btnFontLgSize = event.detail.btnFontLgSize
 
     generateThemeOpts()
   }
@@ -144,6 +159,7 @@
   // Random Hex generated for color scheme genration.
   function generateRandomHexValue() {
     primaryColorHex = generateRandomColor() as string
+    generateThemeOpts()
   }
 
   // Generate colors: create colors collection, fill in template options from colors collection, build UI options as outputted strings for preview and themes.
@@ -218,7 +234,18 @@
     const { btnPaddingWidth, smBtnCalcs, lgBtnCalcs, chipBtnCalcs } = calcBtnCSSStrings()
 
     // Btn strings
-    builtResults = buildBtnStrings(btnPaddingBase, btnPaddingWidth, smBtnCalcs, lgBtnCalcs, chipBtnCalcs)
+    let btnOpts = {
+      btnPaddingBase,
+      btnPaddingWidth,
+      btnHoverScale,
+      btnActiveScale,
+      btnHoverBrightness,
+      btnActiveBrightness,
+      btnFontSmSize,
+      btnFontSize,
+      btnFontLgSize,
+    }
+    builtResults = buildBtnStrings(btnOpts, smBtnCalcs, lgBtnCalcs, chipBtnCalcs)
     previewCSSVars += builtResults.cssVars
     themeOptsJsInCSS += builtResults.jsInCSS
 
@@ -392,7 +419,7 @@
       <div class="mx-auto space-y-4 text-center page-section">
         <ChipOptions
           on:colorSchemeChange={() => generateThemeOpts()}
-          on:colorAdditionChange={() => generateThemeOpts(false)}
+          on:colorAdditionChange={() => generateThemeOpts()}
         />
         <button class="btn-md my-btn" on:click={() => generateThemeOpts()}>Generate Preview</button>
       </div>
@@ -440,7 +467,19 @@
     <h3 class="text-3xl page-heading">Elements</h3>
     <div class="grid grid-cols-2 gap-4">
       <div class="section-box">
-        <ButtonMaker {btnSizeScale} {btnPaddingBase} {btnPaddingWidthScale} on:btnOptsChange={handleBtnOptsChange} />
+        <ButtonMaker
+          {btnSizeScale}
+          {btnPaddingBase}
+          {btnPaddingWidthScale}
+          {btnHoverScale}
+          {btnActiveScale}
+          {btnHoverBrightness}
+          {btnActiveBrightness}
+          {btnFontSmSize}
+          {btnFontSize}
+          {btnFontLgSize}
+          on:btnOptsChange={handleBtnOptsChange}
+        />
       </div>
       <div class="section-box"><p>Inputs here</p></div>
     </div>
