@@ -1,18 +1,18 @@
 .btn-p-sm {
     padding: var(--btn-p-sm);
-    font-size: var(--scale-00)
+    font-size: var(--btn-font-sm-size)
 }
 .btn-p-md {
     padding: var(--btn-p-base);
-    font-size: var(--scale-0)
+    font-size: var(--btn-font-size)
 }
 .btn-p-lg {
     padding: var(--btn-p-lg);
-    font-size: var(--scale-1)
+    font-size: var(--btn-font-lg-size)
 }
 .btn-chip-p {
     padding: var(--btn-chip-p);
-    font-size: var(--scale-00)
+    font-size: var(--btn-font-sm-size)
 }
 .btn-base {
     display: inline-flex;
@@ -20,7 +20,16 @@
     align-items: center;
     text-align: center;
     white-space: nowrap;
-    border-radius: var(--ui-button-roundness)
+    border-radius: var(--ui-button-roundness);
+    transition: filter 0.2s ease-in-out, transform 0.2s ease-in-out
+}
+.btn-base:hover {
+    transform: scale(var(--btn-hover-scale));
+    filter: brightness(var(--btn-hover-filter))
+}
+.btn-base:active {
+    transform: scale(var(--btn-active-scale));
+    filter: brightness(var(--btn-active-filter))
 }
 .input-base {
     flex-shrink: 1;

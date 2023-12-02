@@ -35,8 +35,7 @@ export function buildColorStrings(store: ColorSettings[], prefix: string) {
 
 //Build CSSVars and Options JS - Buttons
 export function buildBtnStrings(
-  btnPaddingBase: number,
-  btnPaddingWidth: number,
+  btnOpts: Record<string, number | string>,
   smBtnCalcs: Record<string, number>,
   lgBtnCalcs: Record<string, number>,
   chipBtnCalcs: Record<string, number>,
@@ -47,14 +46,32 @@ export function buildBtnStrings(
   cssVars += `--btn-p-sm: ${smBtnCalcs.smBtnPaddingBase}rem ${smBtnCalcs.smBtnPaddingWidth}rem;\n`
   jsInCSS += `  'p-sm': '${smBtnCalcs.smBtnPaddingBase}rem ${smBtnCalcs.smBtnPaddingWidth}rem',\n`
   //btn padding base
-  cssVars += `--btn-p-base: ${btnPaddingBase}rem ${btnPaddingWidth}rem;\n`
-  jsInCSS += `  'p-base': '${btnPaddingBase}rem ${btnPaddingWidth}rem',\n`
+  cssVars += `--btn-p-base: ${btnOpts.btnPaddingBase}rem ${btnOpts.btnPaddingWidth}rem;\n`
+  jsInCSS += `  'p-base': '${btnOpts.btnPaddingBase}rem ${btnOpts.btnPaddingWidth}rem',\n`
   //chips
   cssVars += `--btn-chip-p: ${chipBtnCalcs.chipBtnPaddingBase}rem ${chipBtnCalcs.chipBtnPaddingWidth}rem;\n`
   jsInCSS += `  'chip-p': '${chipBtnCalcs.chipBtnPaddingBase}rem ${chipBtnCalcs.chipBtnPaddingWidth}rem',\n`
   //btn padding lg
   cssVars += `--btn-p-lg: ${lgBtnCalcs.lgBtnPaddingBase}rem ${lgBtnCalcs.lgBtnPaddingWidth}rem;\n`
   jsInCSS += `  'p-lg': '${lgBtnCalcs.lgBtnPaddingBase}rem ${lgBtnCalcs.lgBtnPaddingWidth}rem',\n`
+  // btn interactive options
+  // transform/scale
+  cssVars += `--btn-hover-scale: ${btnOpts.btnHoverScale};\n`
+  jsInCSS += `  'hover-scale': '${btnOpts.btnHoverScale}',\n`
+  cssVars += `--btn-active-scale: ${btnOpts.btnActiveScale};\n`
+  jsInCSS += `  'active-scale': '${btnOpts.btnActiveScale}',\n`
+  // filter/brightness
+  cssVars += `--btn-hover-filter: ${btnOpts.btnHoverBrightness}%;\n`
+  jsInCSS += `  'hover-filter': '${btnOpts.btnHoverBrightness}%',\n`
+  cssVars += `--btn-active-filter: ${btnOpts.btnActiveBrightness}%;\n`
+  jsInCSS += `  'active-filter': '${btnOpts.btnActiveBrightness}%',\n`
+  // btn font sizes
+  cssVars += `--btn-font-sm-size: var(${btnOpts.btnFontSmSize});\n`
+  jsInCSS += `  'font-sm-size': 'var(${btnOpts.btnFontSmSize})',\n`
+  cssVars += `--btn-font-size: var(${btnOpts.btnFontSize});\n`
+  jsInCSS += `  'font-size': 'var(${btnOpts.btnFontSize})',\n`
+  cssVars += `--btn-font-lg-size: var(${btnOpts.btnFontLgSize});\n`
+  jsInCSS += `  'font-lg-size': 'var(${btnOpts.btnFontLgSize})',\n`
   // cap end with }
   jsInCSS += `}\n`
 
