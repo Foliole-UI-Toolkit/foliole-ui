@@ -1,32 +1,38 @@
-<!-- <script lang="ts" setup>
-import { twMerge } from 'tailwind-merge'
-import { withDefaults, computed, useAttrs, inject } from 'vue'
-defineEmits(['click', 'keydown', 'keyup', 'keypress', 'mouseover', 'mouseleave', 'focus', 'blur'])
+<script lang="ts" setup>
+import classNames from 'classnames'
+
+import { type ComputedRef, computed, inject } from 'vue'
+
+import { withDefaults } from 'vue'
+defineEmits(['blur', 'click', 'focus', 'keydown', 'keypress', 'keyup', 'mouseleave', 'mouseover'])
 
 export interface AppRailAnchorProps {
   selected: boolean
-  railItemsLabelClasses?: string
-  railItemsWrapperClasses?: string
+  railTileWrapperClasses?: string
+  railTileContentWrapperClasses?: string
+  railItemClasses?: string
+  railLabelClasses?: string
 }
 
 const props = withDefaults(defineProps<AppRailAnchorProps>(), {
   selected: false,
-  railItemsLabelClasses: 'rail-items-label-options',
-  railItemsWrapperClasses: 'rail-items-wrapper rail-items-wrapper-options',
+  railTileWrapperClasses: 'rail-tile-wrapper rail-tile-wrapper-options',
+  railTileContentWrapperClasses: 'rail-tile-content-wrapper',
+  railItemClasses: 'rail-item rail-item-options',
+  railLabelClasses: 'rail-label',
 })
 
-const attrs = useAttrs()
+const activeClass = inject<ComputedRef<string>>('active')
 
-// Framework reactivity dependent code
-const activeClass = inject('active')
-const selectedActiveClass = computed(() => `${props.selected ? activeClass.value : ''}`)
-const mergedWrapperClasses = computed(() => twMerge([props.railItemsWrapperClasses, selectedActiveClass.value]))
+// Computed classes
+const selectedActiveClass = computed(() => `${props.selected ? activeClass?.value : ''}`)
+
+const mergedWrapperClasses = computed(() => classNames([props.railTileWrapperClasses, selectedActiveClass.value]))
 </script>
 
 <template>
   <a
-    class="rail-anchor-items"
-    v-bind="attrs"
+    :class="mergedWrapperClasses"
     data-testid="app-rail-anchor"
     @click="$emit('click'), $event"
     @keydown="$emit('keydown', $event)"
@@ -37,11 +43,12 @@ const mergedWrapperClasses = computed(() => twMerge([props.railItemsWrapperClass
     @focus="$emit('focus'), $event"
     @blur="$emit('blur'), $event"
   >
-    <div :class="mergedWrapperClasses">
-      <div v-if="$slots.lead" class="rail-anchor-items-lead">
+    <div :class="railItemClasses">
+      <div class="rail-tile-content-wrapper">
         <slot name="lead"></slot>
+
+        <span :class="railLabelClasses"><slot name="label"></slot></span>
       </div>
-      <div :class="railItemsLabelClasses"><slot></slot></div>
     </div>
   </a>
-</template> -->
+</template>
