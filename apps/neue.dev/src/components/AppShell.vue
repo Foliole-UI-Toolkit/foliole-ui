@@ -1,15 +1,32 @@
 <script setup lang="ts">
+import { withDefaults, ref } from 'vue'
+
 import NeueAppShell from '@neue/neue-vue/src/components/AppShell/NeueAppShell.vue'
+import NeueAppRail from '@neue/neue-vue/src/components/AppRail/NeueAppRail.vue'
+
+import NeueAppRailButton from '../../../../packages/neue-vue/src/components/AppRail/NeueAppRailButton.vue'
+
+const section = ref('styles')
+
+export interface Props {
+  pathname?: string
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  pathname: '',
+})
 </script>
 <template>
   <NeueAppShell
-    siteCentralWrapperClasses="site-central-wrapper mx-auto "
-    siteHeaderClasses="my-header siteheader site-header-options"
-    pageClasses="page relative z-0"
-    siteSidebarLeftClasses="sidebar-left site-sidebar-left-options shadow-sm border-r border-surface-netural-base bg-page-base-75 sidebar-left-custom"
+    appShellClasses="app-shell my-app-shell"
+    siteCentralWrapperClasses="site-central-wrapper mx-auto"
+    siteHeaderClasses="siteheader site-header-options my-header"
+    pageClasses="page my-page"
+    siteSidebarLeftClasses="sidebar-left site-sidebar-left-options my-side-bar-left"
   >
     <template #header>
       <div class="flex flex-wrap border-primary-light bg-neutral-mlt-10">
+        <p>asdf</p>
         <div class="w-full px-2 py-4">
           <div class="container flex items-center justify-start mx-auto">
             <span
@@ -34,7 +51,49 @@ import NeueAppShell from '@neue/neue-vue/src/components/AppShell/NeueAppShell.vu
       <div class="h-4 border-t-2 header-bottom border-primary-mlt"></div>
     </template>
     <template #sidebar-left>
-      <div class="sidebar">
+      <div class="flex h-full">
+        <NeueAppRail client:visible appRailClasses="app-rail my-app-rail">
+          <NeueAppRailButton
+            v-model="section"
+            :selected="section === 'docs'"
+            :value="'docs'"
+            name="sections"
+            railItemClasses="rail-item rail-item-options"
+            client:load
+          >
+            <template #lead>
+              <span class="block w-full h-full bg-secondary-base-50"></span>
+            </template>
+            <template #label>Docs</template>
+          </NeueAppRailButton>
+          <NeueAppRailButton
+            v-model="section"
+            :selected="section === 'styles'"
+            :value="'styles'"
+            name="sections"
+            railItemClasses="rail-item rail-item-options"
+            client:load
+          >
+            <template #lead>
+              <span class="block w-full h-full bg-secondary-base-50"></span>
+            </template>
+            <template #label>Styles</template>
+          </NeueAppRailButton>
+          <NeueAppRailButton
+            :value="'components'"
+            v-model="section"
+            :selected="section === 'components'"
+            name="sections"
+            railItemClasses="rail-item rail-item-options"
+            client:load
+          >
+            <template #lead>
+              <span class="block w-full h-full bg-secondary-base-50"></span>
+            </template>
+            <template #label>Components</template>
+          </NeueAppRailButton>
+          <template #trail></template>
+        </NeueAppRail>
         <div class="p-4">
           <h2 class="text-2xl font-bold">Sidebar Left</h2>
           <p class="text-lg">This is the left sidebar.</p>
@@ -49,11 +108,20 @@ import NeueAppShell from '@neue/neue-vue/src/components/AppShell/NeueAppShell.vu
 
 @layer components {
   /* // if we add  siteheader and site-header-options to the components layer in the TW plugin we can simply concat this into one single class, too*/
-
+  .my-app-shell {
+    @apply bg-page-base mx-auto;
+    background-image: linear-gradient(
+      to right,
+      rgba(var(--color-primary-base), 0.1),
+      rgba(var(--color-secondary-base), 0.1),
+      rgba(var(--color-primary-base), 0.1)
+    );
+  }
   .my-header {
     @apply mx-auto w-full bg-page-base;
     @apply shadow-xl;
   }
+
   .header-bottom {
     background-image: linear-gradient(
       to right,
@@ -70,13 +138,24 @@ import NeueAppShell from '@neue/neue-vue/src/components/AppShell/NeueAppShell.vu
       rgba(var(--color-secondary-base), 0.95)
     );
   }
-  .sidebar-left-custom {
+  .my-side-bar-left {
+    @apply shadow-sm border-r border-surface-raised-base bg-page-base-90;
+
     background-image: linear-gradient(
       to right,
       rgba(var(--color-primary-base), 0.05),
       rgba(var(--color-secondary-base), 0.05),
       rgba(var(--color-primary-base), 0.05)
     );
+  }
+  .my-app-rail {
+    @apply bg-surface-raised-base-50 border-r border-surface-raised-base w-[5.5rem];
+  }
+  .my-page {
+    @apply relative z-0;
+  }
+  p {
+    font-size: var(--scale-00);
   }
 }
 </style>
