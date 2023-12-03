@@ -405,7 +405,7 @@
 <svelte:window on:keydown={handleKeyDown} />
 <svelte:head>{@html previewCSSVars}</svelte:head>
 
-<div class="container p-4 space-y-4">
+<div class="p-4 space-y-4">
   <section class="p-8">
     <h2 class="text-6xl page-heading">Color Generator</h2>
     <div class="flex flex-col items-center space-y-4">
