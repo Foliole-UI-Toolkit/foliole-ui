@@ -21,7 +21,8 @@ export interface AppRailAnchorProps {
   title?: string
   value: string
   selected: boolean
-  railItemWrapperClasses?: string
+  railTileWrapperClasses?: string
+  railTileContentWrapperClasses?: string
   railItemClasses?: string
   railLabelClasses?: string
 }
@@ -32,7 +33,8 @@ const props = withDefaults(defineProps<AppRailAnchorProps>(), {
   title: '',
   value: '',
   selected: false,
-  railItemWrapperClasses: 'rail-item-wrapper rail-item-wrapper-options',
+  railTileWrapperClasses: 'rail-tile-wrapper rail-tile-wrapper-options',
+  railTileContentWrapperClasses: 'rail-tile-content-wrapper',
   railItemClasses: 'rail-item rail-item-options',
   railLabelClasses: 'rail-label',
 })
@@ -44,7 +46,7 @@ const modelValueRef = ref(props.modelValue)
 // Computed classes
 const selectedActiveClass = computed(() => `${props.selected ? activeClass?.value : ''}`)
 
-const mergedWrapperClasses = computed(() => classNames([props.railItemWrapperClasses, selectedActiveClass.value]))
+const mergedWrapperClasses = computed(() => classNames([props.railTileWrapperClasses, selectedActiveClass.value]))
 
 function handleInput(e: any) {
   modelValueRef.value = e?.target?.value
@@ -66,7 +68,7 @@ function handleInput(e: any) {
       />
     </div>
     <div :class="railItemClasses">
-      <div class="flex flex-col items-center justify-center h-full">
+      <div class="rail-tile-content-wrapper">
         <slot name="lead"></slot>
 
         <span :class="railLabelClasses"><slot name="label"></slot></span>

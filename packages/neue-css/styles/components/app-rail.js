@@ -15,17 +15,24 @@ module.exports = {
       'box-sizing': 'border-box',
     },
     /* Item and Item Wrapper Styles */
-    '.rail-item-wrapper': {
+    '.rail-tile-wrapper': {
       display: 'flex',
       'flex-direction': 'column',
       'align-items': 'stretch',
       width: '100%',
       cursor: 'pointer',
     },
-    '.rail-item-wrapper-options': {
+    '.rail-tile-wrapper-options': {
       'aspect-ratio': '1',
       'text-align': 'center',
       fontSize: 'var(--btn-font-sm-size)',
+    },
+    '.rail-tile-content-wrapper': {
+      display: 'flex',
+      'flex-direction': 'column',
+      'align-items': 'center',
+      'justify-content': 'center',
+      height: '100%',
     },
     '.rail-item': {
       height: '100%',
