@@ -1,4 +1,4 @@
-<!-- <script lang="ts" setup>
+<script lang="ts" setup>
 import { withDefaults, computed, provide } from 'vue'
 
 export interface AppRailProps {
@@ -10,8 +10,8 @@ export interface AppRailProps {
 }
 
 const props = withDefaults(defineProps<AppRailProps>(), {
-  appRailClasses: 'app-rail app-rail-options',
-  activeTokenClass: 'bg-primary-active-token',
+  appRailClasses: 'app-rail app-rail-options bg-surface-base',
+  activeTokenClass: 'bg-primary-base',
   regionLeadClasses: '',
   regionDefaultClasses: '',
   regionTrailClasses: '',
@@ -20,7 +20,6 @@ const props = withDefaults(defineProps<AppRailProps>(), {
 const activeClass = computed(() => `${props.activeTokenClass}`)
 
 provide('active', activeClass)
-// provide('active', classesActive)
 </script>
 <template>
   <div :class="appRailClasses">
@@ -28,4 +27,4 @@ provide('active', activeClass)
     <div :class="regionDefaultClasses"><slot /></div>
     <div :class="regionTrailClasses"><slot name="trail" /></div>
   </div>
-</template> -->
+</template>

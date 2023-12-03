@@ -9,8 +9,9 @@ const { border } = require('../styles/tokens/border')
 const { text } = require('../styles/tokens/text')
 const { ui } = require('../styles/tokens/ui')
 const { appShell } = require('../styles/components/app-shell')
+const { appRail } = require('../styles/components/app-rail')
 
-const mergedCssInJs = { ...button, ...input, ...background, ...border, ...text, ...ui, ...appShell }
+const mergedCssInJs = { ...button, ...input, ...background, ...border, ...text, ...ui, ...appShell, ...appRail }
 
 ;(async () => {
   try {
