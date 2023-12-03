@@ -26,7 +26,6 @@ const props = withDefaults(defineProps<Props>(), {
   >
     <template #header>
       <div class="flex flex-wrap border-primary-light bg-neutral-mlt-10">
-        <p>asdf</p>
         <div class="w-full px-2 py-4">
           <div class="container flex items-center justify-start mx-auto">
             <span

@@ -13,10 +13,8 @@ import NeueAppShell from '@neue/neue-vue/src/components/AppShell/NeueAppShell.vu
 </script>
 
 <template>
-  <button class="asdfasdf">asdf</button>
   <NeueAppShell>
     <template #header>
-      <p class="asdf">example</p>
       <div class="wrapper">
         <nav class="p-2 space-x-4 bg-primary-dark">
           <RouterLink to="/">Home</RouterLink>
