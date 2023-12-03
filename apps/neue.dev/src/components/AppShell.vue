@@ -3,16 +3,15 @@ import { withDefaults, ref } from 'vue'
 
 import NeueAppShell from '@neue/neue-vue/src/components/AppShell/NeueAppShell.vue'
 import NeueAppRail from '@neue/neue-vue/src/components/AppRail/NeueAppRail.vue'
-
 import NeueAppRailButton from '../../../../packages/neue-vue/src/components/AppRail/NeueAppRailButton.vue'
 
-const section = ref('styles')
+const section = ref('docs')
 
 export interface Props {
   pathname?: string
 }
 
-const props = withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<Props>(), {
   pathname: '',
 })
 </script>
@@ -50,12 +49,12 @@ const props = withDefaults(defineProps<Props>(), {
       <div class="h-4 border-t-2 header-bottom border-primary-mlt"></div>
     </template>
     <template #sidebar-left>
-      <div class="flex h-full">
+      <div v-if="pathname !== '/'" class="flex h-full">
         <NeueAppRail client:visible appRailClasses="app-rail my-app-rail">
           <NeueAppRailButton
             v-model="section"
             :selected="section === 'docs'"
-            :value="'docs'"
+            value="docs"
             name="sections"
             railItemClasses="rail-item rail-item-options"
             client:load
@@ -68,7 +67,7 @@ const props = withDefaults(defineProps<Props>(), {
           <NeueAppRailButton
             v-model="section"
             :selected="section === 'styles'"
-            :value="'styles'"
+            value="styles"
             name="sections"
             railItemClasses="rail-item rail-item-options"
             client:load
@@ -79,9 +78,9 @@ const props = withDefaults(defineProps<Props>(), {
             <template #label>Styles</template>
           </NeueAppRailButton>
           <NeueAppRailButton
-            :value="'components'"
             v-model="section"
             :selected="section === 'components'"
+            value="components"
             name="sections"
             railItemClasses="rail-item rail-item-options"
             client:load
