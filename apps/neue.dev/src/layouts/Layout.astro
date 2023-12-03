@@ -4,11 +4,9 @@ import '../pollen.css'
 
 import AppShell from  '../components/AppShell.vue'
 
-interface Props {
-	title: string;
-}
-
 const { title } = Astro.props; 
+
+const pathname = new URL(Astro.request.url).pathname;
 ---
 
 <!doctype html>
@@ -23,13 +21,14 @@ const { title } = Astro.props;
 		<title>{title}</title>
 		<link rel="stylesheet" href="https://use.typekit.net/tqq6mmg.css" />
 	</head>
-	<body data-theme="example" class="min-h-screen bg-page-base">
-
-		<div class="mx-auto app-wrapper">
-			<AppShell>
+	<body class="h-full min-h-screen bg-page-base">
+			<AppShell
+				pathname={pathname}
+				client:load
+			>
+		
 				<slot></slot>
 			</AppShell>
-		</div>
 	</body>
 </html>
 <style is:global lang="postcss">
@@ -71,15 +70,7 @@ const { title } = Astro.props;
 	.my-select {
 		@apply select-base input-roundness;
 	}
-	.app-wrapper {
-		@apply bg-page-base;
-		background-image: linear-gradient(
-      to right,
-      rgba(var(--color-primary-base), 0.1),
-      rgba(var(--color-secondary-base), 0.1),
-      rgba(var(--color-primary-base), 0.1)
-    );
-	}
+
 	input.nested-input {
     box-shadow: none !important;
     border: none !important;
