@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import NeueAccordion from '@neue/neue-vue/src/components/Accordion/NeueAccordion.vue'
 import NeueAccordionItem from '@neue/neue-vue/src/components/Accordion/NeueAccordionItem.vue'
+import SlideToggle from '@neue/neue-vue/src/components/SlideToggle/SlideToggle.vue'
 </script>
 <template>
   <div class="w-full">
@@ -23,6 +24,7 @@ import NeueAccordionItem from '@neue/neue-vue/src/components/Accordion/NeueAccor
         ultrices turpis mi nec metus.</NeueAccordionItem
       >
     </NeueAccordion>
+    <SlideToggle />
   </div>
 </template>
 
