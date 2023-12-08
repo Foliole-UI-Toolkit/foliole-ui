@@ -246,13 +246,13 @@
       btnFontLgSize,
     }
     builtResults = buildBtnStrings(btnOpts, smBtnCalcs, lgBtnCalcs, chipBtnCalcs)
-    previewCSSVars += builtResults.cssVars
-    themeOptsJsInCSS += builtResults.jsInCSS
+    previewCSSVars += builtResults.cssVarsBuilt
+    themeOptsJsInCSS += builtResults.jsInCSSBuilt
 
     // Ui strings
     builtResults = buildUIStrings(roundedSize, buttonRoundLevel, inputRoundLevel)
-    previewCSSVars += builtResults.cssVars
-    themeOptsJsInCSS += builtResults.jsInCSS
+    previewCSSVars += builtResults.cssVarsBuilt
+    themeOptsJsInCSS += builtResults.jsInCSSBuilt
 
     previewCSSVars = `<style>\n:root { \n ${previewCSSVars}  }</style>`
   }

@@ -11,6 +11,23 @@ const { getRgbString } = useGetConvertedColor()
 
 const { generateA11yOnColor, generateDarkenedValue, generateLightenedValue } = useGenerateColor()
 
+// String builder helpers for internal file use.
+function buildJsInCSSHead(base: string) {
+  return `export const ${base} = { \n`
+}
+
+function buildJsInCSSTail(base: string) {
+  return `}\n`
+}
+
+function buildLineFromPrefixAndValue(attrPrefix: string, attrBase: string, cssValue: string) {
+  let cssVars = `--${attrPrefix}-${attrBase}: ${cssValue};\n`
+  let jsInCSS = `  '${attrBase}': '${cssValue}',\n`
+
+  return { cssVars, jsInCSS }
+}
+
+// Loop over colors.
 export function buildColorStrings(store: ColorSettings[], prefix: string) {
   let cssVars = ''
   let jsInCSS = 'export const color = { \n'
@@ -33,76 +50,8 @@ export function buildColorStrings(store: ColorSettings[], prefix: string) {
   return { cssVars, jsInCSS }
 }
 
-//Build CSSVars and Options JS - Buttons
-export function buildBtnStrings(
-  btnOpts: Record<string, number | string>,
-  smBtnCalcs: Record<string, number>,
-  lgBtnCalcs: Record<string, number>,
-  chipBtnCalcs: Record<string, number>,
-) {
-  let cssVars = ''
-  let jsInCSS = 'export const btn = { \n'
-  // btn padding sm
-  cssVars += `--btn-p-sm: ${smBtnCalcs.smBtnPaddingBase}rem ${smBtnCalcs.smBtnPaddingWidth}rem;\n`
-  jsInCSS += `  'p-sm': '${smBtnCalcs.smBtnPaddingBase}rem ${smBtnCalcs.smBtnPaddingWidth}rem',\n`
-  //btn padding base
-  cssVars += `--btn-p-base: ${btnOpts.btnPaddingBase}rem ${btnOpts.btnPaddingWidth}rem;\n`
-  jsInCSS += `  'p-base': '${btnOpts.btnPaddingBase}rem ${btnOpts.btnPaddingWidth}rem',\n`
-  //chips
-  cssVars += `--btn-chip-p: ${chipBtnCalcs.chipBtnPaddingBase}rem ${chipBtnCalcs.chipBtnPaddingWidth}rem;\n`
-  jsInCSS += `  'chip-p': '${chipBtnCalcs.chipBtnPaddingBase}rem ${chipBtnCalcs.chipBtnPaddingWidth}rem',\n`
-  //btn padding lg
-  cssVars += `--btn-p-lg: ${lgBtnCalcs.lgBtnPaddingBase}rem ${lgBtnCalcs.lgBtnPaddingWidth}rem;\n`
-  jsInCSS += `  'p-lg': '${lgBtnCalcs.lgBtnPaddingBase}rem ${lgBtnCalcs.lgBtnPaddingWidth}rem',\n`
-  // btn interactive options
-  // transform/scale
-  cssVars += `--btn-hover-scale: ${btnOpts.btnHoverScale};\n`
-  jsInCSS += `  'hover-scale': '${btnOpts.btnHoverScale}',\n`
-  cssVars += `--btn-active-scale: ${btnOpts.btnActiveScale};\n`
-  jsInCSS += `  'active-scale': '${btnOpts.btnActiveScale}',\n`
-  // filter/brightness
-  cssVars += `--btn-hover-filter: ${btnOpts.btnHoverBrightness}%;\n`
-  jsInCSS += `  'hover-filter': '${btnOpts.btnHoverBrightness}%',\n`
-  cssVars += `--btn-active-filter: ${btnOpts.btnActiveBrightness}%;\n`
-  jsInCSS += `  'active-filter': '${btnOpts.btnActiveBrightness}%',\n`
-  // btn font sizes
-  cssVars += `--btn-font-sm-size: var(${btnOpts.btnFontSmSize});\n`
-  jsInCSS += `  'font-sm-size': 'var(${btnOpts.btnFontSmSize})',\n`
-  cssVars += `--btn-font-size: var(${btnOpts.btnFontSize});\n`
-  jsInCSS += `  'font-size': 'var(${btnOpts.btnFontSize})',\n`
-  cssVars += `--btn-font-lg-size: var(${btnOpts.btnFontLgSize});\n`
-  jsInCSS += `  'font-lg-size': 'var(${btnOpts.btnFontLgSize})',\n`
-  // cap end with }
-  jsInCSS += `}\n`
-
-  return { cssVars, jsInCSS }
-}
-
-// Build CSSVars and Options JS - UI Options
-export function buildUIStrings(roundedSize: string, buttonRoundLevel: string, inputRoundLevel: string) {
-  let cssVars = ''
-  let jsInCSS = 'export const ui = { \n'
-  if (roundedSize === 'none') {
-    cssVars += `--ui-rounded: 0px;\n`
-    jsInCSS += `'neue-rounded': '0px'\n}\n`
-    cssVars += `--ui-button-roundness: 0px;\n`
-    jsInCSS += `'button-roundness': '0px'\n}\n`
-  } else {
-    cssVars += `--ui-rounded: var(${roundedSize});\n`
-    jsInCSS += `'rounded': 'var(${roundedSize})',\n`
-    cssVars += `--ui-button-roundness: var(${buttonRoundLevel});\n`
-    jsInCSS += `'button-roundness': 'var(${buttonRoundLevel})',\n`
-    cssVars += `--ui-input-roundness: var(${inputRoundLevel});\n`
-    jsInCSS += `'input-roundness': 'var(${inputRoundLevel})',\n`
-    // cap end with }
-    jsInCSS += `}\n`
-  }
-
-  return { cssVars, jsInCSS }
-}
-
-export // Build Shades.
-function buildColorShades(color: any) {
+// Build Shades.
+export function buildColorShades(color: any) {
   const hexValidation = new RegExp(/^#[0-9a-f]{6}$/i)
 
   if (!hexValidation.test(color.hex)) color.hex = '#CCCCCC'
@@ -145,4 +94,115 @@ function buildColorShades(color: any) {
   })
 
   return response
+}
+
+// Build CSSVars and Options JS - Buttons
+export function buildBtnStrings(
+  btnOpts: Record<string, number | string>,
+  smBtnCalcs: Record<string, number>,
+  lgBtnCalcs: Record<string, number>,
+  chipBtnCalcs: Record<string, number>,
+) {
+  let cssVarsBuilt = ''
+  let jsInCSSBuilt = buildJsInCSSHead('btn')
+
+  // btn padding sm
+  let { cssVars, jsInCSS } = buildLineFromPrefixAndValue(
+    'btn',
+    'p-sm',
+    `${smBtnCalcs.smBtnPaddingBase}rem ${smBtnCalcs.smBtnPaddingWidth}rem`,
+  )
+  cssVarsBuilt += cssVars
+  jsInCSSBuilt += jsInCSS
+
+  // btn padding base
+  ;({ cssVars, jsInCSS } = buildLineFromPrefixAndValue(
+    'btn',
+    'p-base',
+    `${btnOpts.btnPaddingBase}rem ${btnOpts.btnPaddingWidth}rem`,
+  ))
+  cssVarsBuilt += cssVars
+  jsInCSSBuilt += jsInCSS
+
+  // chips
+  ;({ cssVars, jsInCSS } = buildLineFromPrefixAndValue(
+    'btn',
+    'chip-p',
+    `${chipBtnCalcs.chipBtnPaddingBase}rem ${chipBtnCalcs.chipBtnPaddingWidth}rem`,
+  ))
+  cssVarsBuilt += cssVars
+  jsInCSSBuilt += jsInCSS
+
+  // btn padding lg
+  ;({ cssVars, jsInCSS } = buildLineFromPrefixAndValue(
+    'btn',
+    'p-lg',
+    `${lgBtnCalcs.lgBtnPaddingBase}rem ${lgBtnCalcs.lgBtnPaddingWidth}rem`,
+  ))
+  cssVarsBuilt += cssVars
+  jsInCSSBuilt += jsInCSS
+
+  // btn interactive options
+  // transform/scale
+  ;({ cssVars, jsInCSS } = buildLineFromPrefixAndValue('btn', 'hover-scale', `${btnOpts.btnHoverScale}`))
+  cssVarsBuilt += cssVars
+  jsInCSSBuilt += jsInCSS
+  ;({ cssVars, jsInCSS } = buildLineFromPrefixAndValue('btn', 'active-scale', `${btnOpts.btnActiveScale}`))
+  cssVarsBuilt += cssVars
+  jsInCSSBuilt += jsInCSS
+
+  // filter/brightness
+  ;({ cssVars, jsInCSS } = buildLineFromPrefixAndValue('btn', 'hover-filter', `${btnOpts.btnHoverBrightness}%`))
+  cssVarsBuilt += cssVars
+  jsInCSSBuilt += jsInCSS
+  ;({ cssVars, jsInCSS } = buildLineFromPrefixAndValue('btn', 'active-filter', `${btnOpts.btnActiveBrightness}%`))
+  cssVarsBuilt += cssVars
+  jsInCSSBuilt += jsInCSS
+
+  // btn font sizes
+  ;({ cssVars, jsInCSS } = buildLineFromPrefixAndValue('btn', 'font-sm-size', `var(${btnOpts.btnFontSmSize})`))
+  cssVarsBuilt += cssVars
+  jsInCSSBuilt += jsInCSS
+  ;({ cssVars, jsInCSS } = buildLineFromPrefixAndValue('btn', 'font-size', `var(${btnOpts.btnFontSize})`))
+  cssVarsBuilt += cssVars
+  jsInCSSBuilt += jsInCSS
+  ;({ cssVars, jsInCSS } = buildLineFromPrefixAndValue('btn', 'font-lg-size', `var(${btnOpts.btnFontLgSize})`))
+  cssVarsBuilt += cssVars
+  jsInCSSBuilt += jsInCSS
+
+  // Complete the JavaScript string
+  jsInCSSBuilt += buildJsInCSSTail('btn')
+
+  return { cssVarsBuilt, jsInCSSBuilt }
+}
+
+// Build CSSVars and Options JS - UI Options
+export function buildUIStrings(roundedSize: string, buttonRoundLevel: string, inputRoundLevel: string) {
+  let cssVarsBuilt = ''
+  let jsInCSSBuilt = buildJsInCSSHead('ui')
+
+  if (roundedSize === 'none') {
+    let { cssVars, jsInCSS } = buildLineFromPrefixAndValue('ui', 'rounded', '0px')
+    cssVarsBuilt += cssVars
+    jsInCSSBuilt += jsInCSS
+    //
+    ;({ cssVars, jsInCSS } = buildLineFromPrefixAndValue('ui', 'button-roundness', '0px'))
+    cssVarsBuilt += cssVars
+    jsInCSSBuilt += jsInCSS
+  } else {
+    let { cssVars, jsInCSS } = buildLineFromPrefixAndValue('ui', 'rounded', `var(${roundedSize})`)
+    cssVarsBuilt += cssVars
+    jsInCSSBuilt += jsInCSS
+    //
+    ;({ cssVars, jsInCSS } = buildLineFromPrefixAndValue('ui', 'button-roundness', `var(${buttonRoundLevel})`))
+    cssVarsBuilt += cssVars
+    jsInCSSBuilt += jsInCSS
+    //
+    ;({ cssVars, jsInCSS } = buildLineFromPrefixAndValue('ui', 'input-roundness', `var(${inputRoundLevel})`))
+    cssVarsBuilt += cssVars
+    jsInCSSBuilt += jsInCSS
+    //
+    jsInCSSBuilt += buildJsInCSSTail('ui')
+  }
+  return { cssVarsBuilt, jsInCSSBuilt }
 }
