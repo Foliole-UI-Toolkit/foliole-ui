@@ -40,6 +40,9 @@ withDefaults(defineProps<Props>(), {
               </li>
               <!-- This theme generator is written in svelte! Inside of a Vue component due to Astro's features! -->
               <li>
+                <a class="uppercase" href="/examples">examples</a>
+              </li>
+              <li>
                 <a class="uppercase" href="/theme-generator">theme generator</a>
               </li>
             </ul>
@@ -95,6 +98,7 @@ withDefaults(defineProps<Props>(), {
         <div class="p-4">
           <h2 class="text-2xl font-bold">Sidebar Left</h2>
           <p class="text-lg">This is the left sidebar.</p>
+          <p>{{ section }}</p>
         </div>
       </div>
     </template>
