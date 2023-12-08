@@ -4,7 +4,7 @@
   import ChipOptions from './partials/ChipOptions.svelte'
   import ColorPicker from './partials/ColorPicker.svelte'
   import ControlsLead from './partials/ControlsLead.svelte'
-  import ControlsTrail from './partials/ControlsTrail.svelte'
+  import ControlsTail from './partials/ControlsTail.svelte'
   import Swatch from './partials/Swatch.svelte'
   import SurfaceRelationships from './partials/SurfaceRelationships.svelte'
 
@@ -435,7 +435,7 @@
           >
             <ControlsLead hex={colorRow.hex} label={colorRow.label} />
             <Swatch color={colorRow.key} stops={colorRow?.stops?.split(',')} />
-            <ControlsTrail colorOn={colorRow.on} stops={colorRow.stops ?? ''} colorsIndex={i} />
+            <ControlsTail colorOn={colorRow.on} stops={colorRow.stops ?? ''} colorsIndex={i} />
           </div>
         {/each}
       </div>
