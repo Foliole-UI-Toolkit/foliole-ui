@@ -96,6 +96,41 @@ export function buildColorShades(color: any) {
   return response
 }
 
+export function buildElStrings(btnPaddingBase: number) {
+  let cssVarsBuilt = ''
+  let jsInCSSBuilt = buildJsInCSSHead('el')
+
+  const smPadding = btnPaddingBase / 2
+  const basepadding = btnPaddingBase
+  const doublePadding = btnPaddingBase * 2
+  const triplePadding = btnPaddingBase * 3
+
+  // El padding sm
+  let { cssVars, jsInCSS } = buildLineFromPrefixAndValue('el', 'p-sm', `${smPadding}rem`)
+  cssVarsBuilt += cssVars
+  jsInCSSBuilt += jsInCSS
+
+  // El padding
+  ;({ cssVars, jsInCSS } = buildLineFromPrefixAndValue('el', 'p-base', `${basepadding}rem`))
+  cssVarsBuilt += cssVars
+  jsInCSSBuilt += jsInCSS
+
+  // El double padding
+  ;({ cssVars, jsInCSS } = buildLineFromPrefixAndValue('el', 'p-double', `${doublePadding}rem`))
+  cssVarsBuilt += cssVars
+  jsInCSSBuilt += jsInCSS
+
+  // El triple padding
+  ;({ cssVars, jsInCSS } = buildLineFromPrefixAndValue('el', 'p-triple', `${triplePadding}rem`))
+  cssVarsBuilt += cssVars
+  jsInCSSBuilt += jsInCSS
+
+  // Complete the JavaScript string
+  jsInCSSBuilt += buildJsInCSSTail('el')
+
+  return { cssVarsBuilt, jsInCSSBuilt }
+}
+
 // Build CSSVars and Options JS - Buttons
 export function buildBtnStrings(
   btnOpts: Record<string, number | string>,
