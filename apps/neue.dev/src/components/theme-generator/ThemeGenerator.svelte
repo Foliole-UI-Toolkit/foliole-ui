@@ -14,7 +14,13 @@
 
   // Local Helpers
   import { colorUtils, centers, updateColorsColl } from './helpers'
-  import { buildColorStrings, buildBtnStrings, buildUIStrings, buildColorShades } from './helpers/stringBuilders'
+  import {
+    buildBtnStrings,
+    buildColorShades,
+    buildColorStrings,
+    buildElStrings,
+    buildUIStrings,
+  } from './helpers/stringBuilders'
 
   // Local data
   import { setStoreThemeOptions } from './data'
@@ -162,101 +168,6 @@
     generateThemeOpts()
   }
 
-  // Generate colors: create colors collection, fill in template options from colors collection, build UI options as outputted strings for preview and themes.
-  function generateThemeOpts() {
-    updateColorsCollWColorScheme()
-
-    let builtResults
-
-    storeThemeOptions.update((currentOptions) => {
-      return {
-        ...currentOptions,
-        colors: currentOptions.colors.map((color, i) => {
-          if ($colorsCollectionStore[color.key]) {
-            if ($colorsCollectionStore[color.key] !== '') {
-              color.hex = $colorsCollectionStore[color.key] as string
-            }
-
-            return color
-          } else {
-            color.hex = ''
-            return color
-          }
-        }),
-        derivedColors: currentOptions.derivedColors.map((color, i) => {
-          if ($colorsCollectionStore[color.key]) {
-            if ($colorsCollectionStore[color.key] !== null) {
-              color.hex = $colorsCollectionStore[color.key] as string
-            }
-            return color
-          } else {
-            color.hex = ''
-            return color
-          }
-        }),
-      }
-    })
-
-    let allColorShades: ColorSettings[] = []
-
-    $storeThemeOptions.colors.forEach((color) => {
-      if (color.hex !== '') {
-        const colorShades = buildColorShades(color)
-        allColorShades = [...allColorShades, ...colorShades]
-      }
-    })
-
-    $storeThemeOptions.derivedColors.forEach((color) => {
-      if (color.hex !== '') {
-        const colorShades = buildColorShades(color)
-        allColorShades = [...allColorShades, ...colorShades]
-      }
-    })
-
-    colorResultsStore.set(allColorShades)
-
-    $storeThemeOptions.derivedColors.forEach((color) => {
-      if (color.hex === '') return
-      const colorShades = buildColorShades(color)
-
-      colorResultsStore.update((results) => {
-        return [...results, ...colorShades]
-      })
-    })
-
-    // Color Strings
-
-    builtResults = buildColorStrings($colorResultsStore, 'color')
-    previewCSSVars = builtResults.cssVars
-    themeOptsJsInCSS = builtResults.jsInCSS
-
-    // Calcs
-    const { btnPaddingWidth, smBtnCalcs, lgBtnCalcs, chipBtnCalcs } = calcBtnCSSStrings()
-
-    // Btn strings
-    let btnOpts = {
-      btnPaddingBase,
-      btnPaddingWidth,
-      btnHoverScale,
-      btnActiveScale,
-      btnHoverBrightness,
-      btnActiveBrightness,
-      btnFontSmSize,
-      btnFontSize,
-      btnFontLgSize,
-    }
-    builtResults = buildBtnStrings(btnOpts, smBtnCalcs, lgBtnCalcs, chipBtnCalcs)
-    previewCSSVars += builtResults.cssVarsBuilt
-    themeOptsJsInCSS += builtResults.jsInCSSBuilt
-
-    // Ui strings
-    builtResults = buildUIStrings(roundedSize, buttonRoundLevel, inputRoundLevel)
-    previewCSSVars += builtResults.cssVarsBuilt
-    themeOptsJsInCSS += builtResults.jsInCSSBuilt
-
-    previewCSSVars = `<style>\n:root { \n ${previewCSSVars}  }</style>`
-  }
-
   // Update collection for theme options.
   function updateColorsCollWColorScheme() {
     colorsCollectionStore.update((colorsCollection) => {
@@ -382,6 +293,105 @@
     return { btnPaddingWidth, smBtnCalcs, lgBtnCalcs, chipBtnCalcs }
   }
 
+  // Generate colors: create colors collection, fill in template options from colors collection, build UI options as outputted strings for preview and themes.
+  function generateThemeOpts() {
+    updateColorsCollWColorScheme()
+
+    let builtResults
+
+    storeThemeOptions.update((currentOptions) => {
+      return {
+        ...currentOptions,
+        colors: currentOptions.colors.map((color, i) => {
+          if ($colorsCollectionStore[color.key]) {
+            if ($colorsCollectionStore[color.key] !== '') {
+              color.hex = $colorsCollectionStore[color.key] as string
+            }
+
+            return color
+          } else {
+            color.hex = ''
+            return color
+          }
+        }),
+        derivedColors: currentOptions.derivedColors.map((color, i) => {
+          if ($colorsCollectionStore[color.key]) {
+            if ($colorsCollectionStore[color.key] !== null) {
+              color.hex = $colorsCollectionStore[color.key] as string
+            }
+            return color
+          } else {
+            color.hex = ''
+            return color
+          }
+        }),
+      }
+    })
+
+    let allColorShades: ColorSettings[] = []
+
+    $storeThemeOptions.colors.forEach((color) => {
+      if (color.hex !== '') {
+        const colorShades = buildColorShades(color)
+        allColorShades = [...allColorShades, ...colorShades]
+      }
+    })
+
+    $storeThemeOptions.derivedColors.forEach((color) => {
+      if (color.hex !== '') {
+        const colorShades = buildColorShades(color)
+        allColorShades = [...allColorShades, ...colorShades]
+      }
+    })
+
+    colorResultsStore.set(allColorShades)
+
+    $storeThemeOptions.derivedColors.forEach((color) => {
+      if (color.hex === '') return
+      const colorShades = buildColorShades(color)
+
+      colorResultsStore.update((results) => {
+        return [...results, ...colorShades]
+      })
+    })
+
+    // Color Strings
+    builtResults = buildColorStrings($colorResultsStore, 'color')
+    previewCSSVars = builtResults.cssVars
+    themeOptsJsInCSS = builtResults.jsInCSS
+
+    // Calcs
+    const { btnPaddingWidth, smBtnCalcs, lgBtnCalcs, chipBtnCalcs } = calcBtnCSSStrings()
+
+    // Btn strings
+    let btnOpts = {
+      btnPaddingBase,
+      btnPaddingWidth,
+      btnHoverScale,
+      btnActiveScale,
+      btnHoverBrightness,
+      btnActiveBrightness,
+      btnFontSmSize,
+      btnFontSize,
+      btnFontLgSize,
+    }
+    builtResults = buildBtnStrings(btnOpts, smBtnCalcs, lgBtnCalcs, chipBtnCalcs)
+    previewCSSVars += builtResults.cssVarsBuilt
+    themeOptsJsInCSS += builtResults.jsInCSSBuilt
+
+    // El strings
+    builtResults = buildUIStrings(roundedSize, buttonRoundLevel, inputRoundLevel)
+    previewCSSVars += builtResults.cssVarsBuilt
+    themeOptsJsInCSS += builtResults.jsInCSSBuilt
+
+    // Ui strings
+    builtResults = buildElStrings(btnPaddingBase)
+    previewCSSVars += builtResults.cssVarsBuilt
+    themeOptsJsInCSS += builtResults.jsInCSSBuilt
+
+    previewCSSVars = `<style>\n:root { \n ${previewCSSVars}  }</style>`
+  }
+
   function initCachedColors() {
     if ($storeThemeOptions.colors[0].hex) {
       primaryColorHex = $storeThemeOptions.colors[0].hex
@@ -487,3 +497,17 @@
 
   <pre><code class="language-javascript">{themeOptsJsInCSS}</code></pre>
 </div>
+
+<style lang="post-css">
+  :global(.options-input-wrapper) {
+    @apply gap-2;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+
+    /* Media query for md breakpoint */
+    @media (min-width: 768px) {
+      grid-template-columns: 200px 1fr;
+    }
+  }
+</style>

@@ -4,7 +4,7 @@ module.exports = {
       flexShrink: 1,
       backgroundColor: 'rgba(var(--color-surface-base))',
       borderRadius: 'var(--ui-input-roundness)',
-      padding: '.5rem 1rem',
+      padding: 'var(--el-p-base) var(--el-p-double)',
     },
     '.bg-surface-base .input-base': {
       backgroundColor: 'rgba(var(--color-neutral-mlt))',
@@ -19,7 +19,7 @@ module.exports = {
       backgroundRepeat: 'no-repeat',
       backgroundPosition: 'right .25rem center',
       backgroundSize: '1.5rem',
-      padding: '.5rem 1rem',
+      padding: 'var(--el-p-base) var(--el-p-double)',
     },
     '.bg-surface-base .select-base': {
       backgroundColor: 'rgba(var(--color-neutral-mlt))',
