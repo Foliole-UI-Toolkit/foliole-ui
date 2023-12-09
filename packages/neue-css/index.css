@@ -35,7 +35,7 @@
     flex-shrink: 1;
     background-color: rgba(var(--color-surface-base));
     border-radius: var(--ui-input-roundness);
-    padding: .5rem 1rem
+    padding: var(--el-p-base) var(--el-p-double)
 }
 .bg-surface-base .input-base {
     background-color: rgba(var(--color-neutral-mlt))
@@ -50,7 +50,7 @@
     background-repeat: no-repeat;
     background-position: right .25rem center;
     background-size: 1.5rem;
-    padding: .5rem 1rem
+    padding: var(--el-p-base) var(--el-p-double)
 }
 .bg-surface-base .select-base {
     background-color: rgba(var(--color-neutral-mlt))
@@ -2176,10 +2176,10 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    padding: .5rem
+    padding: var(--el-p-base)
 }
 .accordion-section {
-    padding-top: 0.5rem
+    padding-top: var(--el-p-base)
 }
 .accordion-header-button {
     display: flex;
@@ -2187,11 +2187,11 @@
     width: 100%
 }
 .header-control {
-    padding: 0.5rem 1rem;
+    padding: var(--el-p-base) var(--el-p-double);
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>');
     background-repeat: no-repeat;
-    background-position: right 0.25rem center;
-    background-size: 1.5rem
+    background-position: right var(--el-p-sm) center;
+    background-size: var(--el-p-triple)
 }
 .slide-toggle {
     display: flex;
