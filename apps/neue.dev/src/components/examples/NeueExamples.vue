@@ -24,7 +24,7 @@ import SlideToggle from '@neue/neue-vue/src/components/SlideToggle/SlideToggle.v
         ultrices turpis mi nec metus.</NeueAccordionItem
       >
     </NeueAccordion>
-    <SlideToggle />
+    <SlideToggle label="slide toggle" />
   </div>
 </template>
 

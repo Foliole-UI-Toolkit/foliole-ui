@@ -11,6 +11,7 @@ const { ui } = require('../styles/tokens/ui')
 const { appShell } = require('../styles/components/app-shell')
 const { appRail } = require('../styles/components/app-rail')
 const { accordion } = require('../styles/components/accordion')
+const { slideToggle } = require('../styles/components/slide-toggle')
 
 const mergedCssInJs = {
   ...button,
@@ -22,6 +23,7 @@ const mergedCssInJs = {
   ...appShell,
   ...appRail,
   ...accordion,
+  ...slideToggle,
 }
 
 ;(async () => {
