@@ -42,7 +42,7 @@ module.exports = {
     },
     '.page': {
       display: 'flex',
-      flex: 'column',
+      'flex-direction': 'column',
       flex: 1,
       overflowX: 'hidden',
     },

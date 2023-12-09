@@ -2105,6 +2105,7 @@
 }
 .page {
     display: flex;
+    flex-direction: column;
     flex: 1;
     overflow-x: hidden
 }
@@ -2170,4 +2171,62 @@
     overflow: hidden;
     width: 0px;
     height: 0px
+}
+.accordion {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: .5rem
+}
+.accordion-section {
+    padding-top: 0.5rem
+}
+.accordion-header-button {
+    display: flex;
+    justify-content: space-between;
+    width: 100%
+}
+.header-control {
+    padding: 0.5rem 1rem;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 0.25rem center;
+    background-size: 1.5rem
+}
+.slide-toggle {
+    display: flex;
+    align-items: center;
+    border-radius: var(--ui-input-roundness)
+}
+.track {
+    cursor: pointer;
+    display: flex;
+    border-radius: 1000px
+}
+.track-xl {
+    width: var(--size-16);
+    height: var(--size-8)
+}
+.track-large {
+    width: var(--size-14);
+    height: var(--size-7)
+}
+.track-medium {
+    width: var(--size-12);
+    height: var(--size-6)
+}
+.track-small {
+    width: var(--size-10);
+    height: var(--size-5)
+}
+.thumb {
+    display: inline-block;
+    border-radius: 1000px;
+    width: 50%;
+    height: 100%;
+    transform: scale(0.8);
+    transition: all 0.2s ease-in-out
+}
+.on {
+    transform: translateX(100%) scale(0.8)
 }
