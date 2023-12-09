@@ -4,7 +4,7 @@
 
 ### Minor Changes
 
-- 3e4f514: Chore: Vue - remove uneeded config file
+- 3e4f514: Chore: Vue - remove un-needed config file
 - 26e7166: Chore: Vue - replace 'trail' with 'tail' for better semantics
 - f798a89: Feature: Accordion Component - CSS, Vue
 - 267f6d4: Feature: Slide Toggle Component - CSS, Vue
@@ -13,9 +13,9 @@
 
 ### Minor Changes
 
-- 39a5967: feat:css-vue AppRail
-- f7bf1b2: chore:vue package update eslint - alter tw config to commonJs syntax
+- 39a5967: Feature: AppRail - CSS, Vue
+- f7bf1b2: Chore: Vue - package update eslint, alter tw config to commonJs syntax
 
 ### Patch Changes
 
-- f0b7245: bug/vue-neueAppShell remove unused var
+- f0b7245: Bug: Vue AppShell - remove unused var
