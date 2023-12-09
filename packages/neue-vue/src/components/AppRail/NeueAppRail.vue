@@ -6,7 +6,7 @@ export interface AppRailProps {
   activeTokenClass?: string
   regionLeadClasses?: string
   regionDefaultClasses?: string
-  regionTrailClasses?: string
+  regionTailClasses?: string
 }
 
 const props = withDefaults(defineProps<AppRailProps>(), {
@@ -14,7 +14,7 @@ const props = withDefaults(defineProps<AppRailProps>(), {
   activeTokenClass: 'bg-primary-base',
   regionLeadClasses: '',
   regionDefaultClasses: '',
-  regionTrailClasses: '',
+  regionTailClasses: '',
 })
 
 const activeClass = computed(() => `${props.activeTokenClass}`)
@@ -25,6 +25,6 @@ provide('active', activeClass)
   <div :class="appRailClasses">
     <div :class="regionLeadClasses"><slot name="lead" /></div>
     <div :class="regionDefaultClasses"><slot /></div>
-    <div :class="regionTrailClasses"><slot name="trail" /></div>
+    <div :class="regionTailClasses"><slot name="tail" /></div>
   </div>
 </template>

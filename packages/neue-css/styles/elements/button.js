@@ -2,18 +2,14 @@ module.exports = {
   button: {
     '.btn-p-sm': {
       padding: 'var(--btn-p-sm)',
-      // temporary - will have have a specific class for this.
       fontSize: 'var(--btn-font-sm-size)',
     },
     '.btn-p-md': {
       padding: 'var(--btn-p-base)',
-      // temporary - will have have a specific class for this.
       fontSize: 'var(--btn-font-size)',
     },
     '.btn-p-lg': {
       padding: 'var(--btn-p-lg)',
-
-      // temporary - will have have a specific class for this.
       fontSize: 'var(--btn-font-lg-size)',
     },
     '.btn-chip-p': {

@@ -93,7 +93,7 @@ withDefaults(defineProps<Props>(), {
             </template>
             <template #label>Components</template>
           </NeueAppRailButton>
-          <template #trail></template>
+          <template #tail></template>
         </NeueAppRail>
         <div class="p-4">
           <h2 class="text-2xl font-bold">Sidebar Left</h2>
