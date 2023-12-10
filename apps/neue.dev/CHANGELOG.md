@@ -1,5 +1,14 @@
 # @neue/neue-ui-docs
 
+## 0.0.5
+
+### Patch Changes
+
+- Updated dependencies [6268aba]
+- Updated dependencies [730c8dc]
+  - @neue/neue-css@0.4.0
+  - @neue/neue-vue@0.3.0
+
 ## 0.0.4
 
 ### Patch Changes

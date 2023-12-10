@@ -1,5 +1,11 @@
 # @neue/neue-vue
 
+## 0.3.0
+
+### Minor Changes
+
+- 730c8dc: Feature: Accordion - CSS, Vue - animate accordionopen and closed state - refactor accordion markup - add class options
+
 ## 0.2.0
 
 ### Minor Changes

@@ -1,5 +1,12 @@
 # @neue/neue-css
 
+## 0.4.0
+
+### Minor Changes
+
+- 6268aba: Feature: CSS - Added element padding token scaled related to button base sizing
+- 730c8dc: Feature: Accordion - CSS, Vue - animate accordionopen and closed state - refactor accordion markup - add class options
+
 ## 0.3.0
 
 ### Minor Changes
