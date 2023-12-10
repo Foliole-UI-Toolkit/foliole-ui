@@ -92,6 +92,7 @@
   // Previews
   let previewCSSVars = ''
   let themeOptsJsInCSS = ''
+  let twVars = ''
   // Errors
   let hashErrorMessage = ''
 
@@ -359,6 +360,7 @@
     builtResults = buildColorStrings($colorResultsStore, 'color')
     previewCSSVars = builtResults.cssVars
     themeOptsJsInCSS = builtResults.jsInCSS
+    twVars = builtResults.twVars
 
     // Calcs
     const { btnPaddingWidth, smBtnCalcs, lgBtnCalcs, chipBtnCalcs } = calcBtnCSSStrings()
@@ -495,7 +497,7 @@
     </div>
   </section>
 
-  <pre><code class="language-javascript">{themeOptsJsInCSS}</code></pre>
+  <pre><code class="language-javascript">{themeOptsJsInCSS} {twVars}</code></pre>
 </div>
 
 <style lang="post-css">

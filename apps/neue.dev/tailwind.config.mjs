@@ -1,10 +1,14 @@
 const plugin = require('tailwindcss/plugin')
+const { background } = require('../../packages/neue-css/styles/tokens/background')
 const { border } = require('../../packages/neue-css/styles/tokens/border')
 const { button } = require('../../packages/neue-css/styles/elements/button')
 const { input } = require('../../packages/neue-css/styles/elements/input')
-const { background } = require('../../packages/neue-css/styles/tokens/background')
 const { text } = require('../../packages/neue-css/styles/tokens/text')
 const { ui } = require('../../packages/neue-css/styles/tokens/ui')
+
+const twPlugin = require('../../packages/neue-css/scripts/generate-css')
+
+console.log(twPlugin.twPlugin)
 
 module.exports = {
   content: [
@@ -13,6 +17,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      // colors: {
+      //   'bg-primary-2': rgba(25, 255, 201),
+      // },
       fontFamily: {
         brandon: [
           'brandon-grotesque',
@@ -34,26 +41,5 @@ module.exports = {
       },
     },
   },
-  plugins: [
-    plugin(function ({ addComponents }) {
-      const customComponents = {
-        border,
-        button,
-        input,
-        background,
-        text,
-        ui,
-      }
-
-      // this will need to be a plugin within my package.
-      for (const componentName in customComponents) {
-        const component = customComponents[componentName]
-        for (const className in component) {
-          addComponents({
-            [`${className}`]: component[className],
-          })
-        }
-      }
-    }),
-  ],
+  plugins: [plugin(twPlugin.twPlugin)],
 }

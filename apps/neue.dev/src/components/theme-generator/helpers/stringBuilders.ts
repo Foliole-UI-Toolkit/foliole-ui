@@ -31,15 +31,18 @@ function buildLineFromPrefixAndValue(attrPrefix: string, attrBase: string, cssVa
 export function buildColorStrings(store: ColorSettings[], prefix: string) {
   let cssVars = ''
   let jsInCSS = 'export const color = { \n'
+  const twPrefix = `@layer base { \n \t:root {
+  `
+  const twPostfix = `\t}\n}`
 
   store.forEach((element) => {
     if (element.stops) {
       // Define the CSS variable for the color with stops
-      cssVars += `--${prefix}-${element.key}-${element.stops}: ${element.rgb};`
+      cssVars += `    --${prefix}-${element.key}-${element.stops}: ${element.rgb};`
       jsInCSS += `  '${element.key}-${element.stops}': '${element.rgb}',`
     } else {
       // Define the CSS variable for the color without stops
-      cssVars += `--${prefix}-${element.key}: ${element.rgb};`
+      cssVars += `    --${prefix}-${element.key}: ${element.rgb};`
       jsInCSS += `  '${element.key}': '${element.rgb}',`
     }
     cssVars += '\n'
@@ -47,7 +50,10 @@ export function buildColorStrings(store: ColorSettings[], prefix: string) {
   })
   jsInCSS += '} \n'
 
-  return { cssVars, jsInCSS }
+  console.log(cssVars)
+  const twVars = twPrefix + cssVars + twPostfix
+
+  return { cssVars, jsInCSS, twVars }
 }
 
 // Build Shades.
