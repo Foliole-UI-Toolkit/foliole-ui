@@ -16,7 +16,7 @@ function buildJsInCSSHead(base: string) {
   return `export const ${base} = { \n`
 }
 
-function buildJsInCSSTail(base: string) {
+function buildJsInCSSTail() {
   return `}\n`
 }
 
