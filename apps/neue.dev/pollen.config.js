@@ -1,4 +1,4 @@
-import { color, btn, ui } from './src/theme.js'
+import { color, btn, ui, el } from './src/theme.js'
 
 const config = {
   output: './src/pollen.css',
@@ -6,6 +6,7 @@ const config = {
     color: color,
     btn: btn,
     ui: ui,
+    el: el,
   },
 }
 

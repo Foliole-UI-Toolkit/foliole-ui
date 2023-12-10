@@ -2162,10 +2162,10 @@
     flex-direction: column
 }
 .rail-item-options {
-    padding: .25rem
+    padding: var(--el-p-sm)
 }
 .rail-label {
-    padding-top: .25rem
+    padding-top: var(--el-p-sm)
 }
 .app-rail-inner.hidden-radio {
     overflow: hidden;
@@ -2175,23 +2175,39 @@
 .accordion {
     display: flex;
     flex-direction: column;
-    width: 100%;
-    padding: var(--el-p-base)
+    width: 100%
 }
-.accordion-section {
-    padding-top: var(--el-p-base)
-}
-.accordion-header-button {
+.accordion-header {
     display: flex;
     justify-content: space-between;
-    width: 100%
+    width: 100%;
+    padding: var(--el-p-base)
 }
 .header-control {
     padding: var(--el-p-base) var(--el-p-double);
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>');
+    height: 24px;
+    width: 24px;
     background-repeat: no-repeat;
     background-position: right var(--el-p-sm) center;
-    background-size: var(--el-p-triple)
+    background-size: var(--el-p-triple);
+    transition: transform 0.5s ease-in-out
+}
+.opened .header-control {
+    transform: rotate(-90deg)
+}
+.accordion-section-wrapper {
+    display: grid;
+    grid-template-rows: 0fr;
+    padding: 0;
+    transition: grid-template-rows 0.5s ease-in-out
+}
+.opened .accordion-section-wrapper {
+    grid-template-rows: 1fr;
+    padding: var(--el-p-base)
+}
+.accordion-section {
+    overflow: hidden
 }
 .slide-toggle {
     display: flex;
