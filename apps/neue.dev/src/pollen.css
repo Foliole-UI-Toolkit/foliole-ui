@@ -29,10 +29,9 @@
   --scale-fluid-10: clamp(6rem, 4.8rem + 4vw, 8rem);
   --scale-fluid-000: clamp(0.625rem, 0.55rem + 0.25vw, 0.75rem);
   --scale-fluid-00: clamp(0.75rem, 0.675rem + 0.25vw, 0.875rem);
-  --font-sans: system-ui, -apple-system, Segoe UI, Roboto, Noto Sans, Ubuntu,
-    Cantarell, Helvetica Neue;
-  --font-serif: Georgia, Cambria, "Times New Roman", Times, serif;
-  --font-mono: Consolas, Menlo, Monaco, "Liberation Mono", monospace;
+  --font-sans: system-ui, -apple-system, Segoe UI, Roboto, Noto Sans, Ubuntu, Cantarell, Helvetica Neue;
+  --font-serif: Georgia, Cambria, 'Times New Roman', Times, serif;
+  --font-mono: Consolas, Menlo, Monaco, 'Liberation Mono', monospace;
   --weight-light: 300;
   --weight-regular: 400;
   --weight-medium: 500;
@@ -122,12 +121,9 @@
   --layer-below: -1;
   --layer-top: 2147483647;
   --shadow-xs: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  --shadow-sm: 0 4px 6px -2px rgba(0, 0, 0, 0.1),
-    0 2px 4px -2px rgba(0, 0, 0, 0.06);
-  --shadow-md: 0 12px 16px -4px rgba(0, 0, 0, 0.1),
-    0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  --shadow-lg: 0 20px 24px -4px rgba(0, 0, 0, 0.1),
-    0 8px 8px -4px rgba(0, 0, 0, 0.04);
+  --shadow-sm: 0 4px 6px -2px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 12px 16px -4px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 20px 24px -4px rgba(0, 0, 0, 0.1), 0 8px 8px -4px rgba(0, 0, 0, 0.04);
   --shadow-xl: 0 24px 48px -12px rgba(0, 0, 0, 0.25);
   --ease-in-sine: cubic-bezier(0.47, 0, 0.745, 0.715);
   --ease-out-sine: cubic-bezier(0.39, 0.575, 0.565, 1);
@@ -158,70 +154,67 @@
   --easing-decelerate: cubic-bezier(0, 0, 0.2, 1);
   --elevation-1: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --elevation-2: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  --elevation-3: 0 4px 6px -2px rgba(0, 0, 0, 0.1),
-    0 2px 4px -2px rgba(0, 0, 0, 0.06);
-  --elevation-4: 0 12px 16px -4px rgba(0, 0, 0, 0.1),
-    0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  --elevation-5: 0 20px 24px -4px rgba(0, 0, 0, 0.1),
-    0 8px 8px -4px rgba(0, 0, 0, 0.04);
+  --elevation-3: 0 4px 6px -2px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+  --elevation-4: 0 12px 16px -4px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --elevation-5: 0 20px 24px -4px rgba(0, 0, 0, 0.1), 0 8px 8px -4px rgba(0, 0, 0, 0.04);
   --elevation-6: 0 24px 48px -12px rgba(0, 0, 0, 0.25);
   --elevation-7: 0 32px 64px -12px rgba(0, 0, 0, 0.2);
-  --color-primary-base: 232, 59, 88;
+  --color-primary: 232, 59, 88;
   --color-primary-light: 255, 219, 230;
   --color-primary-mlt: 255, 140, 156;
   --color-primary-mdk: 147, 0, 29;
   --color-primary-dark: 73, 0, 0;
-  --color-secondary-base: 232, 145, 59;
+  --color-secondary: 232, 145, 59;
   --color-secondary-light: 255, 255, 204;
   --color-secondary-mlt: 255, 219, 130;
   --color-secondary-mdk: 150, 77, 0;
   --color-secondary-dark: 78, 12, 0;
-  --color-tertiary-base: 203, 232, 59;
+  --color-tertiary: 203, 232, 59;
   --color-tertiary-light: 255, 255, 217;
   --color-tertiary-mlt: 255, 255, 139;
   --color-tertiary-mdk: 125, 158, 0;
   --color-tertiary-dark: 54, 89, 0;
-  --color-neutral-base: 130, 125, 126;
+  --color-neutral: 130, 125, 126;
   --color-neutral-light: 227, 222, 223;
   --color-neutral-mlt: 187, 182, 183;
   --color-neutral-mdk: 77, 72, 73;
   --color-neutral-dark: 45, 41, 41;
-  --color-success-base: 64, 254, 1;
+  --color-success: 64, 254, 1;
   --color-success-light: 252, 255, 195;
   --color-success-mlt: 165, 255, 114;
   --color-success-mdk: 0, 176, 0;
   --color-success-dark: 0, 101, 0;
-  --color-error-base: 254, 1, 1;
+  --color-error: 254, 1, 1;
   --color-error-light: 255, 201, 148;
   --color-error-mlt: 255, 119, 77;
   --color-error-mdk: 164, 0, 0;
   --color-error-dark: 89, 0, 0;
-  --color-page-base: 255, 253, 254;
+  --color-page: 255, 253, 254;
   --color-page-light: 255, 255, 255;
   --color-page-mlt: 255, 255, 255;
   --color-page-mdk: 179, 177, 178;
   --color-page-dark: 109, 107, 108;
-  --color-page-contrast-base: 23, 18, 19;
+  --color-page-contrast: 23, 18, 19;
   --color-page-contrast-light: 149, 143, 144;
   --color-page-contrast-mlt: 82, 76, 77;
   --color-page-contrast-mdk: 0, 0, 0;
   --color-page-contrast-dark: 0, 0, 0;
-  --color-surface-base: 248, 242, 243;
+  --color-surface: 248, 242, 243;
   --color-surface-light: 255, 255, 255;
   --color-surface-mlt: 255, 255, 255;
   --color-surface-mdk: 173, 167, 168;
   --color-surface-dark: 103, 98, 99;
-  --color-surface-contrast-base: 30, 26, 27;
+  --color-surface-contrast: 30, 26, 27;
   --color-surface-contrast-light: 158, 153, 154;
   --color-surface-contrast-mlt: 90, 85, 86;
   --color-surface-contrast-mdk: 0, 0, 0;
   --color-surface-contrast-dark: 0, 0, 0;
-  --color-surface-raised-base: 233, 227, 228;
+  --color-surface-raised: 233, 227, 228;
   --color-surface-raised-light: 255, 255, 255;
   --color-surface-raised-mlt: 255, 255, 255;
   --color-surface-raised-mdk: 159, 153, 154;
   --color-surface-raised-dark: 90, 85, 86;
-  --color-surface-raised-contrast-base: 41, 37, 38;
+  --color-surface-raised-contrast: 41, 37, 38;
   --color-surface-raised-contrast-light: 173, 168, 169;
   --color-surface-raised-contrast-mlt: 103, 98, 99;
   --color-surface-raised-contrast-mdk: 0, 0, 0;
@@ -240,8 +233,8 @@
   --grid-page-width: var(--width-xl);
   --grid-page-gutter: 5vw;
   --grid-page-main: 2 / 3;
-  --grid-page: minmax(var(--grid-page-gutter), 1fr)
-    minmax(0, var(--grid-page-width)) minmax(var(--grid-page-gutter), 1fr);
+  --grid-page: minmax(var(--grid-page-gutter), 1fr) minmax(0, var(--grid-page-width))
+    minmax(var(--grid-page-gutter), 1fr);
   --btn-p-sm: 0.4rem 1.2000000000000002rem;
   --btn-p-base: 0.5rem 1.5rem;
   --btn-chip-p: 0.25rem 0.75rem;

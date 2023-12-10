@@ -8,7 +8,7 @@ html {
 }
 
 .pramary-base {
-  background: var(--color-primary-base);
+  background: var(--color-primary);
 }
 
 @layer components {

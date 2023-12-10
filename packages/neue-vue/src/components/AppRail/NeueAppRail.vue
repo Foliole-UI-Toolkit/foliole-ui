@@ -10,8 +10,8 @@ export interface AppRailProps {
 }
 
 const props = withDefaults(defineProps<AppRailProps>(), {
-  appRailClasses: 'app-rail app-rail-options bg-surface-base',
-  activeTokenClass: 'bg-primary-base',
+  appRailClasses: 'app-rail app-rail-options bg-surface',
+  activeTokenClass: 'bg-primary',
   regionLeadClasses: '',
   regionDefaultClasses: '',
   regionTailClasses: '',

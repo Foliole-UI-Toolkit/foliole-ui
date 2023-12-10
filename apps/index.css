@@ -23,8 +23,8 @@
   text-align: center;
   white-space: nowrap;
 }
-.bg-primary-base {
-  background-color: var(--color-primary-base);
+.bg-primary {
+  background-color: var(--color-primary);
 }
 .bg-primary-light {
   background-color: var(--color-primary-light);
@@ -50,8 +50,8 @@
 .bg-primary-dark {
   background-color: var(--color-primary-dark);
 }
-.bg-secondary-base {
-  background-color: var(--color-secondary-base);
+.bg-secondary {
+  background-color: var(--color-secondary);
 }
 .bg-secondary-light {
   background-color: var(--color-secondary-light);
@@ -77,8 +77,8 @@
 .bg-secondary-dark {
   background-color: var(--color-secondary-dark);
 }
-.bg-tertiary-base {
-  background-color: var(--color-tertiary-base);
+.bg-tertiary {
+  background-color: var(--color-tertiary);
 }
 .bg-tertiary-light {
   background-color: var(--color-tertiary-light);
@@ -104,62 +104,62 @@
 .bg-tertiary-dark {
   background-color: var(--color-tertiary-dark);
 }
-.bg-quaternary-base {
-  background-color: var(--color-quaternary-base);
+.bg-quat {
+  background-color: var(--color-quat);
 }
-.bg-quaternary-light {
-  background-color: var(--color-quaternary-light);
+.bg-quat-light {
+  background-color: var(--color-quat-light);
 }
-.bg-quaternary-light-dark {
-  background-color: var(--color-quaternary-light);
+.bg-quat-light-dark {
+  background-color: var(--color-quat-light);
 }
-.dark .bg-quaternary-light-dark {
-  background-color: var(--color-quaternary-dark);
+.dark .bg-quat-light-dark {
+  background-color: var(--color-quat-dark);
 }
-.bg-quaternary-mlt {
-  background-color: var(--color-quaternary-mlt);
+.bg-quat-mlt {
+  background-color: var(--color-quat-mlt);
 }
-.bg-quaternary-mlt-mdk {
-  background-color: var(--color-quaternary-mlt);
+.bg-quat-mlt-mdk {
+  background-color: var(--color-quat-mlt);
 }
-.dark .bg-quaternary-mlt-mdk {
-  background-color: var(--color-quaternary-mdk);
+.dark .bg-quat-mlt-mdk {
+  background-color: var(--color-quat-mdk);
 }
-.bg-quaternary-mdk {
-  background-color: var(--color-quaternary-mdk);
+.bg-quat-mdk {
+  background-color: var(--color-quat-mdk);
 }
-.bg-quaternary-dark {
-  background-color: var(--color-quaternary-dark);
+.bg-quat-dark {
+  background-color: var(--color-quat-dark);
 }
-.bg-quinary-base {
-  background-color: var(--color-quinary-base);
+.bg-quin {
+  background-color: var(--color-quin);
 }
-.bg-quinary-light {
-  background-color: var(--color-quinary-light);
+.bg-quin-light {
+  background-color: var(--color-quin-light);
 }
-.bg-quinary-light-dark {
-  background-color: var(--color-quinary-light);
+.bg-quin-light-dark {
+  background-color: var(--color-quin-light);
 }
-.dark .bg-quinary-light-dark {
-  background-color: var(--color-quinary-dark);
+.dark .bg-quin-light-dark {
+  background-color: var(--color-quin-dark);
 }
-.bg-quinary-mlt {
-  background-color: var(--color-quinary-mlt);
+.bg-quin-mlt {
+  background-color: var(--color-quin-mlt);
 }
-.bg-quinary-mlt-mdk {
-  background-color: var(--color-quinary-mlt);
+.bg-quin-mlt-mdk {
+  background-color: var(--color-quin-mlt);
 }
-.dark .bg-quinary-mlt-mdk {
-  background-color: var(--color-quinary-mdk);
+.dark .bg-quin-mlt-mdk {
+  background-color: var(--color-quin-mdk);
 }
-.bg-quinary-mdk {
-  background-color: var(--color-quinary-mdk);
+.bg-quin-mdk {
+  background-color: var(--color-quin-mdk);
 }
-.bg-quinary-dark {
-  background-color: var(--color-quinary-dark);
+.bg-quin-dark {
+  background-color: var(--color-quin-dark);
 }
-.bg-success-base {
-  background-color: var(--color-success-base);
+.bg-success {
+  background-color: var(--color-success);
 }
 .bg-success-light {
   background-color: var(--color-success-light);
@@ -185,8 +185,8 @@
 .bg-success-dark {
   background-color: var(--color-success-dark);
 }
-.bg-warning-base {
-  background-color: var(--color-warning-base);
+.bg-warning {
+  background-color: var(--color-warning);
 }
 .bg-warning-light {
   background-color: var(--color-warning-light);
@@ -212,8 +212,8 @@
 .bg-warning-dark {
   background-color: var(--color-warning-dark);
 }
-.bg-error-base {
-  background-color: var(--color-error-base);
+.bg-error {
+  background-color: var(--color-error);
 }
 .bg-error-light {
   background-color: var(--color-error-light);
@@ -239,8 +239,8 @@
 .bg-error-dark {
   background-color: var(--color-error-dark);
 }
-.bg-neutral-base {
-  background-color: var(--color-neutral-base);
+.bg-neutral {
+  background-color: var(--color-neutral);
 }
 .bg-neutral-light {
   background-color: var(--color-neutral-light);
@@ -266,29 +266,29 @@
 .bg-neutral-dark {
   background-color: var(--color-neutral-dark);
 }
-.bg-page-base {
-  background-color: var(--color-page-base);
+.bg-page {
+  background-color: var(--color-page);
 }
-.dark .bg-page-base {
-  background-color: var(--color-page-contrast-base);
+.dark .bg-page {
+  background-color: var(--color-page-contrast);
 }
-.bg-page-contrast-base {
-  background-color: var(--color-page-contrast-base);
+.bg-page-contrast {
+  background-color: var(--color-page-contrast);
 }
-.dark .bg-page-contrast-base {
-  background-color: var(--color-page-base);
+.dark .bg-page-contrast {
+  background-color: var(--color-page);
 }
-.bg-surface-base {
-  background-color: var(--color-surface-base);
+.bg-surface {
+  background-color: var(--color-surface);
 }
-.dark .bg-surface-base {
-  background-color: var(--color-surface-contrast-base);
+.dark .bg-surface {
+  background-color: var(--color-surface-contrast);
 }
-.bg-surface-contrast-base {
-  background-color: var(--color-surface-contrast-base);
+.bg-surface-contrast {
+  background-color: var(--color-surface-contrast);
 }
-.dark .bg-surface-contrast-base {
-  background-color: var(--color-surface-base);
+.dark .bg-surface-contrast {
+  background-color: var(--color-surface);
 }
 .rounded {
   border-radius: var(--rounded);

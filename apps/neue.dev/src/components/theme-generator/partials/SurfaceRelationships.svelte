@@ -25,9 +25,9 @@
     'page'
   ].base}"
 >
-  <span class="pb-2">Background color: ---color-page-base</span>
+  <span class="pb-2">Background color: ---color-page</span>
   <div class="text-center w-1/2 p-2 rounded {singleSwatchColorClasses['surface'].base}">
-    Element background color : --color-surface-base
+    Element background color : --color-surface
   </div>
 </div>
 <div
@@ -35,9 +35,9 @@
     'surface'
   ].base}"
 >
-  <span class="pb-2">Background color: ---color-surface-base</span>
+  <span class="pb-2">Background color: ---color-surface</span>
   <div class="text-center w-1/2 p-2 rounded {singleSwatchColorClasses['surface-raised'].base}">
-    Element background color : --color-raised-surface-base
+    Element background color : --color-raised-surface
   </div>
 </div>
 <!-- {/each} -->

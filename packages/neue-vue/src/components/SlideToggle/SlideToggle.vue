@@ -18,7 +18,7 @@ const props = withDefaults(defineProps<SlideToggleProps>(), {
   text: '',
   slideToggleClasses: 'slide-toggle slide-toggle-options',
   trackClasses: 'track track-small bg-neutral-mlt',
-  thumbClasses: 'thumb bg-neutral-base',
+  thumbClasses: 'thumb bg-neutral',
 })
 
 const isOn = ref(props.on)

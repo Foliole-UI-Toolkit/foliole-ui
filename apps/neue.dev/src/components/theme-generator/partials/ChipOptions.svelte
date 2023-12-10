@@ -52,7 +52,7 @@
   <div class="flex flex-wrap justify-center gap-2">
     {#each neueColorSchemes as colorKey}
       <button
-        class={`my-chip text-base ${$colorSchemeStore === colorKey ? 'bg-primary-base' : 'bg-neutral-light'}`}
+        class={`my-chip text-base ${$colorSchemeStore === colorKey ? 'bg-primary' : 'bg-neutral-light'}`}
         on:click={() => {
           chooseColorScheme(colorKey)
         }}
@@ -70,7 +70,7 @@
       <button
         class={`my-chip text-base ${
           $colorsCollectionStore[colorKey] || $colorsCollectionStore[colorKey] === null
-            ? 'bg-primary-base'
+            ? 'bg-primary'
             : 'bg-neutral-light'
         }`}
         on:click={() => {

@@ -1,22 +1,22 @@
 module.exports = {
   background: {
-    '.bg-primary-base': {
-      backgroundColor: 'rgba(var(--color-primary-base), 1)',
+    '.bg-primary': {
+      backgroundColor: 'rgba(var(--color-primary), 1)',
     },
-    '.bg-primary-base-10': {
-      backgroundColor: 'rgba(var(--color-primary-base), .1)',
+    '.bg-primary-10': {
+      backgroundColor: 'rgba(var(--color-primary), .1)',
     },
-    '.bg-primary-base-25': {
-      backgroundColor: 'rgba(var(--color-primary-base), .25)',
+    '.bg-primary-25': {
+      backgroundColor: 'rgba(var(--color-primary), .25)',
     },
-    '.bg-primary-base-50': {
-      backgroundColor: 'rgba(var(--color-primary-base), .50)',
+    '.bg-primary-50': {
+      backgroundColor: 'rgba(var(--color-primary), .50)',
     },
-    '.bg-primary-base-75': {
-      backgroundColor: 'rgba(var(--color-primary-base), .75)',
+    '.bg-primary-75': {
+      backgroundColor: 'rgba(var(--color-primary), .75)',
     },
-    '.bg-primary-base-90': {
-      backgroundColor: 'rgba(var(--color-primary-base), .90)',
+    '.bg-primary-90': {
+      backgroundColor: 'rgba(var(--color-primary), .90)',
     },
     // Light versions
     '.bg-primary-light': {
@@ -144,23 +144,23 @@ module.exports = {
     },
 
     // Secondary
-    '.bg-secondary-base': {
-      backgroundColor: 'rgba(var(--color-secondary-base), 1)',
+    '.bg-secondary': {
+      backgroundColor: 'rgba(var(--color-secondary), 1)',
     },
-    '.bg-secondary-base-10': {
-      backgroundColor: 'rgba(var(--color-secondary-base), .1)',
+    '.bg-secondary-10': {
+      backgroundColor: 'rgba(var(--color-secondary), .1)',
     },
-    '.bg-secondary-base-25': {
-      backgroundColor: 'rgba(var(--color-secondary-base), .25)',
+    '.bg-secondary-25': {
+      backgroundColor: 'rgba(var(--color-secondary), .25)',
     },
-    '.bg-secondary-base-50': {
-      backgroundColor: 'rgba(var(--color-secondary-base), .50)',
+    '.bg-secondary-50': {
+      backgroundColor: 'rgba(var(--color-secondary), .50)',
     },
-    '.bg-secondary-base-75': {
-      backgroundColor: 'rgba(var(--color-secondary-base), .75)',
+    '.bg-secondary-75': {
+      backgroundColor: 'rgba(var(--color-secondary), .75)',
     },
-    '.bg-secondary-base-90': {
-      backgroundColor: 'rgba(var(--color-secondary-base), .90)',
+    '.bg-secondary-90': {
+      backgroundColor: 'rgba(var(--color-secondary), .90)',
     },
     // Light versions
     '.bg-secondary-light': {
@@ -285,23 +285,23 @@ module.exports = {
       backgroundColor: 'rgba(var(--color-secondary-mdk), 0.1)',
     },
     // Tertiary
-    '.bg-tertiary-base': {
-      backgroundColor: 'rgba(var(--color-tertiary-base), 1)',
+    '.bg-tertiary': {
+      backgroundColor: 'rgba(var(--color-tertiary), 1)',
     },
-    '.bg-tertiary-base-10': {
-      backgroundColor: 'rgba(var(--color-tertiary-base), .1)',
+    '.bg-tertiary-10': {
+      backgroundColor: 'rgba(var(--color-tertiary), .1)',
     },
-    '.bg-tertiary-base-25': {
-      backgroundColor: 'rgba(var(--color-tertiary-base), .25)',
+    '.bg-tertiary-25': {
+      backgroundColor: 'rgba(var(--color-tertiary), .25)',
     },
-    '.bg-tertiary-base-50': {
-      backgroundColor: 'rgba(var(--color-tertiary-base), .50)',
+    '.bg-tertiary-50': {
+      backgroundColor: 'rgba(var(--color-tertiary), .50)',
     },
-    '.bg-tertiary-base-75': {
-      backgroundColor: 'rgba(var(--color-tertiary-base), .75)',
+    '.bg-tertiary-75': {
+      backgroundColor: 'rgba(var(--color-tertiary), .75)',
     },
-    '.bg-tertiary-base-90': {
-      backgroundColor: 'rgba(var(--color-tertiary-base), .90)',
+    '.bg-tertiary-90': {
+      backgroundColor: 'rgba(var(--color-tertiary), .90)',
     },
     // Light versions
     '.bg-tertiary-light': {
@@ -427,313 +427,313 @@ module.exports = {
       backgroundColor: 'rgba(var(--color-tertiary-mdk), 0.1)',
     },
     // Quaternary
-    '.bg-quaternary-base': {
-      backgroundColor: 'rgba(var(--color-quaternary-base), 1)',
+    '.bg-quat': {
+      backgroundColor: 'rgba(var(--color-quat), 1)',
     },
-    '.bg-quaternary-base-10': {
-      backgroundColor: 'rgba(var(--color-quaternary-base), .1)',
+    '.bg-quat-10': {
+      backgroundColor: 'rgba(var(--color-quat), .1)',
     },
-    '.bg-quaternary-base-25': {
-      backgroundColor: 'rgba(var(--color-quaternary-base), .25)',
+    '.bg-quat-25': {
+      backgroundColor: 'rgba(var(--color-quat), .25)',
     },
-    '.bg-quaternary-base-50': {
-      backgroundColor: 'rgba(var(--color-quaternary-base), .50)',
+    '.bg-quat-50': {
+      backgroundColor: 'rgba(var(--color-quat), .50)',
     },
-    '.bg-quaternary-base-75': {
-      backgroundColor: 'rgba(var(--color-quaternary-base), .75)',
+    '.bg-quat-75': {
+      backgroundColor: 'rgba(var(--color-quat), .75)',
     },
-    '.bg-quaternary-base-90': {
-      backgroundColor: 'rgba(var(--color-quaternary-base), .90)',
+    '.bg-quat-90': {
+      backgroundColor: 'rgba(var(--color-quat), .90)',
     },
     // Light versions
-    '.bg-quaternary-light': {
-      backgroundColor: 'rgba(var(--color-quaternary-light), 1)',
+    '.bg-quat-light': {
+      backgroundColor: 'rgba(var(--color-quat-light), 1)',
     },
-    '.bg-quaternary-light-10': {
-      backgroundColor: 'rgba(var(--color-quaternary-light), 0.1)',
+    '.bg-quat-light-10': {
+      backgroundColor: 'rgba(var(--color-quat-light), 0.1)',
     },
-    '.bg-quaternary-light-25': {
-      backgroundColor: 'rgba(var(--color-quaternary-light), 0.25)',
+    '.bg-quat-light-25': {
+      backgroundColor: 'rgba(var(--color-quat-light), 0.25)',
     },
-    '.bg-quaternary-light-50': {
-      backgroundColor: 'rgba(var(--color-quaternary-light), 0.5)',
+    '.bg-quat-light-50': {
+      backgroundColor: 'rgba(var(--color-quat-light), 0.5)',
     },
-    '.bg-quaternary-light-75': {
-      backgroundColor: 'rgba(var(--color-quaternary-light), 0.75)',
+    '.bg-quat-light-75': {
+      backgroundColor: 'rgba(var(--color-quat-light), 0.75)',
     },
-    '.bg-quaternary-light-90': {
-      backgroundColor: 'rgba(var(--color-quaternary-light), 0.9)',
+    '.bg-quat-light-90': {
+      backgroundColor: 'rgba(var(--color-quat-light), 0.9)',
     },
     // MLT versions
-    '.bg-quaternary-mlt': {
-      backgroundColor: 'rgba(var(--color-quaternary-mlt), 1)',
+    '.bg-quat-mlt': {
+      backgroundColor: 'rgba(var(--color-quat-mlt), 1)',
     },
-    '.bg-quaternary-mlt-10': {
-      backgroundColor: 'rgba(var(--color-quaternary-mlt), 0.1)',
+    '.bg-quat-mlt-10': {
+      backgroundColor: 'rgba(var(--color-quat-mlt), 0.1)',
     },
-    '.bg-quaternary-mlt-25': {
-      backgroundColor: 'rgba(var(--color-quaternary-mlt), 0.25)',
+    '.bg-quat-mlt-25': {
+      backgroundColor: 'rgba(var(--color-quat-mlt), 0.25)',
     },
-    '.bg-quaternary-mlt-50': {
-      backgroundColor: 'rgba(var(--color-quaternary-mlt), 0.5)',
+    '.bg-quat-mlt-50': {
+      backgroundColor: 'rgba(var(--color-quat-mlt), 0.5)',
     },
-    '.bg-quaternary-mlt-75': {
-      backgroundColor: 'rgba(var(--color-quaternary-mlt), 0.75)',
+    '.bg-quat-mlt-75': {
+      backgroundColor: 'rgba(var(--color-quat-mlt), 0.75)',
     },
-    '.bg-quaternary-mlt-90': {
-      backgroundColor: 'rgba(var(--color-quaternary-mlt), 0.9)',
+    '.bg-quat-mlt-90': {
+      backgroundColor: 'rgba(var(--color-quat-mlt), 0.9)',
     },
     // MDK versions
-    '.bg-quaternary-mdk': {
-      backgroundColor: 'rgba(var(--color-quaternary-mdk), 1)',
+    '.bg-quat-mdk': {
+      backgroundColor: 'rgba(var(--color-quat-mdk), 1)',
     },
-    '.bg-quaternary-mdk-10': {
-      backgroundColor: 'rgba(var(--color-quaternary-mdk), 0.1)',
+    '.bg-quat-mdk-10': {
+      backgroundColor: 'rgba(var(--color-quat-mdk), 0.1)',
     },
-    '.bg-quaternary-mdk-25': {
-      backgroundColor: 'rgba(var(--color-quaternary-mdk), 0.25)',
+    '.bg-quat-mdk-25': {
+      backgroundColor: 'rgba(var(--color-quat-mdk), 0.25)',
     },
-    '.bg-quaternary-mdk-50': {
-      backgroundColor: 'rgba(var(--color-quaternary-mdk), 0.5)',
+    '.bg-quat-mdk-50': {
+      backgroundColor: 'rgba(var(--color-quat-mdk), 0.5)',
     },
-    '.bg-quaternary-mdk-75': {
-      backgroundColor: 'rgba(var(--color-quaternary-mdk), 0.75)',
+    '.bg-quat-mdk-75': {
+      backgroundColor: 'rgba(var(--color-quat-mdk), 0.75)',
     },
-    '.bg-quaternary-mdk-90': {
-      backgroundColor: 'rgba(var(--color-quaternary-mdk), 0.9)',
+    '.bg-quat-mdk-90': {
+      backgroundColor: 'rgba(var(--color-quat-mdk), 0.9)',
     },
     // Dark versions
 
-    '.bg-quaternary-dark': {
-      backgroundColor: 'rgba(var(--color-quaternary-dark), 1)',
+    '.bg-quat-dark': {
+      backgroundColor: 'rgba(var(--color-quat-dark), 1)',
     },
-    '.bg-quaternary-dark-10': {
-      backgroundColor: 'rgba(var(--color-quaternary-dark), 0.1)',
+    '.bg-quat-dark-10': {
+      backgroundColor: 'rgba(var(--color-quat-dark), 0.1)',
     },
-    '.bg-quaternary-dark-25': {
-      backgroundColor: 'rgba(var(--color-quaternary-dark), 0.25)',
+    '.bg-quat-dark-25': {
+      backgroundColor: 'rgba(var(--color-quat-dark), 0.25)',
     },
-    '.bg-quaternary-dark-50': {
-      backgroundColor: 'rgba(var(--color-quaternary-dark), 0.5)',
+    '.bg-quat-dark-50': {
+      backgroundColor: 'rgba(var(--color-quat-dark), 0.5)',
     },
-    '.bg-quaternary-dark-75': {
-      backgroundColor: 'rgba(var(--color-quaternary-dark), 0.75)',
+    '.bg-quat-dark-75': {
+      backgroundColor: 'rgba(var(--color-quat-dark), 0.75)',
     },
-    '.bg-quaternary-dark-90': {
-      backgroundColor: 'rgba(var(--color-quaternary-dark), 0.9)',
+    '.bg-quat-dark-90': {
+      backgroundColor: 'rgba(var(--color-quat-dark), 0.9)',
     },
 
     // Dynamic light/darks
-    '.dark .bg-quaternary-light-dark': {
-      backgroundColor: 'rgba(var(--color-quaternary-dark), 1)',
+    '.dark .bg-quat-light-dark': {
+      backgroundColor: 'rgba(var(--color-quat-dark), 1)',
     },
-    '.dark .bg-quaternary-light-dark-90': {
-      backgroundColor: 'rgba(var(--color-quaternary-dark), 0.9)',
+    '.dark .bg-quat-light-dark-90': {
+      backgroundColor: 'rgba(var(--color-quat-dark), 0.9)',
     },
-    '.dark .bg-quaternary-light-dark-75': {
-      backgroundColor: 'rgba(var(--color-quaternary-dark), 0.75)',
+    '.dark .bg-quat-light-dark-75': {
+      backgroundColor: 'rgba(var(--color-quat-dark), 0.75)',
     },
-    '.dark .bg-quaternary-light-dark-50': {
-      backgroundColor: 'rgba(var(--color-quaternary-dark), 0.5)',
+    '.dark .bg-quat-light-dark-50': {
+      backgroundColor: 'rgba(var(--color-quat-dark), 0.5)',
     },
-    '.dark .bg-quaternary-light-dark-10': {
-      backgroundColor: 'rgba(var(--color-quaternary-dark), 0.1)',
+    '.dark .bg-quat-light-dark-10': {
+      backgroundColor: 'rgba(var(--color-quat-dark), 0.1)',
     },
-    '.bg-quaternary-mlt-mdk': {
-      backgroundColor: 'rgba(var(--color-quaternary-mlt), 1)',
+    '.bg-quat-mlt-mdk': {
+      backgroundColor: 'rgba(var(--color-quat-mlt), 1)',
     },
-    '.bg-quaternary-mlt-mdk-90': {
-      backgroundColor: 'rgba(var(--color-quaternary-mlt), 0.9)',
+    '.bg-quat-mlt-mdk-90': {
+      backgroundColor: 'rgba(var(--color-quat-mlt), 0.9)',
     },
-    '.bg-quaternary-mlt-mdk-75': {
-      backgroundColor: 'rgba(var(--color-quaternary-mlt), 0.75)',
+    '.bg-quat-mlt-mdk-75': {
+      backgroundColor: 'rgba(var(--color-quat-mlt), 0.75)',
     },
-    '.bg-quaternary-mlt-mdk-50': {
-      backgroundColor: 'rgba(var(--color-quaternary-mlt), 0.5)',
+    '.bg-quat-mlt-mdk-50': {
+      backgroundColor: 'rgba(var(--color-quat-mlt), 0.5)',
     },
-    '.bg-quaternary-mlt-mdk-10': {
-      backgroundColor: 'rgba(var(--color-quaternary-mlt), 0.1)',
+    '.bg-quat-mlt-mdk-10': {
+      backgroundColor: 'rgba(var(--color-quat-mlt), 0.1)',
     },
 
     // Dark mode for mlt-mdk
-    '.dark .bg-quaternary-mlt-mdk': {
-      backgroundColor: 'rgba(var(--color-quaternary-mdk), 1)',
+    '.dark .bg-quat-mlt-mdk': {
+      backgroundColor: 'rgba(var(--color-quat-mdk), 1)',
     },
-    '.dark .bg-quaternary-mlt-mdk-90': {
-      backgroundColor: 'rgba(var(--color-quaternary-mdk), 0.9)',
+    '.dark .bg-quat-mlt-mdk-90': {
+      backgroundColor: 'rgba(var(--color-quat-mdk), 0.9)',
     },
-    '.dark .bg-quaternary-mlt-mdk-75': {
-      backgroundColor: 'rgba(var(--color-quaternary-mdk), 0.75)',
+    '.dark .bg-quat-mlt-mdk-75': {
+      backgroundColor: 'rgba(var(--color-quat-mdk), 0.75)',
     },
-    '.dark .bg-quaternary-mlt-mdk-50': {
-      backgroundColor: 'rgba(var(--color-quaternary-mdk), 0.5)',
+    '.dark .bg-quat-mlt-mdk-50': {
+      backgroundColor: 'rgba(var(--color-quat-mdk), 0.5)',
     },
-    '.dark .bg-quaternary-mlt-mdk-10': {
-      backgroundColor: 'rgba(var(--color-quaternary-mdk), 0.1)',
+    '.dark .bg-quat-mlt-mdk-10': {
+      backgroundColor: 'rgba(var(--color-quat-mdk), 0.1)',
     },
     // Quinary
-    '.bg-quinary-base': {
-      backgroundColor: 'rgba(var(--color-quinary-base), 1)',
+    '.bg-quin': {
+      backgroundColor: 'rgba(var(--color-quin), 1)',
     },
-    '.bg-quinary-base-10': {
-      backgroundColor: 'rgba(var(--color-quinary-base), .1)',
+    '.bg-quin-10': {
+      backgroundColor: 'rgba(var(--color-quin), .1)',
     },
-    '.bg-quinary-base-25': {
-      backgroundColor: 'rgba(var(--color-quinary-base), .25)',
+    '.bg-quin-25': {
+      backgroundColor: 'rgba(var(--color-quin), .25)',
     },
-    '.bg-quinary-base-50': {
-      backgroundColor: 'rgba(var(--color-quinary-base), .50)',
+    '.bg-quin-50': {
+      backgroundColor: 'rgba(var(--color-quin), .50)',
     },
-    '.bg-quinary-base-75': {
-      backgroundColor: 'rgba(var(--color-quinary-base), .75)',
+    '.bg-quin-75': {
+      backgroundColor: 'rgba(var(--color-quin), .75)',
     },
-    '.bg-quinary-base-90': {
-      backgroundColor: 'rgba(var(--color-quinary-base), .90)',
+    '.bg-quin-90': {
+      backgroundColor: 'rgba(var(--color-quin), .90)',
     },
     // Light versions
-    '.bg-quinary-light': {
-      backgroundColor: 'rgba(var(--color-quinary-light), 1)',
+    '.bg-quin-light': {
+      backgroundColor: 'rgba(var(--color-quin-light), 1)',
     },
-    '.bg-quinary-light-10': {
-      backgroundColor: 'rgba(var(--color-quinary-light), 0.1)',
+    '.bg-quin-light-10': {
+      backgroundColor: 'rgba(var(--color-quin-light), 0.1)',
     },
-    '.bg-quinary-light-25': {
-      backgroundColor: 'rgba(var(--color-quinary-light), 0.25)',
+    '.bg-quin-light-25': {
+      backgroundColor: 'rgba(var(--color-quin-light), 0.25)',
     },
-    '.bg-quinary-light-50': {
-      backgroundColor: 'rgba(var(--color-quinary-light), 0.5)',
+    '.bg-quin-light-50': {
+      backgroundColor: 'rgba(var(--color-quin-light), 0.5)',
     },
-    '.bg-quinary-light-75': {
-      backgroundColor: 'rgba(var(--color-quinary-light), 0.75)',
+    '.bg-quin-light-75': {
+      backgroundColor: 'rgba(var(--color-quin-light), 0.75)',
     },
-    '.bg-quinary-light-90': {
-      backgroundColor: 'rgba(var(--color-quinary-light), 0.9)',
+    '.bg-quin-light-90': {
+      backgroundColor: 'rgba(var(--color-quin-light), 0.9)',
     },
     // MLT versions
-    '.bg-quinary-mlt': {
-      backgroundColor: 'rgba(var(--color-quinary-mlt), 1)',
+    '.bg-quin-mlt': {
+      backgroundColor: 'rgba(var(--color-quin-mlt), 1)',
     },
-    '.bg-quinary-mlt-10': {
-      backgroundColor: 'rgba(var(--color-quinary-mlt), 0.1)',
+    '.bg-quin-mlt-10': {
+      backgroundColor: 'rgba(var(--color-quin-mlt), 0.1)',
     },
-    '.bg-quinary-mlt-25': {
-      backgroundColor: 'rgba(var(--color-quinary-mlt), 0.25)',
+    '.bg-quin-mlt-25': {
+      backgroundColor: 'rgba(var(--color-quin-mlt), 0.25)',
     },
-    '.bg-quinary-mlt-50': {
-      backgroundColor: 'rgba(var(--color-quinary-mlt), 0.5)',
+    '.bg-quin-mlt-50': {
+      backgroundColor: 'rgba(var(--color-quin-mlt), 0.5)',
     },
-    '.bg-quinary-mlt-75': {
-      backgroundColor: 'rgba(var(--color-quinary-mlt), 0.75)',
+    '.bg-quin-mlt-75': {
+      backgroundColor: 'rgba(var(--color-quin-mlt), 0.75)',
     },
-    '.bg-quinary-mlt-90': {
-      backgroundColor: 'rgba(var(--color-quinary-mlt), 0.9)',
+    '.bg-quin-mlt-90': {
+      backgroundColor: 'rgba(var(--color-quin-mlt), 0.9)',
     },
     // MDK versions
-    '.bg-quinary-mdk': {
-      backgroundColor: 'rgba(var(--color-quinary-mdk), 1)',
+    '.bg-quin-mdk': {
+      backgroundColor: 'rgba(var(--color-quin-mdk), 1)',
     },
-    '.bg-quinary-mdk-10': {
-      backgroundColor: 'rgba(var(--color-quinary-mdk), 0.1)',
+    '.bg-quin-mdk-10': {
+      backgroundColor: 'rgba(var(--color-quin-mdk), 0.1)',
     },
-    '.bg-quinary-mdk-25': {
-      backgroundColor: 'rgba(var(--color-quinary-mdk), 0.25)',
+    '.bg-quin-mdk-25': {
+      backgroundColor: 'rgba(var(--color-quin-mdk), 0.25)',
     },
-    '.bg-quinary-mdk-50': {
-      backgroundColor: 'rgba(var(--color-quinary-mdk), 0.5)',
+    '.bg-quin-mdk-50': {
+      backgroundColor: 'rgba(var(--color-quin-mdk), 0.5)',
     },
-    '.bg-quinary-mdk-75': {
-      backgroundColor: 'rgba(var(--color-quinary-mdk), 0.75)',
+    '.bg-quin-mdk-75': {
+      backgroundColor: 'rgba(var(--color-quin-mdk), 0.75)',
     },
-    '.bg-quinary-mdk-90': {
-      backgroundColor: 'rgba(var(--color-quinary-mdk), 0.9)',
+    '.bg-quin-mdk-90': {
+      backgroundColor: 'rgba(var(--color-quin-mdk), 0.9)',
     },
     // Dark versions
 
-    '.bg-quinary-dark': {
-      backgroundColor: 'rgba(var(--color-quinary-dark), 1)',
+    '.bg-quin-dark': {
+      backgroundColor: 'rgba(var(--color-quin-dark), 1)',
     },
-    '.bg-quinary-dark-10': {
-      backgroundColor: 'rgba(var(--color-quinary-dark), 0.1)',
+    '.bg-quin-dark-10': {
+      backgroundColor: 'rgba(var(--color-quin-dark), 0.1)',
     },
-    '.bg-quinary-dark-25': {
-      backgroundColor: 'rgba(var(--color-quinary-dark), 0.25)',
+    '.bg-quin-dark-25': {
+      backgroundColor: 'rgba(var(--color-quin-dark), 0.25)',
     },
-    '.bg-quinary-dark-50': {
-      backgroundColor: 'rgba(var(--color-quinary-dark), 0.5)',
+    '.bg-quin-dark-50': {
+      backgroundColor: 'rgba(var(--color-quin-dark), 0.5)',
     },
-    '.bg-quinary-dark-75': {
-      backgroundColor: 'rgba(var(--color-quinary-dark), 0.75)',
+    '.bg-quin-dark-75': {
+      backgroundColor: 'rgba(var(--color-quin-dark), 0.75)',
     },
-    '.bg-quinary-dark-90': {
-      backgroundColor: 'rgba(var(--color-quinary-dark), 0.9)',
+    '.bg-quin-dark-90': {
+      backgroundColor: 'rgba(var(--color-quin-dark), 0.9)',
     },
 
     // Dynamic light/darks
-    '.dark .bg-quinary-light-dark': {
-      backgroundColor: 'rgba(var(--color-quinary-dark), 1)',
+    '.dark .bg-quin-light-dark': {
+      backgroundColor: 'rgba(var(--color-quin-dark), 1)',
     },
-    '.dark .bg-quinary-light-dark-90': {
-      backgroundColor: 'rgba(var(--color-quinary-dark), 0.9)',
+    '.dark .bg-quin-light-dark-90': {
+      backgroundColor: 'rgba(var(--color-quin-dark), 0.9)',
     },
-    '.dark .bg-quinary-light-dark-75': {
-      backgroundColor: 'rgba(var(--color-quinary-dark), 0.75)',
+    '.dark .bg-quin-light-dark-75': {
+      backgroundColor: 'rgba(var(--color-quin-dark), 0.75)',
     },
-    '.dark .bg-quinary-light-dark-50': {
-      backgroundColor: 'rgba(var(--color-quinary-dark), 0.5)',
+    '.dark .bg-quin-light-dark-50': {
+      backgroundColor: 'rgba(var(--color-quin-dark), 0.5)',
     },
-    '.dark .bg-quinary-light-dark-10': {
-      backgroundColor: 'rgba(var(--color-quinary-dark), 0.1)',
+    '.dark .bg-quin-light-dark-10': {
+      backgroundColor: 'rgba(var(--color-quin-dark), 0.1)',
     },
-    '.bg-quinary-mlt-mdk': {
-      backgroundColor: 'rgba(var(--color-quinary-mlt), 1)',
+    '.bg-quin-mlt-mdk': {
+      backgroundColor: 'rgba(var(--color-quin-mlt), 1)',
     },
-    '.bg-quinary-mlt-mdk-90': {
-      backgroundColor: 'rgba(var(--color-quinary-mlt), 0.9)',
+    '.bg-quin-mlt-mdk-90': {
+      backgroundColor: 'rgba(var(--color-quin-mlt), 0.9)',
     },
-    '.bg-quinary-mlt-mdk-75': {
-      backgroundColor: 'rgba(var(--color-quinary-mlt), 0.75)',
+    '.bg-quin-mlt-mdk-75': {
+      backgroundColor: 'rgba(var(--color-quin-mlt), 0.75)',
     },
-    '.bg-quinary-mlt-mdk-50': {
-      backgroundColor: 'rgba(var(--color-quinary-mlt), 0.5)',
+    '.bg-quin-mlt-mdk-50': {
+      backgroundColor: 'rgba(var(--color-quin-mlt), 0.5)',
     },
-    '.bg-quinary-mlt-mdk-10': {
-      backgroundColor: 'rgba(var(--color-quinary-mlt), 0.1)',
+    '.bg-quin-mlt-mdk-10': {
+      backgroundColor: 'rgba(var(--color-quin-mlt), 0.1)',
     },
 
     // Dark mode for mlt-mdk
-    '.dark .bg-quinary-mlt-mdk': {
-      backgroundColor: 'rgba(var(--color-quinary-mdk), 1)',
+    '.dark .bg-quin-mlt-mdk': {
+      backgroundColor: 'rgba(var(--color-quin-mdk), 1)',
     },
-    '.dark .bg-quinary-mlt-mdk-90': {
-      backgroundColor: 'rgba(var(--color-quinary-mdk), 0.9)',
+    '.dark .bg-quin-mlt-mdk-90': {
+      backgroundColor: 'rgba(var(--color-quin-mdk), 0.9)',
     },
-    '.dark .bg-quinary-mlt-mdk-75': {
-      backgroundColor: 'rgba(var(--color-quinary-mdk), 0.75)',
+    '.dark .bg-quin-mlt-mdk-75': {
+      backgroundColor: 'rgba(var(--color-quin-mdk), 0.75)',
     },
-    '.dark .bg-quinary-mlt-mdk-50': {
-      backgroundColor: 'rgba(var(--color-quinary-mdk), 0.5)',
+    '.dark .bg-quin-mlt-mdk-50': {
+      backgroundColor: 'rgba(var(--color-quin-mdk), 0.5)',
     },
-    '.dark .bg-quinary-mlt-mdk-10': {
-      backgroundColor: 'rgba(var(--color-quinary-mdk), 0.1)',
+    '.dark .bg-quin-mlt-mdk-10': {
+      backgroundColor: 'rgba(var(--color-quin-mdk), 0.1)',
     },
     // Success
-    '.bg-success-base': {
-      backgroundColor: 'rgba(var(--color-success-base), 1)',
+    '.bg-success': {
+      backgroundColor: 'rgba(var(--color-success), 1)',
     },
-    '.bg-success-base-10': {
-      backgroundColor: 'rgba(var(--color-success-base), .1)',
+    '.bg-success-10': {
+      backgroundColor: 'rgba(var(--color-success), .1)',
     },
-    '.bg-success-base-25': {
-      backgroundColor: 'rgba(var(--color-success-base), .25)',
+    '.bg-success-25': {
+      backgroundColor: 'rgba(var(--color-success), .25)',
     },
-    '.bg-success-base-50': {
-      backgroundColor: 'rgba(var(--color-success-base), .50)',
+    '.bg-success-50': {
+      backgroundColor: 'rgba(var(--color-success), .50)',
     },
-    '.bg-success-base-75': {
-      backgroundColor: 'rgba(var(--color-success-base), .75)',
+    '.bg-success-75': {
+      backgroundColor: 'rgba(var(--color-success), .75)',
     },
-    '.bg-success-base-90': {
-      backgroundColor: 'rgba(var(--color-success-base), .90)',
+    '.bg-success-90': {
+      backgroundColor: 'rgba(var(--color-success), .90)',
     },
     // Light versions
     '.bg-success-light': {
@@ -862,23 +862,23 @@ module.exports = {
       backgroundColor: 'rgba(var(--color-success-mdk), 0.1)',
     },
     // Warning
-    '.bg-warning-base': {
-      backgroundColor: 'rgba(var(--color-warning-base), 1)',
+    '.bg-warning': {
+      backgroundColor: 'rgba(var(--color-warning), 1)',
     },
-    '.bg-warning-base-10': {
-      backgroundColor: 'rgba(var(--color-warning-base), .1)',
+    '.bg-warning-10': {
+      backgroundColor: 'rgba(var(--color-warning), .1)',
     },
-    '.bg-warning-base-25': {
-      backgroundColor: 'rgba(var(--color-warning-base), .25)',
+    '.bg-warning-25': {
+      backgroundColor: 'rgba(var(--color-warning), .25)',
     },
-    '.bg-warning-base-50': {
-      backgroundColor: 'rgba(var(--color-warning-base), .50)',
+    '.bg-warning-50': {
+      backgroundColor: 'rgba(var(--color-warning), .50)',
     },
-    '.bg-warning-base-75': {
-      backgroundColor: 'rgba(var(--color-warning-base), .75)',
+    '.bg-warning-75': {
+      backgroundColor: 'rgba(var(--color-warning), .75)',
     },
-    '.bg-warning-base-90': {
-      backgroundColor: 'rgba(var(--color-warning-base), .90)',
+    '.bg-warning-90': {
+      backgroundColor: 'rgba(var(--color-warning), .90)',
     },
     // Light versions
     '.bg-warning-light': {
@@ -1007,23 +1007,23 @@ module.exports = {
       backgroundColor: 'rgba(var(--color-warning-mdk), 0.1)',
     },
     // Error
-    '.bg-error-base': {
-      backgroundColor: 'rgba(var(--color-error-base), 1)',
+    '.bg-error': {
+      backgroundColor: 'rgba(var(--color-error), 1)',
     },
-    '.bg-error-base-10': {
-      backgroundColor: 'rgba(var(--color-error-base), .1)',
+    '.bg-error-10': {
+      backgroundColor: 'rgba(var(--color-error), .1)',
     },
-    '.bg-error-base-25': {
-      backgroundColor: 'rgba(var(--color-error-base), .25)',
+    '.bg-error-25': {
+      backgroundColor: 'rgba(var(--color-error), .25)',
     },
-    '.bg-error-base-50': {
-      backgroundColor: 'rgba(var(--color-error-base), .50)',
+    '.bg-error-50': {
+      backgroundColor: 'rgba(var(--color-error), .50)',
     },
-    '.bg-error-base-75': {
-      backgroundColor: 'rgba(var(--color-error-base), .75)',
+    '.bg-error-75': {
+      backgroundColor: 'rgba(var(--color-error), .75)',
     },
-    '.bg-error-base-90': {
-      backgroundColor: 'rgba(var(--color-error-base), .90)',
+    '.bg-error-90': {
+      backgroundColor: 'rgba(var(--color-error), .90)',
     },
     // Light versions
     '.bg-error-light': {
@@ -1152,23 +1152,23 @@ module.exports = {
       backgroundColor: 'rgba(var(--color-error-mdk), 0.1)',
     },
     // info
-    '.bg-info-base': {
-      backgroundColor: 'rgba(var(--color-info-base), 1)',
+    '.bg-info': {
+      backgroundColor: 'rgba(var(--color-info), 1)',
     },
-    '.bg-info-base-10': {
-      backgroundColor: 'rgba(var(--color-info-base), .1)',
+    '.bg-info-10': {
+      backgroundColor: 'rgba(var(--color-info), .1)',
     },
-    '.bg-info-base-25': {
-      backgroundColor: 'rgba(var(--color-info-base), .25)',
+    '.bg-info-25': {
+      backgroundColor: 'rgba(var(--color-info), .25)',
     },
-    '.bg-info-base-50': {
-      backgroundColor: 'rgba(var(--color-info-base), .50)',
+    '.bg-info-50': {
+      backgroundColor: 'rgba(var(--color-info), .50)',
     },
-    '.bg-info-base-75': {
-      backgroundColor: 'rgba(var(--color-info-base), .75)',
+    '.bg-info-75': {
+      backgroundColor: 'rgba(var(--color-info), .75)',
     },
-    '.bg-info-base-90': {
-      backgroundColor: 'rgba(var(--color-info-base), .90)',
+    '.bg-info-90': {
+      backgroundColor: 'rgba(var(--color-info), .90)',
     },
     // Light versions
     '.bg-info-light': {
@@ -1297,23 +1297,23 @@ module.exports = {
       backgroundColor: 'rgba(var(--color-info-mdk), 0.1)',
     },
     // Neutral
-    '.bg-neutral-base': {
-      backgroundColor: 'rgba(var(--color-neutral-base), 1)',
+    '.bg-neutral': {
+      backgroundColor: 'rgba(var(--color-neutral), 1)',
     },
-    '.bg-neutral-base-10': {
-      backgroundColor: 'rgba(var(--color-neutral-base), .1)',
+    '.bg-neutral-10': {
+      backgroundColor: 'rgba(var(--color-neutral), .1)',
     },
-    '.bg-neutral-base-25': {
-      backgroundColor: 'rgba(var(--color-neutral-base), .25)',
+    '.bg-neutral-25': {
+      backgroundColor: 'rgba(var(--color-neutral), .25)',
     },
-    '.bg-neutral-base-50': {
-      backgroundColor: 'rgba(var(--color-neutral-base), .50)',
+    '.bg-neutral-50': {
+      backgroundColor: 'rgba(var(--color-neutral), .50)',
     },
-    '.bg-neutral-base-75': {
-      backgroundColor: 'rgba(var(--color-neutral-base), .75)',
+    '.bg-neutral-75': {
+      backgroundColor: 'rgba(var(--color-neutral), .75)',
     },
-    '.bg-neutral-base-90': {
-      backgroundColor: 'rgba(var(--color-neutral-base), .90)',
+    '.bg-neutral-90': {
+      backgroundColor: 'rgba(var(--color-neutral), .90)',
     },
     // Light versions
     '.bg-neutral-light': {
@@ -1442,184 +1442,184 @@ module.exports = {
       backgroundColor: 'rgba(var(--color-neutral-mdk), 0.1)',
     },
     // Page
-    '.bg-page-base': {
-      backgroundColor: 'rgba(var(--color-page-base),1)',
+    '.bg-page': {
+      backgroundColor: 'rgba(var(--color-page),1)',
     },
-    '.bg-page-base-10': {
-      backgroundColor: 'rgba(var(--color-page-base), .1)',
+    '.bg-page-10': {
+      backgroundColor: 'rgba(var(--color-page), .1)',
     },
-    '.bg-page-base-25': {
-      backgroundColor: 'rgba(var(--color-page-base), .25)',
+    '.bg-page-25': {
+      backgroundColor: 'rgba(var(--color-page), .25)',
     },
-    '.bg-page-base-50': {
-      backgroundColor: 'rgba(var(--color-page-base), .50)',
+    '.bg-page-50': {
+      backgroundColor: 'rgba(var(--color-page), .50)',
     },
-    '.bg-page-base-75': {
-      backgroundColor: 'rgba(var(--color-page-base), .75)',
+    '.bg-page-75': {
+      backgroundColor: 'rgba(var(--color-page), .75)',
     },
-    '.bg-page-base-90': {
-      backgroundColor: 'rgba(var(--color-page-base), .90)',
+    '.bg-page-90': {
+      backgroundColor: 'rgba(var(--color-page), .90)',
     },
     // Dark Page
-    '.dark .bg-page-base': {
-      backgroundColor: 'rgba(var(--color-page-contrast-base),1)',
+    '.dark .bg-page': {
+      backgroundColor: 'rgba(var(--color-page-contrast),1)',
     },
-    '.dark .bg-page-base-10': {
-      backgroundColor: 'rgba(var(--color-page-base-contrast), .1)',
+    '.dark .bg-page-10': {
+      backgroundColor: 'rgba(var(--color-page-contrast), .1)',
     },
-    '.dark .bg-page-base-25': {
-      backgroundColor: 'rgba(var(--color-page-base-contrast), .25)',
+    '.dark .bg-page-25': {
+      backgroundColor: 'rgba(var(--color-page-contrast), .25)',
     },
-    '.dark .bg-page-base-50': {
-      backgroundColor: 'rgba(var(--color-page-base-contrast), .50)',
+    '.dark .bg-page-50': {
+      backgroundColor: 'rgba(var(--color-page-contrast), .50)',
     },
-    '.dark .bg-page-base-75': {
-      backgroundColor: 'rgba(var(--color-page-base-contrast), .75)',
+    '.dark .bg-page-75': {
+      backgroundColor: 'rgba(var(--color-page-contrast), .75)',
     },
-    '.dark .bg-page-base-90': {
-      backgroundColor: 'rgba(var(--color-page-base-contrast), .90)',
+    '.dark .bg-page-90': {
+      backgroundColor: 'rgba(var(--color-page-contrast), .90)',
     },
     //Page Contrast
-    '.bg-page-contrast-base': {
-      backgroundColor: 'rgba(var(--color-page-contrast-base),1)',
+    '.bg-page-contrast': {
+      backgroundColor: 'rgba(var(--color-page-contrast),1)',
     },
-    '.bg-page-contrast-base-10': {
-      backgroundColor: 'rgba(var(--color-page-contrast-base), .1)',
+    '.bg-page-contrast-10': {
+      backgroundColor: 'rgba(var(--color-page-contrast), .1)',
     },
-    '.bg-page-contrast-base-25': {
-      backgroundColor: 'rgba(var(--color-page-contrast-base), .25)',
+    '.bg-page-contrast-25': {
+      backgroundColor: 'rgba(var(--color-page-contrast), .25)',
     },
-    '.bg-page-contrast-base-50': {
-      backgroundColor: 'rgba(var(--color-page-contrast-base), .50)',
+    '.bg-page-contrast-50': {
+      backgroundColor: 'rgba(var(--color-page-contrast), .50)',
     },
-    '.bg-page-contrast-base-75': {
-      backgroundColor: 'rgba(var(--color-page-contrast-base), .75)',
+    '.bg-page-contrast-75': {
+      backgroundColor: 'rgba(var(--color-page-contrast), .75)',
     },
-    '.bg-page-contrast-base-90': {
-      backgroundColor: 'rgba(var(--color-page-contrast-base), .90)',
+    '.bg-page-contrast-90': {
+      backgroundColor: 'rgba(var(--color-page-contrast), .90)',
     },
     // Dark Page Contrast
-    '.dark .bg-page-contrast-base': {
-      backgroundColor: 'rgba(var(--color-page-base),1)',
+    '.dark .bg-page-contrast': {
+      backgroundColor: 'rgba(var(--color-page),1)',
     },
-    '.dark .bg-page-contrast-base-10': {
-      backgroundColor: 'rgba(var(--color-page-base), .1)',
+    '.dark .bg-page-contrast-10': {
+      backgroundColor: 'rgba(var(--color-page), .1)',
     },
-    '.dark .bg-page-contrast-base-25': {
-      backgroundColor: 'rgba(var(--color-page-base), .25)',
+    '.dark .bg-page-contrast-25': {
+      backgroundColor: 'rgba(var(--color-page), .25)',
     },
-    '.dark .bg-page-contrast-base-50': {
-      backgroundColor: 'rgba(var(--color-page-base), .50)',
+    '.dark .bg-page-contrast-50': {
+      backgroundColor: 'rgba(var(--color-page), .50)',
     },
-    '.dark .bg-page-contrast-base-75': {
-      backgroundColor: 'rgba(var(--color-page-base), .75)',
+    '.dark .bg-page-contrast-75': {
+      backgroundColor: 'rgba(var(--color-page), .75)',
     },
-    '.dark .bg-page-contrast-base-90': {
-      backgroundColor: 'rgba(var(--color-page-base), .90)',
+    '.dark .bg-page-contrast-90': {
+      backgroundColor: 'rgba(var(--color-page), .90)',
     },
     // Surface
-    '.bg-surface-base': {
-      backgroundColor: 'rgba(var(--color-surface-base), 1)',
+    '.bg-surface': {
+      backgroundColor: 'rgba(var(--color-surface), 1)',
     },
-    '.bg-surface-base-10': {
-      backgroundColor: 'rgba(var(--color-surface-base), .1)',
+    '.bg-surface-10': {
+      backgroundColor: 'rgba(var(--color-surface), .1)',
     },
-    '.bg-surface-base-25': {
-      backgroundColor: 'rgba(var(--color-surface-base), .25)',
+    '.bg-surface-25': {
+      backgroundColor: 'rgba(var(--color-surface), .25)',
     },
-    '.bg-surface-base-50': {
-      backgroundColor: 'rgba(var(--color-surface-base), .50)',
+    '.bg-surface-50': {
+      backgroundColor: 'rgba(var(--color-surface), .50)',
     },
-    '.bg-surface-base-75': {
-      backgroundColor: 'rgba(var(--color-surface-base), .75)',
+    '.bg-surface-75': {
+      backgroundColor: 'rgba(var(--color-surface), .75)',
     },
-    '.bg-surface-base-90': {
-      backgroundColor: 'rgba(var(--color-surface-base), .90)',
+    '.bg-surface-90': {
+      backgroundColor: 'rgba(var(--color-surface), .90)',
     },
-    '.dark .bg-surface-base': {
-      backgroundColor: 'rgba(var(--color-surface-contrast-base), 1)',
+    '.dark .bg-surface': {
+      backgroundColor: 'rgba(var(--color-surface-contrast), 1)',
     },
-    '.dark .bg-surface-base-10': {
-      backgroundColor: 'rgba(var(--color-surface-contrast-base), .1)',
+    '.dark .bg-surface-10': {
+      backgroundColor: 'rgba(var(--color-surface-contrast), .1)',
     },
-    '.dark .bg-surface-contrast-base-25': {
-      backgroundColor: 'rgba(var(--color-surface-contrast-base), .25)',
+    '.dark .bg-surface-contrast-25': {
+      backgroundColor: 'rgba(var(--color-surface-contrast), .25)',
     },
-    '.dark .bg-surface-contrast-base-50': {
-      backgroundColor: 'rgba(var(--color-surface-contrast-base), .50)',
+    '.dark .bg-surface-contrast-50': {
+      backgroundColor: 'rgba(var(--color-surface-contrast), .50)',
     },
-    '.dark .bg-surface-contrast-base-75': {
-      backgroundColor: 'rgba(var(--color-surface-contrast-base), .75)',
+    '.dark .bg-surface-contrast-75': {
+      backgroundColor: 'rgba(var(--color-surface-contrast), .75)',
     },
-    '.dark .bg-surface-contrast-base-90': {
-      backgroundColor: 'rgba(var(--color-surface-contrast-base), .90)',
+    '.dark .bg-surface-contrast-90': {
+      backgroundColor: 'rgba(var(--color-surface-contrast), .90)',
     },
-    '.dark .bg-surface-contrast-base': {
-      backgroundColor: 'rgba(var(--color-surface-base), 1)',
+    '.dark .bg-surface-contrast': {
+      backgroundColor: 'rgba(var(--color-surface), 1)',
     },
     // Surface Raised
-    '.bg-surface-raised-base': {
-      backgroundColor: 'rgba(var(--color-surface-raised-base), 1)',
+    '.bg-surface-raised': {
+      backgroundColor: 'rgba(var(--color-surface-raised), 1)',
     },
-    '.bg-surface-raised-base-10': {
-      backgroundColor: 'rgba(var(--color-surface-raised-base), .1)',
+    '.bg-surface-raised-10': {
+      backgroundColor: 'rgba(var(--color-surface-raised), .1)',
     },
-    '.bg-surface-raised-base-25': {
-      backgroundColor: 'rgba(var(--color-surface-raised-base), .25)',
+    '.bg-surface-raised-25': {
+      backgroundColor: 'rgba(var(--color-surface-raised), .25)',
     },
-    '.bg-surface-raised-base-50': {
-      backgroundColor: 'rgba(var(--color-surface-raised-base), .50)',
+    '.bg-surface-raised-50': {
+      backgroundColor: 'rgba(var(--color-surface-raised), .50)',
     },
-    '.bg-surface-raised-base-75': {
-      backgroundColor: 'rgba(var(--color-surface-raised-base), .75)',
+    '.bg-surface-raised-75': {
+      backgroundColor: 'rgba(var(--color-surface-raised), .75)',
     },
-    '.bg-surface-raised-base-90': {
-      backgroundColor: 'rgba(var(--color-surface-raised-base), .90)',
+    '.bg-surface-raised-90': {
+      backgroundColor: 'rgba(var(--color-surface-raised), .90)',
     },
-    '.dark .bg-surface-raised-base-10': {
-      backgroundColor: 'rgba(var(--color-surface-raised-contrast-base), .1)',
+    '.dark .bg-surface-raised-10': {
+      backgroundColor: 'rgba(var(--color-surface-raised-contrast), .1)',
     },
-    '.dark .bg-surface-raised-base-25': {
-      backgroundColor: 'rgba(var(--color-surface-raised-contrast-base), .25)',
+    '.dark .bg-surface-raised-25': {
+      backgroundColor: 'rgba(var(--color-surface-raised-contrast), .25)',
     },
-    '.dark .bg-surface-raised-base-50': {
-      backgroundColor: 'rgba(var(--color-surface-raised-contrast-base), .50)',
+    '.dark .bg-surface-raised-50': {
+      backgroundColor: 'rgba(var(--color-surface-raised-contrast), .50)',
     },
-    '.dark .bg-surface-raised-base-75': {
-      backgroundColor: 'rgba(var(--color-surface-raised-contrast-base), .75)',
+    '.dark .bg-surface-raised-75': {
+      backgroundColor: 'rgba(var(--color-surface-raised-contrast), .75)',
     },
-    '.dark .bg-surface-raised-base-90': {
-      backgroundColor: 'rgba(var(--color-surface-raised-contrast-base), .90)',
+    '.dark .bg-surface-raised-90': {
+      backgroundColor: 'rgba(var(--color-surface-raised-contrast), .90)',
     },
-    '.bg-surface-raised-contrast-base-10': {
-      backgroundColor: 'rgba(var(--color-surface-raised-contrast-base), .1)',
+    '.bg-surface-raised-contrast-10': {
+      backgroundColor: 'rgba(var(--color-surface-raised-contrast), .1)',
     },
-    '.bg-surface-raised-contrast-base-25': {
-      backgroundColor: 'rgba(var(--color-surface-raised-contrast-base), .25)',
+    '.bg-surface-raised-contrast-25': {
+      backgroundColor: 'rgba(var(--color-surface-raised-contrast), .25)',
     },
-    '.bg-surface-raised-contrast-base-50': {
-      backgroundColor: 'rgba(var(--color-surface-raised-contrast-base), .50)',
+    '.bg-surface-raised-contrast-50': {
+      backgroundColor: 'rgba(var(--color-surface-raised-contrast), .50)',
     },
-    '.bg-surface-raised-contrast-base-75': {
-      backgroundColor: 'rgba(var(--color-surface-raised-contrast-base), .75)',
+    '.bg-surface-raised-contrast-75': {
+      backgroundColor: 'rgba(var(--color-surface-raised-contrast), .75)',
     },
-    '.bg-surface-raised-contrast-base-90': {
-      backgroundColor: 'rgba(var(--color-surface-raised-contrast-base), .90)',
+    '.bg-surface-raised-contrast-90': {
+      backgroundColor: 'rgba(var(--color-surface-raised-contrast), .90)',
     },
-    '.dark .bg-surface-raised-contrast-base-10': {
-      backgroundColor: 'rgba(var(--color-surface-raised-base), .1)',
+    '.dark .bg-surface-raised-contrast-10': {
+      backgroundColor: 'rgba(var(--color-surface-raised), .1)',
     },
-    '.dark .bg-surface-raised-contrast-base-25': {
-      backgroundColor: 'rgba(var(--color-surface-raised-base), .25)',
+    '.dark .bg-surface-raised-contrast-25': {
+      backgroundColor: 'rgba(var(--color-surface-raised), .25)',
     },
-    '.dark .bg-surface-raised-contrast-base-50': {
-      backgroundColor: 'rgba(var(--color-surface-raised-base), .50)',
+    '.dark .bg-surface-raised-contrast-50': {
+      backgroundColor: 'rgba(var(--color-surface-raised), .50)',
     },
-    '.dark .bg-surface-raised-contrast-base-75': {
-      backgroundColor: 'rgba(var(--color-surface-raised-base), .75)',
+    '.dark .bg-surface-raised-contrast-75': {
+      backgroundColor: 'rgba(var(--color-surface-raised), .75)',
     },
-    '.dark .bg-surface-raised-contrast-base-90': {
-      backgroundColor: 'rgba(var(--color-surface-raised-base), .90)',
+    '.dark .bg-surface-raised-contrast-90': {
+      backgroundColor: 'rgba(var(--color-surface-raised), .90)',
     },
   },
 }

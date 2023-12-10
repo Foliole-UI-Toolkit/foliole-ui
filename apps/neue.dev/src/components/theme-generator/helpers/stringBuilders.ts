@@ -62,7 +62,7 @@ export function buildColorShades(color: any) {
     {
       label: color.label,
       key: color.key,
-      stops: 'base',
+      stops: '',
       hex: hex500,
       rgb: getRgbString(hex500),
       on: generateA11yOnColor(hex500),

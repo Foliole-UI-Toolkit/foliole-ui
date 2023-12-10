@@ -32,7 +32,7 @@ withDefaults(defineProps<Props>(), {
             >
             </span>
             <h1 class="text-4xl font-bold whitespace-nowrap">
-              <a href="/"><span class="text-primary-base">NEUE </span><span>UI</span></a>
+              <a href="/"><span class="text-primary">NEUE </span><span>UI</span></a>
             </h1>
             <ul class="container flex justify-end w-full p-2 pb-0 mx-auto space-x-4 font-bold">
               <li>
@@ -63,7 +63,7 @@ withDefaults(defineProps<Props>(), {
             client:load
           >
             <template #lead>
-              <span class="block w-full h-full bg-secondary-base-50"></span>
+              <span class="block w-full h-full bg-secondary-50"></span>
             </template>
             <template #label>Docs</template>
           </NeueAppRailButton>
@@ -76,7 +76,7 @@ withDefaults(defineProps<Props>(), {
             client:load
           >
             <template #lead>
-              <span class="block w-full h-full bg-secondary-base-50"></span>
+              <span class="block w-full h-full bg-secondary-50"></span>
             </template>
             <template #label>Styles</template>
           </NeueAppRailButton>
@@ -89,7 +89,7 @@ withDefaults(defineProps<Props>(), {
             client:load
           >
             <template #lead>
-              <span class="block w-full h-full bg-secondary-base-50"></span>
+              <span class="block w-full h-full bg-secondary-50"></span>
             </template>
             <template #label>Components</template>
           </NeueAppRailButton>
@@ -111,48 +111,48 @@ withDefaults(defineProps<Props>(), {
 @layer components {
   /* // if we add  siteheader and site-header-options to the components layer in the TW plugin we can simply concat this into one single class, too*/
   .my-app-shell {
-    @apply bg-page-base mx-auto;
+    @apply bg-page mx-auto;
     background-image: linear-gradient(
       to right,
-      rgba(var(--color-primary-base), 0.1),
-      rgba(var(--color-secondary-base), 0.1),
-      rgba(var(--color-primary-base), 0.1)
+      rgba(var(--color-primary), 0.1),
+      rgba(var(--color-secondary), 0.1),
+      rgba(var(--color-primary), 0.1)
     );
   }
   .my-header {
-    @apply mx-auto w-full bg-page-base;
+    @apply mx-auto w-full bg-page;
     @apply shadow-xl;
   }
 
   .header-bottom {
     background-image: linear-gradient(
       to right,
-      rgba(var(--color-primary-base), 0.95),
-      rgba(var(--color-secondary-base), 0.95),
-      rgba(var(--color-tertiary-base), 0.95),
-      rgba(var(--color-secondary-base), 0.95),
-      rgba(var(--color-primary-base), 0.95)
+      rgba(var(--color-primary), 0.95),
+      rgba(var(--color-secondary), 0.95),
+      rgba(var(--color-tertiary), 0.95),
+      rgba(var(--color-secondary), 0.95),
+      rgba(var(--color-primary), 0.95)
     );
   }
   .logo {
     background-image: linear-gradient(
       to top right,
-      rgba(var(--color-primary-base), 0.95),
-      rgba(var(--color-secondary-base), 0.95)
+      rgba(var(--color-primary), 0.95),
+      rgba(var(--color-secondary), 0.95)
     );
   }
   .my-side-bar-left {
-    @apply shadow-sm border-r border-surface-raised-base bg-page-base-90;
+    @apply shadow-sm border-r border-surface-raised bg-page-90;
 
     background-image: linear-gradient(
       to right,
-      rgba(var(--color-primary-base), 0.05),
-      rgba(var(--color-secondary-base), 0.05),
-      rgba(var(--color-primary-base), 0.05)
+      rgba(var(--color-primary), 0.05),
+      rgba(var(--color-secondary), 0.05),
+      rgba(var(--color-primary), 0.05)
     );
   }
   .my-app-rail {
-    @apply bg-surface-raised-base-50 border-r border-surface-raised-base w-[5.5rem];
+    @apply bg-surface-raised-50 border-r border-surface-raised w-[5.5rem];
   }
   .my-page {
     @apply relative z-0;

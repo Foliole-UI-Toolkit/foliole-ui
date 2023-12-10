@@ -215,40 +215,40 @@
       if ($colorSchemeStore === 'triad') {
         baseColors = generateTriadColors(primaryColorHex)
         createPrimaries()
-        colorsCollection['quaternary'] = ''
-        colorsCollection['quinary'] = ''
+        colorsCollection['quat'] = ''
+        colorsCollection['quin'] = ''
         return colorsCollection
       }
 
       if ($colorSchemeStore === 'split-complimentary') {
         baseColors = generateSplitComplimentaryColors(primaryColorHex)
         createPrimaries()
-        colorsCollection['quaternary'] = ''
-        colorsCollection['quinary'] = ''
+        colorsCollection['quat'] = ''
+        colorsCollection['quin'] = ''
         return colorsCollection
       }
 
       if ($colorSchemeStore === 'analogous-triad') {
         baseColors = generateAnalogousColors(primaryColorHex, 40, 'analogous-triad')
         createPrimaries()
-        colorsCollection['quaternary'] = ''
-        colorsCollection['quinary'] = ''
+        colorsCollection['quat'] = ''
+        colorsCollection['quin'] = ''
         return colorsCollection
       }
 
       if ($colorSchemeStore === 'analogous-quad') {
         baseColors = generateAnalogousColors(primaryColorHex, 40, 'analogous-quad')
         createPrimaries()
-        colorsCollection['quaternary'] = baseColors[2]
-        colorsCollection['quinary'] = ''
+        colorsCollection['quat'] = baseColors[2]
+        colorsCollection['quin'] = ''
         return colorsCollection
       }
 
       if ($colorSchemeStore === 'analogous-quin') {
         baseColors = generateAnalogousColors(primaryColorHex, 20, 'analogous-quin')
         createPrimaries()
-        colorsCollection['quaternary'] = baseColors[2]
-        colorsCollection['quinary'] = baseColors[3]
+        colorsCollection['quat'] = baseColors[2]
+        colorsCollection['quin'] = baseColors[3]
         return colorsCollection
       }
 

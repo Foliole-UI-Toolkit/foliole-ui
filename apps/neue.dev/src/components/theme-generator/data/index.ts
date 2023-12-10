@@ -31,7 +31,7 @@ const storeThemeOptions: Writable<ThemeOptionsCollection> = localStorageStore('s
       stops: 'light,mlt,base,mdk,dark',
     },
     {
-      key: 'quaternary',
+      key: 'quat',
       label: 'Quaternary',
       hex: '',
       rgb: '0 0 0',
@@ -39,7 +39,7 @@ const storeThemeOptions: Writable<ThemeOptionsCollection> = localStorageStore('s
       stops: 'light,mlt,base,mdk,dark',
     },
     {
-      key: 'quinary',
+      key: 'quin',
       label: 'Quinary',
       hex: '',
       rgb: '0 0 0',

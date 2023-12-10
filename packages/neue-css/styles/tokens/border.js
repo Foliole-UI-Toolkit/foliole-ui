@@ -1,8 +1,8 @@
 module.exports = {
   border: {
     // Primary
-    '.border-primary-base': {
-      borderColor: 'rgba(var(--color-primary-base),1)',
+    '.border-primary': {
+      borderColor: 'rgba(var(--color-primary),1)',
     },
     '.border-primary-light': {
       borderColor: 'rgba(var(--color-primary-light), 1)',
@@ -29,8 +29,8 @@ module.exports = {
       borderColor: 'rgba(var(--color-primary-dark), 1)',
     },
     // Secondary
-    '.border-secondary-base': {
-      backgroundColor: 'rgba(var(--color-secondary-base), 1)',
+    '.border-secondary': {
+      backgroundColor: 'rgba(var(--color-secondary), 1)',
     },
     '.border-secondary-light': {
       backgroundColor: 'rgba(var(--color-secondary-light), 1)',
@@ -58,8 +58,8 @@ module.exports = {
     },
     // Tertiary
 
-    '.border-tertiary-base': {
-      borderColor: 'rgba(var(--color-tertiary-base), 1)',
+    '.border-tertiary': {
+      borderColor: 'rgba(var(--color-tertiary), 1)',
     },
     '.border-tertiary-light': {
       borderColor: 'rgba(var(--color-tertiary-light), 1)',
@@ -88,65 +88,65 @@ module.exports = {
 
     // Quaternary
 
-    '.border-quaternary-base': {
-      borderColor: 'rgba(var(--color-quaternary-base), 1)',
+    '.border-quat': {
+      borderColor: 'rgba(var(--color-quat), 1)',
     },
-    '.border-quaternary-light': {
-      borderColor: 'rgba(var(--color-quaternary-light), 1)',
+    '.border-quat-light': {
+      borderColor: 'rgba(var(--color-quat-light), 1)',
     },
-    '.border-quaternary-light-dark': {
-      borderColor: 'rgba(var(--color-quaternary-light), 1)',
+    '.border-quat-light-dark': {
+      borderColor: 'rgba(var(--color-quat-light), 1)',
     },
-    '.dark .border-quaternary-light-dark': {
-      borderColor: 'rgba(var(--color-quaternary-dark), 1)',
+    '.dark .border-quat-light-dark': {
+      borderColor: 'rgba(var(--color-quat-dark), 1)',
     },
-    '.border-quaternary-mlt': {
-      borderColor: 'rgba(var(--color-quaternary-mlt), 1)',
+    '.border-quat-mlt': {
+      borderColor: 'rgba(var(--color-quat-mlt), 1)',
     },
-    '.border-quaternary-mlt-mdk': {
-      borderColor: 'rgba(var(--color-quaternary-mlt), 1)',
+    '.border-quat-mlt-mdk': {
+      borderColor: 'rgba(var(--color-quat-mlt), 1)',
     },
-    '.dark .border-quaternary-mlt-mdk': {
-      borderColor: 'rgba(var(--color-quaternary-mdk), 1)',
+    '.dark .border-quat-mlt-mdk': {
+      borderColor: 'rgba(var(--color-quat-mdk), 1)',
     },
-    '.border-quaternary-mdk': {
-      borderColor: 'rgba(var(--color-quaternary-mdk), 1)',
+    '.border-quat-mdk': {
+      borderColor: 'rgba(var(--color-quat-mdk), 1)',
     },
-    '.border-quaternary-dark': {
-      borderColor: 'rgba(var(--color-quaternary-dark), 1)',
+    '.border-quat-dark': {
+      borderColor: 'rgba(var(--color-quat-dark), 1)',
     },
     // Quinary
-    '.border-quinary-base': {
-      borderColor: 'rgba(var(--color-quinary-base), 1)',
+    '.border-quin': {
+      borderColor: 'rgba(var(--color-quin), 1)',
     },
-    '.border-quinary-light': {
-      borderColor: 'rgba(var(--color-quinary-light), 1)',
+    '.border-quin-light': {
+      borderColor: 'rgba(var(--color-quin-light), 1)',
     },
-    '.border-quinary-light-dark': {
-      borderColor: 'rgba(var(--color-quinary-light), 1)',
+    '.border-quin-light-dark': {
+      borderColor: 'rgba(var(--color-quin-light), 1)',
     },
-    '.dark .border-quinary-light-dark': {
-      borderColor: 'rgba(var(--color-quinary-dark), 1)',
+    '.dark .border-quin-light-dark': {
+      borderColor: 'rgba(var(--color-quin-dark), 1)',
     },
-    '.border-quinary-mlt': {
-      borderColor: 'rgba(var(--color-quinary-mlt), 1)',
+    '.border-quin-mlt': {
+      borderColor: 'rgba(var(--color-quin-mlt), 1)',
     },
-    '.border-quinary-mlt-mdk': {
-      borderColor: 'rgba(var(--color-quinary-mlt), 1)',
+    '.border-quin-mlt-mdk': {
+      borderColor: 'rgba(var(--color-quin-mlt), 1)',
     },
-    '.dark .border-quinary-mlt-mdk': {
-      borderColor: 'rgba(var(--color-quinary-mdk), 1)',
+    '.dark .border-quin-mlt-mdk': {
+      borderColor: 'rgba(var(--color-quin-mdk), 1)',
     },
-    '.border-quinary-mdk': {
-      borderColor: 'rgba(var(--color-quinary-mdk), 1)',
+    '.border-quin-mdk': {
+      borderColor: 'rgba(var(--color-quin-mdk), 1)',
     },
-    '.border-quinary-dark': {
-      borderColor: 'rgba(var(--color-quinary-dark), 1)',
+    '.border-quin-dark': {
+      borderColor: 'rgba(var(--color-quin-dark), 1)',
     },
     // Success
 
-    '.border-success-base': {
-      borderColor: 'rgba(var(--color-success-base), 1)',
+    '.border-success': {
+      borderColor: 'rgba(var(--color-success), 1)',
     },
     '.border-success-light': {
       borderColor: 'rgba(var(--color-success-light), 1)',
@@ -174,8 +174,8 @@ module.exports = {
     },
 
     // Warning
-    '.border-warning-base': {
-      borderColor: 'rgba(var(--color-warning-base), 1)',
+    '.border-warning': {
+      borderColor: 'rgba(var(--color-warning), 1)',
     },
     '.border-warning-light': {
       borderColor: 'rgba(var(--color-warning-light), 1)',
@@ -203,8 +203,8 @@ module.exports = {
     },
     // Error
 
-    '.border-error-base': {
-      borderColor: 'rgba(var(--color-error-base), 1)',
+    '.border-error': {
+      borderColor: 'rgba(var(--color-error), 1)',
     },
     '.border-error-light': {
       borderColor: 'rgba(var(--color-error-light), 1)',
@@ -232,8 +232,8 @@ module.exports = {
     },
 
     // Neutral
-    '.border-neutral-base': {
-      borderColor: 'rgba(var(--color-neutral-base), 1)',
+    '.border-neutral': {
+      borderColor: 'rgba(var(--color-neutral), 1)',
     },
     '.border-neutral-light': {
       borderColor: 'rgba(var(--color-neutral-light), 1)',
@@ -262,46 +262,46 @@ module.exports = {
 
     // Page
 
-    '.border-page-base': {
-      borderColor: 'rgba(var(--color-page-base), 1)',
+    '.border-page': {
+      borderColor: 'rgba(var(--color-page), 1)',
     },
-    '.dark .border-page-base': {
-      borderColor: 'rgba(var(--color-page-contrast-base), 1)',
+    '.dark .border-page': {
+      borderColor: 'rgba(var(--color-page-contrast), 1)',
     },
-    '.border-page-contrast-base': {
-      borderColor: 'rgba(var(--color-page-contrast-base), 1)',
+    '.border-page-contrast': {
+      borderColor: 'rgba(var(--color-page-contrast), 1)',
     },
-    '.dark .border-page-contrast-base': {
-      borderColor: 'rgba(var(--color-page-base), 1)',
+    '.dark .border-page-contrast': {
+      borderColor: 'rgba(var(--color-page), 1)',
     },
 
     // Surface
 
-    '.border-surface-base': {
-      borderColor: 'rgba(var(--color-surface-base), 1)',
+    '.border-surface': {
+      borderColor: 'rgba(var(--color-surface), 1)',
     },
-    '.dark .border-surface-base': {
-      borderColor: 'rgba(var(--color-surface-base), 1)',
+    '.dark .border-surface': {
+      borderColor: 'rgba(var(--color-surface), 1)',
     },
-    '.border-surface-contrast-base': {
-      borderColor: 'rgba(var(--color-surface-contrast-base), 1)',
+    '.border-surface-contrast': {
+      borderColor: 'rgba(var(--color-surface-contrast), 1)',
     },
-    '.dark .border-surface-contrast-base': {
-      borderColor: 'rgba(var(--color-surface-base), 1)',
+    '.dark .border-surface-contrast': {
+      borderColor: 'rgba(var(--color-surface), 1)',
     },
 
     // Surface Raised
-    '.border-surface-raised-base': {
-      borderColor: 'rgba(var(--color-surface-raised-base), 1)',
+    '.border-surface-raised': {
+      borderColor: 'rgba(var(--color-surface-raised), 1)',
     },
-    '.dark .border-surface-raised-base': {
-      borderColor: 'rgba(var(--color-surface-raised-contrast-base), 1)',
+    '.dark .border-surface-raised': {
+      borderColor: 'rgba(var(--color-surface-raised-contrast), 1)',
     },
-    '.border-surface-raised-contrast-base': {
-      borderColor: 'rgba(var(--color-surface-raised-contrast-base), 1)',
+    '.border-surface-raised-contrast': {
+      borderColor: 'rgba(var(--color-surface-raised-contrast), 1)',
     },
-    '.dark .border-surface-raised-contrast-base': {
-      borderColor: 'rgba(var(--color-surface-raised-base), 1)',
+    '.dark .border-surface-raised-contrast': {
+      borderColor: 'rgba(var(--color-surface-raised), 1)',
     },
   },
 }

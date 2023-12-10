@@ -2,16 +2,16 @@ module.exports = {
   input: {
     '.input-base': {
       flexShrink: 1,
-      backgroundColor: 'rgba(var(--color-surface-base))',
+      backgroundColor: 'rgba(var(--color-surface))',
       borderRadius: 'var(--ui-input-roundness)',
       padding: 'var(--el-p-base) var(--el-p-double)',
     },
-    '.bg-surface-base .input-base': {
+    '.bg-surface .input-base': {
       backgroundColor: 'rgba(var(--color-neutral-mlt))',
     },
     '.select-base': {
       flexShrink: 1,
-      backgroundColor: 'rgba(var(--color-surface-base))',
+      backgroundColor: 'rgba(var(--color-surface))',
       '--webkit-appearance': 'none',
       borderRadius: 'var(--ui-input-roundness)',
       appearance: 'none',
@@ -21,7 +21,7 @@ module.exports = {
       backgroundSize: '1.5rem',
       padding: 'var(--el-p-base) var(--el-p-double)',
     },
-    '.bg-surface-base .select-base': {
+    '.bg-surface .select-base': {
       backgroundColor: 'rgba(var(--color-neutral-mlt))',
     },
     ".input-color-base[type='color']": {

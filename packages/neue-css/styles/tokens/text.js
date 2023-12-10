@@ -1,8 +1,8 @@
 module.exports = {
   text: {
     // Primary Text Colors
-    '.text-primary-base': {
-      color: 'rgba(var(--color-primary-base))',
+    '.text-primary': {
+      color: 'rgba(var(--color-primary))',
     },
     '.text-primary-light': {
       color: 'var(--color-primary-light)',
@@ -17,8 +17,8 @@ module.exports = {
       color: 'var(--color-primary-dark)',
     },
     // Secondary Text Colors
-    '.text-secondary-base': {
-      color: 'var(--color-secondary-base)',
+    '.text-secondary': {
+      color: 'var(--color-secondary)',
     },
     '.text-secondary-light': {
       color: 'var(--color-secondary-light)',
@@ -33,8 +33,8 @@ module.exports = {
       color: 'var(--color-secondary-dark)',
     },
     // Tertiary Text Colors
-    '.text-tertiary-base': {
-      color: 'var(--color-tertiary-base)',
+    '.text-tertiary': {
+      color: 'var(--color-tertiary)',
     },
     '.text-tertiary-light': {
       color: 'var(--color-tertiary-light)',
@@ -49,40 +49,40 @@ module.exports = {
       color: 'var(--color-tertiary-dark)',
     },
     // Quaternary Text Colors
-    '.text-quaternary-base': {
-      color: 'var(--color-quaternary-base)',
+    '.text-quat': {
+      color: 'var(--color-quat)',
     },
-    '.text-quaternary-light': {
-      color: 'var(--color-quaternary-light)',
+    '.text-quat-light': {
+      color: 'var(--color-quat-light)',
     },
-    '.text-quaternary-mlt': {
-      color: 'var(--color-quaternary-mlt)',
+    '.text-quat-mlt': {
+      color: 'var(--color-quat-mlt)',
     },
-    '.text-quaternary-mdk': {
-      color: 'var(--color-quaternary-mdk)',
+    '.text-quat-mdk': {
+      color: 'var(--color-quat-mdk)',
     },
-    '.text-quaternary-dark': {
-      color: 'var(--color-quaternary-dark)',
+    '.text-quat-dark': {
+      color: 'var(--color-quat-dark)',
     },
     // Quinary Text Colors
-    '.text-quinary-base': {
-      color: 'var(--color-quinary-base)',
+    '.text-quin': {
+      color: 'var(--color-quin)',
     },
-    '.text-quinary-light': {
-      color: 'var(--color-quinary-light)',
+    '.text-quin-light': {
+      color: 'var(--color-quin-light)',
     },
-    '.text-quinary-mlt': {
-      color: 'var(--color-quinary-mlt)',
+    '.text-quin-mlt': {
+      color: 'var(--color-quin-mlt)',
     },
-    '.text-quinary-mdk': {
-      color: 'var(--color-quinary-mdk)',
+    '.text-quin-mdk': {
+      color: 'var(--color-quin-mdk)',
     },
-    '.text-quinary-dark': {
-      color: 'var(--color-quinary-dark)',
+    '.text-quin-dark': {
+      color: 'var(--color-quin-dark)',
     },
     // Success Text Colors
-    '.text-success-base': {
-      color: 'var(--color-success-base)',
+    '.text-success': {
+      color: 'var(--color-success)',
     },
     '.text-success-light': {
       color: 'var(--color-success-light)',
@@ -97,8 +97,8 @@ module.exports = {
       color: 'var(--color-success-dark)',
     },
     // Warning Text Colors
-    '.text-warning-base': {
-      color: 'var(--color-warning-base)',
+    '.text-warning': {
+      color: 'var(--color-warning)',
     },
     '.text-warning-light': {
       color: 'var(--color-warning-light)',
@@ -113,8 +113,8 @@ module.exports = {
       color: 'var(--color-warning-dark)',
     },
     // Error Text Colors
-    '.text-error-base': {
-      color: 'var(--color-error-base)',
+    '.text-error': {
+      color: 'var(--color-error)',
     },
     '.text-error-light': {
       color: 'var(--color-error-light)',
@@ -129,8 +129,8 @@ module.exports = {
       color: 'var(--color-error-dark)',
     },
     // Neutral Text Colors
-    '.text-neutral-base': {
-      color: 'var(--color-neutral-base)',
+    '.text-neutral': {
+      color: 'var(--color-neutral)',
     },
     '.text-neutral-light': {
       color: 'var(--color-neutral-light)',
@@ -145,43 +145,43 @@ module.exports = {
       color: 'var(--color-neutral-dark)',
     },
     // Page Text Colors
-    '.text-page-base': {
-      color: 'var(--color-page-base)',
+    '.text-page': {
+      color: 'var(--color-page)',
     },
-    '.dark .text-page-base': {
-      color: 'var(--color-page-contrast-base)',
+    '.dark .text-page': {
+      color: 'var(--color-page-contrast)',
     },
-    '.text-page-contrast-base': {
-      color: 'var(--color-page-contrast-base)',
+    '.text-page-contrast': {
+      color: 'var(--color-page-contrast)',
     },
-    '.dark .text-page-contrast-base': {
-      color: 'var(--color-page-base)',
+    '.dark .text-page-contrast': {
+      color: 'var(--color-page)',
     },
     // Surface Text Colors
-    '.text-surface-base': {
-      color: 'var(--color-surface-base)',
+    '.text-surface': {
+      color: 'var(--color-surface)',
     },
-    '.dark .text-surface-base': {
-      color: 'var(--color-surface-contrast-base)',
+    '.dark .text-surface': {
+      color: 'var(--color-surface-contrast)',
     },
-    '.text-surface-contrast-base': {
-      color: 'var(--color-surface-contrast-base)',
+    '.text-surface-contrast': {
+      color: 'var(--color-surface-contrast)',
     },
-    '.dark .text-surface-contrast-base': {
-      color: 'var(--color-surface-base)',
+    '.dark .text-surface-contrast': {
+      color: 'var(--color-surface)',
     },
     // Surface Raised Text Colors
-    '.text-surface-raised-base': {
-      color: 'var(--color-surface-raised-base)',
+    '.text-surface-raised': {
+      color: 'var(--color-surface-raised)',
     },
-    '.dark .text-surface-raised-base': {
-      color: 'var(--color-surface-raised-contrast-base)',
+    '.dark .text-surface-raised': {
+      color: 'var(--color-surface-raised-contrast)',
     },
-    '.text-surface-raised-contrast-base': {
-      color: 'var(--color-surface-raised-contrast-base)',
+    '.text-surface-raised-contrast': {
+      color: 'var(--color-surface-raised-contrast)',
     },
-    '.dark .text-surface-raised-contrast-base': {
-      color: 'var(--color-surface-raised-base)',
+    '.dark .text-surface-raised-contrast': {
+      color: 'var(--color-surface-raised)',
     },
   },
 }

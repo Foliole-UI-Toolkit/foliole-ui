@@ -21,7 +21,7 @@ const pathname = new URL(Astro.request.url).pathname;
 		<title>{title}</title>
 		<link rel="stylesheet" href="https://use.typekit.net/tqq6mmg.css" />
 	</head>
-	<body class="h-full min-h-screen bg-page-base">
+	<body class="h-full min-h-screen bg-page">
 			<AppShell
 				pathname={pathname}
 				client:load
@@ -46,9 +46,9 @@ const pathname = new URL(Astro.request.url).pathname;
 }
 @layer components {
 	.my-btn {
-		@apply btn-base bg-primary-base border-2 button-roundness border-primary-mlt shadow-md; 
+		@apply btn-base bg-primary border-2 button-roundness border-primary-mlt shadow-md; 
 		/* &:hover {
-        @apply bg-primary-mlt border-primary-base;
+        @apply bg-primary-mlt border-primary;
     } */
 
 	}
@@ -76,7 +76,7 @@ const pathname = new URL(Astro.request.url).pathname;
     border: none !important;
   }
 	.page-section {
-    @apply p-4 neue-rounded shadow-sm bg-page-base-75 border-surface-raised-base border;
+    @apply p-4 neue-rounded shadow-sm bg-page-75 border-surface-raised border;
   }
   .page-heading {
     @apply font-bold text-center pb-2;
