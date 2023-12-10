@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Aaron Crockett",
-  "description": "Neue - UI. Toolkit. CSS agnostic solution tailwind support. Framework flexible, built to be easily ported to any framework.",
+  "description": "Neue - UI. A Toolkit. A CSS agnostic solution with Tailwind support. Framework flexible, built to be easily ported to any framework by relying on CSS class composition vs extensive options and prop logic.",
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
