@@ -48,7 +48,7 @@
     <button class="self-center justify-self-center my-chip bg-neutral-light">Chip</button>
     <div class="p-4 space-y-4 border border-surface-raised-base">
       <p class="font-bold text-center">Base Options</p>
-      <label class=" grid grid-cols-1 items-center md:grid-cols-[200px_1fr] gap-2" for="sizeBase"
+      <label class="options-input-wrapper" for="sizeBase"
         >Size Base (.1-1):
         <input
           type="number"
@@ -63,7 +63,7 @@
         />
       </label>
 
-      <label class=" grid grid-cols-1 items-center md:grid-cols-[200px_1fr] gap-2" for="sizeScaleIncrement"
+      <label class="options-input-wrapper" for="sizeScaleIncrement"
         >Width Scale Increment (2-8x):
         <input
           type="number"
@@ -78,7 +78,7 @@
         />
       </label>
 
-      <label class=" grid grid-cols-1 items-center md:grid-cols-[200px_1fr] gap-2" for="sizeScale"
+      <label class="options-input-wrapper" for="sizeScale"
         >Size Scale (.1-.5):
         <input
           type="number"
@@ -97,7 +97,7 @@
     <!-- more options: will be hidden in a drawer when drawer is made -->
     <div class="p-4 space-y-4 border border-surface-raised-base">
       <p class="font-bold text-center">Interactive</p>
-      <label class="grid grid-cols-1 items-center md:grid-cols-[200px_1fr] gap-2" for="btnHoverScale">
+      <label class="options-input-wrapper" for="btnHoverScale">
         Hover Scale (0.8-1.2):
         <input
           type="number"
@@ -112,7 +112,7 @@
         />
       </label>
 
-      <label class="grid grid-cols-1 items-center md:grid-cols-[200px_1fr] gap-2" for="btnActiveScale">
+      <label class="options-input-wrapper" for="btnActiveScale">
         Active Scale (0.8-1.2):
         <input
           type="number"
@@ -127,7 +127,7 @@
         />
       </label>
 
-      <label class="grid grid-cols-1 items-center md:grid-cols-[200px_1fr] gap-2" for="btnHoverBrightness">
+      <label class="options-input-wrapper" for="btnHoverBrightness">
         Hover Brightness (0.8-1.2):
         <input
           type="number"
@@ -142,7 +142,7 @@
         />
       </label>
 
-      <label class="grid grid-cols-1 items-center md:grid-cols-[200px_1fr] gap-2" for="btnActiveBrightness">
+      <label class="options-input-wrapper" for="btnActiveBrightness">
         Active Brightness (0.8-1.2):
         <input
           type="number"
@@ -161,7 +161,7 @@
     <!-- font sizes -->
     <div class="p-4 space-y-4 border border-surface-raised-base">
       <p class="font-bold text-center">Fonts</p>
-      <label class="grid grid-cols-1 items-center md:grid-cols-[200px_1fr] gap-2" for="btnFontSmSize">
+      <label class="options-input-wrapper" for="btnFontSmSize">
         Font Size Small:
         <select id="btnFontSmSize" class="my-select" bind:value={btnFontSmSize} on:change={emitBtnOptsChange}>
           {#each Object.entries(fontSizeMap) as [size, value]}
@@ -169,7 +169,7 @@
           {/each}
         </select>
       </label>
-      <label class="grid grid-cols-1 items-center md:grid-cols-[200px_1fr] gap-2" for="btnFontSize">
+      <label class="options-input-wrapper" for="btnFontSize">
         Font Size (12px - 24px):
         <select id="btnFontSize" class="my-select" bind:value={btnFontSize} on:change={emitBtnOptsChange}>
           {#each Object.entries(fontSizeMap) as [size, value]}
@@ -177,7 +177,7 @@
           {/each}
         </select>
       </label>
-      <label class="grid grid-cols-1 items-center md:grid-cols-[200px_1fr] gap-2" for="btnFontLgSize">
+      <label class="options-input-wrapper" for="btnFontLgSize">
         Font Size (12px - 24px):
         <select id="btnFontLgSize" class="my-select" bind:value={btnFontLgSize} on:change={emitBtnOptsChange}>
           {#each Object.entries(fontSizeMap) as [size, value]}

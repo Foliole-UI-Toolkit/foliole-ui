@@ -40,11 +40,11 @@ module.exports = {
       'flex-direction': 'column',
     },
     '.rail-item-options': {
-      padding: '.25rem',
+      padding: 'var(--el-p-sm)',
     },
     /* Label Styles */
     '.rail-label': {
-      'padding-top': '.25rem',
+      'padding-top': 'var(--el-p-sm)',
     },
     /* Inner styles with no provided classes props. Not meant to be adjusted.
     /* Radio button for keeping track of selected */

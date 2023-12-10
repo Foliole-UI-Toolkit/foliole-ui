@@ -12,13 +12,20 @@ const emits = defineEmits(['toggle'])
 
 interface AccordionItemProps {
   open?: boolean
-  accordionItemClasses?: string
+  accordionClasses?: string
+  accordionHeaderClasses: string
+  headerControlClasses: string
+  accordionSectionWrapper: string
+  accordionSection: string
 }
 
 const props = withDefaults(defineProps<AccordionItemProps>(), {
   open: false,
-  accordionItemClasses: 'accordion-item',
+  accordionClasses: 'accordion',
+  accordionHeaderClasses: 'accordion-header',
   headerControlClasses: 'header-control',
+  accordionSectionWrapper: 'accordion-section-wrapper',
+  accordionSection: 'accordion-section',
 })
 
 const isOpen = ref<boolean>(props.open)
@@ -27,7 +34,7 @@ const itemId = ref(String(Math.random()))
 
 const openedItemClass = computed(() => currentOpenState.value && 'opened')
 
-const mergedAccordionItemClasses = computed(() => classNames([props.accordionItemClasses, openedItemClass.value]))
+const mergedAccordionClasses = computed(() => classNames([props.accordionClasses, openedItemClass.value]))
 
 function onToggle(event?: MouseEvent) {
   currentOpenState.value = autocollapse ? isActive.value === itemId.value : isOpen.value
@@ -72,13 +79,13 @@ watch(
 if (autocollapse && isOpen.value) setActive()
 </script>
 <template>
-  <div :class="mergedAccordionItemClasses">
-    <div class="accordion-header">
-      <button class="accordion-header-button" @click="setActive">
-        <slot name="header"></slot><span class="header-control"></span>
-      </button>
-    </div>
+  <div :class="mergedAccordionClasses">
+    <button :class="accordionHeaderClasses" @click="setActive">
+      <slot name="header"></slot><span class="header-control"></span>
+    </button>
 
-    <div class="accordion-section" v-if="currentOpenState"><slot></slot></div>
+    <div :class="accordionSectionWrapper">
+      <div :class="accordionSection"><slot></slot></div>
+    </div>
   </div>
 </template>

@@ -49,7 +49,7 @@ withDefaults(defineProps<Props>(), {
           </div>
         </div>
       </div>
-      <div class="h-4 border-t-2 header-bottom border-primary-mlt"></div>
+      <div class="h-2 border-t-2 header-bottom border-primary-mlt"></div>
     </template>
     <template #sidebar-left>
       <div v-if="pathname !== '/'" class="flex h-full">
@@ -130,6 +130,7 @@ withDefaults(defineProps<Props>(), {
       rgba(var(--color-primary-base), 0.95),
       rgba(var(--color-secondary-base), 0.95),
       rgba(var(--color-tertiary-base), 0.95),
+      rgba(var(--color-secondary-base), 0.95),
       rgba(var(--color-primary-base), 0.95)
     );
   }

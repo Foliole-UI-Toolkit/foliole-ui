@@ -31,7 +31,7 @@
 
 <!-- Add the select dropdown in your template -->
 <div class="space-y-4">
-  <label class=" grid grid-cols-1 items-center md:grid-cols-[200px_1fr] gap-2">
+  <label class="options-input-wrapper">
     <span>Rounded Theme Level:</span>
     <select class="my-select w-28" bind:value={roundedSize} on:change={(e) => emitBtnOptsChange(e, 'roundedOpts')}>
       {#each Object.entries(roundedOpts) as [key, value]}
@@ -40,7 +40,7 @@
     </select>
   </label>
   {#if roundedSize !== 'none'}
-    <label class="grid grid-cols-1 items-center md:grid-cols-[200px_1fr] gap-2">
+    <label class="options-input-wrapper">
       <span>Button Roundness:</span>
       <select
         class="w-28 my-select"
@@ -54,7 +54,7 @@
     </label>
   {/if}
   {#if roundedSize !== 'none'}
-    <label class="grid grid-cols-1 items-center md:grid-cols-[200px_1fr] gap-2">
+    <label class="options-input-wrapper">
       <span>Input Roundness:</span>
       <select
         class="w-28 my-select"
