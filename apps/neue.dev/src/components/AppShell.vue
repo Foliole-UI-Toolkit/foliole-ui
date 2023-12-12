@@ -142,7 +142,7 @@ withDefaults(defineProps<Props>(), {
     );
   }
   .my-side-bar-left {
-    @apply shadow-sm border-r border-surface-raised bg-page-90;
+    @apply shadow-sm border-r border-surface-raised;
 
     background-image: linear-gradient(
       to right,
@@ -152,7 +152,7 @@ withDefaults(defineProps<Props>(), {
     );
   }
   .my-app-rail {
-    @apply bg-surface-raised-50 border-r border-surface-raised w-[5.5rem];
+    @apply border-r border-surface-raised w-[5.5rem];
   }
   .my-page {
     @apply relative z-0;
