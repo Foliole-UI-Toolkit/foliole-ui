@@ -24,7 +24,7 @@ withDefaults(defineProps<Props>(), {
     siteSidebarLeftClasses="sidebar-left site-sidebar-left-options my-side-bar-left"
   >
     <template #header>
-      <div class="flex flex-wrap border-primary-light bg-neutral-mlt-10">
+      <div class="flex flex-wrap bg-neutral-mlt-10">
         <div class="w-full px-2 py-4">
           <div class="container flex items-center justify-start mx-auto">
             <span
@@ -49,7 +49,7 @@ withDefaults(defineProps<Props>(), {
           </div>
         </div>
       </div>
-      <div class="h-2 border-t-2 header-bottom border-primary-mlt"></div>
+      <div class="h-2 border-t-2 header-bottom border-primary"></div>
     </template>
     <template #sidebar-left>
       <div v-if="pathname !== '/'" class="flex h-full">
@@ -112,57 +112,32 @@ withDefaults(defineProps<Props>(), {
   /* // if we add  siteheader and site-header-options to the components layer in the TW plugin we can simply concat this into one single class, too*/
   .my-app-shell {
     @apply bg-page mx-auto;
-    /* background-image: linear-gradient(
-      to right,
-      rgba(var(--color-primary), 0.1),
-      rgba(var(--color-secondary), 0.1),
-      rgba(var(--color-primary), 0.1)
-    ); */
-    background: linear-gradient(
-      45deg,
-      rgb(var(--color-primary) / 0.1),
-      rgb(var(--color-primary) / 0.1),
-      rgb(var(--color-primary) / 0.1)
-    );
+
+    background: linear-gradient(45deg, rgb(var(--color-primary) / 0.05), rgb(var(--color-secondary) / 0.05));
   }
   .my-header {
     @apply mx-auto w-full bg-page;
     @apply shadow-xl;
+    background: linear-gradient(90deg, rgb(var(--color-primary) / 0.1), rgb(var(--color-secondary) / 0.1));
   }
 
   .header-bottom {
-    /* background: linear-gradient(
-      90deg,
-      rgb(var(--color-primary) / 0.95),
-      rgb(var(--color-secondary) / 0.95),
-      rgb(var(--color-tertiary) / 0.95),
-      rgb(var(--color-secondary) / 0.95),
-      rgb(var(--color-primary) / 0.95)
-    ); */
     background: linear-gradient(
-      45deg,
+      90deg,
       rgb(var(--color-primary) / 0.9),
-      rgb(var(--color-secondary) / 0.1),
-      rgb(var(--color-primary) / 0.1)
+      rgb(var(--color-secondary-mdk) / 0.9),
+      rgb(var(--color-tertiary-mdk) / 0.9),
+      rgb(var(--color-secondary-mdk) / 0.9),
+      rgb(var(--color-primary) / 0.9)
     );
-    background: linear-gradient(45deg, blue, rgb(var(--color-secondary) / 0.9));
   }
   .logo {
-    background-image: linear-gradient(
-      to top right,
-      rgba(var(--color-primary), 0.95),
-      rgba(var(--color-secondary), 0.95)
-    );
+    background: linear-gradient(45deg, rgb(var(--color-primary) / 1), rgb(var(--color-secondary) / 1));
   }
   .my-side-bar-left {
     @apply shadow-sm border-r border-surface-raised;
 
-    background-image: linear-gradient(
-      to right,
-      rgba(var(--color-primary), 0.05),
-      rgba(var(--color-secondary), 0.05),
-      rgba(var(--color-primary), 0.05)
-    );
+    background: linear-gradient(90deg, rgb(var(--color-primary) / 0.05), rgb(var(--color-secondary) / 0.05));
   }
   .my-app-rail {
     @apply border-r border-surface-raised w-[5.5rem];

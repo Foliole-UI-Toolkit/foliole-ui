@@ -26,14 +26,26 @@ const pathname = new URL(Astro.request.url).pathname;
 				pathname={pathname}
 				client:load
 			>
-		
 				<slot></slot>
 			</AppShell> 
 	</body>
 </html>
-<style  >
- @tailwind components;
-	.my-chip {
+<style is:global lang="postcss">
+  @tailwind components;
+  @tailwind base;
+
+  @layer base {
+    h1, h2, h3, h4, h5, h6, ul, li, p, button, span {
+      font-family: "brandon-grotesque", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    }
+    .my-list {
+      @apply list-disc ml-6
+    }
+  }
+
+	@layer components {
+
+  .my-chip {
 		@apply btn-chip btn-base; 
   }
 	.my-input {
@@ -63,7 +75,6 @@ const pathname = new URL(Astro.request.url).pathname;
     @apply p-4  border-2 border-neutral-light;
   }
 
-	@layer components {
   .my-btn {
     @apply border-2 shadow-md btn-base bg-primary border-primary-mlt;
   }

@@ -93,11 +93,12 @@ function generateThemeCSSProps() {
   return results.join('\n')
 }
 
-function generateNeueCSSProps() {
+function generateNeueDefaultCSSProps() {
   const spacingCSS = toCSSProperties('spacing', spacing)
   const borderRadiusCSS = toCSSProperties('border-radius', borderRadius)
 
   const combinedCSS = spacingCSS + '\n' + borderRadiusCSS
+
   return combinedCSS
 }
 
@@ -138,15 +139,17 @@ twColors = generateTwColors(colorNames, stops)
     await fs.writeFile(neueForTwPath, mergedTwCSS, 'utf8')
 
     // CSS properties for use with tailwind.
-    const neueTwCSSPropertiesPath = path.join(baseDir, 'neue-tw-css-properties.css')
-
+    // Header and footer for props file.
     const propsHeader = `${AT_TW_BASE} \n ${AT_TW_COMPONENTS} \n ${AT_TW_UTILITIES} \n @layer base {\n:root {`
     const propsFooter = `}\n}`
-    // Neue components, elements and tokens and concating into single file for vanilla/CSS agnostic solutions.
+    // Generate both theme specific props and neue default props.
     const themeCSSProps = generateThemeCSSProps()
-    const neueCSSProps = generateNeueCSSProps()
+    const neueCSSProps = generateNeueDefaultCSSProps()
     const props = `${propsHeader} ${themeCSSProps} ${neueCSSProps} ${propsFooter}`
-    // CSS props file for use with tailwind.
+
+    console.log(props)
+    // Create file.
+    const neueTwCSSPropertiesPath = path.join(baseDir, 'neue-tw-css-properties.css')
     await fs.writeFile(neueTwCSSPropertiesPath, props, 'utf8')
   } catch (error) {
     console.error('Error occurred:', error)
