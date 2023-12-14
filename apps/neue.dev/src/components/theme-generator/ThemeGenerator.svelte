@@ -86,9 +86,9 @@
   let btnFontLgSize = '--font-scale-lg'
 
   // Rounded options
-  let roundedSize = '--radius-md'
-  let buttonRoundLevel = '--radius-full'
-  let inputRoundLevel = '--radius-full'
+  let roundedSize = '--border-radius-md'
+  let buttonRoundLevel = '--border-radius-full'
+  let inputRoundLevel = '--border-radius-full'
   // Previews
   let previewCSSVars = ''
   let themeOptsJsInCSS = ''
@@ -415,7 +415,7 @@
 </script>
 
 <svelte:window on:keydown={handleKeyDown} />
-<!-- <svelte:head>{@html previewCSSVars}</svelte:head> -->
+<svelte:head>{@html previewCSSVars}</svelte:head>
 
 <div class="p-4 space-y-4">
   <section class="p-8">
