@@ -112,11 +112,17 @@ withDefaults(defineProps<Props>(), {
   /* // if we add  siteheader and site-header-options to the components layer in the TW plugin we can simply concat this into one single class, too*/
   .my-app-shell {
     @apply bg-page mx-auto;
-    background-image: linear-gradient(
+    /* background-image: linear-gradient(
       to right,
       rgba(var(--color-primary), 0.1),
       rgba(var(--color-secondary), 0.1),
       rgba(var(--color-primary), 0.1)
+    ); */
+    background: linear-gradient(
+      45deg,
+      rgb(var(--color-primary) / 0.1),
+      rgb(var(--color-primary) / 0.1),
+      rgb(var(--color-primary) / 0.1)
     );
   }
   .my-header {
@@ -125,14 +131,21 @@ withDefaults(defineProps<Props>(), {
   }
 
   .header-bottom {
-    background-image: linear-gradient(
-      to right,
-      rgba(var(--color-primary), 0.95),
-      rgba(var(--color-secondary), 0.95),
-      rgba(var(--color-tertiary), 0.95),
-      rgba(var(--color-secondary), 0.95),
-      rgba(var(--color-primary), 0.95)
+    /* background: linear-gradient(
+      90deg,
+      rgb(var(--color-primary) / 0.95),
+      rgb(var(--color-secondary) / 0.95),
+      rgb(var(--color-tertiary) / 0.95),
+      rgb(var(--color-secondary) / 0.95),
+      rgb(var(--color-primary) / 0.95)
+    ); */
+    background: linear-gradient(
+      45deg,
+      rgb(var(--color-primary) / 0.9),
+      rgb(var(--color-secondary) / 0.1),
+      rgb(var(--color-primary) / 0.1)
     );
+    background: linear-gradient(45deg, blue, rgb(var(--color-secondary) / 0.9));
   }
   .logo {
     background-image: linear-gradient(

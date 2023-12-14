@@ -2,16 +2,18 @@
   "name": "@neue/neue-css",
   "version": "0.4.0",
   "description": "",
-  "main": "index.css",
+  "main": "",
   "scripts": {
-    "build": "node script/generate-css.js"
+    "build": "node scripts/generate-css.js"
   },
-  "keywords": [
-    ""
-  ],
   "author": "Aaron Crockett",
   "license": "MIT",
-  "dependencies": {
+  "devDependencies": {
     "postcss-js": "^4.0.1"
-  }
+  },
+  "files": [
+    "neue.css",
+    "neue-tw.css",
+    "neue-tw-color-vars.css"
+  ]
 }

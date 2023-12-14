@@ -15,7 +15,7 @@
     height: 24px;
     width: 24px;
     background-repeat: no-repeat;
-    background-position: right var(--el-p-sm) center;
+    background-position: right var(--el-sm) center;
     background-size: var(--el-p-triple);
     transition: transform 0.5s ease-in-out
 }
@@ -72,10 +72,10 @@
     flex-direction: column
 }
 .rail-item-options {
-    padding: var(--el-p-sm)
+    padding: var(--el-sm)
 }
 .rail-label {
-    padding-top: var(--el-p-sm)
+    padding-top: var(--el-sm)
 }
 .app-rail-inner.hidden-radio {
     overflow: hidden;
@@ -143,6 +143,43 @@
 .site-footer {
     display: flex;
     flex: none
+}
+.slide-toggle {
+    display: flex;
+    align-items: center;
+    border-radius: var(--ui-input-roundness)
+}
+.track {
+    cursor: pointer;
+    display: flex;
+    border-radius: 1000px
+}
+.track-xl {
+    width: var(--size-16);
+    height: var(--size-8)
+}
+.track-large {
+    width: var(--size-14);
+    height: var(--size-7)
+}
+.track-medium {
+    width: var(--size-12);
+    height: var(--size-6)
+}
+.track-small {
+    width: var(--size-10);
+    height: var(--size-5)
+}
+.thumb {
+    display: inline-block;
+    border-radius: 1000px;
+    width: 50%;
+    height: 100%;
+    transform: scale(0.8);
+    transition: all 0.2s ease-in-out
+}
+.on {
+    transform: translateX(100%) scale(0.8)
 }
 .bg-primary {
     background-color: rgb(var(--color-primary))
@@ -675,20 +712,20 @@
 .dark .border-surface-raised-contrast {
     border-color: rgb(var(--color-surface-raised))
 }
-.btn-p-sm {
-    padding: var(--btn-p-sm);
+.btn-sm {
+    padding: var(--btn-sm);
     font-size: var(--btn-font-sm-size)
 }
-.btn-p-md {
+.btn-md {
     padding: var(--btn-p-base);
     font-size: var(--btn-font-size)
 }
-.btn-p-lg {
-    padding: var(--btn-p-lg);
+.btn-lg {
+    padding: var(--btn-lg);
     font-size: var(--btn-font-lg-size)
 }
-.btn-chip-p {
-    padding: var(--btn-chip-p);
+.btn-chip {
+    padding: var(--btn-chip);
     font-size: var(--btn-font-sm-size)
 }
 .btn-base {
@@ -765,43 +802,6 @@
 }
 .input-radio-base {
     border-radius: var(--ui-input-roundness)
-}
-.slide-toggle {
-    display: flex;
-    align-items: center;
-    border-radius: var(--ui-input-roundness)
-}
-.track {
-    cursor: pointer;
-    display: flex;
-    border-radius: 1000px
-}
-.track-xl {
-    width: var(--size-16);
-    height: var(--size-8)
-}
-.track-large {
-    width: var(--size-14);
-    height: var(--size-7)
-}
-.track-medium {
-    width: var(--size-12);
-    height: var(--size-6)
-}
-.track-small {
-    width: var(--size-10);
-    height: var(--size-5)
-}
-.thumb {
-    display: inline-block;
-    border-radius: 1000px;
-    width: 50%;
-    height: 100%;
-    transform: scale(0.8);
-    transition: all 0.2s ease-in-out
-}
-.on {
-    transform: translateX(100%) scale(0.8)
 }
 .text-primary {
     color: rgba(var(--color-primary))
