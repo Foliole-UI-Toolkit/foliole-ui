@@ -2,306 +2,306 @@ module.exports = {
   border: {
     // Primary
     '.border-primary': {
-      borderColor: 'rgba(var(--color-primary),1)',
+      borderColor: 'rgb(var(--color-primary),1)',
     },
     '.border-primary-light': {
-      borderColor: 'rgba(var(--color-primary-light), 1)',
+      borderColor: 'rgb(var(--color-primary-light))',
     },
     '.border-primary-light-dark': {
-      borderColor: 'rgba(var(--color-primary-light), 1)',
+      borderColor: 'rgb(var(--color-primary-light))',
     },
     '.dark .border-primary-light-dark': {
-      borderColor: 'rgba(var(--color-primary-dark), 1)',
+      borderColor: 'rgb(var(--color-primary-dark))',
     },
     '.border-primary-mlt': {
-      borderColor: 'rgba(var(--color-primary-mlt), 1)',
+      borderColor: 'rgb(var(--color-primary-mlt))',
     },
     '.border-primary-mlt-mdk': {
-      borderColor: 'rgba(var(--color-primary-mlt), 1)',
+      borderColor: 'rgb(var(--color-primary-mlt))',
     },
     '.dark .border-primary-mlt-mdk': {
-      borderColor: 'rgba(var(--color-primary-mdk), 1)',
+      borderColor: 'rgb(var(--color-primary-mdk))',
     },
     '.border-primary-mdk': {
-      borderColor: 'rgba(var(--color-primary-mdk), 1)',
+      borderColor: 'rgb(var(--color-primary-mdk))',
     },
     '.border-primary-dark': {
-      borderColor: 'rgba(var(--color-primary-dark), 1)',
+      borderColor: 'rgb(var(--color-primary-dark))',
     },
     // Secondary
     '.border-secondary': {
-      backgroundColor: 'rgba(var(--color-secondary), 1)',
+      backgroundColor: 'rgb(var(--color-secondary))',
     },
     '.border-secondary-light': {
-      backgroundColor: 'rgba(var(--color-secondary-light), 1)',
+      backgroundColor: 'rgb(var(--color-secondary-light))',
     },
     '.border-secondary-light-dark': {
-      backgroundColor: 'rgba(var(--color-secondary-light), 1)',
+      backgroundColor: 'rgb(var(--color-secondary-light))',
     },
     '.dark .border-secondary-light-dark': {
-      backgroundColor: 'rgba(var(--color-secondary-dark), 1)',
+      backgroundColor: 'rgb(var(--color-secondary-dark))',
     },
     '.border-neutral-mlt': {
-      backgroundColor: 'rgba(var(--color-secondary-mlt), 1)',
+      backgroundColor: 'rgb(var(--color-secondary-mlt))',
     },
     '.border-neutral-mlt-mdk': {
-      backgroundColor: 'rgba(var(--color-secondary-mlt), 1)',
+      backgroundColor: 'rgb(var(--color-secondary-mlt))',
     },
     '.dark .border-neutral-mlt-mdk': {
-      backgroundColor: 'rgba(var(--color-secondary-mdk), 1)',
+      backgroundColor: 'rgb(var(--color-secondary-mdk))',
     },
     '.border-secondary-mdk': {
-      backgroundColor: 'rgba(var(--color-secondary-mdk), 1)',
+      backgroundColor: 'rgb(var(--color-secondary-mdk))',
     },
     '.border-secondary-dark': {
-      backgroundColor: 'rgba(var(--color-secondary-dark), 1)',
+      backgroundColor: 'rgb(var(--color-secondary-dark))',
     },
     // Tertiary
 
     '.border-tertiary': {
-      borderColor: 'rgba(var(--color-tertiary), 1)',
+      borderColor: 'rgb(var(--color-tertiary))',
     },
     '.border-tertiary-light': {
-      borderColor: 'rgba(var(--color-tertiary-light), 1)',
+      borderColor: 'rgb(var(--color-tertiary-light))',
     },
     '.border-tertiary-light-dark': {
-      borderColor: 'rgba(var(--color-tertiary-light), 1)',
+      borderColor: 'rgb(var(--color-tertiary-light))',
     },
     '.dark .border-tertiary-light-dark': {
-      borderColor: 'rgba(var(--color-tertiary-dark), 1)',
+      borderColor: 'rgb(var(--color-tertiary-dark))',
     },
     '.border-tertiary-mlt': {
-      borderColor: 'rgba(var(--color-tertiary-mlt), 1)',
+      borderColor: 'rgb(var(--color-tertiary-mlt))',
     },
     '.border-tertiary-mlt-mdk': {
-      borderColor: 'rgba(var(--color-tertiary-mlt), 1)',
+      borderColor: 'rgb(var(--color-tertiary-mlt))',
     },
     '.dark .border-tertiary-mlt-mdk': {
-      borderColor: 'rgba(var(--color-tertiary-mdk), 1)',
+      borderColor: 'rgb(var(--color-tertiary-mdk))',
     },
     '.border-tertiary-mdk': {
-      borderColor: 'rgba(var(--color-tertiary-mdk), 1)',
+      borderColor: 'rgb(var(--color-tertiary-mdk))',
     },
     '.border-tertiary-dark': {
-      borderColor: 'rgba(var(--color-tertiary-dark), 1)',
+      borderColor: 'rgb(var(--color-tertiary-dark))',
     },
 
     // Quaternary
 
     '.border-quat': {
-      borderColor: 'rgba(var(--color-quat), 1)',
+      borderColor: 'rgb(var(--color-quat))',
     },
     '.border-quat-light': {
-      borderColor: 'rgba(var(--color-quat-light), 1)',
+      borderColor: 'rgb(var(--color-quat-light))',
     },
     '.border-quat-light-dark': {
-      borderColor: 'rgba(var(--color-quat-light), 1)',
+      borderColor: 'rgb(var(--color-quat-light))',
     },
     '.dark .border-quat-light-dark': {
-      borderColor: 'rgba(var(--color-quat-dark), 1)',
+      borderColor: 'rgb(var(--color-quat-dark))',
     },
     '.border-quat-mlt': {
-      borderColor: 'rgba(var(--color-quat-mlt), 1)',
+      borderColor: 'rgb(var(--color-quat-mlt))',
     },
     '.border-quat-mlt-mdk': {
-      borderColor: 'rgba(var(--color-quat-mlt), 1)',
+      borderColor: 'rgb(var(--color-quat-mlt))',
     },
     '.dark .border-quat-mlt-mdk': {
-      borderColor: 'rgba(var(--color-quat-mdk), 1)',
+      borderColor: 'rgb(var(--color-quat-mdk))',
     },
     '.border-quat-mdk': {
-      borderColor: 'rgba(var(--color-quat-mdk), 1)',
+      borderColor: 'rgb(var(--color-quat-mdk))',
     },
     '.border-quat-dark': {
-      borderColor: 'rgba(var(--color-quat-dark), 1)',
+      borderColor: 'rgb(var(--color-quat-dark))',
     },
     // Quinary
     '.border-quin': {
-      borderColor: 'rgba(var(--color-quin), 1)',
+      borderColor: 'rgb(var(--color-quin))',
     },
     '.border-quin-light': {
-      borderColor: 'rgba(var(--color-quin-light), 1)',
+      borderColor: 'rgb(var(--color-quin-light))',
     },
     '.border-quin-light-dark': {
-      borderColor: 'rgba(var(--color-quin-light), 1)',
+      borderColor: 'rgb(var(--color-quin-light))',
     },
     '.dark .border-quin-light-dark': {
-      borderColor: 'rgba(var(--color-quin-dark), 1)',
+      borderColor: 'rgb(var(--color-quin-dark))',
     },
     '.border-quin-mlt': {
-      borderColor: 'rgba(var(--color-quin-mlt), 1)',
+      borderColor: 'rgb(var(--color-quin-mlt))',
     },
     '.border-quin-mlt-mdk': {
-      borderColor: 'rgba(var(--color-quin-mlt), 1)',
+      borderColor: 'rgb(var(--color-quin-mlt))',
     },
     '.dark .border-quin-mlt-mdk': {
-      borderColor: 'rgba(var(--color-quin-mdk), 1)',
+      borderColor: 'rgb(var(--color-quin-mdk))',
     },
     '.border-quin-mdk': {
-      borderColor: 'rgba(var(--color-quin-mdk), 1)',
+      borderColor: 'rgb(var(--color-quin-mdk))',
     },
     '.border-quin-dark': {
-      borderColor: 'rgba(var(--color-quin-dark), 1)',
+      borderColor: 'rgb(var(--color-quin-dark))',
     },
     // Success
 
     '.border-success': {
-      borderColor: 'rgba(var(--color-success), 1)',
+      borderColor: 'rgb(var(--color-success))',
     },
     '.border-success-light': {
-      borderColor: 'rgba(var(--color-success-light), 1)',
+      borderColor: 'rgb(var(--color-success-light))',
     },
     '.border-success-light-dark': {
-      borderColor: 'rgba(var(--color-success-light), 1)',
+      borderColor: 'rgb(var(--color-success-light))',
     },
     '.dark .border-success-light-dark': {
-      borderColor: 'rgba(var(--color-success-dark), 1)',
+      borderColor: 'rgb(var(--color-success-dark))',
     },
     '.border-success-mlt': {
-      borderColor: 'rgba(var(--color-success-mlt), 1)',
+      borderColor: 'rgb(var(--color-success-mlt))',
     },
     '.border-success-mlt-mdk': {
-      borderColor: 'rgba(var(--color-success-mlt), 1)',
+      borderColor: 'rgb(var(--color-success-mlt))',
     },
     '.dark .border-success-mlt-mdk': {
-      borderColor: 'rgba(var(--color-success-mdk), 1)',
+      borderColor: 'rgb(var(--color-success-mdk))',
     },
     '.border-success-mdk': {
-      borderColor: 'rgba(var(--color-success-mdk), 1)',
+      borderColor: 'rgb(var(--color-success-mdk))',
     },
     '.border-success-dark': {
-      borderColor: 'rgba(var(--color-success-dark), 1)',
+      borderColor: 'rgb(var(--color-success-dark))',
     },
 
     // Warning
     '.border-warning': {
-      borderColor: 'rgba(var(--color-warning), 1)',
+      borderColor: 'rgb(var(--color-warning))',
     },
     '.border-warning-light': {
-      borderColor: 'rgba(var(--color-warning-light), 1)',
+      borderColor: 'rgb(var(--color-warning-light))',
     },
     '.border-warning-light-dark': {
-      borderColor: 'rgba(var(--color-warning-light), 1)',
+      borderColor: 'rgb(var(--color-warning-light))',
     },
     '.dark .border-warning-light-dark': {
-      borderColor: 'rgba(var(--color-warning-dark), 1)',
+      borderColor: 'rgb(var(--color-warning-dark))',
     },
     '.border-warning-mlt': {
-      borderColor: 'rgba(var(--color-warning-mlt), 1)',
+      borderColor: 'rgb(var(--color-warning-mlt))',
     },
     '.border-warning-mlt-mdk': {
-      borderColor: 'rgba(var(--color-warning-mlt), 1)',
+      borderColor: 'rgb(var(--color-warning-mlt))',
     },
     '.dark .border-warning-mlt-mdk': {
-      borderColor: 'rgba(var(--color-warning-mdk), 1)',
+      borderColor: 'rgb(var(--color-warning-mdk))',
     },
     '.border-warning-mdk': {
-      borderColor: 'rgba(var(--color-warning-mdk), 1)',
+      borderColor: 'rgb(var(--color-warning-mdk))',
     },
     '.border-warning-dark': {
-      borderColor: 'rgba(var(--color-warning-dark), 1)',
+      borderColor: 'rgb(var(--color-warning-dark))',
     },
     // Error
 
     '.border-error': {
-      borderColor: 'rgba(var(--color-error), 1)',
+      borderColor: 'rgb(var(--color-error))',
     },
     '.border-error-light': {
-      borderColor: 'rgba(var(--color-error-light), 1)',
+      borderColor: 'rgb(var(--color-error-light))',
     },
     '.border-error-light-dark': {
-      borderColor: 'rgba(var(--color-error-light), 1)',
+      borderColor: 'rgb(var(--color-error-light))',
     },
     '.dark .border-error-light-dark': {
-      borderColor: 'rgba(var(--color-error-dark), 1)',
+      borderColor: 'rgb(var(--color-error-dark))',
     },
     '.border-error-mlt': {
-      borderColor: 'rgba(var(--color-error-mlt), 1)',
+      borderColor: 'rgb(var(--color-error-mlt))',
     },
     '.border-error-mlt-mdk': {
-      borderColor: 'rgba(var(--color-error-mlt), 1)',
+      borderColor: 'rgb(var(--color-error-mlt))',
     },
     '.dark .border-error-mlt-mdk': {
-      borderColor: 'rgba(var(--color-error-mdk), 1)',
+      borderColor: 'rgb(var(--color-error-mdk))',
     },
     '.border-error-mdk': {
-      borderColor: 'rgba(var(--color-error-mdk), 1)',
+      borderColor: 'rgb(var(--color-error-mdk))',
     },
     '.border-error-dark': {
-      borderColor: 'rgba(var(--color-error-dark), 1)',
+      borderColor: 'rgb(var(--color-error-dark))',
     },
 
     // Neutral
     '.border-neutral': {
-      borderColor: 'rgba(var(--color-neutral), 1)',
+      borderColor: 'rgb(var(--color-neutral))',
     },
     '.border-neutral-light': {
-      borderColor: 'rgba(var(--color-neutral-light), 1)',
+      borderColor: 'rgb(var(--color-neutral-light))',
     },
     '.border-neutral-light-dark': {
-      borderColor: 'rgba(var(--color-neutral-light), 1)',
+      borderColor: 'rgb(var(--color-neutral-light))',
     },
     '.dark .border-neutral-light-dark': {
-      borderColor: 'rgba(var(--color-neutral-dark), 1)',
+      borderColor: 'rgb(var(--color-neutral-dark))',
     },
     '.border-neutral-mlt': {
-      borderColor: 'rgba(var(--color-neutral-mlt), 1)',
+      borderColor: 'rgb(var(--color-neutral-mlt))',
     },
     '.border-neutral-mlt-mdk': {
-      borderColor: 'rgba(var(--color-neutral-mlt), 1)',
+      borderColor: 'rgb(var(--color-neutral-mlt))',
     },
     '.dark .border-neutral-mlt-mdk': {
-      borderColor: 'rgba(var(--color-neutral-mdk), 1)',
+      borderColor: 'rgb(var(--color-neutral-mdk))',
     },
     '.border-neutral-mdk': {
-      borderColor: 'rgba(var(--color-neutral-mdk), 1)',
+      borderColor: 'rgb(var(--color-neutral-mdk))',
     },
     '.border-neutral-dark': {
-      borderColor: 'rgba(var(--color-neutral-dark), 1)',
+      borderColor: 'rgb(var(--color-neutral-dark))',
     },
 
     // Page
 
     '.border-page': {
-      borderColor: 'rgba(var(--color-page), 1)',
+      borderColor: 'rgb(var(--color-page))',
     },
     '.dark .border-page': {
-      borderColor: 'rgba(var(--color-page-contrast), 1)',
+      borderColor: 'rgb(var(--color-page-contrast))',
     },
     '.border-page-contrast': {
-      borderColor: 'rgba(var(--color-page-contrast), 1)',
+      borderColor: 'rgb(var(--color-page-contrast))',
     },
     '.dark .border-page-contrast': {
-      borderColor: 'rgba(var(--color-page), 1)',
+      borderColor: 'rgb(var(--color-page))',
     },
 
     // Surface
 
     '.border-surface': {
-      borderColor: 'rgba(var(--color-surface), 1)',
+      borderColor: 'rgb(var(--color-surface))',
     },
     '.dark .border-surface': {
-      borderColor: 'rgba(var(--color-surface), 1)',
+      borderColor: 'rgb(var(--color-surface))',
     },
     '.border-surface-contrast': {
-      borderColor: 'rgba(var(--color-surface-contrast), 1)',
+      borderColor: 'rgb(var(--color-surface-contrast))',
     },
     '.dark .border-surface-contrast': {
-      borderColor: 'rgba(var(--color-surface), 1)',
+      borderColor: 'rgb(var(--color-surface))',
     },
 
     // Surface Raised
     '.border-surface-raised': {
-      borderColor: 'rgba(var(--color-surface-raised), 1)',
+      borderColor: 'rgb(var(--color-surface-raised))',
     },
     '.dark .border-surface-raised': {
-      borderColor: 'rgba(var(--color-surface-raised-contrast), 1)',
+      borderColor: 'rgb(var(--color-surface-raised-contrast))',
     },
     '.border-surface-raised-contrast': {
-      borderColor: 'rgba(var(--color-surface-raised-contrast), 1)',
+      borderColor: 'rgb(var(--color-surface-raised-contrast))',
     },
     '.dark .border-surface-raised-contrast': {
-      borderColor: 'rgba(var(--color-surface-raised), 1)',
+      borderColor: 'rgb(var(--color-surface-raised))',
     },
   },
 }
