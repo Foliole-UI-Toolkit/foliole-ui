@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 // import { ref } from 'vue'
-import './assets/pollen.css'
 import '@neue/neue-css/styles/index.css'
 
 import NeueAppShell from '@neue/neue-vue/src/components/AppShell/NeueAppShell.vue'
@@ -16,7 +15,7 @@ import NeueAppShell from '@neue/neue-vue/src/components/AppShell/NeueAppShell.vu
   <NeueAppShell>
     <template #header>
       <div class="wrapper">
-        <nav class="p-2 space-x-4 bg-primary-dark">
+        <nav class="p-2 space-x-4">
           <RouterLink to="/">Home</RouterLink>
           <RouterLink to="/modal">Modal</RouterLink>
           <RouterLink to="/example">Example</RouterLink>

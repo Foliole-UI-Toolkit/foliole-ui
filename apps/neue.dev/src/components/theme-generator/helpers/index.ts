@@ -50,7 +50,7 @@ export function getHueFromHex(hexColor: string) {
   return hsl[0] // Hue is the first element in the HSL array
 }
 
-export function getRgbString(hex: string): string {
+export function getRgbString(hex: string, separator: string = ' '): string {
   const sanitizedHex = hex.replaceAll('##', '#')
   const colorParts = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(sanitizedHex)
 
@@ -58,7 +58,7 @@ export function getRgbString(hex: string): string {
 
   const [, r, g, b] = colorParts
 
-  return `${parseInt(r, 16)}, ${parseInt(g, 16)}, ${parseInt(b, 16)}`
+  return `${parseInt(r, 16)}${separator}${parseInt(g, 16)}${separator}${parseInt(b, 16)}`
 }
 
 export function getRgbValues(color: ColorInput) {

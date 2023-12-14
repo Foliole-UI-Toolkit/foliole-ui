@@ -31,15 +31,18 @@ function buildLineFromPrefixAndValue(attrPrefix: string, attrBase: string, cssVa
 export function buildColorStrings(store: ColorSettings[], prefix: string) {
   let cssVars = ''
   let jsInCSS = 'export const color = { \n'
+  const twPrefix = `@layer base { \n \t:root {
+  `
+  const twPostfix = `\t}\n}`
 
   store.forEach((element) => {
     if (element.stops) {
       // Define the CSS variable for the color with stops
-      cssVars += `--${prefix}-${element.key}-${element.stops}: ${element.rgb};`
+      cssVars += `    --${prefix}-${element.key}-${element.stops}: ${element.rgb};`
       jsInCSS += `  '${element.key}-${element.stops}': '${element.rgb}',`
     } else {
       // Define the CSS variable for the color without stops
-      cssVars += `--${prefix}-${element.key}: ${element.rgb};`
+      cssVars += `    --${prefix}-${element.key}: ${element.rgb};`
       jsInCSS += `  '${element.key}': '${element.rgb}',`
     }
     cssVars += '\n'
@@ -47,7 +50,9 @@ export function buildColorStrings(store: ColorSettings[], prefix: string) {
   })
   jsInCSS += '} \n'
 
-  return { cssVars, jsInCSS }
+  const twVars = twPrefix + cssVars + twPostfix
+
+  return { cssVars, jsInCSS, twVars }
 }
 
 // Build Shades.
@@ -106,7 +111,7 @@ export function buildElStrings(btnPaddingBase: number) {
   const triplePadding = btnPaddingBase * 3
 
   // El padding sm
-  let { cssVars, jsInCSS } = buildLineFromPrefixAndValue('el', 'p-sm', `${smPadding}rem`)
+  let { cssVars, jsInCSS } = buildLineFromPrefixAndValue('el', 'sm', `${smPadding}rem`)
   cssVarsBuilt += cssVars
   jsInCSSBuilt += jsInCSS
 
@@ -144,7 +149,7 @@ export function buildBtnStrings(
   // btn padding sm
   let { cssVars, jsInCSS } = buildLineFromPrefixAndValue(
     'btn',
-    'p-sm',
+    'sm',
     `${smBtnCalcs.smBtnPaddingBase}rem ${smBtnCalcs.smBtnPaddingWidth}rem`,
   )
   cssVarsBuilt += cssVars
@@ -162,7 +167,7 @@ export function buildBtnStrings(
   // chips
   ;({ cssVars, jsInCSS } = buildLineFromPrefixAndValue(
     'btn',
-    'chip-p',
+    'chip',
     `${chipBtnCalcs.chipBtnPaddingBase}rem ${chipBtnCalcs.chipBtnPaddingWidth}rem`,
   ))
   cssVarsBuilt += cssVars
@@ -171,7 +176,7 @@ export function buildBtnStrings(
   // btn padding lg
   ;({ cssVars, jsInCSS } = buildLineFromPrefixAndValue(
     'btn',
-    'p-lg',
+    'lg',
     `${lgBtnCalcs.lgBtnPaddingBase}rem ${lgBtnCalcs.lgBtnPaddingWidth}rem`,
   ))
   cssVarsBuilt += cssVars

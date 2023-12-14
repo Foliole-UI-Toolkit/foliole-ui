@@ -20,7 +20,7 @@ module.exports = {
       height: '24px',
       width: '24px',
       'background-repeat': 'no-repeat',
-      'background-position': 'right var(--el-p-sm) center',
+      'background-position': 'right var(--el-sm) center',
       'background-size': 'var(--el-p-triple)',
       padding: 'var(--el-p-base) var(--el-p-double)',
       transition: 'transform 0.5s ease-in-out',

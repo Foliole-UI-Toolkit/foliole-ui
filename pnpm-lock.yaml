@@ -69,9 +69,6 @@ importers:
       npm-run-all2:
         specifier: ^6.1.1
         version: 6.1.1
-      pollen-css:
-        specifier: ^4.6.2
-        version: 4.6.2
       postcss:
         specifier: ^8.4.31
         version: 8.4.31
@@ -135,9 +132,6 @@ importers:
       javascript-stringify:
         specifier: ^2.1.0
         version: 2.1.0
-      pollen-css:
-        specifier: ^4.6.2
-        version: 4.6.2
       postcss:
         specifier: ^8.4.31
         version: 8.4.31
@@ -147,9 +141,6 @@ importers:
       svelte:
         specifier: ^4.0.0
         version: 4.2.7
-      tailwindcss:
-        specifier: ^3.3.5
-        version: 3.3.5
       typescript:
         specifier: ^5.2.2
         version: 5.3.2
@@ -157,12 +148,24 @@ importers:
       '@types/chroma-js':
         specifier: ^2.4.3
         version: 2.4.3
+      autoprefixer:
+        specifier: ^10.4.16
+        version: 10.4.16(postcss@8.4.31)
+      tailwindcss:
+        specifier: ^3.3.5
+        version: 3.3.5
 
   packages/neue-css:
-    dependencies:
+    devDependencies:
+      javascript-stringify:
+        specifier: ^2.1.0
+        version: 2.1.0
       postcss-js:
         specifier: ^4.0.1
         version: 4.0.1(postcss@8.4.31)
+      prettier:
+        specifier: ^3.0.3
+        version: 3.1.0
 
   packages/neue-vue:
     dependencies:
@@ -2701,10 +2704,6 @@ packages:
   /caniuse-lite@1.0.30001564:
     resolution: {integrity: sha512-DqAOf+rhof+6GVx1y+xzbFPeOumfQnhYzVnZD6LAXijR77yPtm9mfOcqOnT3mpnJiZVT+kwLAFnRlZcIz+c6bg==}
 
-  /case@1.6.3:
-    resolution: {integrity: sha512-mzDSXIPaFwVDvZAHqZ9VlbyF4yyXRuX6IvB06WvPYkqJVO24kX1PPhv9bfpKNFZyxYFmmgo03HUiD8iklmJYRQ==}
-    engines: {node: '>= 0.8.0'}
-
   /ccount@2.0.1:
     resolution: {integrity: sha512-eyrF0jiFpY+3drT6383f1qhkbGsLSifNAjA61IUjZjmLCWjItY6LB9ft9YhoDgwfmclB2zhu51Lc7+95b8NRAg==}
     dev: false
@@ -2887,10 +2886,6 @@ packages:
   /commander@4.1.1:
     resolution: {integrity: sha512-NOKm8xhkzAjzFx8B2v5OAHT+u5pRQc2UCa2Vq9jYL/31o2wi9mxBA7LIFs3sV5VSC49z6pEhfbMULvShKj26WA==}
     engines: {node: '>= 6'}
-
-  /commander@9.5.0:
-    resolution: {integrity: sha512-KRs7WVDKg86PWiuAqhDrAQnTXZKraVcCc6vFdL14qrZ/DcWwuRo7VoiYXalXO7S5GKpqYiVEwCbgFDfxNHKJBQ==}
-    engines: {node: ^12.20.0 || >=14}
 
   /comment-json@4.2.3:
     resolution: {integrity: sha512-SsxdiOf064DWoZLH799Ata6u7iV658A11PlWtZATDlXPpKGJnbJZ5Z24ybixAi+LUUqJ/GKowAejtC5GFUG7Tw==}
@@ -3089,12 +3084,6 @@ packages:
       source-map-js: 1.0.2
     dev: false
 
-  /css-vars-ponyfill@2.4.8:
-    resolution: {integrity: sha512-4/j4AX4htytYHWyHVZ2BFQ+NoCGZEcOH2h4/2mmgE4SkrFg4Xq6tGYR77DtvvUIDsaXuJN+sj41bbgauA0Gfmg==}
-    dependencies:
-      balanced-match: 1.0.2
-      get-css-data: 2.1.0
-
   /cssesc@3.0.0:
     resolution: {integrity: sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg==}
     engines: {node: '>=4'}
@@ -3208,6 +3197,7 @@ packages:
   /deepmerge@4.3.1:
     resolution: {integrity: sha512-3sUqbMEc77XqpdNO7FRyRog+eW3ph+GYCbj+rK+uYyRMuwsVy0rMiVtPn+QJlKFvWP/1PYpapqYn0Me2knFn+A==}
     engines: {node: '>=0.10.0'}
+    dev: false
 
   /default-browser-id@3.0.0:
     resolution: {integrity: sha512-OZ1y3y0SqSICtE8DE4S8YOE9UZOJ8wO16fKWVP5J1Qz42kV9jcnMVFrEE/noXb/ss3Q4pZIH79kxofzyNNtUNA==}
@@ -3925,9 +3915,6 @@ packages:
   /get-caller-file@2.0.5:
     resolution: {integrity: sha512-DyFP3BM/3YHTQOCUL/w0OZHR0lpKeGrxotcHWcqNEdnltqFwXVfhEBQ94eIo34AfQpo0rGki4cyIiftY06h2Fg==}
     engines: {node: 6.* || 8.* || >= 10.*}
-
-  /get-css-data@2.1.0:
-    resolution: {integrity: sha512-HtPrzGk8aBF9rLeQNuImcXci7YVqsMEKzVflEWaCJu25ehxyDNiZRWoSxqSFUBfma8LERqKo70t/TcaGjIsM9g==}
 
   /get-intrinsic@1.2.2:
     resolution: {integrity: sha512-0gSo4ml/0j98Y3lngkFEot/zhiCeWsbYIlZ+uZOVgzLyLaUw7wxUL+nCTP0XJvJg1AXulJRI3UJi8GsbDuxdGA==}
@@ -4854,10 +4841,6 @@ packages:
     resolution: {integrity: sha512-hdN1wVrZbb29eBGiGjJbeP8JbKjq1urkHJ/LIP/NY48MZ1QVXUsQBV1G1zvYFHn1XE06cwjBsOI2K3Ulnj1YXQ==}
     engines: {node: '>=8'}
     dev: true
-
-  /map-obj@5.0.2:
-    resolution: {integrity: sha512-K6K2NgKnTXimT3779/4KxSvobxOtMmx1LBZ3NwRxT/MDIR3Br/fQ4Q+WCX5QxjyUR8zg5+RV9Tbf2c5pAWTD2A==}
-    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
 
   /markdown-table@3.0.3:
     resolution: {integrity: sha512-Z1NL3Tb1M9wH4XESsCDEksWoKTdlUafKc4pt0GRwjUyXaCFZ+dc3g2erqB6zm3szA2IUSi7VnPI+o/9jnxh9hw==}
@@ -5833,19 +5816,6 @@ packages:
     dependencies:
       find-up: 4.1.0
 
-  /pollen-css@4.6.2:
-    resolution: {integrity: sha512-uSkmTx51xXOFR+Jd6SOaKRBUyNXIjKQ50hB6+bjkDyWjvlOG8CVn3bzPJJM8eRmqKJTd13GUJaKCPbq1Zi11OA==}
-    hasBin: true
-    dependencies:
-      case: 1.6.3
-      commander: 9.5.0
-      css-vars-ponyfill: 2.4.8
-      deepmerge: 4.3.1
-      javascript-stringify: 2.1.0
-      lilconfig: 2.1.0
-      map-obj: 5.0.2
-      prettier: 2.8.8
-
   /postcss-import@15.1.0(postcss@8.4.31):
     resolution: {integrity: sha512-hpr+J05B2FVYUAXHeK1YyI267J/dDDhMU6B6civm8hSY1jYJnBXxzKDKDswzJmtLHryrjhnDjqqp/49t8FALew==}
     engines: {node: '>=14.0.0'}
@@ -6014,6 +5984,7 @@ packages:
     resolution: {integrity: sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==}
     engines: {node: '>=10.13.0'}
     hasBin: true
+    dev: true
 
   /prettier@3.1.0:
     resolution: {integrity: sha512-TQLvXjq5IAibjh8EpBIkNKxO749UEWABoiIZehEPiY4GNpVdhaFKqSTu+QrlU6D2dPAfubRmtJTi4K4YkQ5eXw==}

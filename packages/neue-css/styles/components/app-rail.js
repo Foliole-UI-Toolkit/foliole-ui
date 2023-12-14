@@ -25,7 +25,7 @@ module.exports = {
     '.rail-tile-wrapper-options': {
       'aspect-ratio': '1',
       'text-align': 'center',
-      fontSize: 'var(--scale-00)',
+      fontSize: 'var(--font-scale-sm)',
     },
     '.rail-tile-content-wrapper': {
       display: 'flex',
@@ -40,11 +40,11 @@ module.exports = {
       'flex-direction': 'column',
     },
     '.rail-item-options': {
-      padding: 'var(--el-p-sm)',
+      padding: 'var(--el-sm)',
     },
     /* Label Styles */
     '.rail-label': {
-      'padding-top': 'var(--el-p-sm)',
+      'padding-top': 'var(--el-sm)',
     },
     /* Inner styles with no provided classes props. Not meant to be adjusted.
     /* Radio button for keeping track of selected */

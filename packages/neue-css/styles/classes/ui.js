@@ -1,12 +1,12 @@
 module.exports = {
   ui: {
-    '.neue-rounded': {
+    '.ui-rounded': {
       borderRadius: 'var(--ui-rounded)',
     },
-    '.button-roundness': {
+    '.ui-button-roundness': {
       borderRadius: 'var(--ui-button-roundness)',
     },
-    '.input-roundness': {
+    '.ui-input-roundness': {
       borderRadius: 'var(--ui-input-roundness)',
     },
   },

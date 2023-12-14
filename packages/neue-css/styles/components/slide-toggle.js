@@ -11,20 +11,20 @@ module.exports = {
       borderRadius: '1000px',
     },
     '.track-xl': {
-      width: 'var(--size-16)',
-      height: 'var(--size-8)',
+      width: 'var(--spacing-16)',
+      height: 'var(--spacing-8)',
     },
     '.track-large': {
-      width: 'var(--size-14)',
-      height: 'var(--size-7)',
+      width: 'var(--spacing-14)',
+      height: 'var(--spacing-7)',
     },
     '.track-medium': {
-      width: 'var(--size-12)',
-      height: 'var(--size-6)',
+      width: 'var(--spacing-12)',
+      height: 'var(--spacing-6)',
     },
     '.track-small': {
-      width: 'var(--size-10)',
-      height: 'var(--size-5)',
+      width: 'var(--spacing-10)',
+      height: 'var(--spacing-5)',
     },
     '.thumb': {
       display: 'inline-block',

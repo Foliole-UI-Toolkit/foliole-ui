@@ -81,17 +81,18 @@
   let btnActiveScale = 1.05
   let btnHoverBrightness = 95
   let btnActiveBrightness = 102
-  let btnFontSmSize = '--scale-00'
-  let btnFontSize = '--scale-0'
-  let btnFontLgSize = '--scale-1'
+  let btnFontSmSize = '--font-scale-sm'
+  let btnFontSize = '--font-scale-base'
+  let btnFontLgSize = '--font-scale-lg'
 
   // Rounded options
-  let roundedSize = '--radius-md'
-  let buttonRoundLevel = '--radius-full'
-  let inputRoundLevel = '--radius-full'
+  let roundedSize = '--border-radius-md'
+  let buttonRoundLevel = '--border-radius-full'
+  let inputRoundLevel = '--border-radius-full'
   // Previews
   let previewCSSVars = ''
   let themeOptsJsInCSS = ''
+  let twVars = ''
   // Errors
   let hashErrorMessage = ''
 
@@ -359,6 +360,7 @@
     builtResults = buildColorStrings($colorResultsStore, 'color')
     previewCSSVars = builtResults.cssVars
     themeOptsJsInCSS = builtResults.jsInCSS
+    twVars = builtResults.twVars
 
     // Calcs
     const { btnPaddingWidth, smBtnCalcs, lgBtnCalcs, chipBtnCalcs } = calcBtnCSSStrings()
@@ -495,7 +497,7 @@
     </div>
   </section>
 
-  <pre><code class="language-javascript">{themeOptsJsInCSS}</code></pre>
+  <pre><code class="language-javascript">{themeOptsJsInCSS} {twVars}</code></pre>
 </div>
 
 <style lang="post-css">
