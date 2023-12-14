@@ -171,7 +171,7 @@ withDefaults(defineProps<Props>(), {
     @apply relative z-0;
   }
   p {
-    font-size: var(--scale-00);
+    font-size: var(--font-scale-sm);
   }
 }
 </style>

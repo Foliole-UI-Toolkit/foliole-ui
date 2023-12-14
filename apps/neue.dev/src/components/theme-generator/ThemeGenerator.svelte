@@ -81,9 +81,9 @@
   let btnActiveScale = 1.05
   let btnHoverBrightness = 95
   let btnActiveBrightness = 102
-  let btnFontSmSize = '--scale-00'
-  let btnFontSize = '--scale-0'
-  let btnFontLgSize = '--scale-1'
+  let btnFontSmSize = '--font-scale-sm'
+  let btnFontSize = '--font-scale-base'
+  let btnFontLgSize = '--font-scale-lg'
 
   // Rounded options
   let roundedSize = '--radius-md'

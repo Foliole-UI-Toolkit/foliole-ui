@@ -99,14 +99,14 @@ const btn = {
   'active-scale': '1.05',
   'hover-filter': '95%',
   'active-filter': '102%',
-  'font-sm-size': 'var(--scale-00)',
-  'font-size': 'var(--scale-0)',
-  'font-lg-size': 'var(--scale-1)',
+  'font-sm-size': 'var(--font-scale-sm)',
+  'font-size': 'var(--font-scale-base)',
+  'font-lg-size': 'var(--font-scale-lg)',
 }
 const ui = {
-  rounded: 'var(--radius-md)',
-  'button-roundness': 'var(--radius-full)',
-  'input-roundness': 'var(--radius-full)',
+  rounded: 'var(--border-radius-md)',
+  'button-roundness': 'var(--border-radius-full)',
+  'input-roundness': 'var(--border-radius-full)',
 }
 const el = {
   sm: '0.25rem',

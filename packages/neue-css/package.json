@@ -9,7 +9,9 @@
   "author": "Aaron Crockett",
   "license": "MIT",
   "devDependencies": {
-    "postcss-js": "^4.0.1"
+    "javascript-stringify": "^2.1.0",
+    "postcss-js": "^4.0.1",
+    "prettier": "^3.0.3"
   },
   "files": [
     "neue.css",

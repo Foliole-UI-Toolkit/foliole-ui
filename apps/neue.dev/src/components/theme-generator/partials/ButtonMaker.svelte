@@ -19,12 +19,11 @@
   }
 
   const fontSizeMap = {
-    '12px': '--scale-000',
-    '14px': '--scale-00',
-    '16px': '--scale-0',
-    '18px': '--scale-1',
-    '20px': '--scale-2',
-    '24px': '--scale-3',
+    '12px': '--font-scale-xs',
+    '14px': '--font-scale-sm',
+    '16px': '--font-scale-base',
+    '18px': '--font-scale-lg',
+    '20px': '--font-scale-xl',
   }
 
   export let btnPaddingWidthScale: number = 3
@@ -34,9 +33,9 @@
   export let btnActiveScale: number | null = 1.05
   export let btnHoverBrightness: number | null = 95
   export let btnActiveBrightness: number | null = 102
-  export let btnFontSmSize: string = '--scale-00'
-  export let btnFontSize: string = '--scale-0'
-  export let btnFontLgSize: string = '--scale-1'
+  export let btnFontSmSize: string = '--font-scale-sm'
+  export let btnFontSize: string = '--font-scale-base'
+  export let btnFontLgSize: string = '--font-scale-lg'
 </script>
 
 <p class="pb-4 page-subheading">Buttons</p>

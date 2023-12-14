@@ -25,7 +25,7 @@ module.exports = {
     '.rail-tile-wrapper-options': {
       'aspect-ratio': '1',
       'text-align': 'center',
-      fontSize: 'var(--scale-00)',
+      fontSize: 'var(--font-scale-sm)',
     },
     '.rail-tile-content-wrapper': {
       display: 'flex',

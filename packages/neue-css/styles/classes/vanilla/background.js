@@ -1,3 +1,4 @@
+// vanilla only - tailwind has an equivalent
 module.exports = {
   background: {
     '.bg-primary': {
