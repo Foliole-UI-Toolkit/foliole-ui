@@ -1,18 +1,14 @@
+// Imports
 const postcssJs = require('postcss-js')
 const postcss = require('postcss')
 const fs = require('fs').promises
 const path = require('path')
 
-const neueTheme = require('../themes/neue.js')
-
-// put all the themes in a array.
-const themes = [neueTheme]
-
 // Settings and Themes
+const neueTheme = require('../themes/neue.js')
 const { colorNames, stops } = require('../settings')
-const baseDir = path.join(__dirname, '..')
 
-// Elements and Components
+// Elements, Tokens and Components
 const { button } = require('../styles/elements/button')
 const { input } = require('../styles/elements/input')
 const { background } = require('../styles/tokens/background')
@@ -24,9 +20,16 @@ const { appRail } = require('../styles/components/app-rail')
 const { accordion } = require('../styles/components/accordion')
 const { slideToggle } = require('../styles/components/slide-toggle')
 
+const baseDir = path.join(__dirname, '..')
+// put all the themes in a array.
+const themes = [neueTheme]
+
 // Note Neue and TW have slightly different naming conventions. Neue defines components as complex features which have a JS framework counterpart.
-// Neue defines elements "components" which are CSS only and are used as TW Components.
-// Utilities are design tokens which are used in Neue Elements/TW components. Design tokens/Utilities are simply classes used either in TW or to easily pass as optins in Neue.
+// Neue defines elements  as CSS only, and are used as TW components.
+
+// Utilities are design tokens. They are used in Neue Elements/TW components. Design tokens are classes piped into tw as utilities. They are useful for scenarios such as a single rounded value for the theme. Padding for buttons/inputs etc. Dynamic light/dark values.
+
+// Additionally, some are also created for use outside of tw to easily pass into framework components (ie bg-primary is created by tw when colors are created. But also supplied by Neue for all CSS solutions as easy ways to pass in class options.)
 
 // Taking components, elements and tokens and merging into an object.
 const mergedCssInJsVanilla = {
@@ -87,9 +90,7 @@ function generateTwCSSProperties() {
     })
   })
 
-  const props = `${propsHeader} ${propsBase} ${propsFooter}`
-
-  return props
+  return `${propsHeader} ${propsBase} ${propsFooter}`
 }
 
 const twPlugin = function ({ addComponents, addUtilities }) {
@@ -130,26 +131,24 @@ twColors = generateTwColors(colorNames, stops)
 // Perform async file actions.
 ;(async () => {
   try {
-    // Taking components, elements and tokens in putting int one file for usage vanilla or CSS agnostic solutions.
+    // Neue components, elements and tokens and concating into single file for vanilla/CSS agnostic solutions.
     const resultVanilla = await postcss().process(mergedCssInJsVanilla, { parser: postcssJs })
     const mergedVanillaCss = resultVanilla.css
     const neueVanillaPath = path.join(baseDir, 'neue.css')
-
-    // Classes for use with non-tailwind solutions.
+    // Component class file use with non-tailwind solutions.
     await fs.writeFile(neueVanillaPath, mergedVanillaCss, 'utf8')
 
+    // Neue components concating into single file for tw solutions.
     const resultTw = await postcss().process(mergedCssInJsTwComponents, { parser: postcssJs })
     const mergedTwCss = resultTw.css
     const neueTwPath = path.join(baseDir, 'neue-tw.css')
-
-    // Classes for use with tailwind.
+    // Component class file for use with tailwind.
     await fs.writeFile(neueTwPath, mergedTwCss, 'utf8')
 
-    const neueTwCSSPropertiesPath = path.join(baseDir, 'neue-tw-css-properties.css')
-
-    const props = generateTwCSSProperties()
-
     // CSS properties for use with tailwind.
+    const neueTwCSSPropertiesPath = path.join(baseDir, 'neue-tw-css-properties.css')
+    const props = generateTwCSSProperties()
+    // CSS props file for use with tailwind.
     await fs.writeFile(neueTwCSSPropertiesPath, props, 'utf8')
   } catch (error) {
     console.error('Error occurred:', error)
