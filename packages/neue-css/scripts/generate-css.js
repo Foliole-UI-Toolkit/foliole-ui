@@ -12,11 +12,6 @@ const themes = [neueTheme]
 const { colorNames, stops } = require('../settings')
 const baseDir = path.join(__dirname, '..')
 
-// Clear the require cache to force re-reading of modules
-Object.keys(require.cache).forEach(function (key) {
-  delete require.cache[key]
-})
-
 // Elements and Components
 const { button } = require('../styles/elements/button')
 const { input } = require('../styles/elements/input')
@@ -28,6 +23,10 @@ const { appShell } = require('../styles/components/app-shell')
 const { appRail } = require('../styles/components/app-rail')
 const { accordion } = require('../styles/components/accordion')
 const { slideToggle } = require('../styles/components/slide-toggle')
+
+// Note Neue and TW have slightly different naming conventions. Neue defines components as complex features which have a JS framework counterpart.
+// Neue defines elements "components" which are CSS only and are used as TW Components.
+// Utilities are design tokens which are used in Neue Elements/TW components. Design tokens/Utilities are simply classes used either in TW or to easily pass as optins in Neue.
 
 // Taking components, elements and tokens and merging into an object.
 const mergedCssInJsVanilla = {
@@ -53,9 +52,8 @@ const mergedCssInJsTwComponents = {
 }
 
 let twColors = {}
-let twUtilities = {}
 
-// All possible colors from the settings.
+// All possible colors from the settings which consome css props generated in generateTwCSSProperties.
 function generateTwColors(colorNames, stops) {
   const colors = {}
 
@@ -73,7 +71,7 @@ function generateTwColors(colorNames, stops) {
   return colors
 }
 
-// Specific values from themes.
+// Specific values from themes to be used as CSS properties in TW.
 function generateTwCSSProperties() {
   let propsHeader = `@tailwind base; \n @layer base {\n:root {`
   let propsBase = ''
@@ -95,16 +93,18 @@ function generateTwCSSProperties() {
 }
 
 const twPlugin = function ({ addComponents, addUtilities }) {
+  // Custom components, called "elements" in Neue. Neue Components are generated in their own files.
   const customComponents = {
     button,
     input,
   }
 
+  // Custom utilities used in components. Not all are needed as tw makes bg, border etc from colors.
   const customUtilities = {
     ui,
   }
 
-  // this will need to be a plugin within my package.
+  // Components which consume elements and tokens.
   for (const componentName in customComponents) {
     const component = customComponents[componentName]
     for (const className in component) {
@@ -114,6 +114,7 @@ const twPlugin = function ({ addComponents, addUtilities }) {
     }
   }
 
+  // Custom utilities used in components.
   for (const utilityName in customUtilities) {
     const component = customComponents[utilityName]
     for (const className in component) {
@@ -134,17 +135,21 @@ twColors = generateTwColors(colorNames, stops)
     const mergedVanillaCss = resultVanilla.css
     const neueVanillaPath = path.join(baseDir, 'neue.css')
 
+    // Classes for use with non-tailwind solutions.
     await fs.writeFile(neueVanillaPath, mergedVanillaCss, 'utf8')
 
     const resultTw = await postcss().process(mergedCssInJsTwComponents, { parser: postcssJs })
     const mergedTwCss = resultTw.css
     const neueTwPath = path.join(baseDir, 'neue-tw.css')
 
+    // Classes for use with tailwind.
     await fs.writeFile(neueTwPath, mergedTwCss, 'utf8')
 
     const neueTwCSSPropertiesPath = path.join(baseDir, 'neue-tw-css-properties.css')
 
     const props = generateTwCSSProperties()
+
+    // CSS properties for use with tailwind.
     await fs.writeFile(neueTwCSSPropertiesPath, props, 'utf8')
   } catch (error) {
     console.error('Error occurred:', error)
