@@ -162,6 +162,10 @@ importers:
         version: 3.3.5
 
   packages/neue-css:
+    dependencies:
+      pollen-css:
+        specifier: ^4.6.2
+        version: 4.6.2
     devDependencies:
       postcss-js:
         specifier: ^4.0.1

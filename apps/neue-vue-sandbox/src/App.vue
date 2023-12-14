@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 // import { ref } from 'vue'
-import './assets/pollen.css'
 import '@neue/neue-css/styles/index.css'
 
 import NeueAppShell from '@neue/neue-vue/src/components/AppShell/NeueAppShell.vue'

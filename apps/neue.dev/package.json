@@ -24,7 +24,6 @@
     "chroma-js": "^2.4.2",
     "classnames": "^2.3.2",
     "javascript-stringify": "^2.1.0",
-    "pollen-css": "^4.6.2",
     "postcss": "^8.4.31",
     "prettier": "^3.0.3",
     "svelte": "^4.0.0",
