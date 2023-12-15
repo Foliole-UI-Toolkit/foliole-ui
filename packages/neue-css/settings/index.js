@@ -17,7 +17,7 @@ const colorNames = [
   'surface-raised-contrast',
 ]
 
-const stops = ['base', 'light', 'mlt', 'mdk', 'dark']
+const stops = ['light', 'mlt', 'mdk', 'dark']
 
 module.exports = {
   colorNames,

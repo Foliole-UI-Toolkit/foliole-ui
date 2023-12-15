@@ -10,13 +10,11 @@ const { colorNames, stops } = require('../settings/index.js')
 
 // Helper script imports
 const { toCSSProperties } = require('./index.js')
+const generateColors = require('./generate-colors.js')
 
-// Elements, Properties, Classes and Components - see docs for clarity on how Neue and TW define these.
+// Elements, Properties, Utilities, Tokens and Components - see docs for clarity on how Neue and TW define these.
 const { button } = require('../styles/elements/button.js')
 const { input } = require('../styles/elements/input.js')
-// const { background } = require('../styles/tokens/background.js')
-// const { border } = require('../styles/tokens/border.js')
-// const { text } = require('../styles/tokens/text.js')
 const { spacing } = require('../styles/properties/spacing.js')
 const { borderRadius } = require('../styles/properties/border-radius.js')
 const { appShell } = require('../styles/components/app-shell.js')
@@ -33,20 +31,25 @@ const baseDir = path.join(__dirname, '..')
 const themes = [neueTheme]
 
 // Taking components, elements and tokens and merging into an object.
-// const mergedCSSInJsVanilla = {
-//   ...accordion,
-//   ...appRail,
-//   ...appShell,
-//   ...slideToggle,
-//   ...background,
-//   ...border,
-//   ...button,
-//   ...input,
-//   ...text,
-//   ...ui,
-// }
+let mergedCSSInJsVanilla = {
+  ...accordion,
+  ...appRail,
+  ...appShell,
+  ...slideToggle,
+  ...button,
+  ...input,
+}
 
 let twColors = {}
+let backgrounds = {}
+let variants = {}
+
+// object will hold a ref to these objects.
+let colorTypes = {
+  twColors,
+  backgrounds,
+  variants,
+}
 
 // Taking components (elements and tokens handled by tailwind settings) and merging into an object.
 // Components use elements and tokens.
@@ -55,24 +58,6 @@ const mergedCSSInJsTwComponents = {
   ...appRail,
   ...appShell,
   ...slideToggle,
-}
-
-// All possible colors from the settings which consome css props generated in generateThemeCSSProps.
-function generateTwColors(colorNames, stops) {
-  const colors = {}
-
-  colorNames.forEach((colorName) => {
-    if (stops.includes('base')) {
-      colors[colorName] = `rgb(var(--color-${colorName}) / <alpha-value>)`
-    }
-
-    stops.forEach((stop) => {
-      const comboName = `${colorName}-${stop}`
-      colors[comboName] = `rgb(var(--color-${colorName}-${stop}) / <alpha-value>)`
-    })
-  })
-
-  return colors
 }
 
 // Specific values from themes to be used as CSS properties in TW.
@@ -108,7 +93,6 @@ const twPlugin = function ({ addComponents, addUtilities }) {
     button,
     input,
   }
-
   // Components(TW)/Elements(Neue) consume tokens.
   for (const componentName in customComponents) {
     const component = customComponents[componentName]
@@ -120,17 +104,19 @@ const twPlugin = function ({ addComponents, addUtilities }) {
   }
 }
 
-twColors = generateTwColors(colorNames, stops)
-
 // Perform async file actions.
 ;(async () => {
   try {
+    // we don't need to return colorTypes because the object holds the reference the original objects.
+    generateColors(colorNames, stops, colorTypes)
+
+    mergedCSSInJsVanilla = { ...mergedCSSInJsVanilla, ...backgrounds, ...variants }
+
     // Vanilla CSS - post process into file for tw solution
-    // const resultVanilla = await postcss().process(mergedCSSInJsVanilla, { parser: postcssJs })
-    // const mergedVanillaCSS = resultVanilla.css
-    // const neueVanillaPath = path.join(baseDir, 'neue.css')
-    // Component class file use with non-tailwind solutions.
-    // await fs.writeFile(neueVanillaPath, mergedVanillaCSS, 'utf8')
+    const resultVanilla = await postcss().process(mergedCSSInJsVanilla, { parser: postcssJs })
+    const mergedVanillaCSS = resultVanilla.css
+    const neueVanillaPath = path.join(baseDir, 'neue.css')
+    await fs.writeFile(neueVanillaPath, mergedVanillaCSS, 'utf8')
 
     // Neue components - post process into file for tw solutions.
     const resultTw = await postcss().process(mergedCSSInJsTwComponents, { parser: postcssJs })
