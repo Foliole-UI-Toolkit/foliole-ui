@@ -1,5 +1,11 @@
 # @neue/neue-vue
 
+## 0.4.0
+
+### Minor Changes
+
+- 3d9534a: Chore: CSS, Vue - remove - base postfix from classes
+
 ## 0.3.0
 
 ### Minor Changes

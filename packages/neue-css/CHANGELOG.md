@@ -1,5 +1,12 @@
 # @neue/neue-css
 
+## 0.5.0
+
+### Minor Changes
+
+- 83d7191: Feature: CSS - Remove Pollen CSS properties and replace with Neue CSS properties - adjust folder and CSS naming convention - remove Pollen, adjust setup colors for TW usage and integration
+- 3d9534a: Chore: CSS, Vue - remove - base postfix from classes
+
 ## 0.4.0
 
 ### Minor Changes
