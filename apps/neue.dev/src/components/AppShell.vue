@@ -109,10 +109,8 @@ withDefaults(defineProps<Props>(), {
 @tailwind components;
 
 @layer components {
-  /* // if we add  siteheader and site-header-options to the components layer in the TW plugin we can simply concat this into one single class, too*/
   .my-app-shell {
     @apply bg-page mx-auto;
-
     background: linear-gradient(45deg, rgb(var(--color-primary) / 0.05), rgb(var(--color-secondary) / 0.05));
   }
   .my-header {
@@ -120,7 +118,6 @@ withDefaults(defineProps<Props>(), {
     @apply shadow-xl;
     background: linear-gradient(90deg, rgb(var(--color-primary) / 0.1), rgb(var(--color-secondary) / 0.1));
   }
-
   .header-bottom {
     background: linear-gradient(
       90deg,
@@ -144,9 +141,6 @@ withDefaults(defineProps<Props>(), {
   }
   .my-page {
     @apply relative z-0;
-  }
-  p {
-    font-size: var(--font-scale-sm);
   }
 }
 </style>
