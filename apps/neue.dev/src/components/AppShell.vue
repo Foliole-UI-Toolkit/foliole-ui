@@ -126,7 +126,7 @@ withDefaults(defineProps<Props>(), {
       90deg,
       rgb(var(--color-primary) / 0.9),
       rgb(var(--color-secondary-mdk) / 0.9),
-      rgb(var(--color-tertiary-mdk) / 0.9),
+      rgb(var(--color-tertiary-mdk) / 0.8),
       rgb(var(--color-secondary-mdk) / 0.9),
       rgb(var(--color-primary) / 0.9)
     );
