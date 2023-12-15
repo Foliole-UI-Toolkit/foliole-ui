@@ -32,7 +32,7 @@ withDefaults(defineProps<Props>(), {
             >
             </span>
             <h1 class="text-4xl font-bold whitespace-nowrap">
-              <a href="/"><span class="text-primary">NEUE </span><span>UI</span></a>
+              <a href="/"><span class="text-primary-mdk">NEUE </span><span>UI</span></a>
             </h1>
             <ul class="container flex justify-end w-full p-2 pb-0 mx-auto space-x-4 font-bold">
               <li>
@@ -118,7 +118,7 @@ withDefaults(defineProps<Props>(), {
   .my-header {
     @apply mx-auto w-full bg-page;
     @apply shadow-xl;
-    background: linear-gradient(90deg, rgb(var(--color-primary) / 0.1), rgb(var(--color-secondary) / 0.1));
+    background: linear-gradient(90deg, rgb(var(--color-primary) / 0.05), rgb(var(--color-secondary) / 0.05));
   }
 
   .header-bottom {
@@ -133,6 +133,7 @@ withDefaults(defineProps<Props>(), {
   }
   .logo {
     background: linear-gradient(45deg, rgb(var(--color-primary) / 1), rgb(var(--color-secondary) / 1));
+    border: 2px solid rgb(var(--color-primary-mlt));
   }
   .my-side-bar-left {
     @apply shadow-sm border-r border-surface-raised;
