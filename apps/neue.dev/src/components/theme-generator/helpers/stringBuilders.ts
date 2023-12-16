@@ -34,7 +34,7 @@ function buildLineFromPrefixAndValue(attrPrefix: string, attrBase: string, cssVa
 }
 
 // Helpers
-export function buildElBtnStrings(btnPaddingBase: number) {
+export function buildElStrings(btnPaddingBase: number) {
   let cssVarsBuilt = ''
   let jsInCSSBuilt = ''
 
@@ -62,19 +62,6 @@ export function buildElBtnStrings(btnPaddingBase: number) {
   ;({ cssVars, jsInCSS } = buildLineFromPrefixAndValue('el', 'p-triple', `${triplePadding}rem`))
   cssVarsBuilt += cssVars
   jsInCSSBuilt += jsInCSS
-
-  return { cssVarsBuilt, jsInCSSBuilt }
-}
-
-export function buildElStrings(elBtnString: string) {
-  let cssVarsBuilt = ''
-  let jsInCSSBuilt = headerForJsInCSS('el')
-
-  cssVarsBuilt += elBtnString.cssVarsBuilt
-  jsInCSSBuilt += elBtnString.jsInCSSBuilt
-
-  // Complete the JavaScript string
-  jsInCSSBuilt += footerForJsInCSS()
 
   return { cssVarsBuilt, jsInCSSBuilt }
 }

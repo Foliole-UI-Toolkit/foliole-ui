@@ -18,7 +18,7 @@
   import {
     buildBtnStrings,
     buildColorStrings,
-    buildElBtnStrings,
+    buildElStrings,
     capJsInCSSString,
     buildUIRoundStrings,
     type BuiltResults,
@@ -442,7 +442,7 @@
     generateColors()
     generateBtnStrings()
     builtUIRoundString = buildUIRoundStrings(roundedSize, buttonRoundLevel, inputRoundLevel)
-    builtElBtnString = buildElBtnStrings(btnPaddingBase)
+    builtElBtnString = buildElStrings(btnPaddingBase)
 
     // setting initialized to true to trigger reactive vars.
     // we wait to trigger it to perform the init setup without triggering reactivity each time we assign a value.
