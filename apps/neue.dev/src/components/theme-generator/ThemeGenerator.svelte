@@ -482,7 +482,7 @@
       <p class="text-xl text-error">{hashErrorMessage}</p>
       <div class="mx-auto space-y-4 text-center page-section">
         <ChipOptions on:colorSchemeChange={() => generateColors()} on:colorAdditionChange={() => generateColors()} />
-        <button class="btn-md my-btn" on:click={() => generateThemeOpts()}>Generate Preview</button>
+        <!-- <button class="btn-md my-btn" on:click={() => generateThemeOpts()}>Generate Preview</button> -->
       </div>
     </div>
   </section>
