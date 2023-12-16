@@ -133,7 +133,6 @@ const twPlugin = function ({ addComponents, addUtilities }) {
     const neueCSSProps = generateNeueDefaultCSSProps()
     const props = `${propsHeader} ${themeCSSProps} ${neueCSSProps} ${propsFooter}`
 
-    console.log(props)
     // Create file.
     const neueTwCSSPropertiesPath = path.join(baseDir, 'neue-tw-css-properties.css')
     await fs.writeFile(neueTwCSSPropertiesPath, props, 'utf8')

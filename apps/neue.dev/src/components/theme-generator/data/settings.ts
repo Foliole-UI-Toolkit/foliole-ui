@@ -194,16 +194,16 @@ export const surfaceMap: SurfaceLevelMap = {
 export const grayHues = [0, 0.02, 0.04]
 
 export const roundedOpts = {
-  none: 'none',
-  xs: '--radius-xs',
-  sm: '--radius-sm',
-  md: '--radius-md',
-  lg: '--radius-lg',
-  xl: '--radius-xl',
+  none: '--border-radius-none',
+  sm: '--border-radius-sm',
+  md: '--border-radius-md',
+  lg: '--border-radius-lg',
+  xl: '--border-radius-xl',
+  full: '--border-radius-full',
 }
 
 export const elementRoundness = {
-  none: 'none',
+  none: '--border-radius-none',
   rounded: '--ui-rounded',
-  circular: '--radius-full',
+  circular: '--border-radius-full',
 }
