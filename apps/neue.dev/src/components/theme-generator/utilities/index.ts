@@ -23,26 +23,6 @@ export function createSaturation(hex: string) {
   return baseSaturation > 0.79 ? baseSaturation : baseSaturation + 0.2
 }
 
-export function updateColorsColl(store: Writable<ColorsCollection>, color: string, hex: string) {
-  const saturation = createSaturation(hex)
-
-  if (color === 'warning') {
-    store.update((colorsCollection) => {
-      colorsCollection['warning'] = generateColorFromHSL(centers.yellow, saturation, 0.5)
-      return colorsCollection
-    })
-    return
-  }
-
-  if (color === 'info') {
-    store.update((colorsCollection) => {
-      colorsCollection['info'] = generateColorFromHSL(centers['blue-info'], saturation, 0.6)
-      return colorsCollection
-    })
-    return
-  }
-}
-
 // ** useGetConvertedColor ** //
 
 export function getHueFromHex(hexColor: string) {

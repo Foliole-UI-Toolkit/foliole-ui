@@ -1,37 +1,10 @@
-import type { Writable } from 'svelte/store'
+import { type ColorSettings } from '../types'
 
-// Utils, helpers and settings
-import { createSaturation, useGenerateColor, useGetConvertedColor } from '../utilities'
+import { useGetConvertedColor, useGenerateColor } from '../utilities'
 import { intensityMap, intensityMapGray } from '../data/settings'
 
-// Types
-import type { ColorsCollection, ColorSettings } from '../types'
-
-const { generateA11yOnColor, generateColorFromHSL, generateDarkenedValue, generateLightenedValue } = useGenerateColor()
-
+const { generateA11yOnColor, generateDarkenedValue, generateLightenedValue } = useGenerateColor()
 const { getRgbString } = useGetConvertedColor()
-
-// Import color utils by type
-
-export function updateColorsColl(store: Writable<ColorsCollection>, color: string, hex: string) {
-  const saturation = createSaturation(hex)
-
-  if (color === 'warning') {
-    store.update((colorsCollection) => {
-      colorsCollection['warning'] = generateColorFromHSL(centers.yellow, saturation, 0.5)
-      return colorsCollection
-    })
-    return
-  }
-
-  if (color === 'info') {
-    store.update((colorsCollection) => {
-      colorsCollection['info'] = generateColorFromHSL(centers['blue-info'], saturation, 0.6)
-      return colorsCollection
-    })
-    return
-  }
-}
 
 // Build shades.
 export function buildColorShades(color: any) {

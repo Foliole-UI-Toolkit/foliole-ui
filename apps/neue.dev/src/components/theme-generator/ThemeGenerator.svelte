@@ -14,7 +14,7 @@
 
   import { centers, useColorSchemes, useGenerateColor, useGetColorValue, useGetConvertedColor } from './utilities'
 
-  // Local Helpers
+  //  Helpers
   import {
     buildBtnStrings,
     buildColorStrings,
@@ -26,8 +26,8 @@
 
   import { buildColorShades } from './helpers'
 
-  // Local data
-  import { setStoreThemeOptions } from './data'
+  // Data
+  import { initializeModalStore } from './data/stores'
   import { surfaceMap } from './data/settings'
 
   // Types
@@ -63,7 +63,7 @@
   // Call a function to keep store from being global.
   // Not sure if this is necessary here but I prefer to default to avoiding globals.
   // Here I use this approach to get the large data object out of the file.
-  const storeThemeOptions = setStoreThemeOptions()
+  const themeOptionsStore = initializeModalStore()
 
   const additionalColorsStore: Writable<NeueAdditionalColorSchemesMapKeys> = localStorageStore('additionalColors', {})
 
@@ -125,10 +125,8 @@
   }
 
   // Make stores available to context so they can be injected locally as needed in child components.
-  setContext('colorSchemeStore', colorSchemeStore)
-  setContext('colorsCollectionStore', colorsCollectionStore)
-  setContext('primaryColorHex', primaryColorHex)
   setContext('additionalColorsStore', additionalColorsStore)
+  setContext('colorSchemeStore', colorSchemeStore)
 
   // Calculations for button sizes.
   function calcBtnCSSStrings() {
@@ -190,32 +188,37 @@
 
   // Handle controlsTailChange Opts changed.
   function handleTextColorChange(event: CustomEvent) {
-    btnPaddingBase = event.detail.color
+    // btnPaddingBase = event.detail.color
   }
 
+  //
+  // Commented out temporarily while working on feature.
+  //
   // Handle surface relationship changed.
-  function handleSurfaceRelationshipChange(event: CustomEvent) {
-    selectedSurfaceLevel = event.detail.selectedSurfaceLevel
+  // We will likely need to update the shades for these as well.
+  // function handleSurfaceRelationshipChange(event: CustomEvent) {
+  //   selectedSurfaceLevel = event.detail.selectedSurfaceLevel
 
-    let updatedColors: any = {}
+  //   let updatedColors: any = {}
 
-    updatedColors = generateDerivedColors(updatedColors)
+  //   updatedColors = generateBaseDerivedColorScheme(updatedColors)
 
-    updateDerivedColors(updateColors)
+  //   themeOptionsStore.updateDerivedColors(updateColors)
 
-    generateDerivedColorShades()
-  }
+  //   generateDerivedColorShades()
+  // }
 
   // Handle Gray Hue changed.
-  function handleGrayHueChange(event: CustomEvent) {
-    grayHue = parseFloat(event.detail.grayHue)
+  // We will likely need to update the shades for these as well.
+  // function handleGrayHueChange(event: CustomEvent) {
+  //   grayHue = parseFloat(event.detail.grayHue)
 
-    let updatedColors: any = {}
+  //   let updatedColors: any = {}
 
-    updatedColors = generateDerivedColors(updatedColors)
+  //   updatedColors = generateBaseDerivedColorScheme(updatedColors)
 
-    updateDerivedColors(updateColors)
-  }
+  //   themeOptionsStore.updateDerivedColors(updateColors)
+  // }
 
   // Handle Button Opts changed.
   function handleBtnOptsChange(event: CustomEvent) {
@@ -242,39 +245,6 @@
     builtUIRoundString = buildUIRoundStrings(roundedSize, buttonRoundLevel, inputRoundLevel)
   }
 
-  // Update all colors
-  function updateColors(updatedColors: any) {
-    storeThemeOptions.update((currentOptions) => {
-      return {
-        ...currentOptions,
-        colors: currentOptions.colors.map((color, i) => {
-          color.hex = updatedColors[color.key] as string
-
-          return color
-        }),
-        derivedColors: currentOptions.derivedColors.map((color, i) => {
-          color.hex = updatedColors[color.key] as string
-
-          return color
-        }),
-      }
-    })
-  }
-
-  // Update derived colors only.
-  function updateDerivedColors(updatedColors: any) {
-    storeThemeOptions.update((currentOptions) => {
-      return {
-        ...currentOptions,
-        derivedColors: currentOptions.derivedColors.map((color, i) => {
-          color.hex = generateColorFromHSL(getHueFromHex(color.hex), grayHue, 0.5)
-
-          return color
-        }),
-      }
-    })
-  }
-
   // Init, calculate and build Color Strings
   function generateBtnStrings() {
     const { btnPaddingWidth, smBtnCalcs, lgBtnCalcs, chipBtnCalcs } = calcBtnCSSStrings()
@@ -294,7 +264,7 @@
   }
 
   // Generate derived colors only.
-  function generateDerivedColors(updatedColors: any) {
+  function generateBaseDerivedColorScheme(updatedColors: any) {
     // Surface colors.
     const hue = getHueFromHex(primaryColorHex)
     updatedColors['neutral'] = generateColorFromHSL(hue, grayHue, 0.5)
@@ -327,7 +297,7 @@
   }
 
   // Generate color scheme based on base primary hex color.
-  function generateColorScheme(updatedColors: Record<string, string | null>) {
+  function generateBaseColorScheme(updatedColors: Record<string, string | null>) {
     // colorsCollectionStore.update((colorsCollection) => {
     let baseColors: (string | null)[] = []
     // Array because we will have multi gray options later.
@@ -395,7 +365,7 @@
 
   function generateDerivedColorShades() {
     let derivedColorShades: ColorSettings[] = []
-    $storeThemeOptions.derivedColors.forEach((color) => {
+    $themeOptionsStore.derivedColors.forEach((color) => {
       if (color.hex !== '') {
         const colorShades = buildColorShades(color)
         derivedColorShades = [...derivedColorShades, ...colorShades]
@@ -406,10 +376,10 @@
   }
 
   // Loop through all color options and derive shades.
-  function generateSchemeColorShades() {
+  function generateColorShades() {
     let schemeColorShades: ColorSettings[] = []
 
-    $storeThemeOptions.colors.forEach((color) => {
+    $themeOptionsStore.colors.forEach((color) => {
       if (color.hex !== '') {
         const colorShades = buildColorShades(color)
         schemeColorShades = [...schemeColorShades, ...colorShades]
@@ -420,20 +390,21 @@
   }
 
   function generateColors() {
-    let updatedSchemeColors: Record<string, string | null> = {}
+    // Create base color scheme values.
+    let updatedColors: Record<string, string | null> = {}
+    updatedColors = generateBaseColorScheme(updatedColors)
+    themeOptionsStore.updateColors('colors', updatedColors)
 
-    updatedSchemeColors = generateColorScheme(updatedSchemeColors)
-
-    // Create Colors used in every color scheme.
+    // Create base colors derived from color scheme values.
     let updatedDerivedColors: Record<string, string | null> = {}
-    updatedDerivedColors = generateDerivedColors(updatedDerivedColors)
+    updatedDerivedColors = generateBaseDerivedColorScheme(updatedDerivedColors)
+    themeOptionsStore.updateColors('derivedColors', updatedDerivedColors)
 
-    const updatedColors = { ...updatedSchemeColors, ...updatedDerivedColors }
-    updateColors(updatedColors)
-
-    let schemeColorShades = generateSchemeColorShades()
+    // Create shades based on base values.
+    let schemeColorShades = generateColorShades()
     let derivedColorShades = generateDerivedColorShades()
 
+    // Build the colors into strings for preview and user options.
     builtSchemeColorString = buildColorStrings(schemeColorShades, 'color')
     builtDerivedColorString = buildColorStrings(derivedColorShades, 'color')
   }
@@ -450,8 +421,8 @@
   }
 
   function initCachedColors() {
-    // if ($storeThemeOptions.colors[0].hex) {
-    //   primaryColorHex = $storeThemeOptions.colors[0].hex
+    // if ($themeOptionsStore.colors[0].hex) {
+    //   primaryColorHex = $themeOptionsStore.colors[0].hex
     // }
     // if ($additionalColorsStore.warning) {
     //   updateColorsColl(colorsCollectionStore, 'warning', $additionalColorsStore.warning)
@@ -490,7 +461,7 @@
     <h3 class="text-3xl page-heading">Colors</h3>
     <div class="space-y-4">
       <div class="pb-2">
-        {#each $storeThemeOptions.colors.filter((colorRow) => colorRow.hex !== '') as colorRow, i}
+        {#each $themeOptionsStore.colors.filter((colorRow) => colorRow.hex !== '') as colorRow, i}
           <div
             class="grid grid-cols-1 md:grid-cols-[200px_1fr_120px] gap-2 md:gap-4 border-b-2 md:border-0 border-neutral-mlt md:pb-2 pb-2"
           >
@@ -507,12 +478,12 @@
       </div>
 
       <h4 class="page-subheading">Surface and hue relationships.</h4>
-      <SurfaceRelationships
+      <!-- <SurfaceRelationships
         {selectedSurfaceLevel}
         {grayHue}
         on:surfaceRelationshipsChange={handleSurfaceRelationshipChange}
         on:grayHueChange={handleGrayHueChange}
-      />
+      /> -->
     </div>
   </section>
   <section class="page-section">

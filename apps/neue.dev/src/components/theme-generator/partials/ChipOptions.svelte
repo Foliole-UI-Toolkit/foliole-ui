@@ -1,6 +1,6 @@
 <script lang="ts">
   // Local
-  import { updateColorsColl } from '../helpers'
+  // import { updateColorsColl } from '../helpers'
   import { additionalColorSchemes, neueColorSchemes } from '../data/settings'
   import type { ColorsCollection } from '../types'
   // Svelte related
@@ -33,10 +33,10 @@
         return { ...colors, [colorKey]: false }
       })
     } else {
-      updateColorsColl(colorsCollectionStore, colorKey, hex)
-      additionalColorsStore.update((colors) => {
-        return { ...colors, [colorKey]: hex }
-      })
+      // updateColorsColl(colorsCollectionStore, colorKey, hex)
+      // additionalColorsStore.update((colors) => {
+      //   return { ...colors, [colorKey]: hex }
+      // })
     }
     emitColorAdditionChange()
   }

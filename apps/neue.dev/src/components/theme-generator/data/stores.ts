@@ -1,10 +1,63 @@
-import type { Writable } from 'svelte/store'
-import { setContext } from 'svelte'
+import { writable } from 'svelte/store'
+import { getContext, setContext } from 'svelte'
 
-import { localStorageStore } from '@skeletonlabs/skeleton'
 import type { ThemeOptionsCollection } from '../types'
 
-const storeThemeOptions: Writable<ThemeOptionsCollection> = localStorageStore('storeThemeOptions', {
+const THEME_OPTIONS_KEY = 'themeOptionsStore'
+
+export function getModalStore() {
+  const themeOptionsStore = getContext<ThemeOptionsCollection | undefined>(THEME_OPTIONS_KEY)
+
+  if (!themeOptionsStore) throw new Error('ThemeStore is not initialized!')
+
+  return themeOptionsStore
+}
+
+export function initializeModalStore() {
+  const themeOptionsStore = themeOptionsService()
+
+  return setContext(THEME_OPTIONS_KEY, themeOptionsStore)
+}
+
+function themeOptionsService() {
+  const { subscribe, set, update } = writable<any>(initThemeOptions)
+
+  // Only returning subscribe bc updates and sets should be done via these provided methods.
+  return {
+    subscribe,
+    updateColor: (type: 'color' | 'derived', colorKey: string, value: any | string) => {
+      update((themeOptionsStore) => {
+        const colorIndex = themeOptionsStore[type].findIndex((color: any) => color.key === colorKey)
+        // If the color with the given key does not exist in the array
+        if (colorIndex === -1) {
+          console.error(`Color with key '${colorKey}' not found.`)
+          return
+        }
+
+        if (typeof value === 'string') {
+          themeOptionsStore[type][colorIndex].hex = value
+        } else {
+          themeOptionsStore[type][colorIndex] = { ...themeOptionsStore[type][colorIndex], ...value }
+        }
+        return themeOptionsStore
+      })
+    },
+    updateColors: (type: 'colors' | 'derivedColors', updatedColors: any) => {
+      update((themeOptionsStore) => {
+        console.log(type)
+        return {
+          ...themeOptionsStore,
+          [type]: themeOptionsStore[type].map((color: any, i: number) => {
+            color.hex = updatedColors[color.key] as string
+            return color
+          }),
+        }
+      })
+    },
+  }
+}
+
+const initThemeOptions = {
   colors: [
     {
       key: 'primary',
@@ -145,15 +198,32 @@ const storeThemeOptions: Writable<ThemeOptionsCollection> = localStorageStore('s
       stops: '',
     },
   ],
-  fontBase: 'system',
-  fontSecondary: 'system',
-  textColorLight: '0 0 0',
-  textColorDark: '255 255 255',
+  primaryHex: '#ef4953',
   roundedBase: '9999px',
   borderBase: '1px',
-})
-
-export function setStoreThemeOptions() {
-  setContext('storeThemeOptions', storeThemeOptions)
-  return storeThemeOptions
+  button: {
+    paddingBase: '0.5',
+    paddingWidthScale: '3.5',
+    sizeScale: '.25',
+    hoverScale: '1.1',
+    activeScale: '0.9',
+    hoverBrightnessScale: '1.05',
+    activeBrightnessScale: '0.95',
+    fontSizeSm: '0.75',
+    fontSize: '1',
+    fontSizeLg: '1.25',
+  },
+  font: {
+    base: '1',
+    secondary: '1',
+    size: '1',
+    textColorLight: '0 0 0',
+    textColorDark: '255 255 255',
+  },
+  rounded: {
+    size: '0',
+    btnRoundness: '0',
+    inputRoundness: '0',
+    colorSwatchRoundness: '0',
+  },
 }
