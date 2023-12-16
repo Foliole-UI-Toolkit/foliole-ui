@@ -7,6 +7,13 @@ const stopsMap = {
   dark: 'light',
 }
 
+const stopType = {
+  light: 'light',
+  mlt: 'light',
+  mdk: 'dark',
+  dark: 'dark',
+}
+
 function generateColors(colorNames, stops, colorTypes) {
   colorNames.forEach((colorName) => {
     // TW colors
@@ -25,14 +32,19 @@ function generateColors(colorNames, stops, colorTypes) {
     })
 
     // Variants
-    colorTypes.variants[`.variant-${colorName}`] = { backgroundColor: `rgb(var(--color-${colorName}))` }
+    colorTypes.variants[`.variant-${colorName}`] = {
+      backgroundColor: `rgb(var(--color-${colorName}))`,
+      color: `rgb(var(--color-on-${colorName}))`,
+    }
 
     stops.forEach((stop) => {
       colorTypes.variants[`.variant-${colorName}-${stop}`] = {
         backgroundColor: `rgb(var(--color-${colorName}))`,
+        color: `rgb(${stopType[stop] === 'light' ? '0, 0, 0' : '255, 255, 255'})`,
       }
       colorTypes.variants[`.dark .variant-${colorName}-${stop}`] = {
         backgroundColor: `rgb(var(--color-${colorName}-${stopsMap[stop]}))`,
+        color: `rgb(${stopType[stop] === 'light' ? '255, 255, 255' : '0, 0, 0'})`,
       }
     })
 

@@ -513,434 +513,578 @@
     background-color: rgb(var(--color-surface-raised-contrast))
 }
 .variant-primary {
-    background-color: rgb(var(--color-primary))
+    background-color: rgb(var(--color-primary));
+    color: rgb(var(--color-on-primary))
 }
 .variant-primary-light {
-    background-color: rgb(var(--color-primary))
+    background-color: rgb(var(--color-primary));
+    color: rgb(0, 0, 0)
 }
 .dark .variant-primary-light {
-    background-color: rgb(var(--color-primary-dark))
+    background-color: rgb(var(--color-primary-dark));
+    color: rgb(255, 255, 255)
 }
 .variant-primary-mlt {
-    background-color: rgb(var(--color-primary))
+    background-color: rgb(var(--color-primary));
+    color: rgb(0, 0, 0)
 }
 .dark .variant-primary-mlt {
-    background-color: rgb(var(--color-primary-mdk))
+    background-color: rgb(var(--color-primary-mdk));
+    color: rgb(255, 255, 255)
 }
 .variant-primary-mdk {
-    background-color: rgb(var(--color-primary))
+    background-color: rgb(var(--color-primary));
+    color: rgb(255, 255, 255)
 }
 .dark .variant-primary-mdk {
-    background-color: rgb(var(--color-primary-mlt))
+    background-color: rgb(var(--color-primary-mlt));
+    color: rgb(0, 0, 0)
 }
 .variant-primary-dark {
-    background-color: rgb(var(--color-primary))
+    background-color: rgb(var(--color-primary));
+    color: rgb(255, 255, 255)
 }
 .dark .variant-primary-dark {
-    background-color: rgb(var(--color-primary-light))
+    background-color: rgb(var(--color-primary-light));
+    color: rgb(0, 0, 0)
 }
 .variant-secondary {
-    background-color: rgb(var(--color-secondary))
+    background-color: rgb(var(--color-secondary));
+    color: rgb(var(--color-on-secondary))
 }
 .variant-secondary-light {
-    background-color: rgb(var(--color-secondary))
+    background-color: rgb(var(--color-secondary));
+    color: rgb(0, 0, 0)
 }
 .dark .variant-secondary-light {
-    background-color: rgb(var(--color-secondary-dark))
+    background-color: rgb(var(--color-secondary-dark));
+    color: rgb(255, 255, 255)
 }
 .variant-secondary-mlt {
-    background-color: rgb(var(--color-secondary))
+    background-color: rgb(var(--color-secondary));
+    color: rgb(0, 0, 0)
 }
 .dark .variant-secondary-mlt {
-    background-color: rgb(var(--color-secondary-mdk))
+    background-color: rgb(var(--color-secondary-mdk));
+    color: rgb(255, 255, 255)
 }
 .variant-secondary-mdk {
-    background-color: rgb(var(--color-secondary))
+    background-color: rgb(var(--color-secondary));
+    color: rgb(255, 255, 255)
 }
 .dark .variant-secondary-mdk {
-    background-color: rgb(var(--color-secondary-mlt))
+    background-color: rgb(var(--color-secondary-mlt));
+    color: rgb(0, 0, 0)
 }
 .variant-secondary-dark {
-    background-color: rgb(var(--color-secondary))
+    background-color: rgb(var(--color-secondary));
+    color: rgb(255, 255, 255)
 }
 .dark .variant-secondary-dark {
-    background-color: rgb(var(--color-secondary-light))
+    background-color: rgb(var(--color-secondary-light));
+    color: rgb(0, 0, 0)
 }
 .variant-tertiary {
-    background-color: rgb(var(--color-tertiary))
+    background-color: rgb(var(--color-tertiary));
+    color: rgb(var(--color-on-tertiary))
 }
 .variant-tertiary-light {
-    background-color: rgb(var(--color-tertiary))
+    background-color: rgb(var(--color-tertiary));
+    color: rgb(0, 0, 0)
 }
 .dark .variant-tertiary-light {
-    background-color: rgb(var(--color-tertiary-dark))
+    background-color: rgb(var(--color-tertiary-dark));
+    color: rgb(255, 255, 255)
 }
 .variant-tertiary-mlt {
-    background-color: rgb(var(--color-tertiary))
+    background-color: rgb(var(--color-tertiary));
+    color: rgb(0, 0, 0)
 }
 .dark .variant-tertiary-mlt {
-    background-color: rgb(var(--color-tertiary-mdk))
+    background-color: rgb(var(--color-tertiary-mdk));
+    color: rgb(255, 255, 255)
 }
 .variant-tertiary-mdk {
-    background-color: rgb(var(--color-tertiary))
+    background-color: rgb(var(--color-tertiary));
+    color: rgb(255, 255, 255)
 }
 .dark .variant-tertiary-mdk {
-    background-color: rgb(var(--color-tertiary-mlt))
+    background-color: rgb(var(--color-tertiary-mlt));
+    color: rgb(0, 0, 0)
 }
 .variant-tertiary-dark {
-    background-color: rgb(var(--color-tertiary))
+    background-color: rgb(var(--color-tertiary));
+    color: rgb(255, 255, 255)
 }
 .dark .variant-tertiary-dark {
-    background-color: rgb(var(--color-tertiary-light))
+    background-color: rgb(var(--color-tertiary-light));
+    color: rgb(0, 0, 0)
 }
 .variant-quat {
-    background-color: rgb(var(--color-quat))
+    background-color: rgb(var(--color-quat));
+    color: rgb(var(--color-on-quat))
 }
 .variant-quat-light {
-    background-color: rgb(var(--color-quat))
+    background-color: rgb(var(--color-quat));
+    color: rgb(0, 0, 0)
 }
 .dark .variant-quat-light {
-    background-color: rgb(var(--color-quat-dark))
+    background-color: rgb(var(--color-quat-dark));
+    color: rgb(255, 255, 255)
 }
 .variant-quat-mlt {
-    background-color: rgb(var(--color-quat))
+    background-color: rgb(var(--color-quat));
+    color: rgb(0, 0, 0)
 }
 .dark .variant-quat-mlt {
-    background-color: rgb(var(--color-quat-mdk))
+    background-color: rgb(var(--color-quat-mdk));
+    color: rgb(255, 255, 255)
 }
 .variant-quat-mdk {
-    background-color: rgb(var(--color-quat))
+    background-color: rgb(var(--color-quat));
+    color: rgb(255, 255, 255)
 }
 .dark .variant-quat-mdk {
-    background-color: rgb(var(--color-quat-mlt))
+    background-color: rgb(var(--color-quat-mlt));
+    color: rgb(0, 0, 0)
 }
 .variant-quat-dark {
-    background-color: rgb(var(--color-quat))
+    background-color: rgb(var(--color-quat));
+    color: rgb(255, 255, 255)
 }
 .dark .variant-quat-dark {
-    background-color: rgb(var(--color-quat-light))
+    background-color: rgb(var(--color-quat-light));
+    color: rgb(0, 0, 0)
 }
 .variant-quin {
-    background-color: rgb(var(--color-quin))
+    background-color: rgb(var(--color-quin));
+    color: rgb(var(--color-on-quin))
 }
 .variant-quin-light {
-    background-color: rgb(var(--color-quin))
+    background-color: rgb(var(--color-quin));
+    color: rgb(0, 0, 0)
 }
 .dark .variant-quin-light {
-    background-color: rgb(var(--color-quin-dark))
+    background-color: rgb(var(--color-quin-dark));
+    color: rgb(255, 255, 255)
 }
 .variant-quin-mlt {
-    background-color: rgb(var(--color-quin))
+    background-color: rgb(var(--color-quin));
+    color: rgb(0, 0, 0)
 }
 .dark .variant-quin-mlt {
-    background-color: rgb(var(--color-quin-mdk))
+    background-color: rgb(var(--color-quin-mdk));
+    color: rgb(255, 255, 255)
 }
 .variant-quin-mdk {
-    background-color: rgb(var(--color-quin))
+    background-color: rgb(var(--color-quin));
+    color: rgb(255, 255, 255)
 }
 .dark .variant-quin-mdk {
-    background-color: rgb(var(--color-quin-mlt))
+    background-color: rgb(var(--color-quin-mlt));
+    color: rgb(0, 0, 0)
 }
 .variant-quin-dark {
-    background-color: rgb(var(--color-quin))
+    background-color: rgb(var(--color-quin));
+    color: rgb(255, 255, 255)
 }
 .dark .variant-quin-dark {
-    background-color: rgb(var(--color-quin-light))
+    background-color: rgb(var(--color-quin-light));
+    color: rgb(0, 0, 0)
 }
 .variant-info {
-    background-color: rgb(var(--color-info))
+    background-color: rgb(var(--color-info));
+    color: rgb(var(--color-on-info))
 }
 .variant-info-light {
-    background-color: rgb(var(--color-info))
+    background-color: rgb(var(--color-info));
+    color: rgb(0, 0, 0)
 }
 .dark .variant-info-light {
-    background-color: rgb(var(--color-info-dark))
+    background-color: rgb(var(--color-info-dark));
+    color: rgb(255, 255, 255)
 }
 .variant-info-mlt {
-    background-color: rgb(var(--color-info))
+    background-color: rgb(var(--color-info));
+    color: rgb(0, 0, 0)
 }
 .dark .variant-info-mlt {
-    background-color: rgb(var(--color-info-mdk))
+    background-color: rgb(var(--color-info-mdk));
+    color: rgb(255, 255, 255)
 }
 .variant-info-mdk {
-    background-color: rgb(var(--color-info))
+    background-color: rgb(var(--color-info));
+    color: rgb(255, 255, 255)
 }
 .dark .variant-info-mdk {
-    background-color: rgb(var(--color-info-mlt))
+    background-color: rgb(var(--color-info-mlt));
+    color: rgb(0, 0, 0)
 }
 .variant-info-dark {
-    background-color: rgb(var(--color-info))
+    background-color: rgb(var(--color-info));
+    color: rgb(255, 255, 255)
 }
 .dark .variant-info-dark {
-    background-color: rgb(var(--color-info-light))
+    background-color: rgb(var(--color-info-light));
+    color: rgb(0, 0, 0)
 }
 .variant-success {
-    background-color: rgb(var(--color-success))
+    background-color: rgb(var(--color-success));
+    color: rgb(var(--color-on-success))
 }
 .variant-success-light {
-    background-color: rgb(var(--color-success))
+    background-color: rgb(var(--color-success));
+    color: rgb(0, 0, 0)
 }
 .dark .variant-success-light {
-    background-color: rgb(var(--color-success-dark))
+    background-color: rgb(var(--color-success-dark));
+    color: rgb(255, 255, 255)
 }
 .variant-success-mlt {
-    background-color: rgb(var(--color-success))
+    background-color: rgb(var(--color-success));
+    color: rgb(0, 0, 0)
 }
 .dark .variant-success-mlt {
-    background-color: rgb(var(--color-success-mdk))
+    background-color: rgb(var(--color-success-mdk));
+    color: rgb(255, 255, 255)
 }
 .variant-success-mdk {
-    background-color: rgb(var(--color-success))
+    background-color: rgb(var(--color-success));
+    color: rgb(255, 255, 255)
 }
 .dark .variant-success-mdk {
-    background-color: rgb(var(--color-success-mlt))
+    background-color: rgb(var(--color-success-mlt));
+    color: rgb(0, 0, 0)
 }
 .variant-success-dark {
-    background-color: rgb(var(--color-success))
+    background-color: rgb(var(--color-success));
+    color: rgb(255, 255, 255)
 }
 .dark .variant-success-dark {
-    background-color: rgb(var(--color-success-light))
+    background-color: rgb(var(--color-success-light));
+    color: rgb(0, 0, 0)
 }
 .variant-warning {
-    background-color: rgb(var(--color-warning))
+    background-color: rgb(var(--color-warning));
+    color: rgb(var(--color-on-warning))
 }
 .variant-warning-light {
-    background-color: rgb(var(--color-warning))
+    background-color: rgb(var(--color-warning));
+    color: rgb(0, 0, 0)
 }
 .dark .variant-warning-light {
-    background-color: rgb(var(--color-warning-dark))
+    background-color: rgb(var(--color-warning-dark));
+    color: rgb(255, 255, 255)
 }
 .variant-warning-mlt {
-    background-color: rgb(var(--color-warning))
+    background-color: rgb(var(--color-warning));
+    color: rgb(0, 0, 0)
 }
 .dark .variant-warning-mlt {
-    background-color: rgb(var(--color-warning-mdk))
+    background-color: rgb(var(--color-warning-mdk));
+    color: rgb(255, 255, 255)
 }
 .variant-warning-mdk {
-    background-color: rgb(var(--color-warning))
+    background-color: rgb(var(--color-warning));
+    color: rgb(255, 255, 255)
 }
 .dark .variant-warning-mdk {
-    background-color: rgb(var(--color-warning-mlt))
+    background-color: rgb(var(--color-warning-mlt));
+    color: rgb(0, 0, 0)
 }
 .variant-warning-dark {
-    background-color: rgb(var(--color-warning))
+    background-color: rgb(var(--color-warning));
+    color: rgb(255, 255, 255)
 }
 .dark .variant-warning-dark {
-    background-color: rgb(var(--color-warning-light))
+    background-color: rgb(var(--color-warning-light));
+    color: rgb(0, 0, 0)
 }
 .variant-error {
-    background-color: rgb(var(--color-error))
+    background-color: rgb(var(--color-error));
+    color: rgb(var(--color-on-error))
 }
 .variant-error-light {
-    background-color: rgb(var(--color-error))
+    background-color: rgb(var(--color-error));
+    color: rgb(0, 0, 0)
 }
 .dark .variant-error-light {
-    background-color: rgb(var(--color-error-dark))
+    background-color: rgb(var(--color-error-dark));
+    color: rgb(255, 255, 255)
 }
 .variant-error-mlt {
-    background-color: rgb(var(--color-error))
+    background-color: rgb(var(--color-error));
+    color: rgb(0, 0, 0)
 }
 .dark .variant-error-mlt {
-    background-color: rgb(var(--color-error-mdk))
+    background-color: rgb(var(--color-error-mdk));
+    color: rgb(255, 255, 255)
 }
 .variant-error-mdk {
-    background-color: rgb(var(--color-error))
+    background-color: rgb(var(--color-error));
+    color: rgb(255, 255, 255)
 }
 .dark .variant-error-mdk {
-    background-color: rgb(var(--color-error-mlt))
+    background-color: rgb(var(--color-error-mlt));
+    color: rgb(0, 0, 0)
 }
 .variant-error-dark {
-    background-color: rgb(var(--color-error))
+    background-color: rgb(var(--color-error));
+    color: rgb(255, 255, 255)
 }
 .dark .variant-error-dark {
-    background-color: rgb(var(--color-error-light))
+    background-color: rgb(var(--color-error-light));
+    color: rgb(0, 0, 0)
 }
 .variant-neutral {
-    background-color: rgb(var(--color-neutral))
+    background-color: rgb(var(--color-neutral));
+    color: rgb(var(--color-on-neutral))
 }
 .variant-neutral-light {
-    background-color: rgb(var(--color-neutral))
+    background-color: rgb(var(--color-neutral));
+    color: rgb(0, 0, 0)
 }
 .dark .variant-neutral-light {
-    background-color: rgb(var(--color-neutral-dark))
+    background-color: rgb(var(--color-neutral-dark));
+    color: rgb(255, 255, 255)
 }
 .variant-neutral-mlt {
-    background-color: rgb(var(--color-neutral))
+    background-color: rgb(var(--color-neutral));
+    color: rgb(0, 0, 0)
 }
 .dark .variant-neutral-mlt {
-    background-color: rgb(var(--color-neutral-mdk))
+    background-color: rgb(var(--color-neutral-mdk));
+    color: rgb(255, 255, 255)
 }
 .variant-neutral-mdk {
-    background-color: rgb(var(--color-neutral))
+    background-color: rgb(var(--color-neutral));
+    color: rgb(255, 255, 255)
 }
 .dark .variant-neutral-mdk {
-    background-color: rgb(var(--color-neutral-mlt))
+    background-color: rgb(var(--color-neutral-mlt));
+    color: rgb(0, 0, 0)
 }
 .variant-neutral-dark {
-    background-color: rgb(var(--color-neutral))
+    background-color: rgb(var(--color-neutral));
+    color: rgb(255, 255, 255)
 }
 .dark .variant-neutral-dark {
-    background-color: rgb(var(--color-neutral-light))
+    background-color: rgb(var(--color-neutral-light));
+    color: rgb(0, 0, 0)
 }
 .variant-page {
-    background-color: rgb(var(--color-page))
+    background-color: rgb(var(--color-page));
+    color: rgb(var(--color-on-page))
 }
 .variant-page-light {
-    background-color: rgb(var(--color-page))
+    background-color: rgb(var(--color-page));
+    color: rgb(0, 0, 0)
 }
 .dark .variant-page-light {
-    background-color: rgb(var(--color-page-dark))
+    background-color: rgb(var(--color-page-dark));
+    color: rgb(255, 255, 255)
 }
 .variant-page-mlt {
-    background-color: rgb(var(--color-page))
+    background-color: rgb(var(--color-page));
+    color: rgb(0, 0, 0)
 }
 .dark .variant-page-mlt {
-    background-color: rgb(var(--color-page-mdk))
+    background-color: rgb(var(--color-page-mdk));
+    color: rgb(255, 255, 255)
 }
 .variant-page-mdk {
-    background-color: rgb(var(--color-page))
+    background-color: rgb(var(--color-page));
+    color: rgb(255, 255, 255)
 }
 .dark .variant-page-mdk {
-    background-color: rgb(var(--color-page-mlt))
+    background-color: rgb(var(--color-page-mlt));
+    color: rgb(0, 0, 0)
 }
 .variant-page-dark {
-    background-color: rgb(var(--color-page))
+    background-color: rgb(var(--color-page));
+    color: rgb(255, 255, 255)
 }
 .dark .variant-page-dark {
-    background-color: rgb(var(--color-page-light))
+    background-color: rgb(var(--color-page-light));
+    color: rgb(0, 0, 0)
 }
 .variant-page-contrast {
-    background-color: rgb(var(--color-page-contrast))
+    background-color: rgb(var(--color-page-contrast));
+    color: rgb(var(--color-on-page-contrast))
 }
 .variant-page-contrast-light {
-    background-color: rgb(var(--color-page-contrast))
+    background-color: rgb(var(--color-page-contrast));
+    color: rgb(0, 0, 0)
 }
 .dark .variant-page-contrast-light {
-    background-color: rgb(var(--color-page-contrast-dark))
+    background-color: rgb(var(--color-page-contrast-dark));
+    color: rgb(255, 255, 255)
 }
 .variant-page-contrast-mlt {
-    background-color: rgb(var(--color-page-contrast))
+    background-color: rgb(var(--color-page-contrast));
+    color: rgb(0, 0, 0)
 }
 .dark .variant-page-contrast-mlt {
-    background-color: rgb(var(--color-page-contrast-mdk))
+    background-color: rgb(var(--color-page-contrast-mdk));
+    color: rgb(255, 255, 255)
 }
 .variant-page-contrast-mdk {
-    background-color: rgb(var(--color-page-contrast))
+    background-color: rgb(var(--color-page-contrast));
+    color: rgb(255, 255, 255)
 }
 .dark .variant-page-contrast-mdk {
-    background-color: rgb(var(--color-page-contrast-mlt))
+    background-color: rgb(var(--color-page-contrast-mlt));
+    color: rgb(0, 0, 0)
 }
 .variant-page-contrast-dark {
-    background-color: rgb(var(--color-page-contrast))
+    background-color: rgb(var(--color-page-contrast));
+    color: rgb(255, 255, 255)
 }
 .dark .variant-page-contrast-dark {
-    background-color: rgb(var(--color-page-contrast-light))
+    background-color: rgb(var(--color-page-contrast-light));
+    color: rgb(0, 0, 0)
 }
 .variant-surface {
-    background-color: rgb(var(--color-surface))
+    background-color: rgb(var(--color-surface));
+    color: rgb(var(--color-on-surface))
 }
 .variant-surface-light {
-    background-color: rgb(var(--color-surface))
+    background-color: rgb(var(--color-surface));
+    color: rgb(0, 0, 0)
 }
 .dark .variant-surface-light {
-    background-color: rgb(var(--color-surface-dark))
+    background-color: rgb(var(--color-surface-dark));
+    color: rgb(255, 255, 255)
 }
 .variant-surface-mlt {
-    background-color: rgb(var(--color-surface))
+    background-color: rgb(var(--color-surface));
+    color: rgb(0, 0, 0)
 }
 .dark .variant-surface-mlt {
-    background-color: rgb(var(--color-surface-mdk))
+    background-color: rgb(var(--color-surface-mdk));
+    color: rgb(255, 255, 255)
 }
 .variant-surface-mdk {
-    background-color: rgb(var(--color-surface))
+    background-color: rgb(var(--color-surface));
+    color: rgb(255, 255, 255)
 }
 .dark .variant-surface-mdk {
-    background-color: rgb(var(--color-surface-mlt))
+    background-color: rgb(var(--color-surface-mlt));
+    color: rgb(0, 0, 0)
 }
 .variant-surface-dark {
-    background-color: rgb(var(--color-surface))
+    background-color: rgb(var(--color-surface));
+    color: rgb(255, 255, 255)
 }
 .dark .variant-surface-dark {
-    background-color: rgb(var(--color-surface-light))
+    background-color: rgb(var(--color-surface-light));
+    color: rgb(0, 0, 0)
 }
 .variant-surface-contrast {
-    background-color: rgb(var(--color-surface-contrast))
+    background-color: rgb(var(--color-surface-contrast));
+    color: rgb(var(--color-on-surface-contrast))
 }
 .variant-surface-contrast-light {
-    background-color: rgb(var(--color-surface-contrast))
+    background-color: rgb(var(--color-surface-contrast));
+    color: rgb(0, 0, 0)
 }
 .dark .variant-surface-contrast-light {
-    background-color: rgb(var(--color-surface-contrast-dark))
+    background-color: rgb(var(--color-surface-contrast-dark));
+    color: rgb(255, 255, 255)
 }
 .variant-surface-contrast-mlt {
-    background-color: rgb(var(--color-surface-contrast))
+    background-color: rgb(var(--color-surface-contrast));
+    color: rgb(0, 0, 0)
 }
 .dark .variant-surface-contrast-mlt {
-    background-color: rgb(var(--color-surface-contrast-mdk))
+    background-color: rgb(var(--color-surface-contrast-mdk));
+    color: rgb(255, 255, 255)
 }
 .variant-surface-contrast-mdk {
-    background-color: rgb(var(--color-surface-contrast))
+    background-color: rgb(var(--color-surface-contrast));
+    color: rgb(255, 255, 255)
 }
 .dark .variant-surface-contrast-mdk {
-    background-color: rgb(var(--color-surface-contrast-mlt))
+    background-color: rgb(var(--color-surface-contrast-mlt));
+    color: rgb(0, 0, 0)
 }
 .variant-surface-contrast-dark {
-    background-color: rgb(var(--color-surface-contrast))
+    background-color: rgb(var(--color-surface-contrast));
+    color: rgb(255, 255, 255)
 }
 .dark .variant-surface-contrast-dark {
-    background-color: rgb(var(--color-surface-contrast-light))
+    background-color: rgb(var(--color-surface-contrast-light));
+    color: rgb(0, 0, 0)
 }
 .variant-surface-raised {
-    background-color: rgb(var(--color-surface-raised))
+    background-color: rgb(var(--color-surface-raised));
+    color: rgb(var(--color-on-surface-raised))
 }
 .variant-surface-raised-light {
-    background-color: rgb(var(--color-surface-raised))
+    background-color: rgb(var(--color-surface-raised));
+    color: rgb(0, 0, 0)
 }
 .dark .variant-surface-raised-light {
-    background-color: rgb(var(--color-surface-raised-dark))
+    background-color: rgb(var(--color-surface-raised-dark));
+    color: rgb(255, 255, 255)
 }
 .variant-surface-raised-mlt {
-    background-color: rgb(var(--color-surface-raised))
+    background-color: rgb(var(--color-surface-raised));
+    color: rgb(0, 0, 0)
 }
 .dark .variant-surface-raised-mlt {
-    background-color: rgb(var(--color-surface-raised-mdk))
+    background-color: rgb(var(--color-surface-raised-mdk));
+    color: rgb(255, 255, 255)
 }
 .variant-surface-raised-mdk {
-    background-color: rgb(var(--color-surface-raised))
+    background-color: rgb(var(--color-surface-raised));
+    color: rgb(255, 255, 255)
 }
 .dark .variant-surface-raised-mdk {
-    background-color: rgb(var(--color-surface-raised-mlt))
+    background-color: rgb(var(--color-surface-raised-mlt));
+    color: rgb(0, 0, 0)
 }
 .variant-surface-raised-dark {
-    background-color: rgb(var(--color-surface-raised))
+    background-color: rgb(var(--color-surface-raised));
+    color: rgb(255, 255, 255)
 }
 .dark .variant-surface-raised-dark {
-    background-color: rgb(var(--color-surface-raised-light))
+    background-color: rgb(var(--color-surface-raised-light));
+    color: rgb(0, 0, 0)
 }
 .variant-surface-raised-contrast {
-    background-color: rgb(var(--color-surface-raised-contrast))
+    background-color: rgb(var(--color-surface-raised-contrast));
+    color: rgb(var(--color-on-surface-raised-contrast))
 }
 .variant-surface-raised-contrast-light {
-    background-color: rgb(var(--color-surface-raised-contrast))
+    background-color: rgb(var(--color-surface-raised-contrast));
+    color: rgb(0, 0, 0)
 }
 .dark .variant-surface-raised-contrast-light {
-    background-color: rgb(var(--color-surface-raised-contrast-dark))
+    background-color: rgb(var(--color-surface-raised-contrast-dark));
+    color: rgb(255, 255, 255)
 }
 .variant-surface-raised-contrast-mlt {
-    background-color: rgb(var(--color-surface-raised-contrast))
+    background-color: rgb(var(--color-surface-raised-contrast));
+    color: rgb(0, 0, 0)
 }
 .dark .variant-surface-raised-contrast-mlt {
-    background-color: rgb(var(--color-surface-raised-contrast-mdk))
+    background-color: rgb(var(--color-surface-raised-contrast-mdk));
+    color: rgb(255, 255, 255)
 }
 .variant-surface-raised-contrast-mdk {
-    background-color: rgb(var(--color-surface-raised-contrast))
+    background-color: rgb(var(--color-surface-raised-contrast));
+    color: rgb(255, 255, 255)
 }
 .dark .variant-surface-raised-contrast-mdk {
-    background-color: rgb(var(--color-surface-raised-contrast-mlt))
+    background-color: rgb(var(--color-surface-raised-contrast-mlt));
+    color: rgb(0, 0, 0)
 }
 .variant-surface-raised-contrast-dark {
-    background-color: rgb(var(--color-surface-raised-contrast))
+    background-color: rgb(var(--color-surface-raised-contrast));
+    color: rgb(255, 255, 255)
 }
 .dark .variant-surface-raised-contrast-dark {
-    background-color: rgb(var(--color-surface-raised-contrast-light))
+    background-color: rgb(var(--color-surface-raised-contrast-light));
+    color: rgb(0, 0, 0)
 }
