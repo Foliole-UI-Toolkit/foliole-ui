@@ -4,14 +4,8 @@ export const neueColorScale = ['light', 'mlt', 'base', 'mdk', 'dark'] as const
 
 export const neueColorNames = [
   'primary',
-  'primary-secondary',
-  'primary-tertiary',
   'secondary',
-  'secondary-secondary',
-  'secondary-tertiary',
   'tertiary',
-  'tertiary-secondary',
-  'tertiary-tertiary',
   'quat',
   'quin',
   'info',
@@ -19,9 +13,7 @@ export const neueColorNames = [
   'warning',
   'error',
   'neutral',
-  'neutral-secondary',
-  'neutral-tertiary',
-]
+] as const
 
 // Colors are split up because derived colors have no stops and are handled differently.
 export const neueDerivedColorNames = [
