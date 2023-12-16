@@ -1,6 +1,11 @@
 <script lang="ts">
   import { roundedOpts, elementRoundness } from '../data/settings'
   import { createEventDispatcher } from 'svelte'
+
+  export let roundedSize = '--border-radius-md'
+  export let buttonRoundLevel = '--border-radius-full'
+  export let inputRoundLevel = '--borer-radius-full'
+
   const dispatch = createEventDispatcher()
 
   function emitBtnOptsChange(event: Event, selectId: string) {
@@ -8,9 +13,9 @@
 
     if (selectId === 'roundedOpts') {
       roundedSize = selectedValue
-      if (selectedValue === 'none') {
-        buttonRoundLevel = 'none'
-        inputRoundLevel = 'none'
+      if (selectedValue === '--border-radius-none') {
+        buttonRoundLevel = '--border-radius-none'
+        inputRoundLevel = '--border-radius-none'
       }
     } else if (selectId === 'buttonRoundness') {
       buttonRoundLevel = selectedValue
@@ -23,10 +28,6 @@
       inputRoundLevel,
     })
   }
-
-  export let roundedSize = '--rounded-md'
-  export let buttonRoundLevel = '--radius-full'
-  export let inputRoundLevel = '--radius-full'
 </script>
 
 <!-- Add the select dropdown in your template -->
@@ -39,7 +40,7 @@
       {/each}
     </select>
   </label>
-  {#if roundedSize !== 'none'}
+  {#if roundedSize !== '--border-radius-none'}
     <label class="options-input-wrapper">
       <span>Button Roundness:</span>
       <select
@@ -53,7 +54,7 @@
       </select>
     </label>
   {/if}
-  {#if roundedSize !== 'none'}
+  {#if roundedSize !== '--border-radius-none'}
     <label class="options-input-wrapper">
       <span>Input Roundness:</span>
       <select
@@ -68,7 +69,3 @@
     </label>
   {/if}
 </div>
-
-<style lang="postcss">
-  /* Your CSS styles for rounded classes here */
-</style>

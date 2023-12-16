@@ -1,0 +1,49 @@
+@import url('@neue/neue-css/neue-tw-css-properties.css');
+@import url('@neue/neue-css/neue-for-tw.css');
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+li,
+p,
+button,
+span {
+  font-family:
+    'brandon-grotesque',
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    'Helvetica Neue',
+    Arial,
+    'Noto Sans',
+    sans-serif,
+    'Apple Color Emoji',
+    'Segoe UI Emoji',
+    'Segoe UI Symbol',
+    'Noto Color Emoji';
+}
+
+@layer components {
+  .my-chip {
+    @apply btn-chip btn-base;
+  }
+  .my-input {
+    @apply input-base bg-surface-raised/90;
+  }
+  .my-select {
+    @apply select-base bg-surface-raised/90;
+  }
+  .my-btn {
+    @apply border-2 shadow-md btn-base bg-primary border-primary-mlt;
+  }
+  .my-list {
+    @apply ml-6 list-disc;
+  }
+}

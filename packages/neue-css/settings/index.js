@@ -1,13 +1,7 @@
 const colorNames = [
   'primary',
-  'primary-secondary',
-  'primary-tertiary',
   'secondary',
-  'secondary-secondary',
-  'secondary-tertiary',
   'tertiary',
-  'tertiary-secondary',
-  'tertiary-tertiary',
   'quat',
   'quin',
   'info',
@@ -15,8 +9,6 @@ const colorNames = [
   'warning',
   'error',
   'neutral',
-  'neutral-secondary',
-  'neutral-tertiary',
   'page',
   'page-contrast',
   'surface',
@@ -25,7 +17,7 @@ const colorNames = [
   'surface-raised-contrast',
 ]
 
-const stops = ['base', 'light', 'mlt', 'mdk', 'dark']
+const stops = ['light', 'mlt', 'mdk', 'dark']
 
 module.exports = {
   colorNames,

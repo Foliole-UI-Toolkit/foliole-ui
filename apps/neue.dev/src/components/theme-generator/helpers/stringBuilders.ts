@@ -1,23 +1,29 @@
 import type { ColorSettings } from '../types'
 
-import { intensityMap, intensityMapGray } from '../data/settings'
-
-import { colorUtils } from './index'
-
-// Import color utils by type
-const { useGetConvertedColor, useGenerateColor } = colorUtils
-
-const { getRgbString } = useGetConvertedColor()
-
-const { generateA11yOnColor, generateDarkenedValue, generateLightenedValue } = useGenerateColor()
-
-// String builder helpers for internal file use.
-function buildJsInCSSHead(base: string) {
-  return `export const ${base} = { \n`
+export type BuiltResults = {
+  cssVarsBuilt: string
+  jsInCSSBuilt: string
+  twVarsBuilt?: string
 }
 
-function buildJsInCSSTail() {
-  return `}\n`
+// Utilities for internal file use.
+function headerForJsInCSS(base: string) {
+  // map for custom headers
+  const typeMap: Record<string, string> = {
+    tw: `@layer base { \n \t:root {
+      `,
+  }
+  const headerBase = `export const ${base} = { \n`
+  return typeMap[base] !== undefined ? typeMap[base] : headerBase
+}
+
+function footerForJsInCSS(base: string) {
+  // map for custom footers
+  const typeMap: Record<string, string> = {
+    tw: `\t}\n}\n`,
+  }
+  const footerBase = `}\n`
+  return typeMap[base] !== undefined ? typeMap[base] : footerBase
 }
 
 function buildLineFromPrefixAndValue(attrPrefix: string, attrBase: string, cssValue: string) {
@@ -27,83 +33,10 @@ function buildLineFromPrefixAndValue(attrPrefix: string, attrBase: string, cssVa
   return { cssVars, jsInCSS }
 }
 
-// Loop over colors.
-export function buildColorStrings(store: ColorSettings[], prefix: string) {
-  let cssVars = ''
-  let jsInCSS = 'export const color = { \n'
-  const twPrefix = `@layer base { \n \t:root {
-  `
-  const twPostfix = `\t}\n}`
-
-  store.forEach((element) => {
-    if (element.stops) {
-      // Define the CSS variable for the color with stops
-      cssVars += `    --${prefix}-${element.key}-${element.stops}: ${element.rgb};`
-      jsInCSS += `  '${element.key}-${element.stops}': '${element.rgb}',`
-    } else {
-      // Define the CSS variable for the color without stops
-      cssVars += `    --${prefix}-${element.key}: ${element.rgb};`
-      jsInCSS += `  '${element.key}': '${element.rgb}',`
-    }
-    cssVars += '\n'
-    jsInCSS += '\n'
-  })
-  jsInCSS += '} \n'
-
-  const twVars = twPrefix + cssVars + twPostfix
-
-  return { cssVars, jsInCSS, twVars }
-}
-
-// Build Shades.
-export function buildColorShades(color: any) {
-  const hexValidation = new RegExp(/^#[0-9a-f]{6}$/i)
-
-  if (!hexValidation.test(color.hex)) color.hex = '#CCCCCC'
-
-  const hex500 = `#${color.hex}`.replace('##', '#')
-
-  const response: ColorSettings[] = [
-    {
-      label: color.label,
-      key: color.key,
-      stops: '',
-      hex: hex500,
-      rgb: getRgbString(hex500),
-      on: generateA11yOnColor(hex500),
-    },
-  ]
-
-  ;['light', 'mlt', 'mdk', 'dark'].forEach((stop) => {
-    let hex
-
-    if (color.key.startsWith('neutral')) {
-      hex =
-        stop.includes('light') || stop.includes('mlt')
-          ? (generateLightenedValue(color.hex, intensityMapGray[stop]) as string)
-          : (generateDarkenedValue(color.hex, intensityMapGray[stop]) as string)
-    } else {
-      hex =
-        stop.includes('light') || stop.includes('mlt')
-          ? (generateLightenedValue(color.hex, intensityMap[stop]) as string)
-          : (generateDarkenedValue(color.hex, intensityMap[stop]) as string)
-    }
-    response.push({
-      label: color.label,
-      key: color.key,
-      stops: stop,
-      hex,
-      rgb: getRgbString(hex as string),
-      on: generateA11yOnColor(hex),
-    })
-  })
-
-  return response
-}
-
-export function buildElStrings(btnPaddingBase: number) {
+// Helpers
+export function buildElBtnStrings(btnPaddingBase: number) {
   let cssVarsBuilt = ''
-  let jsInCSSBuilt = buildJsInCSSHead('el')
+  let jsInCSSBuilt = ''
 
   const smPadding = btnPaddingBase / 2
   const basepadding = btnPaddingBase
@@ -130,13 +63,22 @@ export function buildElStrings(btnPaddingBase: number) {
   cssVarsBuilt += cssVars
   jsInCSSBuilt += jsInCSS
 
+  return { cssVarsBuilt, jsInCSSBuilt }
+}
+
+export function buildElStrings(elBtnString: string) {
+  let cssVarsBuilt = ''
+  let jsInCSSBuilt = headerForJsInCSS('el')
+
+  cssVarsBuilt += elBtnString.cssVarsBuilt
+  jsInCSSBuilt += elBtnString.jsInCSSBuilt
+
   // Complete the JavaScript string
-  jsInCSSBuilt += buildJsInCSSTail('el')
+  jsInCSSBuilt += footerForJsInCSS()
 
   return { cssVarsBuilt, jsInCSSBuilt }
 }
 
-// Build CSSVars and Options JS - Buttons
 export function buildBtnStrings(
   btnOpts: Record<string, number | string>,
   smBtnCalcs: Record<string, number>,
@@ -144,7 +86,7 @@ export function buildBtnStrings(
   chipBtnCalcs: Record<string, number>,
 ) {
   let cssVarsBuilt = ''
-  let jsInCSSBuilt = buildJsInCSSHead('btn')
+  let jsInCSSBuilt = headerForJsInCSS('btn')
 
   // btn padding sm
   let { cssVars, jsInCSS } = buildLineFromPrefixAndValue(
@@ -211,15 +153,24 @@ export function buildBtnStrings(
   jsInCSSBuilt += jsInCSS
 
   // Complete the JavaScript string
-  jsInCSSBuilt += buildJsInCSSTail('btn')
+  jsInCSSBuilt += footerForJsInCSS()
 
   return { cssVarsBuilt, jsInCSSBuilt }
 }
 
-// Build CSSVars and Options JS - UI Options
-export function buildUIStrings(roundedSize: string, buttonRoundLevel: string, inputRoundLevel: string) {
+export function capJsInCSSString(str: string, type: string) {
+  let built = headerForJsInCSS(type)
+
+  built += str
+
+  built += footerForJsInCSS(type)
+
+  return built
+}
+
+export function buildUIRoundStrings(roundedSize: string, buttonRoundLevel: string, inputRoundLevel: string) {
   let cssVarsBuilt = ''
-  let jsInCSSBuilt = buildJsInCSSHead('ui')
+  let jsInCSSBuilt = ''
 
   if (roundedSize === 'none') {
     let { cssVars, jsInCSS } = buildLineFromPrefixAndValue('ui', 'rounded', '0px')
@@ -241,8 +192,28 @@ export function buildUIStrings(roundedSize: string, buttonRoundLevel: string, in
     ;({ cssVars, jsInCSS } = buildLineFromPrefixAndValue('ui', 'input-roundness', `var(${inputRoundLevel})`))
     cssVarsBuilt += cssVars
     jsInCSSBuilt += jsInCSS
-    //
-    jsInCSSBuilt += buildJsInCSSTail('ui')
   }
+  return { cssVarsBuilt, jsInCSSBuilt }
+}
+
+// Loop over colors. Also creates TW vars. Use cssVarsBuilt and pass in tw to header/footer
+export function buildColorStrings(store: ColorSettings[], prefix: string) {
+  let cssVarsBuilt = ''
+  let jsInCSSBuilt = ''
+
+  store.forEach((element) => {
+    if (element.stops) {
+      // Define the CSS variable for the color with stops
+      cssVarsBuilt += `     --${prefix}-${element.key}-${element.stops}: ${element.rgb};`
+      jsInCSSBuilt += `    '${element.key}-${element.stops}': '${element.rgb}',`
+    } else {
+      // Define the CSS variable for the color without stops
+      cssVarsBuilt += `     --${prefix}-${element.key}: ${element.rgb};`
+      jsInCSSBuilt += `    ${element.key}': '${element.rgb}',`
+    }
+    cssVarsBuilt += '\n'
+    jsInCSSBuilt += '\n'
+  })
+
   return { cssVarsBuilt, jsInCSSBuilt }
 }
