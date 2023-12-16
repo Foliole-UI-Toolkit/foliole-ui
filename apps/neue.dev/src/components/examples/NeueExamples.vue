@@ -27,9 +27,3 @@ import SlideToggle from '@neue/neue-vue/src/components/SlideToggle/SlideToggle.v
     <SlideToggle label="slide toggle" />
   </div>
 </template>
-
-<style lang="postcss">
-@tailwind components;
-@layer components {
-}
-</style>

@@ -181,537 +181,6 @@
 .on {
     transform: translateX(100%) scale(0.8)
 }
-.bg-primary {
-    background-color: rgb(var(--color-primary))
-}
-.bg-primary-light {
-    background-color: rgb(var(--color-primary-light))
-}
-.bg-primary-mlt {
-    background-color: rgb(var(--color-primary-mlt))
-}
-.bg-primary-mdk {
-    background-color: rgb(var(--color-primary-mdk))
-}
-.bg-primary-dark {
-    background-color: rgb(var(--color-primary-dark))
-}
-.dark .bg-primary-light-dark {
-    background-color: rgb(var(--color-primary-dark))
-}
-.bg-primary-mlt-mdk {
-    background-color: rgb(var(--color-primary-mlt))
-}
-.dark .bg-primary-mlt-mdk {
-    background-color: rgb(var(--color-primary-mdk))
-}
-.bg-secondary {
-    background-color: rgb(var(--color-secondary))
-}
-.bg-secondary-light {
-    background-color: rgb(var(--color-secondary-light))
-}
-.bg-secondary-mlt {
-    background-color: rgb(var(--color-secondary-mlt))
-}
-.bg-secondary-mdk {
-    background-color: rgb(var(--color-secondary-mdk))
-}
-.bg-secondary-dark {
-    background-color: rgb(var(--color-secondary-dark))
-}
-.dark .bg-secondary-light-dark {
-    background-color: rgb(var(--color-secondary-dark))
-}
-.bg-secondary-mlt-mdk {
-    background-color: rgb(var(--color-secondary-mlt))
-}
-.dark .bg-secondary-mlt-mdk {
-    background-color: rgb(var(--color-secondary-mdk))
-}
-.bg-tertiary {
-    background-color: rgb(var(--color-tertiary))
-}
-.bg-tertiary-light {
-    background-color: rgb(var(--color-tertiary-light))
-}
-.bg-tertiary-mlt {
-    background-color: rgb(var(--color-tertiary-mlt))
-}
-.bg-tertiary-mdk {
-    background-color: rgb(var(--color-tertiary-mdk))
-}
-.bg-tertiary-dark {
-    background-color: rgb(var(--color-tertiary-dark))
-}
-.dark .bg-tertiary-light-dark {
-    background-color: rgb(var(--color-tertiary-dark))
-}
-.bg-tertiary-mlt-mdk {
-    background-color: rgb(var(--color-tertiary-mlt))
-}
-.dark .bg-tertiary-mlt-mdk {
-    background-color: rgb(var(--color-tertiary-mdk))
-}
-.bg-quat {
-    background-color: rgb(var(--color-quat))
-}
-.bg-quat-light {
-    background-color: rgb(var(--color-quat-light))
-}
-.bg-quat-mlt {
-    background-color: rgb(var(--color-quat-mlt))
-}
-.bg-quat-mdk {
-    background-color: rgb(var(--color-quat-mdk))
-}
-.bg-quat-dark {
-    background-color: rgb(var(--color-quat-dark))
-}
-.dark .bg-quat-light-dark {
-    background-color: rgb(var(--color-quat-dark))
-}
-.bg-quat-mlt-mdk {
-    background-color: rgb(var(--color-quat-mlt))
-}
-.dark .bg-quat-mlt-mdk {
-    background-color: rgb(var(--color-quat-mdk))
-}
-.bg-quin {
-    background-color: rgb(var(--color-quin))
-}
-.bg-quin-light {
-    background-color: rgb(var(--color-quin-light))
-}
-.bg-quin-mlt {
-    background-color: rgb(var(--color-quin-mlt))
-}
-.bg-quin-mdk {
-    background-color: rgb(var(--color-quin-mdk))
-}
-.bg-quin-dark {
-    background-color: rgb(var(--color-quin-dark))
-}
-.dark .bg-quin-light-dark {
-    background-color: rgb(var(--color-quin-dark))
-}
-.dark .bg-quin-mlt-mdk {
-    background-color: rgb(var(--color-quin-mdk))
-}
-.bg-success {
-    background-color: rgb(var(--color-success))
-}
-.bg-success-light {
-    background-color: rgb(var(--color-success-light))
-}
-.bg-success-mlt {
-    background-color: rgb(var(--color-success-mlt))
-}
-.bg-success-mdk {
-    background-color: rgb(var(--color-success-mdk))
-}
-.bg-success-dark {
-    background-color: rgb(var(--color-success-dark))
-}
-.dark .bg-success-light-dark {
-    background-color: rgb(var(--color-success-dark))
-}
-.bg-success-mlt-mdk {
-    background-color: rgb(var(--color-success-mlt))
-}
-.dark .bg-success-mlt-mdk {
-    background-color: rgb(var(--color-success-mdk))
-}
-.bg-warning {
-    background-color: rgb(var(--color-warning))
-}
-.bg-warning-light {
-    background-color: rgb(var(--color-warning-light))
-}
-.bg-warning-mlt {
-    background-color: rgb(var(--color-warning-mlt))
-}
-.bg-warning-mdk {
-    background-color: rgb(var(--color-warning-mdk))
-}
-.bg-warning-dark {
-    background-color: rgb(var(--color-warning-dark))
-}
-.dark .bg-warning-light-dark {
-    background-color: rgb(var(--color-warning-dark))
-}
-.bg-warning-mlt-mdk {
-    background-color: rgb(var(--color-warning-mlt))
-}
-.dark .bg-warning-mlt-mdk {
-    background-color: rgb(var(--color-warning-mdk))
-}
-.bg-error {
-    background-color: rgb(var(--color-error))
-}
-.bg-error-light {
-    background-color: rgb(var(--color-error-light))
-}
-.bg-error-mlt {
-    background-color: rgb(var(--color-error-mlt))
-}
-.bg-error-mdk {
-    background-color: rgb(var(--color-error-mdk))
-}
-.bg-error-dark {
-    background-color: rgb(var(--color-error-dark))
-}
-.dark .bg-error-light-dark {
-    background-color: rgb(var(--color-error-dark))
-}
-.bg-error-mlt-mdk {
-    background-color: rgb(var(--color-error-mlt))
-}
-.dark .bg-error-mlt-mdk {
-    background-color: rgb(var(--color-error-mdk))
-}
-.bg-info {
-    background-color: rgb(var(--color-info))
-}
-.bg-info-light {
-    background-color: rgb(var(--color-info-light))
-}
-.bg-info-mlt {
-    background-color: rgb(var(--color-info-mlt))
-}
-.bg-info-mdk {
-    background-color: rgb(var(--color-info-mdk))
-}
-.bg-info-dark {
-    background-color: rgb(var(--color-info-dark))
-}
-.dark .bg-info-light-dark {
-    background-color: rgb(var(--color-info-dark))
-}
-.bg-info-mlt-mdk {
-    background-color: rgb(var(--color-info-mlt))
-}
-.dark .bg-info-mlt-mdk {
-    background-color: rgb(var(--color-info-mdk))
-}
-.bg-neutral {
-    background-color: rgb(var(--color-neutral))
-}
-.bg-neutral-light {
-    background-color: rgb(var(--color-neutral-light))
-}
-.bg-neutral-mlt {
-    background-color: rgb(var(--color-neutral-mlt))
-}
-.bg-neutral-mdk {
-    background-color: rgb(var(--color-neutral-mdk))
-}
-.bg-neutral-dark {
-    background-color: rgb(var(--color-neutral-dark))
-}
-.dark .bg-neutral-light-dark {
-    background-color: rgb(var(--color-neutral-dark))
-}
-.bg-neutral-mlt-mdk {
-    background-color: rgb(var(--color-neutral-mlt))
-}
-.dark .bg-neutral-mlt-mdk {
-    background-color: rgb(var(--color-neutral-mdk))
-}
-.bg-page {
-    background-color: rgb(var(--color-page),1)
-}
-.dark .bg-page {
-    background-color: rgb(var(--color-page-contrast),1)
-}
-.bg-page-contrast {
-    background-color: rgb(var(--color-page-contrast),1)
-}
-.dark .bg-page-contrast {
-    background-color: rgb(var(--color-page),1)
-}
-.bg-surface {
-    background-color: rgb(var(--color-surface))
-}
-.dark .bg-surface {
-    background-color: rgb(var(--color-surface-contrast))
-}
-.dark .bg-surface-contrast {
-    background-color: rgb(var(--color-surface))
-}
-.bg-surface-raised {
-    background-color: rgb(var(--color-surface-raised))
-}
-.border-primary {
-    border-color: rgb(var(--color-primary),1)
-}
-.border-primary-light {
-    border-color: rgb(var(--color-primary-light))
-}
-.border-primary-light-dark {
-    border-color: rgb(var(--color-primary-light))
-}
-.dark .border-primary-light-dark {
-    border-color: rgb(var(--color-primary-dark))
-}
-.border-primary-mlt {
-    border-color: rgb(var(--color-primary-mlt))
-}
-.border-primary-mlt-mdk {
-    border-color: rgb(var(--color-primary-mlt))
-}
-.dark .border-primary-mlt-mdk {
-    border-color: rgb(var(--color-primary-mdk))
-}
-.border-primary-mdk {
-    border-color: rgb(var(--color-primary-mdk))
-}
-.border-primary-dark {
-    border-color: rgb(var(--color-primary-dark))
-}
-.border-secondary {
-    background-color: rgb(var(--color-secondary))
-}
-.border-secondary-light {
-    background-color: rgb(var(--color-secondary-light))
-}
-.border-secondary-light-dark {
-    background-color: rgb(var(--color-secondary-light))
-}
-.dark .border-secondary-light-dark {
-    background-color: rgb(var(--color-secondary-dark))
-}
-.border-neutral-mlt {
-    border-color: rgb(var(--color-neutral-mlt))
-}
-.border-neutral-mlt-mdk {
-    border-color: rgb(var(--color-neutral-mlt))
-}
-.dark .border-neutral-mlt-mdk {
-    border-color: rgb(var(--color-neutral-mdk))
-}
-.border-secondary-mdk {
-    background-color: rgb(var(--color-secondary-mdk))
-}
-.border-secondary-dark {
-    background-color: rgb(var(--color-secondary-dark))
-}
-.border-tertiary {
-    border-color: rgb(var(--color-tertiary))
-}
-.border-tertiary-light {
-    border-color: rgb(var(--color-tertiary-light))
-}
-.border-tertiary-light-dark {
-    border-color: rgb(var(--color-tertiary-light))
-}
-.dark .border-tertiary-light-dark {
-    border-color: rgb(var(--color-tertiary-dark))
-}
-.border-tertiary-mlt {
-    border-color: rgb(var(--color-tertiary-mlt))
-}
-.border-tertiary-mlt-mdk {
-    border-color: rgb(var(--color-tertiary-mlt))
-}
-.dark .border-tertiary-mlt-mdk {
-    border-color: rgb(var(--color-tertiary-mdk))
-}
-.border-tertiary-mdk {
-    border-color: rgb(var(--color-tertiary-mdk))
-}
-.border-tertiary-dark {
-    border-color: rgb(var(--color-tertiary-dark))
-}
-.border-quat {
-    border-color: rgb(var(--color-quat))
-}
-.border-quat-light {
-    border-color: rgb(var(--color-quat-light))
-}
-.border-quat-light-dark {
-    border-color: rgb(var(--color-quat-light))
-}
-.dark .border-quat-light-dark {
-    border-color: rgb(var(--color-quat-dark))
-}
-.border-quat-mlt {
-    border-color: rgb(var(--color-quat-mlt))
-}
-.border-quat-mlt-mdk {
-    border-color: rgb(var(--color-quat-mlt))
-}
-.dark .border-quat-mlt-mdk {
-    border-color: rgb(var(--color-quat-mdk))
-}
-.border-quat-mdk {
-    border-color: rgb(var(--color-quat-mdk))
-}
-.border-quat-dark {
-    border-color: rgb(var(--color-quat-dark))
-}
-.border-quin {
-    border-color: rgb(var(--color-quin))
-}
-.border-quin-light {
-    border-color: rgb(var(--color-quin-light))
-}
-.border-quin-light-dark {
-    border-color: rgb(var(--color-quin-light))
-}
-.dark .border-quin-light-dark {
-    border-color: rgb(var(--color-quin-dark))
-}
-.border-quin-mlt {
-    border-color: rgb(var(--color-quin-mlt))
-}
-.border-quin-mlt-mdk {
-    border-color: rgb(var(--color-quin-mlt))
-}
-.dark .border-quin-mlt-mdk {
-    border-color: rgb(var(--color-quin-mdk))
-}
-.border-quin-mdk {
-    border-color: rgb(var(--color-quin-mdk))
-}
-.border-quin-dark {
-    border-color: rgb(var(--color-quin-dark))
-}
-.border-success {
-    border-color: rgb(var(--color-success))
-}
-.border-success-light {
-    border-color: rgb(var(--color-success-light))
-}
-.border-success-light-dark {
-    border-color: rgb(var(--color-success-light))
-}
-.dark .border-success-light-dark {
-    border-color: rgb(var(--color-success-dark))
-}
-.border-success-mlt {
-    border-color: rgb(var(--color-success-mlt))
-}
-.border-success-mlt-mdk {
-    border-color: rgb(var(--color-success-mlt))
-}
-.dark .border-success-mlt-mdk {
-    border-color: rgb(var(--color-success-mdk))
-}
-.border-success-mdk {
-    border-color: rgb(var(--color-success-mdk))
-}
-.border-success-dark {
-    border-color: rgb(var(--color-success-dark))
-}
-.border-warning {
-    border-color: rgb(var(--color-warning))
-}
-.border-warning-light {
-    border-color: rgb(var(--color-warning-light))
-}
-.border-warning-light-dark {
-    border-color: rgb(var(--color-warning-light))
-}
-.dark .border-warning-light-dark {
-    border-color: rgb(var(--color-warning-dark))
-}
-.border-warning-mlt {
-    border-color: rgb(var(--color-warning-mlt))
-}
-.border-warning-mlt-mdk {
-    border-color: rgb(var(--color-warning-mlt))
-}
-.dark .border-warning-mlt-mdk {
-    border-color: rgb(var(--color-warning-mdk))
-}
-.border-warning-mdk {
-    border-color: rgb(var(--color-warning-mdk))
-}
-.border-warning-dark {
-    border-color: rgb(var(--color-warning-dark))
-}
-.border-error {
-    border-color: rgb(var(--color-error))
-}
-.border-error-light {
-    border-color: rgb(var(--color-error-light))
-}
-.border-error-light-dark {
-    border-color: rgb(var(--color-error-light))
-}
-.dark .border-error-light-dark {
-    border-color: rgb(var(--color-error-dark))
-}
-.border-error-mlt {
-    border-color: rgb(var(--color-error-mlt))
-}
-.border-error-mlt-mdk {
-    border-color: rgb(var(--color-error-mlt))
-}
-.dark .border-error-mlt-mdk {
-    border-color: rgb(var(--color-error-mdk))
-}
-.border-error-mdk {
-    border-color: rgb(var(--color-error-mdk))
-}
-.border-error-dark {
-    border-color: rgb(var(--color-error-dark))
-}
-.border-neutral {
-    border-color: rgb(var(--color-neutral))
-}
-.border-neutral-light {
-    border-color: rgb(var(--color-neutral-light))
-}
-.border-neutral-light-dark {
-    border-color: rgb(var(--color-neutral-light))
-}
-.dark .border-neutral-light-dark {
-    border-color: rgb(var(--color-neutral-dark))
-}
-.border-neutral-mdk {
-    border-color: rgb(var(--color-neutral-mdk))
-}
-.border-neutral-dark {
-    border-color: rgb(var(--color-neutral-dark))
-}
-.border-page {
-    border-color: rgb(var(--color-page))
-}
-.dark .border-page {
-    border-color: rgb(var(--color-page-contrast))
-}
-.border-page-contrast {
-    border-color: rgb(var(--color-page-contrast))
-}
-.dark .border-page-contrast {
-    border-color: rgb(var(--color-page))
-}
-.border-surface {
-    border-color: rgb(var(--color-surface))
-}
-.dark .border-surface {
-    border-color: rgb(var(--color-surface))
-}
-.border-surface-contrast {
-    border-color: rgb(var(--color-surface-contrast))
-}
-.dark .border-surface-contrast {
-    border-color: rgb(var(--color-surface))
-}
-.border-surface-raised {
-    border-color: rgb(var(--color-surface-raised))
-}
-.dark .border-surface-raised {
-    border-color: rgb(var(--color-surface-raised-contrast))
-}
-.border-surface-raised-contrast {
-    border-color: rgb(var(--color-surface-raised-contrast))
-}
-.dark .border-surface-raised-contrast {
-    border-color: rgb(var(--color-surface-raised))
-}
 .btn-sm {
     padding: var(--btn-sm);
     font-size: var(--btn-font-sm-size)
@@ -803,183 +272,819 @@
 .input-radio-base {
     border-radius: var(--ui-input-roundness)
 }
-.text-primary {
-    color: rgba(var(--color-primary))
+.bg-primary {
+    background-color: rgb(var(--color-primary))
 }
-.text-primary-light {
-    color: var(--color-primary-light)
+.bg-primary-light {
+    background-color: rgb(var(--color-primary))
 }
-.text-primary-mlt {
-    color: var(--color-primary-mlt)
+.bg-primary-mlt {
+    background-color: rgb(var(--color-primary))
 }
-.text-primary-mdk {
-    color: var(--color-primary-mdk)
+.bg-primary-mdk {
+    background-color: rgb(var(--color-primary))
 }
-.text-primary-dark {
-    color: var(--color-primary-dark)
+.bg-primary-dark {
+    background-color: rgb(var(--color-primary))
 }
-.text-secondary {
-    color: var(--color-secondary)
+.bg-secondary {
+    background-color: rgb(var(--color-secondary))
 }
-.text-secondary-light {
-    color: var(--color-secondary-light)
+.bg-secondary-light {
+    background-color: rgb(var(--color-secondary))
 }
-.text-secondary-mlt {
-    color: var(--color-secondary-mlt)
+.bg-secondary-mlt {
+    background-color: rgb(var(--color-secondary))
 }
-.text-secondary-mdk {
-    color: var(--color-secondary-mdk)
+.bg-secondary-mdk {
+    background-color: rgb(var(--color-secondary))
 }
-.text-secondary-dark {
-    color: var(--color-secondary-dark)
+.bg-secondary-dark {
+    background-color: rgb(var(--color-secondary))
 }
-.text-tertiary {
-    color: var(--color-tertiary)
+.bg-tertiary {
+    background-color: rgb(var(--color-tertiary))
 }
-.text-tertiary-light {
-    color: var(--color-tertiary-light)
+.bg-tertiary-light {
+    background-color: rgb(var(--color-tertiary))
 }
-.text-tertiary-mlt {
-    color: var(--color-tertiary-mlt)
+.bg-tertiary-mlt {
+    background-color: rgb(var(--color-tertiary))
 }
-.text-tertiary-mdk {
-    color: var(--color-tertiary-mdk)
+.bg-tertiary-mdk {
+    background-color: rgb(var(--color-tertiary))
 }
-.text-tertiary-dark {
-    color: var(--color-tertiary-dark)
+.bg-tertiary-dark {
+    background-color: rgb(var(--color-tertiary))
 }
-.text-quat {
-    color: var(--color-quat)
+.bg-quat {
+    background-color: rgb(var(--color-quat))
 }
-.text-quat-light {
-    color: var(--color-quat-light)
+.bg-quat-light {
+    background-color: rgb(var(--color-quat))
 }
-.text-quat-mlt {
-    color: var(--color-quat-mlt)
+.bg-quat-mlt {
+    background-color: rgb(var(--color-quat))
 }
-.text-quat-mdk {
-    color: var(--color-quat-mdk)
+.bg-quat-mdk {
+    background-color: rgb(var(--color-quat))
 }
-.text-quat-dark {
-    color: var(--color-quat-dark)
+.bg-quat-dark {
+    background-color: rgb(var(--color-quat))
 }
-.text-quin {
-    color: var(--color-quin)
+.bg-quin {
+    background-color: rgb(var(--color-quin))
 }
-.text-quin-light {
-    color: var(--color-quin-light)
+.bg-quin-light {
+    background-color: rgb(var(--color-quin))
 }
-.text-quin-mlt {
-    color: var(--color-quin-mlt)
+.bg-quin-mlt {
+    background-color: rgb(var(--color-quin))
 }
-.text-quin-mdk {
-    color: var(--color-quin-mdk)
+.bg-quin-mdk {
+    background-color: rgb(var(--color-quin))
 }
-.text-quin-dark {
-    color: var(--color-quin-dark)
+.bg-quin-dark {
+    background-color: rgb(var(--color-quin))
 }
-.text-success {
-    color: var(--color-success)
+.bg-info {
+    background-color: rgb(var(--color-info))
 }
-.text-success-light {
-    color: var(--color-success-light)
+.bg-info-light {
+    background-color: rgb(var(--color-info))
 }
-.text-success-mlt {
-    color: var(--color-success-mlt)
+.bg-info-mlt {
+    background-color: rgb(var(--color-info))
 }
-.text-success-mdk {
-    color: var(--color-success-mdk)
+.bg-info-mdk {
+    background-color: rgb(var(--color-info))
 }
-.text-success-dark {
-    color: var(--color-success-dark)
+.bg-info-dark {
+    background-color: rgb(var(--color-info))
 }
-.text-warning {
-    color: var(--color-warning)
+.bg-success {
+    background-color: rgb(var(--color-success))
 }
-.text-warning-light {
-    color: var(--color-warning-light)
+.bg-success-light {
+    background-color: rgb(var(--color-success))
 }
-.text-warning-mlt {
-    color: var(--color-warning-mlt)
+.bg-success-mlt {
+    background-color: rgb(var(--color-success))
 }
-.text-warning-mdk {
-    color: var(--color-warning-mdk)
+.bg-success-mdk {
+    background-color: rgb(var(--color-success))
 }
-.text-warning-dark {
-    color: var(--color-warning-dark)
+.bg-success-dark {
+    background-color: rgb(var(--color-success))
 }
-.text-error {
-    color: var(--color-error)
+.bg-warning {
+    background-color: rgb(var(--color-warning))
 }
-.text-error-light {
-    color: var(--color-error-light)
+.bg-warning-light {
+    background-color: rgb(var(--color-warning))
 }
-.text-error-mlt {
-    color: var(--color-error-mlt)
+.bg-warning-mlt {
+    background-color: rgb(var(--color-warning))
 }
-.text-error-mdk {
-    color: var(--color-error-mdk)
+.bg-warning-mdk {
+    background-color: rgb(var(--color-warning))
 }
-.text-error-dark {
-    color: var(--color-error-dark)
+.bg-warning-dark {
+    background-color: rgb(var(--color-warning))
 }
-.text-neutral {
-    color: var(--color-neutral)
+.bg-error {
+    background-color: rgb(var(--color-error))
 }
-.text-neutral-light {
-    color: var(--color-neutral-light)
+.bg-error-light {
+    background-color: rgb(var(--color-error))
 }
-.text-neutral-mlt {
-    color: var(--color-neutral-mlt)
+.bg-error-mlt {
+    background-color: rgb(var(--color-error))
 }
-.text-neutral-mdk {
-    color: var(--color-neutral-mdk)
+.bg-error-mdk {
+    background-color: rgb(var(--color-error))
 }
-.text-neutral-dark {
-    color: var(--color-neutral-dark)
+.bg-error-dark {
+    background-color: rgb(var(--color-error))
 }
-.text-page {
-    color: var(--color-page)
+.bg-neutral {
+    background-color: rgb(var(--color-neutral))
 }
-.dark .text-page {
-    color: var(--color-page-contrast)
+.bg-neutral-light {
+    background-color: rgb(var(--color-neutral))
 }
-.text-page-contrast {
-    color: var(--color-page-contrast)
+.bg-neutral-mlt {
+    background-color: rgb(var(--color-neutral))
 }
-.dark .text-page-contrast {
-    color: var(--color-page)
+.bg-neutral-mdk {
+    background-color: rgb(var(--color-neutral))
 }
-.text-surface {
-    color: var(--color-surface)
+.bg-neutral-dark {
+    background-color: rgb(var(--color-neutral))
 }
-.dark .text-surface {
-    color: var(--color-surface-contrast)
+.bg-page {
+    background-color: rgb(var(--color-page))
 }
-.text-surface-contrast {
-    color: var(--color-surface-contrast)
+.bg-page-light {
+    background-color: rgb(var(--color-page))
 }
-.dark .text-surface-contrast {
-    color: var(--color-surface)
+.bg-page-mlt {
+    background-color: rgb(var(--color-page))
 }
-.text-surface-raised {
-    color: var(--color-surface-raised)
+.bg-page-mdk {
+    background-color: rgb(var(--color-page))
 }
-.dark .text-surface-raised {
-    color: var(--color-surface-raised-contrast)
+.bg-page-dark {
+    background-color: rgb(var(--color-page))
 }
-.text-surface-raised-contrast {
-    color: var(--color-surface-raised-contrast)
+.bg-page-contrast {
+    background-color: rgb(var(--color-page-contrast))
 }
-.dark .text-surface-raised-contrast {
-    color: var(--color-surface-raised)
+.bg-page-contrast-light {
+    background-color: rgb(var(--color-page-contrast))
 }
-.rounded {
-    border-radius: var(--border-radius-DEFAULT)
+.bg-page-contrast-mlt {
+    background-color: rgb(var(--color-page-contrast))
 }
-.button-roundness {
-    border-radius: var(--ui-button-roundness)
+.bg-page-contrast-mdk {
+    background-color: rgb(var(--color-page-contrast))
 }
-.input-roundness {
-    border-radius: var(--ui-input-roundness)
+.bg-page-contrast-dark {
+    background-color: rgb(var(--color-page-contrast))
+}
+.bg-surface {
+    background-color: rgb(var(--color-surface))
+}
+.bg-surface-light {
+    background-color: rgb(var(--color-surface))
+}
+.bg-surface-mlt {
+    background-color: rgb(var(--color-surface))
+}
+.bg-surface-mdk {
+    background-color: rgb(var(--color-surface))
+}
+.bg-surface-dark {
+    background-color: rgb(var(--color-surface))
+}
+.bg-surface-contrast {
+    background-color: rgb(var(--color-surface-contrast))
+}
+.bg-surface-contrast-light {
+    background-color: rgb(var(--color-surface-contrast))
+}
+.bg-surface-contrast-mlt {
+    background-color: rgb(var(--color-surface-contrast))
+}
+.bg-surface-contrast-mdk {
+    background-color: rgb(var(--color-surface-contrast))
+}
+.bg-surface-contrast-dark {
+    background-color: rgb(var(--color-surface-contrast))
+}
+.bg-surface-raised {
+    background-color: rgb(var(--color-surface-raised))
+}
+.bg-surface-raised-light {
+    background-color: rgb(var(--color-surface-raised))
+}
+.bg-surface-raised-mlt {
+    background-color: rgb(var(--color-surface-raised))
+}
+.bg-surface-raised-mdk {
+    background-color: rgb(var(--color-surface-raised))
+}
+.bg-surface-raised-dark {
+    background-color: rgb(var(--color-surface-raised))
+}
+.bg-surface-raised-contrast {
+    background-color: rgb(var(--color-surface-raised-contrast))
+}
+.bg-surface-raised-contrast-light {
+    background-color: rgb(var(--color-surface-raised-contrast))
+}
+.bg-surface-raised-contrast-mlt {
+    background-color: rgb(var(--color-surface-raised-contrast))
+}
+.bg-surface-raised-contrast-mdk {
+    background-color: rgb(var(--color-surface-raised-contrast))
+}
+.bg-surface-raised-contrast-dark {
+    background-color: rgb(var(--color-surface-raised-contrast))
+}
+.variant-primary {
+    background-color: rgb(var(--color-primary));
+    color: rgb(var(--color-on-primary))
+}
+.variant-primary-light {
+    background-color: rgb(var(--color-primary));
+    color: rgb(0, 0, 0)
+}
+.dark .variant-primary-light {
+    background-color: rgb(var(--color-primary-dark));
+    color: rgb(255, 255, 255)
+}
+.variant-primary-mlt {
+    background-color: rgb(var(--color-primary));
+    color: rgb(0, 0, 0)
+}
+.dark .variant-primary-mlt {
+    background-color: rgb(var(--color-primary-mdk));
+    color: rgb(255, 255, 255)
+}
+.variant-primary-mdk {
+    background-color: rgb(var(--color-primary));
+    color: rgb(255, 255, 255)
+}
+.dark .variant-primary-mdk {
+    background-color: rgb(var(--color-primary-mlt));
+    color: rgb(0, 0, 0)
+}
+.variant-primary-dark {
+    background-color: rgb(var(--color-primary));
+    color: rgb(255, 255, 255)
+}
+.dark .variant-primary-dark {
+    background-color: rgb(var(--color-primary-light));
+    color: rgb(0, 0, 0)
+}
+.variant-secondary {
+    background-color: rgb(var(--color-secondary));
+    color: rgb(var(--color-on-secondary))
+}
+.variant-secondary-light {
+    background-color: rgb(var(--color-secondary));
+    color: rgb(0, 0, 0)
+}
+.dark .variant-secondary-light {
+    background-color: rgb(var(--color-secondary-dark));
+    color: rgb(255, 255, 255)
+}
+.variant-secondary-mlt {
+    background-color: rgb(var(--color-secondary));
+    color: rgb(0, 0, 0)
+}
+.dark .variant-secondary-mlt {
+    background-color: rgb(var(--color-secondary-mdk));
+    color: rgb(255, 255, 255)
+}
+.variant-secondary-mdk {
+    background-color: rgb(var(--color-secondary));
+    color: rgb(255, 255, 255)
+}
+.dark .variant-secondary-mdk {
+    background-color: rgb(var(--color-secondary-mlt));
+    color: rgb(0, 0, 0)
+}
+.variant-secondary-dark {
+    background-color: rgb(var(--color-secondary));
+    color: rgb(255, 255, 255)
+}
+.dark .variant-secondary-dark {
+    background-color: rgb(var(--color-secondary-light));
+    color: rgb(0, 0, 0)
+}
+.variant-tertiary {
+    background-color: rgb(var(--color-tertiary));
+    color: rgb(var(--color-on-tertiary))
+}
+.variant-tertiary-light {
+    background-color: rgb(var(--color-tertiary));
+    color: rgb(0, 0, 0)
+}
+.dark .variant-tertiary-light {
+    background-color: rgb(var(--color-tertiary-dark));
+    color: rgb(255, 255, 255)
+}
+.variant-tertiary-mlt {
+    background-color: rgb(var(--color-tertiary));
+    color: rgb(0, 0, 0)
+}
+.dark .variant-tertiary-mlt {
+    background-color: rgb(var(--color-tertiary-mdk));
+    color: rgb(255, 255, 255)
+}
+.variant-tertiary-mdk {
+    background-color: rgb(var(--color-tertiary));
+    color: rgb(255, 255, 255)
+}
+.dark .variant-tertiary-mdk {
+    background-color: rgb(var(--color-tertiary-mlt));
+    color: rgb(0, 0, 0)
+}
+.variant-tertiary-dark {
+    background-color: rgb(var(--color-tertiary));
+    color: rgb(255, 255, 255)
+}
+.dark .variant-tertiary-dark {
+    background-color: rgb(var(--color-tertiary-light));
+    color: rgb(0, 0, 0)
+}
+.variant-quat {
+    background-color: rgb(var(--color-quat));
+    color: rgb(var(--color-on-quat))
+}
+.variant-quat-light {
+    background-color: rgb(var(--color-quat));
+    color: rgb(0, 0, 0)
+}
+.dark .variant-quat-light {
+    background-color: rgb(var(--color-quat-dark));
+    color: rgb(255, 255, 255)
+}
+.variant-quat-mlt {
+    background-color: rgb(var(--color-quat));
+    color: rgb(0, 0, 0)
+}
+.dark .variant-quat-mlt {
+    background-color: rgb(var(--color-quat-mdk));
+    color: rgb(255, 255, 255)
+}
+.variant-quat-mdk {
+    background-color: rgb(var(--color-quat));
+    color: rgb(255, 255, 255)
+}
+.dark .variant-quat-mdk {
+    background-color: rgb(var(--color-quat-mlt));
+    color: rgb(0, 0, 0)
+}
+.variant-quat-dark {
+    background-color: rgb(var(--color-quat));
+    color: rgb(255, 255, 255)
+}
+.dark .variant-quat-dark {
+    background-color: rgb(var(--color-quat-light));
+    color: rgb(0, 0, 0)
+}
+.variant-quin {
+    background-color: rgb(var(--color-quin));
+    color: rgb(var(--color-on-quin))
+}
+.variant-quin-light {
+    background-color: rgb(var(--color-quin));
+    color: rgb(0, 0, 0)
+}
+.dark .variant-quin-light {
+    background-color: rgb(var(--color-quin-dark));
+    color: rgb(255, 255, 255)
+}
+.variant-quin-mlt {
+    background-color: rgb(var(--color-quin));
+    color: rgb(0, 0, 0)
+}
+.dark .variant-quin-mlt {
+    background-color: rgb(var(--color-quin-mdk));
+    color: rgb(255, 255, 255)
+}
+.variant-quin-mdk {
+    background-color: rgb(var(--color-quin));
+    color: rgb(255, 255, 255)
+}
+.dark .variant-quin-mdk {
+    background-color: rgb(var(--color-quin-mlt));
+    color: rgb(0, 0, 0)
+}
+.variant-quin-dark {
+    background-color: rgb(var(--color-quin));
+    color: rgb(255, 255, 255)
+}
+.dark .variant-quin-dark {
+    background-color: rgb(var(--color-quin-light));
+    color: rgb(0, 0, 0)
+}
+.variant-info {
+    background-color: rgb(var(--color-info));
+    color: rgb(var(--color-on-info))
+}
+.variant-info-light {
+    background-color: rgb(var(--color-info));
+    color: rgb(0, 0, 0)
+}
+.dark .variant-info-light {
+    background-color: rgb(var(--color-info-dark));
+    color: rgb(255, 255, 255)
+}
+.variant-info-mlt {
+    background-color: rgb(var(--color-info));
+    color: rgb(0, 0, 0)
+}
+.dark .variant-info-mlt {
+    background-color: rgb(var(--color-info-mdk));
+    color: rgb(255, 255, 255)
+}
+.variant-info-mdk {
+    background-color: rgb(var(--color-info));
+    color: rgb(255, 255, 255)
+}
+.dark .variant-info-mdk {
+    background-color: rgb(var(--color-info-mlt));
+    color: rgb(0, 0, 0)
+}
+.variant-info-dark {
+    background-color: rgb(var(--color-info));
+    color: rgb(255, 255, 255)
+}
+.dark .variant-info-dark {
+    background-color: rgb(var(--color-info-light));
+    color: rgb(0, 0, 0)
+}
+.variant-success {
+    background-color: rgb(var(--color-success));
+    color: rgb(var(--color-on-success))
+}
+.variant-success-light {
+    background-color: rgb(var(--color-success));
+    color: rgb(0, 0, 0)
+}
+.dark .variant-success-light {
+    background-color: rgb(var(--color-success-dark));
+    color: rgb(255, 255, 255)
+}
+.variant-success-mlt {
+    background-color: rgb(var(--color-success));
+    color: rgb(0, 0, 0)
+}
+.dark .variant-success-mlt {
+    background-color: rgb(var(--color-success-mdk));
+    color: rgb(255, 255, 255)
+}
+.variant-success-mdk {
+    background-color: rgb(var(--color-success));
+    color: rgb(255, 255, 255)
+}
+.dark .variant-success-mdk {
+    background-color: rgb(var(--color-success-mlt));
+    color: rgb(0, 0, 0)
+}
+.variant-success-dark {
+    background-color: rgb(var(--color-success));
+    color: rgb(255, 255, 255)
+}
+.dark .variant-success-dark {
+    background-color: rgb(var(--color-success-light));
+    color: rgb(0, 0, 0)
+}
+.variant-warning {
+    background-color: rgb(var(--color-warning));
+    color: rgb(var(--color-on-warning))
+}
+.variant-warning-light {
+    background-color: rgb(var(--color-warning));
+    color: rgb(0, 0, 0)
+}
+.dark .variant-warning-light {
+    background-color: rgb(var(--color-warning-dark));
+    color: rgb(255, 255, 255)
+}
+.variant-warning-mlt {
+    background-color: rgb(var(--color-warning));
+    color: rgb(0, 0, 0)
+}
+.dark .variant-warning-mlt {
+    background-color: rgb(var(--color-warning-mdk));
+    color: rgb(255, 255, 255)
+}
+.variant-warning-mdk {
+    background-color: rgb(var(--color-warning));
+    color: rgb(255, 255, 255)
+}
+.dark .variant-warning-mdk {
+    background-color: rgb(var(--color-warning-mlt));
+    color: rgb(0, 0, 0)
+}
+.variant-warning-dark {
+    background-color: rgb(var(--color-warning));
+    color: rgb(255, 255, 255)
+}
+.dark .variant-warning-dark {
+    background-color: rgb(var(--color-warning-light));
+    color: rgb(0, 0, 0)
+}
+.variant-error {
+    background-color: rgb(var(--color-error));
+    color: rgb(var(--color-on-error))
+}
+.variant-error-light {
+    background-color: rgb(var(--color-error));
+    color: rgb(0, 0, 0)
+}
+.dark .variant-error-light {
+    background-color: rgb(var(--color-error-dark));
+    color: rgb(255, 255, 255)
+}
+.variant-error-mlt {
+    background-color: rgb(var(--color-error));
+    color: rgb(0, 0, 0)
+}
+.dark .variant-error-mlt {
+    background-color: rgb(var(--color-error-mdk));
+    color: rgb(255, 255, 255)
+}
+.variant-error-mdk {
+    background-color: rgb(var(--color-error));
+    color: rgb(255, 255, 255)
+}
+.dark .variant-error-mdk {
+    background-color: rgb(var(--color-error-mlt));
+    color: rgb(0, 0, 0)
+}
+.variant-error-dark {
+    background-color: rgb(var(--color-error));
+    color: rgb(255, 255, 255)
+}
+.dark .variant-error-dark {
+    background-color: rgb(var(--color-error-light));
+    color: rgb(0, 0, 0)
+}
+.variant-neutral {
+    background-color: rgb(var(--color-neutral));
+    color: rgb(var(--color-on-neutral))
+}
+.variant-neutral-light {
+    background-color: rgb(var(--color-neutral));
+    color: rgb(0, 0, 0)
+}
+.dark .variant-neutral-light {
+    background-color: rgb(var(--color-neutral-dark));
+    color: rgb(255, 255, 255)
+}
+.variant-neutral-mlt {
+    background-color: rgb(var(--color-neutral));
+    color: rgb(0, 0, 0)
+}
+.dark .variant-neutral-mlt {
+    background-color: rgb(var(--color-neutral-mdk));
+    color: rgb(255, 255, 255)
+}
+.variant-neutral-mdk {
+    background-color: rgb(var(--color-neutral));
+    color: rgb(255, 255, 255)
+}
+.dark .variant-neutral-mdk {
+    background-color: rgb(var(--color-neutral-mlt));
+    color: rgb(0, 0, 0)
+}
+.variant-neutral-dark {
+    background-color: rgb(var(--color-neutral));
+    color: rgb(255, 255, 255)
+}
+.dark .variant-neutral-dark {
+    background-color: rgb(var(--color-neutral-light));
+    color: rgb(0, 0, 0)
+}
+.variant-page {
+    background-color: rgb(var(--color-page));
+    color: rgb(var(--color-on-page))
+}
+.variant-page-light {
+    background-color: rgb(var(--color-page));
+    color: rgb(0, 0, 0)
+}
+.dark .variant-page-light {
+    background-color: rgb(var(--color-page-dark));
+    color: rgb(255, 255, 255)
+}
+.variant-page-mlt {
+    background-color: rgb(var(--color-page));
+    color: rgb(0, 0, 0)
+}
+.dark .variant-page-mlt {
+    background-color: rgb(var(--color-page-mdk));
+    color: rgb(255, 255, 255)
+}
+.variant-page-mdk {
+    background-color: rgb(var(--color-page));
+    color: rgb(255, 255, 255)
+}
+.dark .variant-page-mdk {
+    background-color: rgb(var(--color-page-mlt));
+    color: rgb(0, 0, 0)
+}
+.variant-page-dark {
+    background-color: rgb(var(--color-page));
+    color: rgb(255, 255, 255)
+}
+.dark .variant-page-dark {
+    background-color: rgb(var(--color-page-light));
+    color: rgb(0, 0, 0)
+}
+.variant-page-contrast {
+    background-color: rgb(var(--color-page-contrast));
+    color: rgb(var(--color-on-page-contrast))
+}
+.variant-page-contrast-light {
+    background-color: rgb(var(--color-page-contrast));
+    color: rgb(0, 0, 0)
+}
+.dark .variant-page-contrast-light {
+    background-color: rgb(var(--color-page-contrast-dark));
+    color: rgb(255, 255, 255)
+}
+.variant-page-contrast-mlt {
+    background-color: rgb(var(--color-page-contrast));
+    color: rgb(0, 0, 0)
+}
+.dark .variant-page-contrast-mlt {
+    background-color: rgb(var(--color-page-contrast-mdk));
+    color: rgb(255, 255, 255)
+}
+.variant-page-contrast-mdk {
+    background-color: rgb(var(--color-page-contrast));
+    color: rgb(255, 255, 255)
+}
+.dark .variant-page-contrast-mdk {
+    background-color: rgb(var(--color-page-contrast-mlt));
+    color: rgb(0, 0, 0)
+}
+.variant-page-contrast-dark {
+    background-color: rgb(var(--color-page-contrast));
+    color: rgb(255, 255, 255)
+}
+.dark .variant-page-contrast-dark {
+    background-color: rgb(var(--color-page-contrast-light));
+    color: rgb(0, 0, 0)
+}
+.variant-surface {
+    background-color: rgb(var(--color-surface));
+    color: rgb(var(--color-on-surface))
+}
+.variant-surface-light {
+    background-color: rgb(var(--color-surface));
+    color: rgb(0, 0, 0)
+}
+.dark .variant-surface-light {
+    background-color: rgb(var(--color-surface-dark));
+    color: rgb(255, 255, 255)
+}
+.variant-surface-mlt {
+    background-color: rgb(var(--color-surface));
+    color: rgb(0, 0, 0)
+}
+.dark .variant-surface-mlt {
+    background-color: rgb(var(--color-surface-mdk));
+    color: rgb(255, 255, 255)
+}
+.variant-surface-mdk {
+    background-color: rgb(var(--color-surface));
+    color: rgb(255, 255, 255)
+}
+.dark .variant-surface-mdk {
+    background-color: rgb(var(--color-surface-mlt));
+    color: rgb(0, 0, 0)
+}
+.variant-surface-dark {
+    background-color: rgb(var(--color-surface));
+    color: rgb(255, 255, 255)
+}
+.dark .variant-surface-dark {
+    background-color: rgb(var(--color-surface-light));
+    color: rgb(0, 0, 0)
+}
+.variant-surface-contrast {
+    background-color: rgb(var(--color-surface-contrast));
+    color: rgb(var(--color-on-surface-contrast))
+}
+.variant-surface-contrast-light {
+    background-color: rgb(var(--color-surface-contrast));
+    color: rgb(0, 0, 0)
+}
+.dark .variant-surface-contrast-light {
+    background-color: rgb(var(--color-surface-contrast-dark));
+    color: rgb(255, 255, 255)
+}
+.variant-surface-contrast-mlt {
+    background-color: rgb(var(--color-surface-contrast));
+    color: rgb(0, 0, 0)
+}
+.dark .variant-surface-contrast-mlt {
+    background-color: rgb(var(--color-surface-contrast-mdk));
+    color: rgb(255, 255, 255)
+}
+.variant-surface-contrast-mdk {
+    background-color: rgb(var(--color-surface-contrast));
+    color: rgb(255, 255, 255)
+}
+.dark .variant-surface-contrast-mdk {
+    background-color: rgb(var(--color-surface-contrast-mlt));
+    color: rgb(0, 0, 0)
+}
+.variant-surface-contrast-dark {
+    background-color: rgb(var(--color-surface-contrast));
+    color: rgb(255, 255, 255)
+}
+.dark .variant-surface-contrast-dark {
+    background-color: rgb(var(--color-surface-contrast-light));
+    color: rgb(0, 0, 0)
+}
+.variant-surface-raised {
+    background-color: rgb(var(--color-surface-raised));
+    color: rgb(var(--color-on-surface-raised))
+}
+.variant-surface-raised-light {
+    background-color: rgb(var(--color-surface-raised));
+    color: rgb(0, 0, 0)
+}
+.dark .variant-surface-raised-light {
+    background-color: rgb(var(--color-surface-raised-dark));
+    color: rgb(255, 255, 255)
+}
+.variant-surface-raised-mlt {
+    background-color: rgb(var(--color-surface-raised));
+    color: rgb(0, 0, 0)
+}
+.dark .variant-surface-raised-mlt {
+    background-color: rgb(var(--color-surface-raised-mdk));
+    color: rgb(255, 255, 255)
+}
+.variant-surface-raised-mdk {
+    background-color: rgb(var(--color-surface-raised));
+    color: rgb(255, 255, 255)
+}
+.dark .variant-surface-raised-mdk {
+    background-color: rgb(var(--color-surface-raised-mlt));
+    color: rgb(0, 0, 0)
+}
+.variant-surface-raised-dark {
+    background-color: rgb(var(--color-surface-raised));
+    color: rgb(255, 255, 255)
+}
+.dark .variant-surface-raised-dark {
+    background-color: rgb(var(--color-surface-raised-light));
+    color: rgb(0, 0, 0)
+}
+.variant-surface-raised-contrast {
+    background-color: rgb(var(--color-surface-raised-contrast));
+    color: rgb(var(--color-on-surface-raised-contrast))
+}
+.variant-surface-raised-contrast-light {
+    background-color: rgb(var(--color-surface-raised-contrast));
+    color: rgb(0, 0, 0)
+}
+.dark .variant-surface-raised-contrast-light {
+    background-color: rgb(var(--color-surface-raised-contrast-dark));
+    color: rgb(255, 255, 255)
+}
+.variant-surface-raised-contrast-mlt {
+    background-color: rgb(var(--color-surface-raised-contrast));
+    color: rgb(0, 0, 0)
+}
+.dark .variant-surface-raised-contrast-mlt {
+    background-color: rgb(var(--color-surface-raised-contrast-mdk));
+    color: rgb(255, 255, 255)
+}
+.variant-surface-raised-contrast-mdk {
+    background-color: rgb(var(--color-surface-raised-contrast));
+    color: rgb(255, 255, 255)
+}
+.dark .variant-surface-raised-contrast-mdk {
+    background-color: rgb(var(--color-surface-raised-contrast-mlt));
+    color: rgb(0, 0, 0)
+}
+.variant-surface-raised-contrast-dark {
+    background-color: rgb(var(--color-surface-raised-contrast));
+    color: rgb(255, 255, 255)
+}
+.dark .variant-surface-raised-contrast-dark {
+    background-color: rgb(var(--color-surface-raised-contrast-light));
+    color: rgb(0, 0, 0)
 }

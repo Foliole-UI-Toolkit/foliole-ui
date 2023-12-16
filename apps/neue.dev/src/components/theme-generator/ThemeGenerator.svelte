@@ -12,15 +12,19 @@
   import ButtonMaker from './partials/ButtonMaker.svelte'
   import RoundedMaker from './partials/RoundedMaker.svelte'
 
+  import { centers, useColorSchemes, useGenerateColor, useGetColorValue, useGetConvertedColor } from './utilities'
+
   // Local Helpers
-  import { colorUtils, centers, updateColorsColl } from './helpers'
   import {
     buildBtnStrings,
-    buildColorShades,
     buildColorStrings,
-    buildElStrings,
-    buildUIStrings,
+    buildElBtnStrings,
+    capJsInCSSString,
+    buildUIRoundStrings,
+    type BuiltResults,
   } from './helpers/stringBuilders'
+
+  import { buildColorShades } from './helpers'
 
   // Local data
   import { setStoreThemeOptions } from './data'
@@ -34,20 +38,15 @@
   import { writable } from 'svelte/store'
   import type { Writable } from 'svelte/store'
   // Other
-
   import { localStorageStore } from '@skeletonlabs/skeleton'
-
-  // Import color utils by type
-  const { useGetConvertedColor, useGetColorValue, useGenerateColor, useColorSchemes } = colorUtils
 
   // Get Converted Color Funcs
   const { getHueFromHex } = useGetConvertedColor()
 
-  // Get Color Value Funcs
+  const { getSaturation } = useGetColorValue()
+
   const { generateLightenedValue, generateDarkenedValue, generateRandomColor, generateColorFromHSL } =
     useGenerateColor()
-
-  const { getSaturation } = useGetColorValue()
 
   // Get Color Scheme Funcs
   const { generateTriadColors, generateSplitComplimentaryColors, generateAnalogousColors } = useColorSchemes()
@@ -58,7 +57,6 @@
     secondary: null,
     tertiary: null,
   })
-  const colorResultsStore = writable<ColorSettings[]>([])
 
   const colorSchemeStore = writable('analogous-triad')
 
@@ -89,173 +87,48 @@
   let roundedSize = '--border-radius-md'
   let buttonRoundLevel = '--border-radius-full'
   let inputRoundLevel = '--border-radius-full'
-  // Previews
-  let previewCSSVars = ''
-  let themeOptsJsInCSS = ''
-  let twVars = ''
+
   // Errors
   let hashErrorMessage = ''
+
+  let initialized = false
+  // Cached String Results
+  let builtSchemeColorString: BuiltResults = { cssVarsBuilt: '', jsInCSSBuilt: '', twVarsBuilt: '' }
+  let builtDerivedColorString: BuiltResults = { cssVarsBuilt: '', jsInCSSBuilt: '', twVarsBuilt: '' }
+  let builtBtnString: BuiltResults = { cssVarsBuilt: '', jsInCSSBuilt: '' }
+  let builtUIRoundString: BuiltResults = { cssVarsBuilt: '', jsInCSSBuilt: '' }
+  let builtElBtnString: BuiltResults = { cssVarsBuilt: '', jsInCSSBuilt: '' }
+
+  // Previews
+  $: previewCSSVars = ''
+  $: themeOptsJsInCSS = ''
+
+  $: {
+    // once initialized, dynamically build strings for preview and user options with previous values.
+    if (initialized) {
+      let cssVars =
+        builtSchemeColorString.cssVarsBuilt +
+        builtDerivedColorString.cssVarsBuilt +
+        builtBtnString.cssVarsBuilt +
+        builtUIRoundString.cssVarsBuilt +
+        builtElBtnString.cssVarsBuilt
+
+      previewCSSVars = `<style>\n:root { \n ${cssVars}  }</style>`
+      themeOptsJsInCSS =
+        capJsInCSSString(builtSchemeColorString.jsInCSSBuilt + builtDerivedColorString.jsInCSSBuilt, 'color') +
+        capJsInCSSString(builtSchemeColorString.jsInCSSBuilt + builtDerivedColorString.jsInCSSBuilt, 'tw') +
+        builtBtnString.jsInCSSBuilt +
+        capJsInCSSString(builtUIRoundString.jsInCSSBuilt, 'ui') +
+        builtElBtnString.jsInCSSBuilt +
+        capJsInCSSString(builtElBtnString.cssVarsBuilt, 'el')
+    }
+  }
 
   // Make stores available to context so they can be injected locally as needed in child components.
   setContext('colorSchemeStore', colorSchemeStore)
   setContext('colorsCollectionStore', colorsCollectionStore)
   setContext('primaryColorHex', primaryColorHex)
   setContext('additionalColorsStore', additionalColorsStore)
-
-  // Handles random color generation on correct keypress sequence.
-  function handleKeyDown(event: KeyboardEvent) {
-    if ((event.metaKey || event.ctrlKey) && event.code === 'Space') {
-      generateRandomHexValue()
-      generateThemeOpts()
-    }
-  }
-
-  // Color changed from color picker.
-  function handleColorPickerChange(event: CustomEvent) {
-    // comes from user input and may not include valid #.
-    if (event?.detail.charAt(0) !== '#') {
-      hashErrorMessage = 'Invalid color format. Hex code must start with #.'
-      return
-    }
-    if (hashErrorMessage.length) hashErrorMessage = ''
-    if (event?.detail.length === 7) {
-      primaryColorHex = event?.detail
-    }
-    generateThemeOpts()
-  }
-
-  // Handle Button Opts changed.
-  function handleBtnOptsChange(event: CustomEvent) {
-    btnPaddingBase = event.detail.btnPaddingBase
-    btnPaddingWidthScale = event.detail.btnPaddingWidthScale
-    btnSizeScale = event.detail.btnSizeScale
-    btnHoverScale = event.detail.btnHoverScale
-    btnActiveScale = event.detail.btnActiveScale
-    btnHoverBrightness = event.detail.btnHoverBrightness
-    btnActiveBrightness = event.detail.btnActiveBrightness
-    btnFontSmSize = event.detail.btnFontSmSize
-    btnFontSize = event.detail.btnFontSize
-    btnFontLgSize = event.detail.btnFontLgSize
-
-    generateThemeOpts()
-  }
-
-  // Handle surface relationship changed.
-  function handleSurfaceRelationshipChange(event: CustomEvent) {
-    selectedSurfaceLevel = event.detail.selectedSurfaceLevel
-
-    generateThemeOpts()
-  }
-
-  // Handle Gray Hue changed.
-  function handleGrayHueChange(event: CustomEvent) {
-    grayHue = parseFloat(event.detail.grayHue)
-
-    generateThemeOpts()
-  }
-
-  // Handle Rounded Opts changed.
-  function handleRoundedOptsChange(event: CustomEvent) {
-    roundedSize = event.detail.roundedSize
-    buttonRoundLevel = event.detail.buttonRoundLevel
-    inputRoundLevel = event.detail.inputRoundLevel
-
-    generateThemeOpts()
-  }
-
-  // Random Hex generated for color scheme genration.
-  function generateRandomHexValue() {
-    primaryColorHex = generateRandomColor() as string
-    generateThemeOpts()
-  }
-
-  // Update collection for theme options.
-  function updateColorsCollWColorScheme() {
-    colorsCollectionStore.update((colorsCollection) => {
-      let baseColors: (string | null)[] = []
-      // Array because we will have multi gray options later.
-      const grays = []
-
-      const hue = getHueFromHex(primaryColorHex)
-
-      const baseSaturation = getSaturation(primaryColorHex)
-      const saturation = baseSaturation > 0.79 ? baseSaturation : baseSaturation + 0.2
-
-      // Create Colors used in every color scheme.
-      colorsCollection['error'] = generateColorFromHSL(centers.red, saturation, 0.5)
-      colorsCollection['success'] = generateColorFromHSL(centers.green, saturation, 0.5)
-      colorsCollection['neutral'] = grays[0] = generateColorFromHSL(hue, grayHue, 0.5)
-      // Surface colors.
-      colorsCollection['page'] = generateLightenedValue(grays[0] as string, surfaceMap[selectedSurfaceLevel].page)
-      colorsCollection['surface'] = generateLightenedValue(grays[0] as string, surfaceMap[selectedSurfaceLevel].surface)
-      colorsCollection['surface-raised'] = generateLightenedValue(
-        grays[0] as string,
-        surfaceMap[selectedSurfaceLevel].raised,
-      )
-
-      colorsCollection['page-contrast'] = generateDarkenedValue(
-        grays[0] as string,
-        surfaceMap[selectedSurfaceLevel].page,
-      )
-      colorsCollection['surface-contrast'] = generateDarkenedValue(
-        grays[0] as string,
-        surfaceMap[selectedSurfaceLevel].surface,
-      )
-      colorsCollection['surface-raised-contrast'] = generateDarkenedValue(
-        grays[0] as string,
-        surfaceMap[selectedSurfaceLevel].raised,
-      )
-
-      const createPrimaries = () => {
-        colorsCollection['primary'] = primaryColorHex
-        colorsCollection['secondary'] = baseColors[0]
-        colorsCollection['tertiary'] = baseColors[1]
-      }
-
-      // Individual differences in color schemes.
-      if ($colorSchemeStore === 'triad') {
-        baseColors = generateTriadColors(primaryColorHex)
-        createPrimaries()
-        colorsCollection['quat'] = ''
-        colorsCollection['quin'] = ''
-        return colorsCollection
-      }
-
-      if ($colorSchemeStore === 'split-complimentary') {
-        baseColors = generateSplitComplimentaryColors(primaryColorHex)
-        createPrimaries()
-        colorsCollection['quat'] = ''
-        colorsCollection['quin'] = ''
-        return colorsCollection
-      }
-
-      if ($colorSchemeStore === 'analogous-triad') {
-        baseColors = generateAnalogousColors(primaryColorHex, 40, 'analogous-triad')
-        createPrimaries()
-        colorsCollection['quat'] = ''
-        colorsCollection['quin'] = ''
-        return colorsCollection
-      }
-
-      if ($colorSchemeStore === 'analogous-quad') {
-        baseColors = generateAnalogousColors(primaryColorHex, 40, 'analogous-quad')
-        createPrimaries()
-        colorsCollection['quat'] = baseColors[2]
-        colorsCollection['quin'] = ''
-        return colorsCollection
-      }
-
-      if ($colorSchemeStore === 'analogous-quin') {
-        baseColors = generateAnalogousColors(primaryColorHex, 20, 'analogous-quin')
-        createPrimaries()
-        colorsCollection['quat'] = baseColors[2]
-        colorsCollection['quin'] = baseColors[3]
-        return colorsCollection
-      }
-
-      return colorsCollection
-    })
-  }
 
   // Calculations for button sizes.
   function calcBtnCSSStrings() {
@@ -294,77 +167,117 @@
     return { btnPaddingWidth, smBtnCalcs, lgBtnCalcs, chipBtnCalcs }
   }
 
-  // Generate colors: create colors collection, fill in template options from colors collection, build UI options as outputted strings for preview and themes.
-  function generateThemeOpts() {
-    updateColorsCollWColorScheme()
+  // Handles random color generation on correct keypress sequence.
+  function handleKeyDown(event: KeyboardEvent) {
+    if ((event.metaKey || event.ctrlKey) && event.code === 'Space') {
+      generateRandomHexValue()
+    }
+  }
 
-    let builtResults
+  // Color changed from color picker.
+  function handleColorPickerChange(event: CustomEvent) {
+    // comes from user input and may not include valid #.
+    if (event?.detail.charAt(0) !== '#') {
+      hashErrorMessage = 'Invalid color format. Hex code must start with #.'
+      return
+    }
+    if (hashErrorMessage.length) hashErrorMessage = ''
+    if (event?.detail.length === 7) {
+      primaryColorHex = event?.detail
+    }
+    generateColors()
+  }
 
+  // Handle controlsTailChange Opts changed.
+  function handleTextColorChange(event: CustomEvent) {
+    btnPaddingBase = event.detail.color
+  }
+
+  // Handle surface relationship changed.
+  function handleSurfaceRelationshipChange(event: CustomEvent) {
+    selectedSurfaceLevel = event.detail.selectedSurfaceLevel
+
+    let updatedColors: any = {}
+
+    updatedColors = generateDerivedColors(updatedColors)
+
+    updateDerivedColors(updateColors)
+
+    generateDerivedColorShades()
+  }
+
+  // Handle Gray Hue changed.
+  function handleGrayHueChange(event: CustomEvent) {
+    grayHue = parseFloat(event.detail.grayHue)
+
+    let updatedColors: any = {}
+
+    updatedColors = generateDerivedColors(updatedColors)
+
+    updateDerivedColors(updateColors)
+  }
+
+  // Handle Button Opts changed.
+  function handleBtnOptsChange(event: CustomEvent) {
+    btnPaddingBase = event.detail.btnPaddingBase
+    btnPaddingWidthScale = event.detail.btnPaddingWidthScale
+    btnSizeScale = event.detail.btnSizeScale
+    btnHoverScale = event.detail.btnHoverScale
+    btnActiveScale = event.detail.btnActiveScale
+    btnHoverBrightness = event.detail.btnHoverBrightness
+    btnActiveBrightness = event.detail.btnActiveBrightness
+    btnFontSmSize = event.detail.btnFontSmSize
+    btnFontSize = event.detail.btnFontSize
+    btnFontLgSize = event.detail.btnFontLgSize
+
+    generateBtnStrings()
+  }
+
+  // Handle Rounded Opts changed.
+  function handleRoundedOptsChange(event: CustomEvent) {
+    roundedSize = event.detail.roundedSize
+    buttonRoundLevel = event.detail.buttonRoundLevel
+    inputRoundLevel = event.detail.inputRoundLevel
+
+    builtUIRoundString = buildUIRoundStrings(roundedSize, buttonRoundLevel, inputRoundLevel)
+  }
+
+  // Update all colors
+  function updateColors(updatedColors: any) {
     storeThemeOptions.update((currentOptions) => {
       return {
         ...currentOptions,
         colors: currentOptions.colors.map((color, i) => {
-          if ($colorsCollectionStore[color.key]) {
-            if ($colorsCollectionStore[color.key] !== '') {
-              color.hex = $colorsCollectionStore[color.key] as string
-            }
+          color.hex = updatedColors[color.key] as string
 
-            return color
-          } else {
-            color.hex = ''
-            return color
-          }
+          return color
         }),
         derivedColors: currentOptions.derivedColors.map((color, i) => {
-          if ($colorsCollectionStore[color.key]) {
-            if ($colorsCollectionStore[color.key] !== null) {
-              color.hex = $colorsCollectionStore[color.key] as string
-            }
-            return color
-          } else {
-            color.hex = ''
-            return color
-          }
+          color.hex = updatedColors[color.key] as string
+
+          return color
         }),
       }
     })
+  }
 
-    let allColorShades: ColorSettings[] = []
+  // Update derived colors only.
+  function updateDerivedColors(updatedColors: any) {
+    storeThemeOptions.update((currentOptions) => {
+      return {
+        ...currentOptions,
+        derivedColors: currentOptions.derivedColors.map((color, i) => {
+          color.hex = generateColorFromHSL(getHueFromHex(color.hex), grayHue, 0.5)
 
-    $storeThemeOptions.colors.forEach((color) => {
-      if (color.hex !== '') {
-        const colorShades = buildColorShades(color)
-        allColorShades = [...allColorShades, ...colorShades]
+          return color
+        }),
       }
     })
+  }
 
-    $storeThemeOptions.derivedColors.forEach((color) => {
-      if (color.hex !== '') {
-        const colorShades = buildColorShades(color)
-        allColorShades = [...allColorShades, ...colorShades]
-      }
-    })
-
-    colorResultsStore.set(allColorShades)
-
-    $storeThemeOptions.derivedColors.forEach((color) => {
-      if (color.hex === '') return
-      const colorShades = buildColorShades(color)
-
-      colorResultsStore.update((results) => {
-        return [...results, ...colorShades]
-      })
-    })
-
-    // Color Strings
-    builtResults = buildColorStrings($colorResultsStore, 'color')
-    previewCSSVars = builtResults.cssVars
-    themeOptsJsInCSS = builtResults.jsInCSS
-    twVars = builtResults.twVars
-
-    // Calcs
+  // Init, calculate and build Color Strings
+  function generateBtnStrings() {
     const { btnPaddingWidth, smBtnCalcs, lgBtnCalcs, chipBtnCalcs } = calcBtnCSSStrings()
-
     // Btn strings
     let btnOpts = {
       btnPaddingBase,
@@ -377,39 +290,178 @@
       btnFontSize,
       btnFontLgSize,
     }
-    builtResults = buildBtnStrings(btnOpts, smBtnCalcs, lgBtnCalcs, chipBtnCalcs)
-    previewCSSVars += builtResults.cssVarsBuilt
-    themeOptsJsInCSS += builtResults.jsInCSSBuilt
+    builtBtnString = buildBtnStrings(btnOpts, smBtnCalcs, lgBtnCalcs, chipBtnCalcs)
+  }
 
-    // El strings
-    builtResults = buildUIStrings(roundedSize, buttonRoundLevel, inputRoundLevel)
-    previewCSSVars += builtResults.cssVarsBuilt
-    themeOptsJsInCSS += builtResults.jsInCSSBuilt
+  // Generate derived colors only.
+  function generateDerivedColors(updatedColors: any) {
+    // Surface colors.
+    const hue = getHueFromHex(primaryColorHex)
+    updatedColors['neutral'] = generateColorFromHSL(hue, grayHue, 0.5)
+    updatedColors['page'] = generateLightenedValue(
+      updatedColors['neutral'] as string,
+      surfaceMap[selectedSurfaceLevel].page,
+    )
+    updatedColors['surface'] = generateLightenedValue(
+      updatedColors['neutral'] as string,
+      surfaceMap[selectedSurfaceLevel].surface,
+    )
+    updatedColors['surface-raised'] = generateLightenedValue(
+      updatedColors['neutral'] as string,
+      surfaceMap[selectedSurfaceLevel].raised,
+    )
+    updatedColors['page-contrast'] = generateDarkenedValue(
+      updatedColors['neutral'] as string,
+      surfaceMap[selectedSurfaceLevel].page,
+    )
+    updatedColors['surface-contrast'] = generateDarkenedValue(
+      updatedColors['neutral'] as string,
+      surfaceMap[selectedSurfaceLevel].surface,
+    )
+    updatedColors['surface-raised-contrast'] = generateDarkenedValue(
+      updatedColors['neutral'] as string,
+      surfaceMap[selectedSurfaceLevel].raised,
+    )
 
-    // Ui strings
-    builtResults = buildElStrings(btnPaddingBase)
-    previewCSSVars += builtResults.cssVarsBuilt
-    themeOptsJsInCSS += builtResults.jsInCSSBuilt
+    return updatedColors
+  }
 
-    previewCSSVars = `<style>\n:root { \n ${previewCSSVars}  }</style>`
+  // Generate color scheme based on base primary hex color.
+  function generateColorScheme(updatedColors: Record<string, string | null>) {
+    // colorsCollectionStore.update((colorsCollection) => {
+    let baseColors: (string | null)[] = []
+    // Array because we will have multi gray options later.
+    const baseSaturation = getSaturation(primaryColorHex)
+    const saturation = baseSaturation > 0.79 ? baseSaturation : baseSaturation + 0.2
+
+    updatedColors['error'] = generateColorFromHSL(centers.red, saturation, 0.5)
+    updatedColors['success'] = generateColorFromHSL(centers.green, saturation, 0.5)
+
+    const createPrimaries = () => {
+      updatedColors['primary'] = primaryColorHex
+      updatedColors['secondary'] = baseColors[0]
+      updatedColors['tertiary'] = baseColors[1]
+    }
+
+    // Individual differences in color schemes.
+    if ($colorSchemeStore === 'triad') {
+      baseColors = generateTriadColors(primaryColorHex)
+      createPrimaries()
+      updatedColors['quat'] = ''
+      updatedColors['quin'] = ''
+      return updatedColors
+    }
+
+    if ($colorSchemeStore === 'split-complimentary') {
+      baseColors = generateSplitComplimentaryColors(primaryColorHex)
+      createPrimaries()
+      updatedColors['quat'] = ''
+      updatedColors['quin'] = ''
+      return updatedColors
+    }
+
+    if ($colorSchemeStore === 'analogous-triad') {
+      baseColors = generateAnalogousColors(primaryColorHex, 40, 'analogous-triad')
+      createPrimaries()
+      updatedColors['quat'] = ''
+      updatedColors['quin'] = ''
+      return updatedColors
+    }
+
+    if ($colorSchemeStore === 'analogous-quad') {
+      baseColors = generateAnalogousColors(primaryColorHex, 40, 'analogous-quad')
+      createPrimaries()
+      updatedColors['quat'] = baseColors[2]
+      updatedColors['quin'] = ''
+      return updatedColors
+    }
+
+    if ($colorSchemeStore === 'analogous-quin') {
+      baseColors = generateAnalogousColors(primaryColorHex, 20, 'analogous-quin')
+      createPrimaries()
+      updatedColors['quat'] = baseColors[2]
+      updatedColors['quin'] = baseColors[3]
+      return updatedColors
+    }
+
+    return updatedColors
+  }
+
+  // Random Hex generated for color scheme genration.
+  function generateRandomHexValue() {
+    primaryColorHex = generateRandomColor() as string
+    generateColors()
+  }
+
+  function generateDerivedColorShades() {
+    let derivedColorShades: ColorSettings[] = []
+    $storeThemeOptions.derivedColors.forEach((color) => {
+      if (color.hex !== '') {
+        const colorShades = buildColorShades(color)
+        derivedColorShades = [...derivedColorShades, ...colorShades]
+      }
+    })
+
+    return derivedColorShades
+  }
+
+  // Loop through all color options and derive shades.
+  function generateSchemeColorShades() {
+    let schemeColorShades: ColorSettings[] = []
+
+    $storeThemeOptions.colors.forEach((color) => {
+      if (color.hex !== '') {
+        const colorShades = buildColorShades(color)
+        schemeColorShades = [...schemeColorShades, ...colorShades]
+      }
+    })
+
+    return schemeColorShades
+  }
+
+  function generateColors() {
+    let updatedSchemeColors: Record<string, string | null> = {}
+
+    updatedSchemeColors = generateColorScheme(updatedSchemeColors)
+
+    // Create Colors used in every color scheme.
+    let updatedDerivedColors: Record<string, string | null> = {}
+    updatedDerivedColors = generateDerivedColors(updatedDerivedColors)
+
+    const updatedColors = { ...updatedSchemeColors, ...updatedDerivedColors }
+    updateColors(updatedColors)
+
+    let schemeColorShades = generateSchemeColorShades()
+    let derivedColorShades = generateDerivedColorShades()
+
+    builtSchemeColorString = buildColorStrings(schemeColorShades, 'color')
+    builtDerivedColorString = buildColorStrings(derivedColorShades, 'color')
+  }
+
+  function generateThemeOpts() {
+    generateColors()
+    generateBtnStrings()
+    builtUIRoundString = buildUIRoundStrings(roundedSize, buttonRoundLevel, inputRoundLevel)
+    builtElBtnString = buildElBtnStrings(btnPaddingBase)
+
+    // setting initialized to true to trigger reactive vars.
+    // we wait to trigger it to perform the init setup without triggering reactivity each time we assign a value.
+    initialized = true
   }
 
   function initCachedColors() {
-    if ($storeThemeOptions.colors[0].hex) {
-      primaryColorHex = $storeThemeOptions.colors[0].hex
-    }
-
-    if ($additionalColorsStore.warning) {
-      updateColorsColl(colorsCollectionStore, 'warning', $additionalColorsStore.warning)
-    }
-
-    if ($additionalColorsStore.info) {
-      updateColorsColl(colorsCollectionStore, 'info', $additionalColorsStore.info)
-    }
+    // if ($storeThemeOptions.colors[0].hex) {
+    //   primaryColorHex = $storeThemeOptions.colors[0].hex
+    // }
+    // if ($additionalColorsStore.warning) {
+    //   updateColorsColl(colorsCollectionStore, 'warning', $additionalColorsStore.warning)
+    // }
+    // if ($additionalColorsStore.info) {
+    //   updateColorsColl(colorsCollectionStore, 'info', $additionalColorsStore.info)
+    // }
   }
 
   onMount(() => {
-    initCachedColors()
     generateThemeOpts()
   })
 </script>
@@ -429,10 +481,7 @@
       <ColorPicker colorHex={primaryColorHex} on:colorChange={handleColorPickerChange} />
       <p class="text-xl text-error">{hashErrorMessage}</p>
       <div class="mx-auto space-y-4 text-center page-section">
-        <ChipOptions
-          on:colorSchemeChange={() => generateThemeOpts()}
-          on:colorAdditionChange={() => generateThemeOpts()}
-        />
+        <ChipOptions on:colorSchemeChange={() => generateColors()} on:colorAdditionChange={() => generateColors()} />
         <button class="btn-md my-btn" on:click={() => generateThemeOpts()}>Generate Preview</button>
       </div>
     </div>
@@ -443,11 +492,16 @@
       <div class="pb-2">
         {#each $storeThemeOptions.colors.filter((colorRow) => colorRow.hex !== '') as colorRow, i}
           <div
-            class="grid grid-cols-1 md:grid-cols-[200px_1fr_240px] gap-2 md:gap-4 border-b-2 md:border-0 border-neutral-mlt md:pb-2 pb-2"
+            class="grid grid-cols-1 md:grid-cols-[200px_1fr_120px] gap-2 md:gap-4 border-b-2 md:border-0 border-neutral-mlt md:pb-2 pb-2"
           >
             <ControlsLead hex={colorRow.hex} label={colorRow.label} />
             <Swatch color={colorRow.key} stops={colorRow?.stops?.split(',')} />
-            <ControlsTail colorOn={colorRow.on} stops={colorRow.stops ?? ''} colorsIndex={i} />
+            <ControlsTail
+              colorOn={colorRow.on}
+              stops={colorRow.stops ?? ''}
+              colorsIndex={i}
+              on:textColorChange={handleTextColorChange}
+            />
           </div>
         {/each}
       </div>
@@ -497,7 +551,7 @@
     </div>
   </section>
 
-  <pre><code class="language-javascript">{themeOptsJsInCSS} {twVars}</code></pre>
+  <pre><code class="language-javascript">{themeOptsJsInCSS}</code></pre>
 </div>
 
 <style lang="post-css">

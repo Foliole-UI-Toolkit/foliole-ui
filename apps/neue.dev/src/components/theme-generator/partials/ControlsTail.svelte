@@ -9,21 +9,26 @@
     dispatch('stopsChange', details)
   }
 
+  function handleTextColorChange(event: ChangeEvent<HTMLSelectElement>) {
+    const details = { colorIndex: colorsIndex, color: event?.target?.value }
+    dispatch('textColorChange', details)
+  }
+
   export let stops: string
   export let colorOn: string
   export let colorsIndex: number
 </script>
 
 <div class="flex order-2 gap-2 md:order-3">
-  <label class="flex flex-col w-1/2 label">
+  <!-- <label class="flex flex-col w-1/2 label">
     <span>Color Stops</span>
     <select class="my-select" on:change={handleStopChange} bind:value={stops}>
       {#each inputSettings.stops as s}<option value={s.value}>{s.label}</option>{/each}
     </select>
-  </label>
-  <label class="flex flex-col w-1/2 label">
+  </label> -->
+  <label class="flex flex-col w-full label">
     <span>Text Color</span>
-    <select class="my-select" bind:value={colorOn}>
+    <select class="my-select" on:change={handleTextColorChange} bind:value={colorOn}>
       {#each inputSettings.colorProps as c}<option value={c.value}>{c.label}</option>{/each}
     </select>
   </label>

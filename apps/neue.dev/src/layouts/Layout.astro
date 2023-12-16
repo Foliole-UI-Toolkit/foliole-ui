@@ -1,7 +1,5 @@
 ---
-// import "../index.css"
-import "@neue/neue-css/neue-tw-css-properties.css"
-import "@neue/neue-css/neue-for-tw.css"
+import "../index.css"
 
 import AppShell from  '../components/AppShell.vue'
 
@@ -31,69 +29,13 @@ const pathname = new URL(Astro.request.url).pathname;
 	</body>
 </html>
 <style is:global lang="postcss">
-  @tailwind components;
-  @tailwind base;
-
-  @layer base {
-    h1, h2, h3, h4, h5, h6, ul, li, p, button, span {
-      font-family: "brandon-grotesque", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    }
-    .my-list {
-      @apply list-disc ml-6
-    }
-  }
-
-	@layer components {
-
-  .my-chip {
-		@apply btn-chip btn-base; 
-  }
-	.my-input {
-		@apply input-base bg-primary;
-	}
-	.my-select {
-		@apply select-base  bg-primary;
-	}
-
-	input.nested-input {
-    box-shadow: none !important;
-    border: none !important;
-  }
-	.page-section {
-    @apply p-4 shadow-sm border-surface-raised border;
-  }
-  .page-heading {
-    @apply font-bold text-center pb-2;
-  }
-	.page-subheading {
-    @apply font-bold text-center;
-  }
-  .page-subheading {
-    @apply text-xl font-bold text-center;
-  }
-  .section-box {
-    @apply p-4  border-2 border-neutral-light;
-  }
-
-  .my-btn {
-    @apply border-2 shadow-md btn-base bg-primary border-primary-mlt;
-  }
-  .my-chip {
-    @apply btn-chip btn-base;
-  }
-  .my-input {
-    @apply input-base;
-  }
-  .my-select {
-    @apply select-base;
-  }
 
   input.nested-input {
     box-shadow: none !important;
     border: none !important;
   }
   .page-section {
-    @apply p-4 border shadow-sm  border-surface-raised;
+    @apply p-4 border shadow-sm border-surface-raised;
   }
   .page-heading {
     @apply pb-2 font-bold text-center;
@@ -107,5 +49,5 @@ const pathname = new URL(Astro.request.url).pathname;
   .section-box {
     @apply p-4 border-2 border-neutral-light;
   }
-} 
+
 </style>
