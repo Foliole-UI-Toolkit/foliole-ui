@@ -1,21 +1,18 @@
 <script lang="ts">
+  import { getThemeOptionsStore } from '../data/stores'
   import { createEventDispatcher } from 'svelte'
 
   const dispatch = createEventDispatcher()
 
-  function emitBtnOptsChange() {
-    dispatch('btnOptsChange', {
-      btnPaddingBase,
-      btnPaddingWidthScale,
-      btnSizeScale,
-      btnHoverScale,
-      btnActiveScale,
-      btnHoverBrightness,
-      btnActiveBrightness,
-      btnFontSmSize,
-      btnFontSize,
-      btnFontLgSize,
-    })
+  const themeOptionsStore = getThemeOptionsStore() as any
+
+  function handleInputChange(event: any) {
+    const inputName = event?.target?.name
+    const inputValue = event?.target?.value
+
+    themeOptionsStore.updateBtnOpts({ [inputName]: parseFloat(inputValue) })
+
+    dispatch('btnInputChange')
   }
 
   const fontSizeMap = {
@@ -25,17 +22,6 @@
     '18px': '--font-scale-lg',
     '20px': '--font-scale-xl',
   }
-
-  export let btnPaddingWidthScale: number = 3
-  export let btnPaddingBase: number = 0.5
-  export let btnSizeScale: number = 0.2
-  export let btnHoverScale: number | null = 0.98
-  export let btnActiveScale: number | null = 1.05
-  export let btnHoverBrightness: number | null = 95
-  export let btnActiveBrightness: number | null = 102
-  export let btnFontSmSize: string = '--font-scale-sm'
-  export let btnFontSize: string = '--font-scale-base'
-  export let btnFontLgSize: string = '--font-scale-lg'
 </script>
 
 <p class="pb-4 page-subheading">Buttons</p>
@@ -47,33 +33,33 @@
     <button class="self-center justify-self-center my-chip bg-neutral-light">Chip</button>
     <div class="p-4 space-y-4 border border-surface-raised">
       <p class="font-bold text-center">Base Options</p>
-      <label class="options-input-wrapper" for="sizeBase"
+      <label class="options-input-wrapper" for="paddingBase"
         >Size Base (.1-1):
         <input
           type="number"
-          id="sizeBase"
-          name="sizeBase"
-          min=".3"
+          id="paddingBase"
+          name="paddingBase"
+          min=".375"
           max="1"
-          step=".1"
+          step=".125"
           class="my-input"
-          bind:value={btnPaddingBase}
-          on:input={emitBtnOptsChange}
+          bind:value={$themeOptionsStore.btnOpts.paddingBase}
+          on:input={handleInputChange}
         />
       </label>
 
-      <label class="options-input-wrapper" for="sizeScaleIncrement"
+      <label class="options-input-wrapper" for="paddingWidthScale"
         >Width Scale Increment (2-8x):
         <input
           type="number"
-          id="sizeWidthIncrement"
-          name="sizeWidthIncrement"
+          id="paddingWidthScale"
+          name="paddingWidthScale"
           min="2"
           max="8"
-          step=".5"
+          step=".25"
           class="my-input"
-          bind:value={btnPaddingWidthScale}
-          on:input={emitBtnOptsChange}
+          bind:value={$themeOptionsStore.btnOpts.paddingWidthScale}
+          on:input={handleInputChange}
         />
       </label>
 
@@ -83,12 +69,12 @@
           type="number"
           id="sizeScale"
           name="sizeScale"
-          min=".1"
-          max=".5"
-          step=".1"
+          min="1"
+          max="2"
+          step=".125"
           class="my-input"
-          bind:value={btnSizeScale}
-          on:input={emitBtnOptsChange}
+          bind:value={$themeOptionsStore.btnOpts.sizeScale}
+          on:input={handleInputChange}
         />
       </label>
     </div>
@@ -96,63 +82,63 @@
     <!-- more options: will be hidden in a drawer when drawer is made -->
     <div class="p-4 space-y-4 border border-surface-raised">
       <p class="font-bold text-center">Interactive</p>
-      <label class="options-input-wrapper" for="btnHoverScale">
+      <label class="options-input-wrapper" for="hoverScale">
         Hover Scale (0.8-1.2):
         <input
           type="number"
-          id="btnHoverScale"
-          name="btnHoverScale"
+          id="hoverScale"
+          name="hoverScale"
           min="0.8"
           max="1.2"
           step="0.01"
           class="my-input"
-          bind:value={btnHoverScale}
-          on:input={emitBtnOptsChange}
+          bind:value={$themeOptionsStore.btnOpts.hoverScale}
+          on:input={handleInputChange}
         />
       </label>
 
-      <label class="options-input-wrapper" for="btnActiveScale">
+      <label class="options-input-wrapper" for="activeScale">
         Active Scale (0.8-1.2):
         <input
           type="number"
-          id="btnActiveScale"
-          name="btnActiveScale"
+          id="activeScale"
+          name="activeScale"
           min="0.8"
           max="1.2"
           step="0.01"
           class="my-input"
-          bind:value={btnActiveScale}
-          on:input={emitBtnOptsChange}
+          bind:value={$themeOptionsStore.btnOpts.activeScale}
+          on:input={handleInputChange}
         />
       </label>
 
-      <label class="options-input-wrapper" for="btnHoverBrightness">
+      <label class="options-input-wrapper" for="hoverBrightnessScale">
         Hover Brightness (0.8-1.2):
         <input
           type="number"
-          id="btnHoverBrightness"
-          name="btnHoverBrightness"
+          id="hoverBrightnessScale"
+          name="hoverBrightnessScale"
           min="80"
           max="120"
           step="1"
           class="my-input"
-          bind:value={btnHoverBrightness}
-          on:input={emitBtnOptsChange}
+          bind:value={$themeOptionsStore.btnOpts.hoverBrightnessScale}
+          on:input={handleInputChange}
         />
       </label>
 
-      <label class="options-input-wrapper" for="btnActiveBrightness">
+      <label class="options-input-wrapper" for="activeBrightnessScale">
         Active Brightness (0.8-1.2):
         <input
           type="number"
-          id="btnActiveBrightness"
-          name="btnActiveBrightness"
+          id="activeBrightnessScale"
+          name="activeBrightnessScale"
           min="88"
           max="120"
           step="1"
           class="my-input"
-          bind:value={btnActiveBrightness}
-          on:input={emitBtnOptsChange}
+          bind:value={$themeOptionsStore.btnOpts.activeBrightnessScale}
+          on:input={handleInputChange}
         />
       </label>
     </div>
@@ -160,25 +146,43 @@
     <!-- font sizes -->
     <div class="p-4 space-y-4 border border-surface-raised">
       <p class="font-bold text-center">Fonts</p>
-      <label class="options-input-wrapper" for="btnFontSmSize">
+      <label class="options-input-wrapper" for="fontSizeSm">
         Font Size Small:
-        <select id="btnFontSmSize" class="my-select" bind:value={btnFontSmSize} on:change={emitBtnOptsChange}>
+        <select
+          id="fontSizeSm"
+          name="fontSizeSm"
+          class="my-select"
+          bind:value={$themeOptionsStore.btnOpts.fontSizeSm}
+          on:change={handleInputChange}
+        >
           {#each Object.entries(fontSizeMap) as [size, value]}
             <option {value}>{size}</option>
           {/each}
         </select>
       </label>
-      <label class="options-input-wrapper" for="btnFontSize">
+      <label class="options-input-wrapper" for="fontSize">
         Font Size (12px - 24px):
-        <select id="btnFontSize" class="my-select" bind:value={btnFontSize} on:change={emitBtnOptsChange}>
+        <select
+          id="fontSize"
+          name="fontSize"
+          class="my-select"
+          bind:value={$themeOptionsStore.btnOpts.fontSize}
+          on:change={handleInputChange}
+        >
           {#each Object.entries(fontSizeMap) as [size, value]}
             <option {value}>{size}</option>
           {/each}
         </select>
       </label>
-      <label class="options-input-wrapper" for="btnFontLgSize">
+      <label class="options-input-wrapper" for="fontSizeLg">
         Font Size (12px - 24px):
-        <select id="btnFontLgSize" class="my-select" bind:value={btnFontLgSize} on:change={emitBtnOptsChange}>
+        <select
+          id="fontSizeLg"
+          name="fontSizeLg"
+          class="my-select"
+          bind:value={$themeOptionsStore.btnOpts.fontSizeLg}
+          on:change={handleInputChange}
+        >
           {#each Object.entries(fontSizeMap) as [size, value]}
             <option {value}>{size}</option>
           {/each}

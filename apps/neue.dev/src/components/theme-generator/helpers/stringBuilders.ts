@@ -1,5 +1,7 @@
 import type { ColorSettings } from '../types'
 
+import { writable, get } from 'svelte/store'
+
 export type BuiltResults = {
   cssVarsBuilt: string
   jsInCSSBuilt: string
@@ -66,20 +68,15 @@ export function buildElStrings(btnPaddingBase: number) {
   return { cssVarsBuilt, jsInCSSBuilt }
 }
 
-export function buildBtnStrings(
-  btnOpts: Record<string, number | string>,
-  smBtnCalcs: Record<string, number>,
-  lgBtnCalcs: Record<string, number>,
-  chipBtnCalcs: Record<string, number>,
-) {
+export function buildBtnStrings(btnOpts: Record<string, number | string>, derivedBtnValues: any) {
   let cssVarsBuilt = ''
-  let jsInCSSBuilt = headerForJsInCSS('btn')
+  let jsInCSSBuilt = ''
 
   // btn padding sm
   let { cssVars, jsInCSS } = buildLineFromPrefixAndValue(
     'btn',
     'sm',
-    `${smBtnCalcs.smBtnPaddingBase}rem ${smBtnCalcs.smBtnPaddingWidth}rem`,
+    `${get(derivedBtnValues.btnSmPaddingBase)}rem ${get(derivedBtnValues.btnSmPaddingWidth)}rem`,
   )
   cssVarsBuilt += cssVars
   jsInCSSBuilt += jsInCSS
@@ -88,7 +85,7 @@ export function buildBtnStrings(
   ;({ cssVars, jsInCSS } = buildLineFromPrefixAndValue(
     'btn',
     'p-base',
-    `${btnOpts.btnPaddingBase}rem ${btnOpts.btnPaddingWidth}rem`,
+    `${btnOpts.paddingBase}rem ${get(derivedBtnValues.btnPaddingWidth)}rem`,
   ))
   cssVarsBuilt += cssVars
   jsInCSSBuilt += jsInCSS
@@ -97,7 +94,7 @@ export function buildBtnStrings(
   ;({ cssVars, jsInCSS } = buildLineFromPrefixAndValue(
     'btn',
     'chip',
-    `${chipBtnCalcs.chipBtnPaddingBase}rem ${chipBtnCalcs.chipBtnPaddingWidth}rem`,
+    `${get(derivedBtnValues.btnChipPaddingBase)}rem ${get(derivedBtnValues.btnChipPaddingWidth)}rem`,
   ))
   cssVarsBuilt += cssVars
   jsInCSSBuilt += jsInCSS
@@ -106,41 +103,38 @@ export function buildBtnStrings(
   ;({ cssVars, jsInCSS } = buildLineFromPrefixAndValue(
     'btn',
     'lg',
-    `${lgBtnCalcs.lgBtnPaddingBase}rem ${lgBtnCalcs.lgBtnPaddingWidth}rem`,
+    `${get(derivedBtnValues.btnLgPaddingBase)}rem ${get(derivedBtnValues.btnLgPaddingWidth)}rem`,
   ))
   cssVarsBuilt += cssVars
   jsInCSSBuilt += jsInCSS
 
   // btn interactive options
   // transform/scale
-  ;({ cssVars, jsInCSS } = buildLineFromPrefixAndValue('btn', 'hover-scale', `${btnOpts.btnHoverScale}`))
+  ;({ cssVars, jsInCSS } = buildLineFromPrefixAndValue('btn', 'hover-scale', `${btnOpts.hoverScale}`))
   cssVarsBuilt += cssVars
   jsInCSSBuilt += jsInCSS
-  ;({ cssVars, jsInCSS } = buildLineFromPrefixAndValue('btn', 'active-scale', `${btnOpts.btnActiveScale}`))
+  ;({ cssVars, jsInCSS } = buildLineFromPrefixAndValue('btn', 'active-scale', `${btnOpts.activeScale}`))
   cssVarsBuilt += cssVars
   jsInCSSBuilt += jsInCSS
 
   // filter/brightness
-  ;({ cssVars, jsInCSS } = buildLineFromPrefixAndValue('btn', 'hover-filter', `${btnOpts.btnHoverBrightness}%`))
+  ;({ cssVars, jsInCSS } = buildLineFromPrefixAndValue('btn', 'hover-filter', `${btnOpts.hoverBrightnessScale}%`))
   cssVarsBuilt += cssVars
   jsInCSSBuilt += jsInCSS
-  ;({ cssVars, jsInCSS } = buildLineFromPrefixAndValue('btn', 'active-filter', `${btnOpts.btnActiveBrightness}%`))
+  ;({ cssVars, jsInCSS } = buildLineFromPrefixAndValue('btn', 'active-filter', `${btnOpts.activeBrightnessScale}%`))
   cssVarsBuilt += cssVars
   jsInCSSBuilt += jsInCSS
 
   // btn font sizes
-  ;({ cssVars, jsInCSS } = buildLineFromPrefixAndValue('btn', 'font-sm-size', `var(${btnOpts.btnFontSmSize})`))
+  ;({ cssVars, jsInCSS } = buildLineFromPrefixAndValue('btn', 'font-sm-size', `var(${btnOpts.fontSizeSm})`))
   cssVarsBuilt += cssVars
   jsInCSSBuilt += jsInCSS
-  ;({ cssVars, jsInCSS } = buildLineFromPrefixAndValue('btn', 'font-size', `var(${btnOpts.btnFontSize})`))
+  ;({ cssVars, jsInCSS } = buildLineFromPrefixAndValue('btn', 'font-size', `var(${btnOpts.fontSize})`))
   cssVarsBuilt += cssVars
   jsInCSSBuilt += jsInCSS
-  ;({ cssVars, jsInCSS } = buildLineFromPrefixAndValue('btn', 'font-lg-size', `var(${btnOpts.btnFontLgSize})`))
+  ;({ cssVars, jsInCSS } = buildLineFromPrefixAndValue('btn', 'font-lg-size', `var(${btnOpts.fontSizeLg})`))
   cssVarsBuilt += cssVars
   jsInCSSBuilt += jsInCSS
-
-  // Complete the JavaScript string
-  jsInCSSBuilt += footerForJsInCSS()
 
   return { cssVarsBuilt, jsInCSSBuilt }
 }

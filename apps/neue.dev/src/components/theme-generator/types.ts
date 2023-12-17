@@ -41,6 +41,26 @@ export interface ColorSettings {
   stops: string
 }
 
+export interface BtnOpts {
+  paddingWidthScale: string
+  sizeScale: string
+  hoverScale: string
+  activeScale: string
+  hoverBrightnessScale: string
+  activeBrightnessScale: string
+  fontSizeSm: string
+  fontSize: string
+  fontSizeLg: string
+}
+
+export interface FontOpts {
+  base: string
+  secondary: string
+  size: string
+  textColorLight: string
+  textColorDark: string
+}
+
 export interface ColorsCollection {
   [key: string]: string | null
 }
@@ -50,12 +70,11 @@ export type NeueColorScale = (typeof neueColorScale)[number]
 export interface ThemeOptionsCollection {
   colors: ColorSettings[]
   derivedColors: ColorSettings[]
-  fontBase: string
-  fontSecondary: string
-  textColorLight: string
-  textColorDark: string
+  btnOpts: BtnOpts
+  fontOpts: FontOpts
   roundedBase: string
   borderBase: string
+  primaryHex: string
 }
 
 export interface BtnFontSizes {
