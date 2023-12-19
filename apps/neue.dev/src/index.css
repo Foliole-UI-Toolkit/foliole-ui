@@ -1,5 +1,5 @@
-@import url('@neue/neue-css/neue-tw-css-properties.css');
-@import url('@neue/neue-css/neue-for-tw.css');
+@import url('@neue/neue-css/dist/neue-tw-css-properties.css');
+@import url('@neue/neue-css/dist/neue-for-tw.css');
 
 h1,
 h2,

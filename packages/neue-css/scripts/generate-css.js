@@ -113,13 +113,13 @@ const twPlugin = function ({ addComponents, addUtilities }) {
     // Vanilla CSS - post process into file for tw solution
     const resultVanilla = await postcss().process(mergedCSSInJsCompsAndElsForVanilla, { parser: postcssJs })
     const mergedVanillaCSS = resultVanilla.css
-    const neueVanillaPath = path.join(baseDir, 'neue.css')
+    const neueVanillaPath = path.join(baseDir, 'dist/neue.css')
     await fs.writeFile(neueVanillaPath, mergedVanillaCSS, 'utf8')
 
     // Neue components - post process into file for tw solutions.
     const resultTw = await postcss().process(mergedCSSInJsCompsForTW, { parser: postcssJs })
     const mergedTwCSS = resultTw.css
-    const neueForTwPath = path.join(baseDir, 'neue-for-tw.css')
+    const neueForTwPath = path.join(baseDir, 'dist/neue-for-tw.css')
     await fs.writeFile(neueForTwPath, mergedTwCSS, 'utf8')
 
     // CSS properties for use with tailwind.
@@ -133,7 +133,7 @@ const twPlugin = function ({ addComponents, addUtilities }) {
     const props = `${propsHeader} ${themeCSSProps} ${neueCSSProps} ${propsFooter}`
 
     // Create file.
-    const neueTwCSSPropertiesPath = path.join(baseDir, 'neue-tw-css-properties.css')
+    const neueTwCSSPropertiesPath = path.join(baseDir, 'dist/neue-tw-css-properties.css')
     await fs.writeFile(neueTwCSSPropertiesPath, props, 'utf8')
   } catch (error) {
     console.error('Error occurred:', error)
