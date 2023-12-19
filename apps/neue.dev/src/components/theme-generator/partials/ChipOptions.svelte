@@ -48,7 +48,7 @@
 </script>
 
 <div class="space-y-1">
-  <p class="font-bold text-center">Choose color scheme: (only one currently)</p>
+  <p class="font-bold text-center">Choose color scheme:</p>
   <div class="flex flex-wrap justify-center gap-2">
     {#each neueColorSchemes as colorKey}
       <button
@@ -63,7 +63,7 @@
   </div>
 </div>
 
-<div class="space-y-1">
+<!-- <div class="space-y-1">
   <p class="font-bold text-center">Choose optional additional colors:</p>
   <div class="flex flex-wrap justify-center gap-2">
     {#each additionalColorSchemes as colorKey}
@@ -81,7 +81,4 @@
       </button>
     {/each}
   </div>
-</div>
-
-<style lang="postcss">
-</style>
+</div> -->
