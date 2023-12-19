@@ -469,7 +469,7 @@
 <svelte:window on:keydown={handleKeyDown} />
 <svelte:head>{@html previewCSSVars}</svelte:head>
 
-<div class="p-4 space-y-4">
+<div class="p-4 space-y-4 theme-generator">
   <section class="p-8">
     <h2 class="text-6xl page-heading">Color Generator</h2>
     <div class="flex flex-col items-center space-y-4">
@@ -492,7 +492,7 @@
       <div class="pb-2">
         {#each $storeThemeOptions.colors.filter((colorRow) => colorRow.hex !== '') as colorRow, i}
           <div
-            class="grid grid-cols-1 md:grid-cols-[200px_1fr_120px] gap-2 md:gap-4 border-b-2 md:border-0 border-neutral-mlt md:pb-2 pb-2"
+            class="grid grid-cols-1 md:grid-cols-[220px_1fr_120px] gap-2 md:gap-4 border-b-2 md:border-0 border-neutral-mlt md:pb-2 pb-2"
           >
             <ControlsLead hex={colorRow.hex} label={colorRow.label} />
             <Swatch color={colorRow.key} stops={colorRow?.stops?.split(',')} />
@@ -517,7 +517,7 @@
   </section>
   <section class="page-section">
     <h3 class="text-3xl page-heading">UI Options</h3>
-    <div class="grid grid-cols-2 gap-4">
+    <div class="grid gap-2 lg:grid-cols-2">
       <div class="section-box">
         <RoundedMaker
           on:roundedOptsChange={handleRoundedOptsChange}
@@ -531,7 +531,7 @@
   </section>
   <section class="page-section">
     <h3 class="text-3xl page-heading">Elements</h3>
-    <div class="grid grid-cols-2 gap-4">
+    <div class="grid gap-2 lg:grid-cols-2">
       <div class="section-box">
         <ButtonMaker
           {btnSizeScale}
@@ -555,15 +555,4 @@
 </div>
 
 <style lang="post-css">
-  :global(.options-input-wrapper) {
-    @apply gap-2;
-    display: grid;
-    grid-template-columns: 1fr;
-    align-items: center;
-
-    /* Media query for md breakpoint */
-    @media (min-width: 768px) {
-      grid-template-columns: 200px 1fr;
-    }
-  }
 </style>

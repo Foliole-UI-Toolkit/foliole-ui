@@ -86,7 +86,7 @@ span {
     border: none !important;
   }
   .page-section {
-    @apply p-4 border shadow-sm border-surface-raised;
+    @apply p-4 border rounded shadow-sm border-surface-raised;
   }
   .page-heading {
     @apply pb-2 font-bold text-center;
@@ -98,7 +98,7 @@ span {
     @apply text-xl font-bold text-center;
   }
   .section-box {
-    @apply p-4 border-2 border-neutral-light;
+    @apply p-4 rounded bg-surface;
   }
   /* Site components */
   .neue-logo {
@@ -125,5 +125,11 @@ span {
     background: linear-gradient(45deg, rgb(var(--color-primary) / 1), rgb(var(--color-secondary) / 1));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+  }
+
+  .theme-generator .options-input-wrapper {
+    @apply gap-2 grid items-center lg:grid-cols-[120px,_1fr];
+
+    /* Media query for md breakpoint */
   }
 }

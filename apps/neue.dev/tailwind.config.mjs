@@ -12,6 +12,9 @@ module.exports = {
       black: '#000',
     },
     extend: {
+      screens: {
+        lg: '1060px',
+      },
       fontFamily: {
         brandon: [
           'brandon-grotesque',
