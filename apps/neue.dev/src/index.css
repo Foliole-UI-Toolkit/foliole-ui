@@ -128,7 +128,7 @@ span {
   }
 
   .theme-generator .options-input-wrapper {
-    @apply gap-2 grid items-center lg:grid-cols-[120px,_1fr];
+    @apply grid items-center gap-2 lg:grid-cols-2;
 
     /* Media query for md breakpoint */
   }
