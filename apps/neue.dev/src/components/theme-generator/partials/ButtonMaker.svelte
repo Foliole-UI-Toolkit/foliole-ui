@@ -10,17 +10,20 @@
     const inputName = event?.target?.name
     const inputValue = event?.target?.value
 
-    themeOptionsStore.updateBtnOpts({ [inputName]: parseFloat(inputValue) })
+    const value = inputName.startsWith('fontSize') ? inputValue : parseFloat(inputValue)
+
+    themeOptionsStore.updateBtnOpts({ [inputName]: value })
 
     dispatch('btnInputChange')
   }
 
   const fontSizeMap = {
-    '12px': '--font-scale-xs',
-    '14px': '--font-scale-sm',
-    '16px': '--font-scale-base',
-    '18px': '--font-scale-lg',
-    '20px': '--font-scale-xl',
+    xs: '--font-xs',
+    sm: '--font-sm',
+    md: '--font-md',
+    lg: '--font-lg',
+    xl: '--font-xl',
+    '2xl': '--font-2xl',
   }
 </script>
 

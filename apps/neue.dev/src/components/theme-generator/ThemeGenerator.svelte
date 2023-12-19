@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { roundedOpts } from './data/settings.ts'
   // Local components
   // Colors
   import ChipOptions from './partials/ChipOptions.svelte'
@@ -15,14 +16,7 @@
   import { centers, useColorSchemes, useGenerateColor, useGetColorValue, useGetConvertedColor } from './utilities'
 
   // Helpers
-  import {
-    buildBtnStrings,
-    buildColorStrings,
-    buildElStrings,
-    capJsInCSSString,
-    buildUIRoundStrings,
-    type BuiltResults,
-  } from './helpers/stringBuilders'
+  import { buildBtnStrings, buildColorStrings, buildUIRoundStrings, buildElStrings } from './helpers/stringBuilders'
 
   import { buildColorShades } from './helpers'
 
@@ -66,34 +60,22 @@
 
   let initialized = false
   // Cached String Results
-  let builtSchemeColorString: BuiltResults = { cssVarsBuilt: '', jsInCSSBuilt: '', twVarsBuilt: '' }
-  let builtDerivedColorString: BuiltResults = { cssVarsBuilt: '', jsInCSSBuilt: '', twVarsBuilt: '' }
-  let builtBtnString: BuiltResults = { cssVarsBuilt: '', jsInCSSBuilt: '' }
-  let builtUIRoundString: BuiltResults = { cssVarsBuilt: '', jsInCSSBuilt: '' }
-  let builtElBtnString: BuiltResults = { cssVarsBuilt: '', jsInCSSBuilt: '' }
+  let builtSchemeColorString = ''
+  let builtDerivedColorString = ''
+  let builtBtnString = ''
+  let builtUIRoundString = ''
+  let builtElBtnString = ''
 
   // Previews
   $: previewCSSVars = ''
-  $: themeOptsJsInCSS = ''
 
   $: {
     // once initialized, dynamically build strings for preview and user options with previous values.
     if (initialized) {
       let cssVars =
-        builtSchemeColorString.cssVarsBuilt +
-        builtDerivedColorString.cssVarsBuilt +
-        builtBtnString.cssVarsBuilt +
-        builtUIRoundString.cssVarsBuilt +
-        builtElBtnString.cssVarsBuilt
+        builtSchemeColorString + builtDerivedColorString + builtBtnString + builtUIRoundString + builtElBtnString
 
-      previewCSSVars = `<style>\n:root { \n ${cssVars}  }</style>`
-      themeOptsJsInCSS =
-        capJsInCSSString(builtSchemeColorString.jsInCSSBuilt + builtDerivedColorString.jsInCSSBuilt, 'color') +
-        capJsInCSSString(builtDerivedColorString.jsInCSSBuilt, 'tw') +
-        capJsInCSSString(builtBtnString.jsInCSSBuilt, 'btn') +
-        capJsInCSSString(builtUIRoundString.jsInCSSBuilt, 'ui') +
-        builtElBtnString.jsInCSSBuilt +
-        capJsInCSSString(builtElBtnString.cssVarsBuilt, 'el')
+      previewCSSVars = `\n:root { \n ${cssVars}  }\n`
     }
   }
 
@@ -342,7 +324,7 @@
 </script>
 
 <svelte:window on:keydown={handleKeyDown} />
-<svelte:head>{@html previewCSSVars}</svelte:head>
+<svelte:head>{@html `<style> ${previewCSSVars} </style>`}</svelte:head>
 
 <div class="p-4 space-y-4">
   <section class="p-8">
@@ -409,7 +391,7 @@
     </div>
   </section>
 
-  <pre><code class="language-javascript">{themeOptsJsInCSS}</code></pre>
+  <pre><code class="language-javascript">{previewCSSVars}</code></pre>
 </div>
 
 <style lang="post-css">

@@ -1,5 +1,5 @@
 module.exports = {
-  'font-scale': {
+  font: {
     xs: '.75rem',
     sm: '1rem',
     md: '1.125rem',

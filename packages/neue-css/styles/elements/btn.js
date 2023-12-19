@@ -1,5 +1,5 @@
 module.exports = {
-  button: {
+  btn: {
     '.btn-sm': {
       padding: 'var(--btn-sm)',
       fontSize: 'var(--btn-font-sm-size)',
@@ -22,7 +22,7 @@ module.exports = {
       alignItems: 'center',
       textAlign: 'center',
       whiteSpace: 'nowrap',
-      borderRadius: 'var(--ui-button-roundness)',
+      borderRadius: 'var(--ui-btn-roundness)',
       transition: 'filter 0.2s ease-in-out, transform 0.2s ease-in-out',
     },
     '.btn-base:hover': {

@@ -1,5 +1,5 @@
 module.exports = {
-  borderRadius: {
+  'ui-roundness': {
     none: '0px',
     sm: '0.125rem',
     DEFAULT: '0.25rem',

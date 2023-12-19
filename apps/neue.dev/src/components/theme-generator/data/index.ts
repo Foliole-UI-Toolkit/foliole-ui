@@ -151,9 +151,9 @@ export const initThemeOptions = {
     activeScale: '0.9',
     hoverBrightnessScale: '1.05',
     activeBrightnessScale: '0.95',
-    fontSizeSm: '0.75',
-    fontSize: '1',
-    fontSizeLg: '1.25',
+    fontSizeSm: '--font-sm',
+    fontSize: '--font-md',
+    fontSizeLg: '--font-lg',
   },
   fontOpts: {
     base: '',
@@ -163,9 +163,9 @@ export const initThemeOptions = {
     textColorDark: '255 255 255',
   },
   roundedOpts: {
-    size: '--border-radius-md',
-    btnRoundness: '--border-radius-full',
-    inputRoundness: '--border-radius-full',
-    colorSwatchRoundness: '--border-radius-full',
+    size: '--ui-roundness-md',
+    btnRoundness: '--ui-roundness-full',
+    inputRoundness: '--ui-roundness-full',
+    colorSwatchRoundness: '--ui-roundness-full',
   },
 }

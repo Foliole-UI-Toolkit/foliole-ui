@@ -13,10 +13,10 @@ const { toCSSProperties } = require('./index.js')
 const generateColors = require('./generate-colors.js')
 
 // Elements, Properties, Utilities, Tokens and Components - see docs for clarity on how Neue and TW define these.
-const { button } = require('../styles/elements/button.js')
+const { btn } = require('../styles/elements/btn.js')
 const { input } = require('../styles/elements/input.js')
 const { spacing } = require('../styles/properties/spacing.js')
-const { borderRadius } = require('../styles/properties/border-radius.js')
+const uiRoundness = require('../styles/properties/roundness.js')
 const { appShell } = require('../styles/components/app-shell.js')
 const { appRail } = require('../styles/components/app-rail.js')
 const { accordion } = require('../styles/components/accordion.js')
@@ -28,21 +28,21 @@ const AT_TW_UTILITIES = '@tailwind utilities;'
 
 const baseDir = path.join(__dirname, '..')
 // put all the themes in a array.
-const themes = [neueTheme]
 
 // Taking components, elements and tokens and merging into an object.
-let mergedCSSInJsVanilla = {
+let mergedCSSInJsCompsAndElsForVanilla = {
   ...accordion,
   ...appRail,
   ...appShell,
   ...slideToggle,
-  ...button,
+  ...btn,
   ...input,
 }
 
 let twColors = {}
 let backgrounds = {}
 let variants = {}
+let neueCSSProps = ''
 
 // object will hold a ref to these objects.
 let colorTypes = {
@@ -53,7 +53,7 @@ let colorTypes = {
 
 // Taking components (elements and tokens handled by tailwind settings) and merging into an object.
 // Components use elements and tokens.
-const mergedCSSInJsTwComponents = {
+const mergedCSSInJsCompsForTW = {
   ...accordion,
   ...appRail,
   ...appShell,
@@ -61,36 +61,34 @@ const mergedCSSInJsTwComponents = {
 }
 
 // Specific values from themes to be used as CSS properties in TW.
-function generateThemeCSSProps() {
-  const tokens = []
+// function generateNeueTokens(theme) {
+//   const tokens = []
 
-  themes.forEach((theme) => {
-    Object.keys(theme).forEach((token) => {
-      tokens.push([[token], theme[token]])
-    })
-  })
+//   Object.keys(theme).forEach((token) => {
+//     tokens.push([[token], theme[token]])
+//   })
 
-  const results = tokens.map(([token, tokenValue]) => {
-    const css = toCSSProperties(token, tokenValue)
-    return `${css}`
-  })
+//   const results = tokens.map(([token, tokenValue]) => {
+//     const css = toCSSProperties(token, tokenValue)
+//     return `${css}`
+//   })
 
-  return results.join('\n')
-}
+//   return results.join('\n')
+// }
 
-function generateNeueDefaultCSSProps() {
+function generateNeueProps() {
   const spacingCSS = toCSSProperties('spacing', spacing)
-  const borderRadiusCSS = toCSSProperties('border-radius', borderRadius)
+  const roundnessCSS = toCSSProperties('ui-roundness', uiRoundness['ui-roundness'])
 
-  const combinedCSS = spacingCSS + '\n' + borderRadiusCSS
+  const combinedCSS = spacingCSS + '\n' + roundnessCSS
 
   return combinedCSS
 }
-
+// Neue Elements as Components for Tailwind.
 const twPlugin = function ({ addComponents, addUtilities }) {
   // Custom components(TW)/Elements(Neue). Neue Components are generated in their own files.
   const customComponents = {
-    button,
+    btn,
     input,
   }
   // Components(TW)/Elements(Neue) consume tokens.
@@ -110,16 +108,16 @@ const twPlugin = function ({ addComponents, addUtilities }) {
     // we don't need to return colorTypes because the object holds the reference the original objects.
     generateColors(colorNames, stops, colorTypes)
 
-    mergedCSSInJsVanilla = { ...mergedCSSInJsVanilla, ...backgrounds, ...variants }
+    mergedCSSInJsCompsAndElsForVanilla = { ...mergedCSSInJsCompsAndElsForVanilla, ...backgrounds, ...variants }
 
     // Vanilla CSS - post process into file for tw solution
-    const resultVanilla = await postcss().process(mergedCSSInJsVanilla, { parser: postcssJs })
+    const resultVanilla = await postcss().process(mergedCSSInJsCompsAndElsForVanilla, { parser: postcssJs })
     const mergedVanillaCSS = resultVanilla.css
     const neueVanillaPath = path.join(baseDir, 'neue.css')
     await fs.writeFile(neueVanillaPath, mergedVanillaCSS, 'utf8')
 
     // Neue components - post process into file for tw solutions.
-    const resultTw = await postcss().process(mergedCSSInJsTwComponents, { parser: postcssJs })
+    const resultTw = await postcss().process(mergedCSSInJsCompsForTW, { parser: postcssJs })
     const mergedTwCSS = resultTw.css
     const neueForTwPath = path.join(baseDir, 'neue-for-tw.css')
     await fs.writeFile(neueForTwPath, mergedTwCSS, 'utf8')
@@ -129,8 +127,9 @@ const twPlugin = function ({ addComponents, addUtilities }) {
     const propsHeader = `${AT_TW_BASE} \n ${AT_TW_COMPONENTS} \n ${AT_TW_UTILITIES} \n @layer base {\n:root {`
     const propsFooter = `}\n}`
     // Generate both theme specific props and neue default props.
-    const themeCSSProps = generateThemeCSSProps()
-    const neueCSSProps = generateNeueDefaultCSSProps()
+    neueCSSProps = generateNeueProps()
+    const themeCSSProps = neueTheme.theme
+
     const props = `${propsHeader} ${themeCSSProps} ${neueCSSProps} ${propsFooter}`
 
     // Create file.
@@ -144,5 +143,6 @@ const twPlugin = function ({ addComponents, addUtilities }) {
 // For use with tailwind.
 module.exports = {
   twPlugin,
+  neueCSSProps,
   twColors,
 }

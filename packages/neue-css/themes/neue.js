@@ -1,123 +1,93 @@
-const color = {
-  primary: '176 248 158',
-  'primary-light': '255 255 255',
-  'primary-mlt': '254 255 233',
-  'primary-mdk': '102 172 88',
-  'primary-dark': '27 101 21',
-  secondary: '158 248 200',
-  'secondary-light': '255 255 255',
-  'secondary-mlt': '236 255 255',
-  'secondary-mdk': '83 172 128',
-  'secondary-dark': '0 101 62',
-  tertiary: '158 236 248',
-  'tertiary-light': '255 255 255',
-  'tertiary-mlt': '236 255 255',
-  'tertiary-mdk': '82 161 173',
-  'tertiary-dark': '0 92 103',
-  neutral: '126 130 125',
-  'neutral-light': '223 227 222',
-  'neutral-mlt': '183 187 182',
-  'neutral-mdk': '73 77 72',
-  'neutral-dark': '41 45 41',
-  success: '72 238 17',
-  'success-light': '251 255 194',
-  'success-mlt': '166 255 114',
-  'success-mdk': '0 161 0',
-  'success-dark': '0 88 0',
-  error: '238 17 17',
-  'error-light': '255 199 155',
-  'error-mlt': '255 118 85',
-  'error-mdk': '150 0 0',
-  'error-dark': '80 0 0',
-  page: '254 255 253',
-  'page-light': '255 255 255',
-  'page-mlt': '255 255 255',
-  'page-mdk': '178 179 177',
-  'page-dark': '108 109 107',
-  'page-contrast': '19 23 18',
-  'page-contrast-light': '144 149 143',
-  'page-contrast-mlt': '77 82 76',
-  'page-contrast-mdk': '0 0 0',
-  'page-contrast-dark': '0 0 0',
-  surface: '243 248 242',
-  'surface-light': '255 255 255',
-  'surface-mlt': '255 255 255',
-  'surface-mdk': '168 173 167',
-  'surface-dark': '99 103 98',
-  'surface-contrast': '27 30 26',
-  'surface-contrast-light': '155 158 153',
-  'surface-contrast-mlt': '87 90 85',
-  'surface-contrast-mdk': '0 0 0',
-  'surface-contrast-dark': '0 0 0',
-  'surface-raised': '228 232 227',
-  'surface-raised-light': '255 255 255',
-  'surface-raised-mlt': '255 255 255',
-  'surface-raised-mdk': '154 158 153',
-  'surface-raised-dark': '86 89 85',
-  'surface-raised-contrast': '38 41 37',
-  'surface-raised-contrast-light': '169 173 168',
-  'surface-raised-contrast-mlt': '100 103 98',
-  'surface-raised-contrast-mdk': '0 0 0',
-  'surface-raised-contrast-dark': '0 0 0',
-  page: '254 255 253',
-  'page-light': '255 255 255',
-  'page-mlt': '255 255 255',
-  'page-mdk': '178 179 177',
-  'page-dark': '108 109 107',
-  'page-contrast': '19 23 18',
-  'page-contrast-light': '144 149 143',
-  'page-contrast-mlt': '77 82 76',
-  'page-contrast-mdk': '0 0 0',
-  'page-contrast-dark': '0 0 0',
-  surface: '243 248 242',
-  'surface-light': '255 255 255',
-  'surface-mlt': '255 255 255',
-  'surface-mdk': '168 173 167',
-  'surface-dark': '99 103 98',
-  'surface-contrast': '27 30 26',
-  'surface-contrast-light': '155 158 153',
-  'surface-contrast-mlt': '87 90 85',
-  'surface-contrast-mdk': '0 0 0',
-  'surface-contrast-dark': '0 0 0',
-  'surface-raised': '228 232 227',
-  'surface-raised-light': '255 255 255',
-  'surface-raised-mlt': '255 255 255',
-  'surface-raised-mdk': '154 158 153',
-  'surface-raised-dark': '86 89 85',
-  'surface-raised-contrast': '38 41 37',
-  'surface-raised-contrast-light': '169 173 168',
-  'surface-raised-contrast-mlt': '100 103 98',
-  'surface-raised-contrast-mdk': '0 0 0',
-  'surface-raised-contrast-dark': '0 0 0',
-}
-const btn = {
-  sm: '0.4rem 1.2000000000000002rem',
-  'p-base': '0.5rem 1.5rem',
-  chip: '0.25rem 0.75rem',
-  lg: '0.6rem 1.7999999999999998rem',
-  'hover-scale': '0.98',
-  'active-scale': '1.05',
-  'hover-filter': '95%',
-  'active-filter': '102%',
-  'font-sm-size': 'var(--font-scale-sm)',
-  'font-size': 'var(--font-scale-base)',
-  'font-lg-size': 'var(--font-scale-lg)',
-}
-const ui = {
-  rounded: 'var(--border-radius-md)',
-  'button-roundness': 'var(--border-radius-full)',
-  'input-roundness': 'var(--border-radius-full)',
-}
-const el = {
-  sm: '0.25rem',
-  'p-base': '0.5rem',
-  'p-double': '1rem',
-  'p-triple': '1.5rem',
-}
+const theme = `--color-primary: 3 160 223;
+--color-primary-light: 213 255 255;
+--color-primary-mlt: 128 234 255;
+--color-primary-mdk: 0 92 149;
+--color-primary-dark: 0 32 80;
+--color-secondary: 3 13 223;
+--color-secondary-light: 224 163 255;
+--color-secondary-mlt: 136 90 255;
+--color-secondary-mdk: 0 0 147;
+--color-secondary-dark: 0 0 79;
+--color-tertiary: 139 3 223;
+--color-tertiary-light: 255 181 255;
+--color-tertiary-mlt: 221 103 255;
+--color-tertiary-mdk: 53 0 147;
+--color-tertiary-dark: 5 0 79;
+--color-neutral: 204 204 204;
+--color-neutral-light: 255 255 255;
+--color-neutral-mlt: 255 255 255;
+--color-neutral-mdk: 146 146 146;
+--color-neutral-dark: 109 109 109;
+--color-info: 204 204 204;
+--color-info-light: 255 255 255;
+--color-info-mlt: 255 255 255;
+--color-info-mdk: 132 132 132;
+--color-info-dark: 66 66 66;
+--color-success: 65 252 3;
+--color-success-light: 252 255 195;
+--color-success-mlt: 165 255 114;
+--color-success-mdk: 0 174 0;
+--color-success-dark: 0 100 0;
+--color-error: 252 3 3;
+--color-error-light: 255 200 149;
+--color-error-mlt: 255 119 78;
+--color-error-mdk: 163 0 0;
+--color-error-dark: 88 0 0;
+--color-warning: 204 204 204;
+--color-warning-light: 255 255 255;
+--color-warning-mlt: 255 255 255;
+--color-warning-mdk: 132 132 132;
+--color-warning-dark: 66 66 66;
+--color-info: 204 204 204;
+--color-info-light: 255 255 255;
+--color-info-mlt: 255 255 255;
+--color-info-mdk: 132 132 132;
+--color-info-dark: 66 66 66;
+--color-page: 253 255 255;
+--color-page-light: 255 255 255;
+--color-page-mlt: 255 255 255;
+--color-page-mdk: 177 179 179;
+--color-page-dark: 107 109 109;
+--color-page-contrast: 18 22 23;
+--color-page-contrast-light: 143 148 149;
+--color-page-contrast-mlt: 76 81 82;
+--color-page-contrast-mdk: 0 0 0;
+--color-page-contrast-dark: 0 0 0;
+--color-surface: 242 247 248;
+--color-surface-light: 255 255 255;
+--color-surface-mlt: 255 255 255;
+--color-surface-mdk: 167 172 173;
+--color-surface-dark: 98 102 103;
+--color-surface-contrast: 26 29 30;
+--color-surface-contrast-light: 153 157 158;
+--color-surface-contrast-mlt: 85 89 90;
+--color-surface-contrast-mdk: 0 0 0;
+--color-surface-contrast-dark: 0 0 0;
+--color-surface-raised: 227 231 232;
+--color-surface-raised-light: 255 255 255;
+--color-surface-raised-mlt: 255 255 255;
+--color-surface-raised-mdk: 153 157 158;
+--color-surface-raised-dark: 85 89 89;
+--color-surface-raised-contrast: 37 40 41;
+--color-surface-raised-contrast-light: 168 171 173;
+--color-surface-raised-contrast-mlt: 98 102 103;
+--color-surface-raised-contrast-mdk: 0 0 0;
+--color-surface-raised-contrast-dark: 0 0 0;
+--btn-p-sm: 0.375rem 1.3125rem;
+--btn-p-base: .5rem 1.75rem;
+--btn-p-chip: 0.25rem 0.875rem;
+--btn-p-lg: 0.625rem 2.1875rem;
+--btn-hover-scale: 1.1;
+--btn-active-scale: 0.9;
+--btn-hover-filter: 1.05%;
+--btn-active-filter: 0.95%;
+--btn-font-sm-size: var(--font-sm);
+--btn-font-base-size: var(--font-md);
+--btn-font-lg-size: var(--font-lg);
+--ui-rounded: var(--ui-roundness-md);
+--ui-btn-roundness: var(--ui-roundness-full);
+--ui-input-roundness: var(--ui-roundness-full);`
 
 module.exports = {
-  color,
-  btn,
-  ui,
-  el,
+  theme,
 }

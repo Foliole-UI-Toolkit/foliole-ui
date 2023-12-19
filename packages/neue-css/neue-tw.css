@@ -59,7 +59,7 @@
 .rail-tile-wrapper-options {
   aspect-ratio: 1;
   text-align: center;
-  font-size: var(--font-scale-sm);
+  font-size: var(--font-sm);
 }
 .rail-tile-content-wrapper {
   display: flex;

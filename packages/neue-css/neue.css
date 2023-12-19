@@ -57,7 +57,7 @@
 .rail-tile-wrapper-options {
     aspect-ratio: 1;
     text-align: center;
-    font-size: var(--font-scale-sm)
+    font-size: var(--font-sm)
 }
 .rail-tile-content-wrapper {
     display: flex;
@@ -203,7 +203,7 @@
     align-items: center;
     text-align: center;
     white-space: nowrap;
-    border-radius: var(--ui-button-roundness);
+    border-radius: var(--ui-btn-roundness);
     transition: filter 0.2s ease-in-out, transform 0.2s ease-in-out
 }
 .btn-base:hover {
