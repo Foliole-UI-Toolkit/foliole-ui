@@ -8,6 +8,8 @@ module.exports = {
   theme: {
     colors: {
       ...twColors,
+      white: '#fff',
+      black: '#000',
     },
     extend: {
       fontFamily: {
