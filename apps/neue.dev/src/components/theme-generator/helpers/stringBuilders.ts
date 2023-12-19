@@ -75,7 +75,7 @@ export function buildBtnStrings(btnOpts: Record<string, number | string>, derive
   // btn padding sm
   let { cssVars, jsInCSS } = buildLineFromPrefixAndValue(
     'btn',
-    'sm',
+    'p-sm',
     `${get(derivedBtnValues.btnSmPaddingBase)}rem ${get(derivedBtnValues.btnSmPaddingWidth)}rem`,
   )
   cssVarsBuilt += cssVars
@@ -93,7 +93,7 @@ export function buildBtnStrings(btnOpts: Record<string, number | string>, derive
   // chips
   ;({ cssVars, jsInCSS } = buildLineFromPrefixAndValue(
     'btn',
-    'chip',
+    'p-chip',
     `${get(derivedBtnValues.btnChipPaddingBase)}rem ${get(derivedBtnValues.btnChipPaddingWidth)}rem`,
   ))
   cssVarsBuilt += cssVars
@@ -102,7 +102,7 @@ export function buildBtnStrings(btnOpts: Record<string, number | string>, derive
   // btn padding lg
   ;({ cssVars, jsInCSS } = buildLineFromPrefixAndValue(
     'btn',
-    'lg',
+    'p-lg',
     `${get(derivedBtnValues.btnLgPaddingBase)}rem ${get(derivedBtnValues.btnLgPaddingWidth)}rem`,
   ))
   cssVarsBuilt += cssVars
@@ -129,7 +129,7 @@ export function buildBtnStrings(btnOpts: Record<string, number | string>, derive
   ;({ cssVars, jsInCSS } = buildLineFromPrefixAndValue('btn', 'font-sm-size', `var(${btnOpts.fontSizeSm})`))
   cssVarsBuilt += cssVars
   jsInCSSBuilt += jsInCSS
-  ;({ cssVars, jsInCSS } = buildLineFromPrefixAndValue('btn', 'font-size', `var(${btnOpts.fontSize})`))
+  ;({ cssVars, jsInCSS } = buildLineFromPrefixAndValue('btn', 'font-base-size', `var(${btnOpts.fontSize})`))
   cssVarsBuilt += cssVars
   jsInCSSBuilt += jsInCSS
   ;({ cssVars, jsInCSS } = buildLineFromPrefixAndValue('btn', 'font-lg-size', `var(${btnOpts.fontSizeLg})`))

@@ -142,6 +142,7 @@ export const initThemeOptions = {
   primaryHex: '#ef4953',
   roundedBase: '9999px',
   borderBase: '1px',
+  baseFontPxSize: '16',
   btnOpts: {
     paddingBase: '.5',
     paddingWidthScale: '3.5',
