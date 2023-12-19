@@ -22,7 +22,7 @@ withDefaults(defineProps<AppShellProps>(), {
   siteSidebarRightClasses: 'site-sidebar-right site-sidebar-right-options',
   pageClasses: 'page',
   pageHeaderClasses: 'page-header',
-  pageMainClasses: 'page-main h-full',
+  pageMainClasses: 'page-main',
   pageFooterClasses: 'page-footer',
   siteFooterClasses: 'site-footer',
 })
