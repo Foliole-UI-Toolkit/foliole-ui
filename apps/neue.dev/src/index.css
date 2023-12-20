@@ -35,10 +35,10 @@ span {
     @apply btn-chip btn-base;
   }
   .my-input {
-    @apply input-base bg-surface-raised/90;
+    @apply input-base;
   }
   .my-select {
-    @apply select-base bg-surface-raised/90;
+    @apply select-base;
   }
   .my-btn {
     @apply border-2 shadow-md btn-base bg-primary border-primary-mlt;

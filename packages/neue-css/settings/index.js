@@ -9,12 +9,6 @@ const colorNames = [
   'warning',
   'error',
   'neutral',
-  'page',
-  'page-contrast',
-  'surface',
-  'surface-contrast',
-  'surface-raised',
-  'surface-raised-contrast',
 ]
 
 const stops = ['light', 'mlt', 'mdk', 'dark']

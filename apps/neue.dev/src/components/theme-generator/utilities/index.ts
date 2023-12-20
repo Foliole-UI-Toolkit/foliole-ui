@@ -1,8 +1,5 @@
 import chroma from 'chroma-js'
 
-import type { Writable } from 'svelte/store'
-import type { ColorsCollection } from '../types'
-
 type ColorInput = string
 
 type ColorName = 'red' | 'orange' | 'yellow' | 'green' | 'cyan' | 'blue' | 'purple'
@@ -90,6 +87,7 @@ function generateRelativeHue(color: string, distance: number, dir: string) {
 
 export function generateColorFromHSL(hue: number, sat: number, lum: number, type = 'hex') {
   if (type === 'hex') {
+    console.log(lum)
     return chroma(hue, sat, lum, 'hsl').hex()
   }
   console.warn('You passed in an unsupported type.')

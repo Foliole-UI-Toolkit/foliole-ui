@@ -110,11 +110,11 @@ withDefaults(defineProps<Props>(), {
 
 @layer components {
   .my-app-shell {
-    @apply bg-page mx-auto;
+    @apply mx-auto;
     background: linear-gradient(45deg, rgb(var(--color-primary) / 0.05), rgb(var(--color-secondary) / 0.05));
   }
   .my-header {
-    @apply mx-auto w-full bg-page;
+    @apply mx-auto w-full;
     @apply shadow-xl;
     background: linear-gradient(90deg, rgb(var(--color-primary) / 0.05), rgb(var(--color-secondary) / 0.05));
   }
@@ -133,12 +133,12 @@ withDefaults(defineProps<Props>(), {
     border: 2px solid rgb(var(--color-primary-mlt));
   }
   .my-side-bar-left {
-    @apply shadow-sm border-r border-surface-raised;
+    @apply shadow-sm;
 
     background: linear-gradient(90deg, rgb(var(--color-primary) / 0.05), rgb(var(--color-secondary) / 0.05));
   }
   .my-app-rail {
-    @apply border-r border-surface-raised w-[5.5rem];
+    @apply w-[5.5rem];
   }
   .my-page {
     @apply relative z-0;

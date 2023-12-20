@@ -7,7 +7,6 @@
   import ControlsLead from './partials/ControlsLead.svelte'
   import ControlsTail from './partials/ControlsTail.svelte'
   import Swatch from './partials/Swatch.svelte'
-  import SurfaceRelationships from './partials/SurfaceRelationships.svelte'
 
   // Other Theme Opt Components
   import ButtonMaker from './partials/ButtonMaker.svelte'
@@ -22,17 +21,13 @@
 
   // Data
   import { initializeThemeOptionsStore } from './data/stores'
-  import { surfaceMap } from './data/settings'
 
   // Types
-  import type { NeueAdditionalColorSchemesMapKeys, ColorSettings } from './types'
+  import type { ColorSettings } from './types'
 
   // Svelte related
   import { onMount, setContext } from 'svelte'
-  import { writable, get } from 'svelte/store'
-  import type { Writable } from 'svelte/store'
-  // Other
-  import { localStorageStore } from '@skeletonlabs/skeleton'
+  import { writable } from 'svelte/store'
 
   // Get Converted Color Funcs
   const { getHueFromHex } = useGetConvertedColor()
@@ -49,11 +44,8 @@
 
   const { themeOptionsStore, derivedThemeOptions } = initializeThemeOptionsStore()
 
-  const additionalColorsStore: Writable<NeueAdditionalColorSchemesMapKeys> = localStorageStore('additionalColors', {})
-
   // Color options
-  let selectedSurfaceLevel: string = 'low'
-  let grayHue = 0.02
+  let grayHue = 0.05
 
   // Errors
   let hashErrorMessage = ''
@@ -65,6 +57,9 @@
   let builtBtnString = ''
   let builtUIRoundString = ''
   let builtElBtnString = ''
+
+  const baseSaturation = getSaturation($themeOptionsStore.primaryHex)
+  const saturation = baseSaturation > 0.79 ? baseSaturation : baseSaturation + 0.2
 
   // Previews
   $: previewCSSVars = ''
@@ -80,7 +75,7 @@
   }
 
   // Make stores available to context so they can be injected locally as needed in child components.
-  setContext('additionalColorsStore', additionalColorsStore)
+
   setContext('colorSchemeStore', colorSchemeStore)
 
   // Handles random color generation on correct keypress sequence.
@@ -109,35 +104,6 @@
     // btnPaddingBase = event.detail.color
   }
 
-  //
-  // Commented out temporarily while working on feature.
-  //
-  // Handle surface relationship changed.
-  // We will likely need to update the shades for these as well.
-  // function handleSurfaceRelationshipChange(event: CustomEvent) {
-  //   selectedSurfaceLevel = event.detail.selectedSurfaceLevel
-
-  //   let updatedColors: any = {}
-
-  //   updatedColors = generateBaseDerivedColorScheme(updatedColors)
-
-  //   themeOptionsStore.updateDerivedColors(updateColors)
-
-  //   generateDerivedColorShades()
-  // }
-
-  // Handle Gray Hue changed.
-  // We will likely need to update the shades for these as well.
-  // function handleGrayHueChange(event: CustomEvent) {
-  //   grayHue = parseFloat(event.detail.grayHue)
-
-  //   let updatedColors: any = {}
-
-  //   updatedColors = generateBaseDerivedColorScheme(updatedColors)
-
-  //   themeOptionsStore.updateDerivedColors(updateColors)
-  // }
-
   function generateRoundedStrings() {
     builtUIRoundString = buildUIRoundStrings(
       $themeOptionsStore.roundedOpts.size,
@@ -149,46 +115,11 @@
     builtBtnString = buildBtnStrings($themeOptionsStore.btnOpts, derivedThemeOptions)
   }
 
-  // Generate derived colors only.
-  function generateBaseDerivedColorScheme(updatedColors: any) {
-    // Surface colors.
-    const hue = getHueFromHex($themeOptionsStore.primaryHex)
-    updatedColors['neutral'] = generateColorFromHSL(hue, grayHue, 0.5)
-    updatedColors['page'] = generateLightenedValue(
-      updatedColors['neutral'] as string,
-      surfaceMap[selectedSurfaceLevel].page,
-    )
-    updatedColors['surface'] = generateLightenedValue(
-      updatedColors['neutral'] as string,
-      surfaceMap[selectedSurfaceLevel].surface,
-    )
-    updatedColors['surface-raised'] = generateLightenedValue(
-      updatedColors['neutral'] as string,
-      surfaceMap[selectedSurfaceLevel].raised,
-    )
-    updatedColors['page-contrast'] = generateDarkenedValue(
-      updatedColors['neutral'] as string,
-      surfaceMap[selectedSurfaceLevel].page,
-    )
-    updatedColors['surface-contrast'] = generateDarkenedValue(
-      updatedColors['neutral'] as string,
-      surfaceMap[selectedSurfaceLevel].surface,
-    )
-    updatedColors['surface-raised-contrast'] = generateDarkenedValue(
-      updatedColors['neutral'] as string,
-      surfaceMap[selectedSurfaceLevel].raised,
-    )
-
-    return updatedColors
-  }
-
   // Generate color scheme based on base primary hex color.
   function generateBaseColorScheme(updatedColors: Record<string, string | null>) {
     // colorsCollectionStore.update((colorsCollection) => {
     let baseColors: (string | null)[] = []
     // Array because we will have multi gray options later.
-    const baseSaturation = getSaturation($themeOptionsStore.primaryHex)
-    const saturation = baseSaturation > 0.79 ? baseSaturation : baseSaturation + 0.2
 
     updatedColors['error'] = generateColorFromHSL(centers.red, saturation, 0.5)
     updatedColors['success'] = generateColorFromHSL(centers.green, saturation, 0.5)
@@ -198,6 +129,9 @@
       updatedColors['secondary'] = baseColors[0]
       updatedColors['tertiary'] = baseColors[1]
     }
+    const hue = getHueFromHex($themeOptionsStore.primaryHex)
+    updatedColors['neutral'] = generateColorFromHSL(hue, grayHue, 0.5)
+    console.log('updatedColors', updatedColors['neutral'])
 
     // Individual differences in color schemes.
     if ($colorSchemeStore === 'triad') {
@@ -249,18 +183,6 @@
     generateColors()
   }
 
-  function generateDerivedColorShades() {
-    let derivedColorShades: ColorSettings[] = []
-    $themeOptionsStore.derivedColors.forEach((color) => {
-      if (color.hex !== '') {
-        const colorShades = buildColorShades(color)
-        derivedColorShades = [...derivedColorShades, ...colorShades]
-      }
-    })
-
-    return derivedColorShades
-  }
-
   // Loop through all color options and derive shades.
   function generateColorShades() {
     let schemeColorShades: ColorSettings[] = []
@@ -281,18 +203,11 @@
     updatedColors = generateBaseColorScheme(updatedColors)
     themeOptionsStore.updateColors('colors', updatedColors)
 
-    // Create base colors derived from color scheme values.
-    let updatedDerivedColors: Record<string, string | null> = {}
-    updatedDerivedColors = generateBaseDerivedColorScheme(updatedDerivedColors)
-    themeOptionsStore.updateColors('derivedColors', updatedDerivedColors)
-
     // Create shades based on base values.
     let schemeColorShades = generateColorShades()
-    let derivedColorShades = generateDerivedColorShades()
 
     // Build the colors into strings for preview and user options.
     builtSchemeColorString = buildColorStrings(schemeColorShades, 'color')
-    builtDerivedColorString = buildColorStrings(derivedColorShades, 'color')
   }
 
   function generateThemeOpts() {
@@ -304,18 +219,6 @@
     // setting initialized to true to trigger reactive vars.
     // we wait to trigger it to perform the init setup without triggering reactivity each time we assign a value.
     initialized = true
-  }
-
-  function initCachedColors() {
-    // if ($themeOptionsStore.colors[0].hex) {
-    //   $themeOptionsStore.primaryHex = $themeOptionsStore.colors[0].hex
-    // }
-    // if ($additionalColorsStore.warning) {
-    //   updateColorsColl(colorsCollectionStore, 'warning', $additionalColorsStore.warning)
-    // }
-    // if ($additionalColorsStore.info) {
-    //   updateColorsColl(colorsCollectionStore, 'info', $additionalColorsStore.info)
-    // }
   }
 
   onMount(() => {
@@ -362,14 +265,6 @@
           </div>
         {/each}
       </div>
-
-      <h4 class="page-subheading">Surface and hue relationships.</h4>
-      <!-- <SurfaceRelationships
-        {selectedSurfaceLevel}
-        {grayHue}
-        on:surfaceRelationshipsChange={handleSurfaceRelationshipChange}
-        on:grayHueChange={handleGrayHueChange}
-      /> -->
     </div>
   </section>
   <section class="page-section">

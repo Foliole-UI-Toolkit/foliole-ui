@@ -19,7 +19,7 @@ const pathname = new URL(Astro.request.url).pathname;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body class="h-full min-h-screen bg-page">
+	<body class="h-full min-h-screen">
 		<AppShell
 				pathname={pathname}
 				client:load
@@ -35,7 +35,7 @@ const pathname = new URL(Astro.request.url).pathname;
     border: none !important;
   }
   .page-section {
-    @apply p-4 border shadow-sm border-surface-raised;
+    @apply p-4 border shadow-sm;
   }
   .page-heading {
     @apply pb-2 font-bold text-center;
