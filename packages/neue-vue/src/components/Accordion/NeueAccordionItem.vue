@@ -13,10 +13,10 @@ const emits = defineEmits(['toggle'])
 interface AccordionItemProps {
   open?: boolean
   accordionClasses?: string
-  accordionHeaderClasses: string
-  headerControlClasses: string
-  accordionSectionWrapper: string
-  accordionSection: string
+  accordionHeaderClasses?: string
+  headerControlClasses?: string
+  accordionSectionWrapper?: string
+  accordionSection?: string
 }
 
 const props = withDefaults(defineProps<AccordionItemProps>(), {

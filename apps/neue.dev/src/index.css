@@ -67,7 +67,6 @@ span {
     height: 0.1875rem;
   }
   .my-side-bar-left {
-    -webkit-text-fill-color: transparent;
     @apply border-r shadow-sm;
   }
   .my-app-rail {

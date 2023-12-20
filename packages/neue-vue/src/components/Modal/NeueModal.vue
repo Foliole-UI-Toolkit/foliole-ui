@@ -7,24 +7,22 @@ export interface ModalBaseProps {
   show?: boolean
   type: string
   title: string
-  modalBackdropClasses: string
-  modalContentClasses: string
-  modalFooterClasses: string
-  modelValue: string
-  btnColors: string
-  textCancel: string
-  textConfirm: string
-  textSubmit: string
+  modalBackdropClasses?: string
+  modalContentClasses?: string
+  modalFooterClasses?: string
+  modelValue?: string
+  btnColors?: string
+  textCancel?: string
+  textConfirm?: string
+  textSubmit?: string
 }
 
 const props = withDefaults(defineProps<ModalBaseProps>(), {
   show: false,
-  type: '',
   modalBackdropClasses: 'modal-backdrop modal-backdrop-options',
   modalContentClasses: 'modal',
   modalfooterClasses: 'modal-footer',
   modelValue: '',
-  title: '',
   textCancel: 'Cancel',
   textConfirm: 'Confirm',
   textSubmit: 'Submit',

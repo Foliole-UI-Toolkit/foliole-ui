@@ -1,9 +1,4 @@
-<script lang="ts" setup>
-import NeueAppRail from '@neue/neue-vue/src/components/AppRail/NeueAppRail.vue'
-</script>
 <template>
-  <NeueAppRail />
-
   <label class="label">
     <span>Input</span>
     <input class="input" type="text" placeholder="Input" />

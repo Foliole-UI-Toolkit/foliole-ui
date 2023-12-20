@@ -7,10 +7,10 @@ defineEmits(['click', 'keydown'])
 interface SlideToggleProps {
   on?: boolean
   label: string
-  text: string
-  slideToggleClasses: string
-  trackClasses: string
-  thumbClasses: string
+  text?: string
+  slideToggleClasses?: string
+  trackClasses?: string
+  thumbClasses?: string
 }
 
 const props = withDefaults(defineProps<SlideToggleProps>(), {
@@ -34,12 +34,7 @@ const mergedThumbClasses = computed(() => classNames([props.thumbClasses, onClas
 
 <template>
   <div :class="slideToggleClasses" role="switch" data-testid="slide-toggle" tabindex="0" aria-label="{label}">
-    <button
-      :class="trackClasses"
-      :aria-pressed="String(isPressed)"
-      @click="onToggle"
-      @keydown="$emit('keydown', $event)"
-    >
+    <button :class="trackClasses" :aria-pressed="isOn" @click="onToggle" @keydown="$emit('keydown', $event)">
       <span aria-hidden="true" :class="mergedThumbClasses"></span>
     </button>
   </div>
