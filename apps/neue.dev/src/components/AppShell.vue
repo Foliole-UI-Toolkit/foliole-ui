@@ -53,6 +53,7 @@ withDefaults(defineProps<Props>(), {
           <NeueAppRailButton
             v-model="section"
             :selected="section === 'docs'"
+            title="docs"
             value="docs"
             name="sections"
             railItemClasses="rail-item my-rail-item"
@@ -66,6 +67,7 @@ withDefaults(defineProps<Props>(), {
           <NeueAppRailButton
             v-model="section"
             :selected="section === 'styles'"
+            title="styles"
             value="styles"
             name="sections"
             railItemClasses="rail-item my-rail-item"
@@ -78,6 +80,7 @@ withDefaults(defineProps<Props>(), {
           </NeueAppRailButton>
           <NeueAppRailButton
             v-model="section"
+            title="components"
             :selected="section === 'components'"
             value="components"
             name="sections"
