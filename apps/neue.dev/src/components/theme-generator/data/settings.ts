@@ -154,16 +154,16 @@ export const intensityMapGray: { [key: string]: number } = {
 export const grayHues = [0, 0.02, 0.04]
 
 export const roundedOpts = {
-  none: '--border-radius-none',
-  sm: '--border-radius-sm',
-  md: '--border-radius-md',
-  lg: '--border-radius-lg',
-  xl: '--border-radius-xl',
-  full: '--border-radius-full',
+  none: '--ui-roundness-none',
+  sm: '--ui-roundness-sm',
+  md: '--ui-roundness-md',
+  lg: '--ui-roundness-lg',
+  xl: '--ui-roundness-xl',
+  full: '--ui-roundness-full',
 }
 
 export const elementRoundness = {
-  none: '--border-radius-none',
-  rounded: '--ui-rounded',
-  circular: '--border-radius-full',
+  none: '--ui-roundness-none',
+  rounded: '--ui-roundness',
+  circular: '--ui-roundness-full',
 }
