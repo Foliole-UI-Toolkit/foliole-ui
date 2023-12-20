@@ -51,10 +51,10 @@ span {
   /*  Sitewite Layout */
   /* AppShell */
   .my-app-shell {
-    @apply mx-auto bg-page;
+    @apply mx-auto;
   }
   .my-header {
-    @apply w-full mx-auto bg-page;
+    @apply w-full mx-auto;
     @apply shadow-xl;
   }
   .header-bottom {
@@ -68,10 +68,10 @@ span {
   }
   .my-side-bar-left {
     -webkit-text-fill-color: transparent;
-    @apply border-r shadow-sm border-surface-raised;
+    @apply border-r shadow-sm;
   }
   .my-app-rail {
-    @apply border-r border-surface-raised w-[4.5rem];
+    @apply border-r w-[4.5rem];
   }
   .my-rail-item {
     @apply text-sm uppercase;
@@ -86,7 +86,7 @@ span {
     border: none !important;
   }
   .page-section {
-    @apply p-4 border rounded shadow-sm border-surface-raised;
+    @apply p-4 border rounded shadow-sm;
   }
   .page-heading {
     @apply pb-2 font-bold text-center;
@@ -98,7 +98,7 @@ span {
     @apply text-xl font-bold text-center;
   }
   .section-box {
-    @apply p-4 rounded bg-surface;
+    @apply p-4 rounded;
   }
   /* Site components */
   .neue-logo {

@@ -20,19 +20,23 @@
 <div class="space-y-4">
   <label class="options-input-wrapper">
     <span>Theme Roundness:</span>
-    <select class="w-full my-select" bind:value={roundedSize} on:change={(e) => emitBtnOptsChange(e, 'roundedOpts')}>
+    <select
+      class="w-full my-select"
+      bind:value={$themeOptionsStore.roundedOpts.size}
+      on:change={(e) => handleInputChange(e)}
+    >
       {#each Object.entries(roundedOpts) as [key, value]}
         <option {value}>{key}</option>
       {/each}
     </select>
   </label>
-  {#if $themeOptionsStore.roundedOpts.size !== '--border-radius-none'}
+  {#if $themeOptionsStore.roundedOpts.size !== '--ui-roundness-none'}
     <label class="options-input-wrapper">
       <span>Button Roundness:</span>
       <select
         class="w-full my-select"
-        bind:value={buttonRoundLevel}
-        on:change={(e) => emitBtnOptsChange(e, 'buttonRoundness')}
+        bind:value={$themeOptionsStore.roundedOpts.btnRoundness}
+        on:change={(e) => handleInputChange(e)}
       >
         {#each Object.entries(elementRoundness) as [key, value]}
           <option {value}>{key}</option>
@@ -40,13 +44,13 @@
       </select>
     </label>
   {/if}
-  {#if $themeOptionsStore.roundedOpts.size !== '--border-radius-none'}
+  {#if $themeOptionsStore.roundedOpts.size !== '--ui-roundness-none'}
     <label class="options-input-wrapper">
       <span>Input Roundness:</span>
       <select
         class="w-full my-select"
-        bind:value={inputRoundLevel}
-        on:change={(e) => emitBtnOptsChange(e, 'inputRoundness')}
+        bind:value={$themeOptionsStore.roundedOpts.inputRoundness}
+        on:change={(e) => handleInputChange(e)}
       >
         {#each Object.entries(elementRoundness) as [key, value]}
           <option {value}>{key}</option>
