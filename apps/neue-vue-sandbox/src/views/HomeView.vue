@@ -1,10 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-import NeueAppRail from '@neue/neue-vue/src/components/AppRail/NeueAppRail.vue'
-import NeueAppRailAnchor from '@neue/neue-vue/src/components/AppRail/NeueAppRailAnchor.vue'
-import NeueAppRailTile from '@neue/neue-vue/src/components/AppRail/NeueAppRailTile.vue'
-
 let currentTile = ref('1')
 </script>
 
