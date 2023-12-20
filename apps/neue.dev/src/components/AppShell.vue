@@ -36,7 +36,7 @@ withDefaults(defineProps<Props>(), {
               </li>
               <!-- This theme generator is written in svelte! Inside of a Vue component due to Astro's features! -->
               <li>
-                <a class="uppercase" href="/examples">examples</a>
+                <a class="uppercase" href="/docs">docs</a>
               </li>
               <li>
                 <a class="uppercase" href="/theme-generator">theme generator</a>
