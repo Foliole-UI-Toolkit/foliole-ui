@@ -16,6 +16,7 @@ const generateColors = require('./generate-colors.js')
 const { btn } = require('../styles/elements/btn.js')
 const { input } = require('../styles/elements/input.js')
 const { spacing } = require('../styles/properties/spacing.js')
+const { font } = require('../styles/properties/font.js')
 const uiRoundness = require('../styles/properties/roundness.js')
 const { appShell } = require('../styles/components/app-shell.js')
 const { appRail } = require('../styles/components/app-rail.js')
@@ -28,6 +29,7 @@ const AT_TW_UTILITIES = '@tailwind utilities;'
 
 const baseDir = path.join(__dirname, '..')
 // put all the themes in a array.
+const themes = [neueTheme.theme]
 
 // Taking components, elements and tokens and merging into an object.
 let mergedCSSInJsCompsAndElsForVanilla = {
@@ -60,27 +62,12 @@ const mergedCSSInJsCompsForTW = {
   ...slideToggle,
 }
 
-// Specific values from themes to be used as CSS properties in TW.
-// function generateNeueTokens(theme) {
-//   const tokens = []
-
-//   Object.keys(theme).forEach((token) => {
-//     tokens.push([[token], theme[token]])
-//   })
-
-//   const results = tokens.map(([token, tokenValue]) => {
-//     const css = toCSSProperties(token, tokenValue)
-//     return `${css}`
-//   })
-
-//   return results.join('\n')
-// }
-
 function generateNeueProps() {
   const spacingCSS = toCSSProperties('spacing', spacing)
   const roundnessCSS = toCSSProperties('ui-roundness', uiRoundness['ui-roundness'])
+  const fontCSS = toCSSProperties('font', font)
 
-  const combinedCSS = spacingCSS + '\n' + roundnessCSS
+  const combinedCSS = spacingCSS + '\n' + roundnessCSS + '\n' + fontCSS
 
   return combinedCSS
 }
@@ -99,6 +86,20 @@ const twPlugin = function ({ addComponents, addUtilities }) {
         [`${className}`]: component[className],
       })
     }
+  }
+}
+
+async function generateAndWriteThemeCSS(theme) {
+  const propsHeader = `${AT_TW_BASE} \n ${AT_TW_COMPONENTS} \n ${AT_TW_UTILITIES} \n @layer base {\n:root {`
+  const propsFooter = `}\n}`
+
+  try {
+    const themeCSS = `${propsHeader} ${neueCSSProps} ${theme.contents} ${propsFooter}`
+
+    const themeCSSFilePath = path.join(baseDir, `dist/themes/theme-${theme.name}-tw-props.css`)
+    await fs.writeFile(themeCSSFilePath, themeCSS, 'utf8')
+  } catch (error) {
+    console.error(`Error generating ${theme.name}.css:`, error)
   }
 }
 
@@ -122,19 +123,10 @@ const twPlugin = function ({ addComponents, addUtilities }) {
     const neueForTwPath = path.join(baseDir, 'dist/neue-for-tw.css')
     await fs.writeFile(neueForTwPath, mergedTwCSS, 'utf8')
 
-    // CSS properties for use with tailwind.
-    // Header and footer for props file.
-    const propsHeader = `${AT_TW_BASE} \n ${AT_TW_COMPONENTS} \n ${AT_TW_UTILITIES} \n @layer base {\n:root {`
-    const propsFooter = `}\n}`
     // Generate both theme specific props and neue default props.
     neueCSSProps = generateNeueProps()
-    const themeCSSProps = neueTheme.theme
 
-    const props = `${propsHeader} ${themeCSSProps} ${neueCSSProps} ${propsFooter}`
-
-    // Create file.
-    const neueTwCSSPropertiesPath = path.join(baseDir, 'dist/neue-tw-css-properties.css')
-    await fs.writeFile(neueTwCSSPropertiesPath, props, 'utf8')
+    await Promise.all(themes.map((theme) => generateAndWriteThemeCSS(theme)))
   } catch (error) {
     console.error('Error occurred:', error)
   }

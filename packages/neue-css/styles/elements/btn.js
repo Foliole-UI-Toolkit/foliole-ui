@@ -1,19 +1,19 @@
 module.exports = {
   btn: {
     '.btn-sm': {
-      padding: 'var(--btn-sm)',
+      padding: 'var(--btn-p-sm)',
       fontSize: 'var(--btn-font-sm-size)',
     },
     '.btn-md': {
       padding: 'var(--btn-p-base)',
-      fontSize: 'var(--btn-font-size)',
+      fontSize: 'var(--btn-font-base-size)',
     },
     '.btn-lg': {
-      padding: 'var(--btn-lg)',
+      padding: 'var(--btn-p-lg)',
       fontSize: 'var(--btn-font-lg-size)',
     },
     '.btn-chip': {
-      padding: 'var(--btn-chip)',
+      padding: 'var(--btn-p-chip)',
       fontSize: 'var(--btn-font-sm-size)',
     },
     '.btn-base': {
