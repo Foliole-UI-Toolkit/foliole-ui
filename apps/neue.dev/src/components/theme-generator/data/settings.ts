@@ -1,4 +1,4 @@
-import type { NeueDerivedColorNames, NeueColorNames, NeueColorScale, SurfaceLevelMap } from '../types'
+import type { NeueColorNames, NeueColorScale } from '../types'
 
 export const neueColorScale = ['light', 'mlt', 'base', 'mdk', 'dark'] as const
 
@@ -13,21 +13,13 @@ export const neueColorNames = [
   'warning',
   'error',
   'neutral',
+  'page',
+  'page-contrast',
 ] as const
 
 // Colors are split up because derived colors have no stops and are handled differently.
-export const neueDerivedColorNames = [
-  'page',
-  'page-contrast',
-  'surface',
-  'surface-contrast',
-  'surface-raised',
-  'surface-raised-contrast',
-] as const
 
 export const neueColorSchemes = ['triad', 'split-complimentary', 'analogous-triad', 'analogous-quad']
-
-export const additionalColorSchemes = ['info', 'warning']
 
 const colorProps = neueColorNames.flatMap((colorName) => {
   return neueColorScale.map((colorShade) => {
@@ -65,97 +57,83 @@ export const steppedSwatchColorClassesMap = {
   'three-mid-range': ['mlt', 'base', 'mdk'],
 }
 
-export const steppedSwatchColorClasses: Record<NeueColorNames, Record<NeueColorScale, string>> = {
+export const steppedSwatchColorClasses: Record<NeueColorNames | string, Record<NeueColorScale, string>> = {
   primary: {
     light: 'bg-primary-light',
     mlt: 'bg-primary-mlt',
-    base: 'bg-primary text-on-primary-token fill-on-primary-token',
+    base: 'bg-primary text-on-primary-token',
     mdk: 'bg-primary-mdk',
     dark: 'bg-primary-dark',
   },
   secondary: {
     light: 'bg-secondary-light',
     mlt: 'bg-secondary-mlt',
-    base: 'bg-secondary text-on-secondary-token fill-on-secondary-token',
+    base: 'bg-secondary text-on-secondary-token',
     mdk: 'bg-secondary-mdk',
     dark: 'bg-secondary-dark',
   },
   tertiary: {
     light: 'bg-tertiary-light',
     mlt: 'bg-tertiary-mlt',
-    base: 'bg-tertiary text-on-tertiary-token fill-on-tertiary-token',
+    base: 'bg-tertiary text-on-tertiary-token',
     mdk: 'bg-tertiary-mdk',
     dark: 'bg-tertiary-dark',
   },
   quat: {
     light: 'bg-quat-light',
     mlt: 'bg-quat-mlt',
-    base: 'bg-quat text-on-quat-token fill-on-quat-token',
+    base: 'bg-quat text-on-quat-token',
     mdk: 'bg-quat-mdk',
     dark: 'bg-quat-dark',
   },
   quin: {
     light: 'bg-quin-light',
     mlt: 'bg-quin-mlt',
-    base: 'bg-quin text-on-quin-token fill-on-quin-token',
+    base: 'bg-quin text-on-quin-token',
     mdk: 'bg-quin-mdk',
     dark: 'bg-quin-dark',
   },
   success: {
     light: 'bg-success-light',
     mlt: 'bg-success-mlt',
-    base: 'bg-success text-on-success-token fill-on-success-token',
+    base: 'bg-success text-on-success-token',
     mdk: 'bg-success-mdk',
     dark: 'bg-success-dark',
   },
   warning: {
     light: 'bg-warning-light',
     mlt: 'bg-warning-mlt',
-    base: 'bg-warning text-on-warning-token fill-on-warning-token',
+    base: 'bg-warning text-on-warning-token',
     mdk: 'bg-warning-mdk',
     dark: 'bg-warning-dark',
   },
   error: {
     light: 'bg-error-light',
     mlt: 'bg-error-mlt',
-    base: 'bg-error text-on-error-token fill-on-primary-token',
+    base: 'bg-error text-on-error-token',
     mdk: 'bg-error-mdk',
     dark: 'bg-error-dark',
   },
   info: {
     light: 'bg-info-light',
     mlt: 'bg-info-mlt',
-    base: 'bg-info text-on-info-token fill-on-primary-token',
+    base: 'bg-info text-on-info-token',
     mdk: 'bg-info-mdk',
     dark: 'bg-info-dark',
   },
   neutral: {
     light: 'bg-neutral-light',
     mlt: 'bg-neutral-mlt',
-    base: 'bg-neutral text-on-neutral-token fill-on-neutral-token',
+    base: 'bg-neutral text-on-neutral-token',
     mdk: 'bg-neutral-mdk',
     dark: 'bg-neutral-dark',
   },
-}
-
-export const singleSwatchColorClasses: Record<NeueDerivedColorNames, { base: string }> = {
   page: {
-    base: 'bg-page',
-  },
-  'page-contrast': {
-    base: 'bg-page-contrast',
-  },
-  surface: {
-    base: 'bg-surface',
-  },
-  'surface-contrast': {
-    base: 'bg-surface-contrast',
-  },
-  'surface-raised': {
-    base: 'bg-surface-raised',
-  },
-  'surface-raised-contrast': {
-    base: 'bg-surface-raised-contrast',
+    light: 'bg-neutral-light',
+    mlt: 'bg-neutral-mlt',
+    base: 'bg-neutral text-on-neutral-token',
+    mdk: 'bg-neutral-mdk',
+    dark: 'bg-neutral-dark',
   },
 }
 
@@ -173,37 +151,19 @@ export const intensityMapGray: { [key: string]: number } = {
   dark: 2,
 }
 
-export const surfaceMap: SurfaceLevelMap = {
-  white: {
-    page: 3,
-    surface: 2.5,
-    raised: 2.3,
-  },
-  low: {
-    page: 2.6,
-    surface: 2.4,
-    raised: 2.1,
-  },
-  high: {
-    page: 2.5,
-    surface: 2.3,
-    raised: 2.0,
-  },
-}
-
 export const grayHues = [0, 0.02, 0.04]
 
 export const roundedOpts = {
-  none: '--border-radius-none',
-  sm: '--border-radius-sm',
-  md: '--border-radius-md',
-  lg: '--border-radius-lg',
-  xl: '--border-radius-xl',
-  full: '--border-radius-full',
+  none: '--ui-roundness-none',
+  sm: '--ui-roundness-sm',
+  md: '--ui-roundness-md',
+  lg: '--ui-roundness-lg',
+  xl: '--ui-roundness-xl',
+  full: '--ui-roundness-full',
 }
 
 export const elementRoundness = {
-  none: '--border-radius-none',
-  rounded: '--ui-rounded',
-  circular: '--border-radius-full',
+  none: '--ui-roundness-none',
+  rounded: '--ui-roundness',
+  circular: '--ui-roundness-full',
 }

@@ -4,7 +4,7 @@
 - Package name: @neue/neue-ui
 - Core maintainer: Aaron Crockett
 
-This toolkit is designed for framework flexibility and simplifies the process of porting to various frameworks. It achieves this by relying on CSS composition that is loosely coupled with a framework's props. Users have the option to use Neue's default CSS classes or create their own styles by combining Neue's classes and their own. Some ways this can be done are by using Tailwind's apply or custom built HTML wrappers. Additionally, Neue will use custom CSS Properties to offer an alternative to Tailwind, providing users with the freedom to use their own CSS solution. However, Neue is also designed to seamlessly work with Tailwind for those users, like myself, who prefer using it.
+This toolkit is designed for framework flexibility and simplifies the process of porting to various frameworks. It achieves this by relying on CSS composition that is loosely coupled with a framework's props. Users have the option to use Neue's default CSS classes or create their own styles by combining Neue's classes and their own. This can be done using the classnames plugin, Tailwind's apply, or custom built HTML wrappers. Additionally, Neue will use custom CSS Properties to offer an alternative to Tailwind, providing users with the freedom to use their own CSS solution. However, Neue is also designed to seamlessly work with Tailwind for those users, like myself, who prefer using it.
 
 This toolkit is influenced by Daisy UI and Skeleton UI Toolkit. However it differs in these ways:
 

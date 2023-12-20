@@ -1,10 +1,4 @@
-import type { Writable } from 'svelte/store'
-import { setContext } from 'svelte'
-
-import { localStorageStore } from '@skeletonlabs/skeleton'
-import type { ThemeOptionsCollection } from '../types'
-
-const storeThemeOptions: Writable<ThemeOptionsCollection> = localStorageStore('storeThemeOptions', {
+export const initThemeOptions = {
   colors: [
     {
       key: 'primary',
@@ -47,22 +41,6 @@ const storeThemeOptions: Writable<ThemeOptionsCollection> = localStorageStore('s
       stops: 'light,mlt,base,mdk,dark',
     },
     {
-      key: 'neutral',
-      label: 'Neutral',
-      hex: '',
-      rgb: '0 0 0',
-      on: '0 0 0',
-      stops: 'light,mlt,base,mdk,dark',
-    },
-    {
-      key: 'info',
-      label: 'Info',
-      hex: '',
-      rgb: '0 0 0',
-      on: '0 0 0',
-      stops: 'mlt,base,mdk',
-    },
-    {
       key: 'success',
       label: 'Success',
       hex: '',
@@ -79,81 +57,42 @@ const storeThemeOptions: Writable<ThemeOptionsCollection> = localStorageStore('s
       stops: 'mlt,base,mdk',
     },
     {
-      key: 'warning',
-      label: 'Warning',
+      key: 'neutral',
+      label: 'Neutral',
       hex: '',
       rgb: '0 0 0',
       on: '0 0 0',
-      stops: 'mlt,base,mdk',
-    },
-    {
-      key: 'info',
-      label: 'Info',
-      hex: '',
-      rgb: '0 0 0',
-      on: '0 0 0',
-      stops: 'mlt,base,mdk',
+      stops: 'light,mlt,base,mdk,dark',
     },
   ],
-  derivedColors: [
-    {
-      key: 'page',
-      label: 'Page',
-      hex: '',
-      rgb: '0 0 0',
-      on: '0 0 0',
-      stops: '',
-    },
-    {
-      key: 'page-contrast',
-      label: 'Page Contrast',
-      hex: '',
-      rgb: '0 0 0',
-      on: '0 0 0',
-      stops: '',
-    },
-    {
-      key: 'surface',
-      label: 'Surface',
-      hex: '',
-      rgb: '0 0 0',
-      on: '0 0 0',
-      stops: '',
-    },
-    {
-      key: 'surface-contrast',
-      label: 'Surface Contrast',
-      hex: '',
-      rgb: '0 0 0',
-      on: '0 0 0',
-      stops: '',
-    },
-    {
-      key: 'surface-raised',
-      label: 'Surface Raised',
-      hex: '',
-      rgb: '0 0 0',
-      on: '0 0 0',
-      stops: '',
-    },
-    {
-      key: 'surface-raised-contrast',
-      label: 'Surface Raised Contrast',
-      hex: '',
-      rgb: '0 0 0',
-      on: '0 0 0',
-      stops: '',
-    },
-  ],
-  fontBase: 'system',
-  fontSecondary: 'system',
-  textColorLight: '0 0 0',
-  textColorDark: '255 255 255',
+
+  primaryHex: '#ef4953',
   roundedBase: '9999px',
   borderBase: '1px',
-})
-
-export function setStoreThemeOptions() {
-  setContext('storeThemeOptions', storeThemeOptions)
-  return storeThemeOptions
+  baseFontPxSize: '16',
+  btnOpts: {
+    paddingBase: '.5',
+    paddingWidthScale: '3.5',
+    sizeScale: '1',
+    hoverScale: '1.1',
+    activeScale: '0.9',
+    hoverBrightnessScale: '1.05',
+    activeBrightnessScale: '0.95',
+    fontSizeSm: '--font-sm',
+    fontSize: '--font-md',
+    fontSizeLg: '--font-lg',
+  },
+  fontOpts: {
+    base: '',
+    secondary: '',
+    size: '',
+    textColorLight: '0 0 0',
+    textColorDark: '255 255 255',
+  },
+  roundedOpts: {
+    size: '--ui-roundness-md',
+    btnRoundness: '--ui-roundness-full',
+    inputRoundness: '--ui-roundness-full',
+    colorSwatchRoundness: '--ui-roundness-full',
+  },
 }

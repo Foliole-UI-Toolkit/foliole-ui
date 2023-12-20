@@ -1,6 +1,6 @@
 const plugin = require('tailwindcss/plugin')
 
-const { twColors, twPlugin } = require('../../packages/neue-css/scripts/generate-css')
+const { twColors, twPlugin } = require('../../packages/neue-css/scripts/generate')
 
 module.exports = {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}', '../../packages/neue-css/**/*.{js}'],
@@ -8,13 +8,8 @@ module.exports = {
   theme: {
     colors: {
       ...twColors,
-      white: '#fff',
-      black: '#000',
     },
     extend: {
-      screens: {
-        lg: '1060px',
-      },
       fontFamily: {
         brandon: [
           'brandon-grotesque',

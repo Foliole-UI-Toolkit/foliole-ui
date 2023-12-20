@@ -1,32 +1,18 @@
 <script lang="ts">
+  import { getThemeOptionsStore } from '../data/stores'
   import { roundedOpts, elementRoundness } from '../data/settings'
   import { createEventDispatcher } from 'svelte'
 
-  export let roundedSize = '--border-radius-md'
-  export let buttonRoundLevel = '--border-radius-full'
-  export let inputRoundLevel = '--borer-radius-full'
-
   const dispatch = createEventDispatcher()
 
-  function emitBtnOptsChange(event: Event, selectId: string) {
-    const selectedValue = event?.target?.value
+  const themeOptionsStore = getThemeOptionsStore() as any
 
-    if (selectId === 'roundedOpts') {
-      roundedSize = selectedValue
-      if (selectedValue === '--border-radius-none') {
-        buttonRoundLevel = '--border-radius-none'
-        inputRoundLevel = '--border-radius-none'
-      }
-    } else if (selectId === 'buttonRoundness') {
-      buttonRoundLevel = selectedValue
-    } else if (selectId === 'inputRoundness') {
-      inputRoundLevel = selectedValue
-    }
-    dispatch('roundedOptsChange', {
-      roundedSize,
-      buttonRoundLevel,
-      inputRoundLevel,
-    })
+  function handleInputChange(event: any) {
+    const inputName = event?.target?.name
+    const inputValue = event?.target?.value
+
+    themeOptionsStore.updateRoundedOpts({ [inputName]: inputValue })
+    dispatch('roundedInputChange')
   }
 </script>
 
@@ -40,7 +26,7 @@
       {/each}
     </select>
   </label>
-  {#if roundedSize !== '--border-radius-none'}
+  {#if $themeOptionsStore.roundedOpts.size !== '--border-radius-none'}
     <label class="options-input-wrapper">
       <span>Button Roundness:</span>
       <select
@@ -54,7 +40,7 @@
       </select>
     </label>
   {/if}
-  {#if roundedSize !== '--border-radius-none'}
+  {#if $themeOptionsStore.roundedOpts.size !== '--border-radius-none'}
     <label class="options-input-wrapper">
       <span>Input Roundness:</span>
       <select

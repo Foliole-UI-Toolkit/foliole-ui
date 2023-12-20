@@ -1,96 +1,21 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Logo from '../components/Logo.vue';
 ---
 
-<Layout  title="Welcome to Astro.">
-	<div class="flex flex-col p-2 mx-auto space-y-2 text-center hp">
-		<div class="rounded-md banner">
-			<div class="p-2 m-1 rounded-md banner-inner">
-				<h1 class="text-xl font-bold">Welcome to the Neue UI Alpha!</h1>
-				<p class="text-sm">
-						This is an early demo site for testing and feedback from colleagues, family and friends. Please feel free to share this with others who can would like to help out and or can provide constructive feedback. The framework specific compoments will be made in Vue and Svelte first as these are the frameworks  	<a href="">See more info</a>
-				</p>
-			</div>
-		</div>
-
-
-			<div class="pt-6">
-				<Logo logoClasses="neue-logo w-6 h-6 neue-logo-options mr-0 mb-1" logoWrapperClasses="neue-logo-wrapper flex-col justify-center items-center" />
-				<div class="my-2 text-center uppercase">
-					<span class="inline-block leading-3 ">the </span><br>
-					<h2 class="ui-toolkit-h2 w-auto text-6xl font-bold text-center leading-[3.5rem]">UI Toolkit & Library <br></h2>
-				</div>
-			</div>
-			<div class="flex flex-col p-4 space-y-8">            
-				<div class="mx-auto">
-					<ul class="grid gap-4 lg:grid-cols-3">
-						<li class="p-4 rounded bg-surface">
-							<span class="inline-block w-full text-2xl font-bold">Theme Generator.</span>
-							<span class="inline-block">
-								Generate colors, font options, proportions, common theme options such as theme roundness, and more.
-							</span>
-						</li>
-						<li class="p-4 rounded bg-surface">
-							<span class="inline-block w-full text-2xl font-bold">Vanilla CSS and Tailwind Classes.</span>
-							<span class="inline-block">
-								Work with either CSS properties/variables in your own CSS solution. Or uses or classes in conjunction with tailwind.
-							</span>
-						</li>
-						<li class="p-4 rounded bg-surface">
-							<span class="inline-block w-full text-2xl font-bold">Flexible UI Component libraries.</span>
-							<span class="inline-block">
-								Neue is currently being developed for use with Vue and Svelte. Because the library is written to pass in css utility classes rather (sometimes dozens) from individual prop options, we can reduce the need for framework specific prop logic. This makes it easier to develop for mulitple frameworks.
-							</span>
-						</li>
-					</ul>
-				</div>
-			</div>
-			<div class="p-4 bg-white border rounded border-surface-raised">
-				<p>Testing coming soon. A roadmap is coming in the near future.</p>
-				<p>Areas this project could use more help with:</p>
-				<ul class="p-2 mt-4 rounded bg-surface">
-					<li>TypeScript.</li>
-					<li>Testing.</li>
-					<li>Accessibility.</li>
-					<li>Other frontend frameworks especially React.</li>
-					<li>General ideas, points of view and feedback.</li>
-				</ul>
-			</div>
-		
+<Layout title="Welcome to Astro.">
+	<div class="container p-4 mx-auto space-y-4">
+		<h1 class="text-2xl text-center">Welcome to the Alpha version of Neue UI!</h1>
+		<p>
+			 This is an early demo site for testing and feedback from colleagues, family and friends. Please feel free to share this with others who can would like to help out and or can provide constructive feedback. The framework specific compoments will be made in Vue and Svelte first as these are the frameworks I know. 
+		</p>
+		<p>Testing coming soon. A roadmap is coming in the near future.</p>
+	 	<p>Areas this project could use more help with:</p>
+		<ul class="my-list">
+			<li>TypeScript.</li>
+			<li>Testing.</li>
+			<li>Accessibility.</li>
+			<li>Other frontend frameworks especially React.</li>
+			<li>General ideas, points of view and feedback.</li>
+		</ul>
 	</div>
 </Layout>
-<style>
-
-	/* .hp {		
-		background: linear-gradient(
-		30deg,
-			rgb(var(--color-secondary) / 0.2) 0%,
-			rgb(var(--color-secondary) / 0) 35%,
-			rgb(var(--color-secondary) / 0) 70%,
-			rgb(var(--color-tertiary) / 0.2) 100%
-		);
-	} */
-	.banner {
-		background: linear-gradient(
-		45deg,
-			rgb(var(--color-primary) / 0.5) 0%,
-			rgb(var(--color-secondary) / 0.5) 50%,
-			rgb(var(--color-tertiary) / 0.5) 100%
-		);
-	}
-	.banner-inner {
-		background: linear-gradient(
-		45deg,
-			rgb(var(--color-primary-light) / 1) 0%,
-			rgb(var(--color-secondary-light) / 1) 50%,
-			rgb(var(--color-tertiary-light) / 1) 100%
-		);
-	}
-	.ui-toolkit-h2 {
-    background: linear-gradient(45deg, rgb(var(--color-primary) / 1), rgb(var(--color-secondary) / 1),  rgb(var(--color-tertiary) / 1));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-	}
-
-</style>

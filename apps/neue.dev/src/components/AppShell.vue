@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { withDefaults, ref } from 'vue'
 
-import Logo from './Logo.vue'
-
 import NeueAppShell from '@neue/neue-vue/src/components/AppShell/NeueAppShell.vue'
 import NeueAppRail from '@neue/neue-vue/src/components/AppRail/NeueAppRail.vue'
 import NeueAppRailButton from '../../../../packages/neue-vue/src/components/AppRail/NeueAppRailButton.vue'
@@ -26,10 +24,16 @@ withDefaults(defineProps<Props>(), {
     siteSidebarLeftClasses="sidebar-left site-sidebar-left-options my-side-bar-left"
   >
     <template #header>
-      <div class="flex flex-wrap p-4 bg-neutral-mlt-10">
-        <div class="w-full">
-          <div class="flex items-center justify-start mx-auto">
-            <Logo />
+      <div class="flex flex-wrap bg-neutral-mlt-10">
+        <div class="w-full px-2 py-4">
+          <div class="container flex items-center justify-start mx-auto">
+            <span
+              class="self-center justify-center flex-shrink-0 inline-block w-[40px] h-[40px] mr-2 rounded-full shadow-md logo"
+            >
+            </span>
+            <h1 class="text-4xl font-bold whitespace-nowrap">
+              <a href="/"><span class="text-primary-mdk">NEUE </span><span>UI</span></a>
+            </h1>
             <ul class="container flex justify-end w-full p-2 pb-0 mx-auto space-x-4 font-bold">
               <li>
                 <a class="uppercase" href="/">home</a>
@@ -45,7 +49,7 @@ withDefaults(defineProps<Props>(), {
           </div>
         </div>
       </div>
-      <div class="header-bottom border-primary"></div>
+      <div class="h-2 border-t-2 header-bottom border-primary"></div>
     </template>
     <template #sidebar-left>
       <div v-if="pathname !== '/'" class="flex h-full">
@@ -55,7 +59,7 @@ withDefaults(defineProps<Props>(), {
             :selected="section === 'docs'"
             value="docs"
             name="sections"
-            railItemClasses="rail-item my-rail-item"
+            railItemClasses="rail-item rail-item-options"
             client:load
           >
             <template #lead>
@@ -68,7 +72,7 @@ withDefaults(defineProps<Props>(), {
             :selected="section === 'styles'"
             value="styles"
             name="sections"
-            railItemClasses="rail-item my-rail-item"
+            railItemClasses="rail-item rail-item-options"
             client:load
           >
             <template #lead>
@@ -81,26 +85,63 @@ withDefaults(defineProps<Props>(), {
             :selected="section === 'components'"
             value="components"
             name="sections"
-            railItemClasses="rail-item my-rail-item"
+            railItemClasses="rail-item rail-item-options"
             client:load
           >
             <template #lead>
               <span class="block w-full h-full bg-secondary-50"></span>
             </template>
-            <template #label>Comps</template>
+            <template #label>Components</template>
           </NeueAppRailButton>
           <template #tail></template>
         </NeueAppRail>
-        <div class="p-4 w-72">
+        <div class="p-4">
           <h2 class="text-2xl font-bold">Sidebar Left</h2>
           <p class="text-lg">This is the left sidebar.</p>
           <p>{{ section }}</p>
         </div>
       </div>
     </template>
-
-    <div :class="{ 'mx-auto': pathname === '/', 'lg:w-[calc(1200px-22.5rem)]': pathname !== '/' }" class="h-full">
-      <slot></slot>
-    </div>
+    <slot></slot>
   </NeueAppShell>
 </template>
+<style>
+@tailwind components;
+
+@layer components {
+  .my-app-shell {
+    @apply mx-auto;
+    background: linear-gradient(45deg, rgb(var(--color-primary) / 0.05), rgb(var(--color-secondary) / 0.05));
+  }
+  .my-header {
+    @apply mx-auto w-full;
+    @apply shadow-xl;
+    background: linear-gradient(90deg, rgb(var(--color-primary) / 0.05), rgb(var(--color-secondary) / 0.05));
+  }
+  .header-bottom {
+    background: linear-gradient(
+      90deg,
+      rgb(var(--color-primary) / 0.9),
+      rgb(var(--color-secondary-mdk) / 0.9),
+      rgb(var(--color-tertiary-mdk) / 0.8),
+      rgb(var(--color-secondary-mdk) / 0.9),
+      rgb(var(--color-primary) / 0.9)
+    );
+  }
+  .logo {
+    background: linear-gradient(45deg, rgb(var(--color-primary) / 1), rgb(var(--color-secondary) / 1));
+    border: 2px solid rgb(var(--color-primary-mlt));
+  }
+  .my-side-bar-left {
+    @apply shadow-sm;
+
+    background: linear-gradient(90deg, rgb(var(--color-primary) / 0.05), rgb(var(--color-secondary) / 0.05));
+  }
+  .my-app-rail {
+    @apply w-[5.5rem];
+  }
+  .my-page {
+    @apply relative z-0;
+  }
+}
+</style>

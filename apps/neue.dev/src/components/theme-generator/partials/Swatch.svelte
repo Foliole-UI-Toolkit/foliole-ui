@@ -10,7 +10,7 @@
   {#each Object.entries(steppedSwatchColorClasses[color]).filter( ([shade]) => stops.includes(shade), ) as [shade, shadeClasses]}
     <div class="grid grid-rows-[1fr_40px] text-center w-full">
       <!-- Label -->
-      <div class="text-sm text-surface-mdk dark:text-surface-mlt" />
+      <div class="text-sm" />
       <!-- Swatch -->
 
       <div class="h-full flex justify-center items-center {shadeClasses}">

@@ -1,108 +1,96 @@
-const color = {
-  primary: '44 246 202',
-  'primary-light': '236 255 255',
-  'primary-mlt': '149 255 255',
-  'primary-mdk': '0 169 130',
-  'primary-dark': '0 97 64',
-  secondary: '44 155 246',
-  'secondary-light': '230 255 255',
-  'secondary-mlt': '145 229 255',
-  'secondary-mdk': '0 88 170',
-  'secondary-dark': '0 31 99',
-  tertiary: '67 44 246',
-  'tertiary-light': '251 189 255',
-  'tertiary-mlt': '164 115 255',
-  'tertiary-mdk': '0 0 168',
-  'tertiary-dark': '0 0 97',
-  neutral: '125 130 129',
-  'neutral-light': '222 227 226',
-  'neutral-mlt': '182 187 186',
-  'neutral-mdk': '72 77 76',
-  'neutral-dark': '41 45 44',
-  info: '204 204 204',
-  'info-light': '255 255 255',
-  'info-mlt': '255 255 255',
-  'info-mdk': '132 132 132',
-  'info-dark': '66 66 66',
-  success: '69 245 10',
-  'success-light': '252 255 194',
-  'success-mlt': '165 255 114',
-  'success-mdk': '0 167 0',
-  'success-dark': '0 94 0',
-  error: '245 10 10',
-  'error-light': '255 200 151',
-  'error-mlt': '255 118 81',
-  'error-mdk': '156 0 0',
-  'error-dark': '84 0 0',
-  warning: '204 204 204',
-  'warning-light': '255 255 255',
-  'warning-mlt': '255 255 255',
-  'warning-mdk': '132 132 132',
-  'warning-dark': '66 66 66',
-  info: '204 204 204',
-  'info-light': '255 255 255',
-  'info-mlt': '255 255 255',
-  'info-mdk': '132 132 132',
-  'info-dark': '66 66 66',
-  page: '253 255 255',
-  'page-light': '255 255 255',
-  'page-mlt': '255 255 255',
-  'page-mdk': '177 179 179',
-  'page-dark': '107 109 109',
-  '.page-contrast': '18 23 22',
-  'page-contrast-light': '143 149 148',
-  'page-contrast-mlt': '76 82 81',
-  'page-contrast-mdk': '0 0 0',
-  'page-contrast-dark': '0 0 0',
-  surface: '242 248 247',
-  'surface-light': '255 255 255',
-  'surface-mlt': '255 255 255',
-  'surface-mdk': '167 173 172',
-  'surface-dark': '98 103 102',
-  'surface-contrast': '26 30 29',
-  'surface-contrast-light': '153 158 157',
-  'surface-contrast-mlt': '85 90 89',
-  'surface-contrast-mdk': '0 0 0',
-  'surface-contrast-dark': '0 0 0',
-  'surface-raised': '227 232 231',
-  'surface-raised-light': '255 255 255',
-  'surface-raised-mlt': '255 255 255',
-  'surface-raised-mdk': '153 158 157',
-  'surface-raised-dark': '85 89 89',
-  'surface-raised-contrast': '37 41 40',
-  'surface-raised-contrast-light': '168 173 171',
-  'surface-raised-contrast-mlt': '98 103 102',
-  'surface-raised-contrast-mdk': '0 0 0',
-  'surface-raised-contrast-dark': '0 0 0',
-}
-const btn = {
-  sm: '0.4rem 1.2000000000000002rem',
-  'p-base': '0.5rem 1.5rem',
-  chip: '0.25rem 0.75rem',
-  lg: '0.6rem 1.7999999999999998rem',
-  'hover-scale': '0.98',
-  'active-scale': '1.05',
-  'hover-filter': '95%',
-  'active-filter': '102%',
-  'font-sm-size': 'var(--font-scale-sm)',
-  'font-size': 'var(--font-scale-base)',
-  'font-lg-size': 'var(--font-scale-lg)',
-}
-const ui = {
-  rounded: 'var(--border-radius-md)',
-  'button-roundness': 'var(--border-radius-full)',
-  'input-roundness': 'var(--border-radius-full)',
-}
-const el = {
-  sm: '0.25rem',
-  'p-base': '0.5rem',
-  'p-double': '1rem',
-  'p-triple': '1.5rem',
+const theme = {
+  contents: `--color-primary: 3 160 223;
+  --color-primary-light: 213 255 255;
+  --color-primary-mlt: 128 234 255;
+  --color-primary-mdk: 0 92 149;
+  --color-primary-dark: 0 32 80;
+  --color-secondary: 3 13 223;
+  --color-secondary-light: 224 163 255;
+  --color-secondary-mlt: 136 90 255;
+  --color-secondary-mdk: 0 0 147;
+  --color-secondary-dark: 0 0 79;
+  --color-tertiary: 139 3 223;
+  --color-tertiary-light: 255 181 255;
+  --color-tertiary-mlt: 221 103 255;
+  --color-tertiary-mdk: 53 0 147;
+  --color-tertiary-dark: 5 0 79;
+  --color-neutral: 204 204 204;
+  --color-neutral-light: 255 255 255;
+  --color-neutral-mlt: 255 255 255;
+  --color-neutral-mdk: 146 146 146;
+  --color-neutral-dark: 109 109 109;
+  --color-info: 204 204 204;
+  --color-info-light: 255 255 255;
+  --color-info-mlt: 255 255 255;
+  --color-info-mdk: 132 132 132;
+  --color-info-dark: 66 66 66;
+  --color-success: 65 252 3;
+  --color-success-light: 252 255 195;
+  --color-success-mlt: 165 255 114;
+  --color-success-mdk: 0 174 0;
+  --color-success-dark: 0 100 0;
+  --color-error: 252 3 3;
+  --color-error-light: 255 200 149;
+  --color-error-mlt: 255 119 78;
+  --color-error-mdk: 163 0 0;
+  --color-error-dark: 88 0 0;
+  --color-warning: 204 204 204;
+  --color-warning-light: 255 255 255;
+  --color-warning-mlt: 255 255 255;
+  --color-warning-mdk: 132 132 132;
+  --color-warning-dark: 66 66 66;
+  --color-info: 204 204 204;
+  --color-info-light: 255 255 255;
+  --color-info-mlt: 255 255 255;
+  --color-info-mdk: 132 132 132;
+  --color-info-dark: 66 66 66;
+  --color-page: 253 255 255;
+  --color-page-light: 255 255 255;
+  --color-page-mlt: 255 255 255;
+  --color-page-mdk: 177 179 179;
+  --color-page-dark: 107 109 109;
+  --color-page-contrast: 18 22 23;
+  --color-page-contrast-light: 143 148 149;
+  --color-page-contrast-mlt: 76 81 82;
+  --color-page-contrast-mdk: 0 0 0;
+  --color-page-contrast-dark: 0 0 0;
+  --color-surface: 242 247 248;
+  --color-surface-light: 255 255 255;
+  --color-surface-mlt: 255 255 255;
+  --color-surface-mdk: 167 172 173;
+  --color-surface-dark: 98 102 103;
+  --color-surface-contrast: 26 29 30;
+  --color-surface-contrast-light: 153 157 158;
+  --color-surface-contrast-mlt: 85 89 90;
+  --color-surface-contrast-mdk: 0 0 0;
+  --color-surface-contrast-dark: 0 0 0;
+  --color-surface-raised: 227 231 232;
+  --color-surface-raised-light: 255 255 255;
+  --color-surface-raised-mlt: 255 255 255;
+  --color-surface-raised-mdk: 153 157 158;
+  --color-surface-raised-dark: 85 89 89;
+  --color-surface-raised-contrast: 37 40 41;
+  --color-surface-raised-contrast-light: 168 171 173;
+  --color-surface-raised-contrast-mlt: 98 102 103;
+  --color-surface-raised-contrast-mdk: 0 0 0;
+  --color-surface-raised-contrast-dark: 0 0 0;
+  --btn-p-sm: 0.375rem 1.3125rem;
+  --btn-p-base: .5rem 1.75rem;
+  --btn-p-chip: 0.25rem 0.875rem;
+  --btn-p-lg: 0.625rem 2.1875rem;
+  --btn-hover-scale: 1.1;
+  --btn-active-scale: 0.9;
+  --btn-hover-filter: 1.05%;
+  --btn-active-filter: 0.95%;
+  --btn-font-sm-size: var(--font-sm);
+  --btn-font-base-size: var(--font-md);
+  --btn-font-lg-size: var(--font-lg);
+  --ui-roundness: var(--ui-roundness-md);
+  --ui-btn-roundness: var(--ui-roundness-full);
+  --ui-input-roundness: var(--ui-roundness-full);`,
+  name: 'neue',
 }
 
 module.exports = {
-  color,
-  btn,
-  ui,
-  el,
+  theme,
 }

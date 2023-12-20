@@ -1,5 +1,5 @@
 module.exports = {
-  'line-height-scale': {
+  'line-height': {
     xs: '1rem',
     sm: '1.25rem',
     base: '1.5rem',
