@@ -17,7 +17,7 @@ const { btn } = require('../styles/elements/btn.js')
 const { input } = require('../styles/elements/input.js')
 const { spacing } = require('../styles/properties/spacing.js')
 const { font } = require('../styles/properties/font.js')
-const uiRoundness = require('../styles/properties/roundness.js')
+const { ['ui-roundness']: uiRoundness } = require('../styles/properties/roundness.js')
 const { appShell } = require('../styles/components/app-shell.js')
 const { appRail } = require('../styles/components/app-rail.js')
 const { accordion } = require('../styles/components/accordion.js')
@@ -28,6 +28,7 @@ const AT_TW_COMPONENTS = '@tailwind components;'
 const AT_TW_UTILITIES = '@tailwind utilities;'
 
 const baseDir = path.join(__dirname, '..')
+
 // put all the themes in a array.
 const themes = [neueTheme.theme]
 
@@ -64,7 +65,7 @@ const mergedCSSInJsCompsForTW = {
 
 function generateNeueProps() {
   const spacingCSS = toCSSProperties('spacing', spacing)
-  const roundnessCSS = toCSSProperties('ui-roundness', uiRoundness['ui-roundness'])
+  const roundnessCSS = toCSSProperties('ui-roundness', uiRoundness)
   const fontCSS = toCSSProperties('font', font)
 
   const combinedCSS = spacingCSS + '\n' + roundnessCSS + '\n' + fontCSS
