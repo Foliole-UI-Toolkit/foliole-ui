@@ -49,14 +49,6 @@ export const initThemeOptions = {
       stops: 'light,mlt,base,mdk,dark',
     },
     {
-      key: 'info',
-      label: 'Info',
-      hex: '',
-      rgb: '0 0 0',
-      on: '0 0 0',
-      stops: 'mlt,base,mdk',
-    },
-    {
       key: 'success',
       label: 'Success',
       hex: '',
@@ -67,22 +59,6 @@ export const initThemeOptions = {
     {
       key: 'error',
       label: 'Error',
-      hex: '',
-      rgb: '0 0 0',
-      on: '0 0 0',
-      stops: 'mlt,base,mdk',
-    },
-    {
-      key: 'warning',
-      label: 'Warning',
-      hex: '',
-      rgb: '0 0 0',
-      on: '0 0 0',
-      stops: 'mlt,base,mdk',
-    },
-    {
-      key: 'info',
-      label: 'Info',
       hex: '',
       rgb: '0 0 0',
       on: '0 0 0',
