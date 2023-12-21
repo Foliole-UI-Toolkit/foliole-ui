@@ -288,6 +288,3 @@
 
   <pre><code class="language-javascript">{previewCSSVars}</code></pre>
 </div>
-
-<style lang="post-css">
-</style>

@@ -29,9 +29,71 @@ span {
     'Segoe UI Symbol',
     'Noto Color Emoji';
 }
+/*  Sitewite Elements */
+.my-list {
+  @apply ml-6 list-disc;
+}
+input.nested-input {
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/*  Sitewite Layout */
+/* AppShell */
+.my-app-shell {
+  @apply mx-auto;
+}
+.my-header {
+  @apply w-full mx-auto;
+  @apply shadow-xl;
+}
+.header-bottom {
+  background: linear-gradient(
+    90deg,
+    rgb(var(--color-primary) / 0.9),
+    rgb(var(--color-secondary) / 0.9),
+    rgb(var(--color-primary) / 0.9)
+  );
+  height: 0.1875rem;
+}
+.my-side-bar-left {
+  @apply border-r shadow-sm;
+}
+.my-app-rail {
+  @apply border-r w-[4.5rem];
+}
+.my-rail-item {
+  @apply text-sm uppercase hover:bg-neutral-light/30;
+}
+.my-page {
+  @apply relative z-0 p-4;
+}
+
+/* general global layout */
+.page-section {
+  @apply p-4 border rounded shadow-sm;
+}
+.page-heading {
+  @apply pb-2 font-bold text-center;
+}
+.page-subheading {
+  @apply font-bold text-center;
+}
+.page-subheading {
+  @apply text-xl font-bold text-center;
+}
+.section-box {
+  @apply p-4 rounded;
+}
+
+/* Theme Generator */
+
+.theme-generator .options-input-wrapper {
+  @apply grid items-center gap-2 lg:grid-cols-2;
+}
 
 @layer components {
-  /* Custom Neue element additions */
+  /* Custom Neue element additions that use neue elements(called components in tw) */
   .my-chip {
     @apply btn-chip btn-base;
   }
@@ -43,92 +105,5 @@ span {
   }
   .my-btn {
     @apply border-2 shadow-md btn-base bg-primary border-primary-mlt;
-  }
-  .my-list {
-    @apply ml-6 list-disc;
-  }
-
-  /*  Sitewite Layout */
-  /* AppShell */
-  .my-app-shell {
-    @apply mx-auto;
-  }
-  .my-header {
-    @apply w-full mx-auto;
-    @apply shadow-xl;
-  }
-  .header-bottom {
-    background: linear-gradient(
-      90deg,
-      rgb(var(--color-primary) / 0.9),
-      rgb(var(--color-secondary) / 0.9),
-      rgb(var(--color-primary) / 0.9)
-    );
-    height: 0.1875rem;
-  }
-  .my-side-bar-left {
-    @apply border-r shadow-sm;
-  }
-  .my-app-rail {
-    @apply border-r w-[4.5rem];
-  }
-  .my-rail-item {
-    @apply text-sm uppercase hover:bg-neutral-light/30;
-  }
-  .my-page {
-    @apply relative z-0 p-4;
-  }
-  /* general global layout */
-
-  input.nested-input {
-    box-shadow: none !important;
-    border: none !important;
-  }
-  .page-section {
-    @apply p-4 border rounded shadow-sm;
-  }
-  .page-heading {
-    @apply pb-2 font-bold text-center;
-  }
-  .page-subheading {
-    @apply font-bold text-center;
-  }
-  .page-subheading {
-    @apply text-xl font-bold text-center;
-  }
-  .section-box {
-    @apply p-4 rounded;
-  }
-  /* Site components */
-  .neue-logo {
-    @apply flex self-center flex-shrink-0 border-2 rounded-tl-lg rounded-tr-sm rounded-bl-sm rounded-br-lg shadow-md bg-primary border-secondary;
-  }
-
-  .neue-logo-options {
-    @apply mr-2;
-    background: linear-gradient(45deg, rgb(var(--color-primary) / 1), rgb(var(--color-secondary) / 1));
-  }
-
-  .neue-logo-wrapper {
-    @apply flex;
-  }
-
-  .neue-logo-wrapper-options {
-    @apply flex-row;
-  }
-  .neue-logo-h1 {
-    @apply text-4xl font-bold whitespace-nowrap;
-  }
-
-  .neue-logo-text-ui {
-    background: linear-gradient(45deg, rgb(var(--color-primary) / 1), rgb(var(--color-secondary) / 1));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  .theme-generator .options-input-wrapper {
-    @apply grid items-center gap-2 lg:grid-cols-2;
-
-    /* Media query for md breakpoint */
   }
 }

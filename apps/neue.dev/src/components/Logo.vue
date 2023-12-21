@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineProps, computed } from 'vue'
+import { defineProps } from 'vue'
 
 const props = defineProps({
   flexDirection: {
@@ -8,7 +8,7 @@ const props = defineProps({
   },
   logoClasses: {
     type: String,
-    default: 'neue-logo neue-logo-options w-6 h-6',
+    default: 'neue-logo neue-logo-options neue-logo-horizontal',
   },
   logoWrapperClasses: {
     type: String,
@@ -16,7 +16,7 @@ const props = defineProps({
   },
   logoH1: {
     type: String,
-    default: 'neue-logo-h1',
+    default: 'neue-logo-h1 neue-logo-h1-horizontal',
   },
   logoTextUI: {
     type: String,
@@ -33,3 +33,47 @@ const props = defineProps({
     </h1>
   </div>
 </template>
+
+<style>
+.neue-logo {
+  @apply flex self-center flex-shrink-0 border-2 rounded-tl-lg rounded-tr-sm rounded-bl-sm rounded-br-lg shadow-md bg-primary border-secondary;
+}
+
+.neue-logo-options {
+  background: linear-gradient(45deg, rgb(var(--color-primary) / 1), rgb(var(--color-secondary) / 1));
+}
+
+.neue-logo-horizontal {
+  @apply flex-row mr-1 w-5 h-5;
+}
+
+.neue-logo-vertical {
+  @apply flex-col mb-1 w-6 h-6;
+}
+
+.neue-logo-wrapper {
+  @apply flex;
+}
+
+.neue-logo-wrapper-options {
+  @apply flex-row;
+}
+
+.neue-logo-h1 {
+  @apply font-bold whitespace-nowrap;
+}
+
+.neue-logo-h1-horizontal {
+  @apply text-2xl;
+}
+
+.neue-logo-h1-vertical {
+  @apply text-4xl;
+}
+
+.neue-logo-text-ui {
+  background: linear-gradient(45deg, rgb(var(--color-primary) / 1), rgb(var(--color-secondary) / 1));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+</style>
