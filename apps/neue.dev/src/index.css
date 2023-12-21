@@ -73,7 +73,7 @@ span {
     @apply border-r w-[4.5rem];
   }
   .my-rail-item {
-    @apply text-sm uppercase;
+    @apply text-sm uppercase hover:bg-neutral-light/30;
   }
   .my-page {
     @apply relative z-0 p-4;
