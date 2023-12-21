@@ -60,7 +60,18 @@ withDefaults(defineProps<Props>(), {
             client:load
           >
             <template #lead>
-              <span class="block w-full h-full bg-secondary-50"></span>
+              <svg
+                class="w-6 h-6"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+              </svg>
             </template>
             <template #label>Docs</template>
           </NeueAppRailButton>
@@ -74,9 +85,23 @@ withDefaults(defineProps<Props>(), {
             client:load
           >
             <template #lead>
-              <span class="block w-full h-full bg-secondary-50"></span>
+              <svg
+                class="w-6 h-6"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="20 12 20 22 4 22 4 12" />
+                <rect x="2" y="7" width="20" height="5" />
+                <line x1="12" y1="22" x2="12" y2="7" />
+                <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z" />
+                <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z" />
+              </svg>
             </template>
-            <template #label>Styles</template>
+            <template #label>CSS</template>
           </NeueAppRailButton>
           <NeueAppRailButton
             v-model="section"
@@ -88,7 +113,21 @@ withDefaults(defineProps<Props>(), {
             client:load
           >
             <template #lead>
-              <span class="block w-full h-full bg-secondary-50"></span>
+              <svg
+                class="w-6 h-6"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"
+                />
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+                <line x1="12" y1="22.08" x2="12" y2="12" />
+              </svg>
             </template>
             <template #label>Comps</template>
           </NeueAppRailButton>
