@@ -22,6 +22,7 @@ const { appShell } = require('../styles/components/app-shell.js')
 const { appRail } = require('../styles/components/app-rail.js')
 const { accordion } = require('../styles/components/accordion.js')
 const { slideToggle } = require('../styles/components/slide-toggle.js')
+const { drawer } = require('../styles/components/drawer.js')
 
 const AT_TW_BASE = '@tailwind base;'
 const AT_TW_COMPONENTS = '@tailwind components;'
@@ -36,6 +37,7 @@ let mergedCSSInJsCompsAndElsForVanilla = {
   ...accordion,
   ...appRail,
   ...appShell,
+  ...drawer,
   ...slideToggle,
   ...btn,
   ...input,
@@ -59,6 +61,7 @@ const mergedCSSInJsCompsForTW = {
   ...accordion,
   ...appRail,
   ...appShell,
+  ...drawer,
   ...slideToggle,
 }
 
