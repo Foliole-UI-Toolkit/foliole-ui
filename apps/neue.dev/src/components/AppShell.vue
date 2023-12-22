@@ -6,7 +6,7 @@ import Logo from './Logo.vue'
 
 import NeueAppShell from '@neue/neue-vue/src/components/AppShell/NeueAppShell.vue'
 
-import NeueDrawer from '@neue/neue-vue/src/components/Drawer/NeueDrawer.vue'
+import AppDrawer from './AppDrawer.vue'
 
 export interface Props {
   pathname?: string
@@ -27,6 +27,12 @@ function handleDrawerOpen() {
 }
 </script>
 <template>
+  <div v-if="pathname !== '/'" class="flex h-full">
+    <!-- Consider performance implications of this and if other solutions are better in as menu grows. v-if, v-show and dynamic components -->
+    <AppDrawer class="flex lg:hidden" @close="handleDrawerClose" :show="showDrawer">
+      <AppMainMenu />
+    </AppDrawer>
+  </div>
   <NeueAppShell
     appShellClasses="app-shell my-app-shell"
     siteCentralWrapperClasses="site-central-wrapper mx-auto"
@@ -38,7 +44,7 @@ function handleDrawerOpen() {
       <div class="flex flex-wrap p-4 bg-neutral-mlt-10">
         <div class="w-full">
           <div class="flex items-center justify-start mx-auto">
-            <button class="pr-4" @click="handleDrawerOpen">
+            <button class="inline-block pr-4 lg:hidden" @click="handleDrawerOpen">
               <svg
                 class="w-8 h-8 text-red-500"
                 viewBox="0 0 24 24"
@@ -72,11 +78,6 @@ function handleDrawerOpen() {
     </template>
     <template #sidebar-left>
       <div v-if="pathname !== '/'" class="flex h-full">
-        <!-- Consider performance implications of this and if other solutions are better in as menu grows. v-if, v-show and dynamic components -->
-        <NeueDrawer class="flex lg:hidden" @close="handleDrawerClose" :show="showDrawer">
-          <AppMainMenu />
-        </NeueDrawer>
-        <!-- // show this for mobile -->
         <div class="hidden lg:flex">
           <AppMainMenu />
         </div>
