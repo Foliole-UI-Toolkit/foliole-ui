@@ -91,9 +91,50 @@ const section = ref('docs')
       <template #tail></template>
     </NeueAppRail>
     <div class="p-4 w-72">
-      <h2 class="text-2xl font-bold">Sidebar Left</h2>
-      <p class="text-lg">This is the left sidebar.</p>
-      <p>{{ section }}</p>
+      <div v-if="section === 'docs'">
+        <div>
+          <h3 class="uppercase">Docs</h3>
+          <ul>
+            <li>Intro</li>
+            <li>Getting Started</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="uppercase">Concepts</h3>
+          <ul>
+            <li>CSS properties and classes</li>
+            <li>Framework and CSS components</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="uppercase">Resources</h3>
+          <ul>
+            <li>Roadmap</li>
+            <li>Contributing</li>
+          </ul>
+        </div>
+      </div>
+      <div v-else-if="section === 'css'">
+        <h2 class="uppercase">CSS Elements</h2>
+        <ul>
+          <li>Button</li>
+        </ul>
+      </div>
+      <div v-else-if="section === 'components'">
+        <div>
+          <h3 class="uppercase">Examples</h3>
+          <ul>
+            <li>Examples</li>
+            <li>App Shell</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="uppercase">Components</h3>
+          <ul>
+            <li>App Shell</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </template>

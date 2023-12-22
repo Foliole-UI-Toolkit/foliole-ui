@@ -60,16 +60,15 @@ function handleDrawerOpen() {
               </li>
               <!-- This theme generator is written in svelte! Inside of a Vue component due to Astro's features! -->
               <li>
-                <a class="uppercase" href="/docs">docs</a>
+                <a class="uppercase" href="/docs/intro">docs</a>
               </li>
               <li>
-                <a class="uppercase" href="/theme-generator">theme generator</a>
+                <a class="uppercase" href="/theme-generator">theme gen</a>
               </li>
             </ul>
           </div>
         </div>
       </div>
-      <div class="header-bottom border-primary"></div>
     </template>
     <template #sidebar-left>
       <div v-if="pathname !== '/'" class="flex h-full">
