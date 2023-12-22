@@ -131,7 +131,6 @@
     }
     const hue = getHueFromHex($themeOptionsStore.primaryHex)
     updatedColors['neutral'] = generateColorFromHSL(hue, grayHue, 0.5)
-    console.log('updatedColors', updatedColors['neutral'])
 
     // Individual differences in color schemes.
     if ($colorSchemeStore === 'triad') {
