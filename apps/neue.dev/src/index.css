@@ -36,6 +36,7 @@ span {
 input.nested-input {
   box-shadow: none !important;
   border: none !important;
+  background: none;
 }
 
 body {
@@ -64,7 +65,7 @@ body {
     rgb(var(--color-secondary) / 0.9),
     rgb(var(--color-primary) / 0.9)
   );
-  height: 0.1875rem;
+  height: 0.1375rem;
 }
 .my-side-bar-left {
   @apply h-full border-r-2 shadow-sm border-primary-light;
@@ -102,18 +103,22 @@ body {
   @apply grid items-center gap-2 lg:grid-cols-2;
 }
 
+.theme-generator .options-sub-section {
+  @apply p-4 space-y-4 border rounded border-neutral-light bg-neutral-light/20;
+}
+
 @layer components {
   /* Custom Neue element additions that use neue elements(called components in tw) */
   .my-chip {
     @apply btn-chip btn-base;
   }
   .my-input {
-    @apply input-base;
+    @apply border input-base bg-neutral-light/50 border-neutral-light;
   }
   .my-select {
-    @apply select-base;
+    @apply border select-base bg-neutral-light/50 border-neutral-light;
   }
   .my-btn {
-    @apply border-2 shadow-md btn-base bg-primary border-primary-mlt;
+    @apply border-2 shadow-md btn-base bg-gradient-to-br from-primary to-primary/70 border-primary;
   }
 }
