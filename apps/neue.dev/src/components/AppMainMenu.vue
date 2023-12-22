@@ -128,8 +128,7 @@ const section = ref('docs')
         <div class="space-y-4">
           <h3>Examples</h3>
           <ul class="space-y-4">
-            <li>Examples</li>
-            <li>App Shell</li>
+            <li><a href="/examples">Examples</a></li>
           </ul>
         </div>
         <div class="space-y-4">
