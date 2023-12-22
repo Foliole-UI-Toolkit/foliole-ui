@@ -33,7 +33,6 @@ function handleDrawerOpen() {
 </script>
 <template>
   <div v-if="!fullWidthPages[pathname]" class="flex h-full">
-    {{ fullWidthPages[pathname] }}
     <!-- Consider performance implications of this and if other solutions are better in as menu grows. v-if, v-show and dynamic components -->
     <AppDrawer class="flex md:hidden" @close="handleDrawerClose" :show="showDrawer">
       <AppMainMenu />
@@ -50,7 +49,7 @@ function handleDrawerOpen() {
       <div class="flex flex-wrap p-4">
         <div class="w-full">
           <div class="flex items-center justify-start mx-auto">
-            <button class="inline-block pr-4 md:hidden" @click="handleDrawerOpen">
+            <button v-if="!fullWidthPages[pathname]" class="inline-block pr-4 md:hidden" @click="handleDrawerOpen">
               <svg
                 class="w-8 h-8 text-red-500"
                 viewBox="0 0 24 24"
