@@ -8,6 +8,11 @@ import NeueAppShell from '@neue/neue-vue/src/components/AppShell/NeueAppShell.vu
 
 import AppDrawer from './AppDrawer.vue'
 
+const fullWidthPages: Record<string, boolean> = {
+  '/': true,
+  '/theme-generator': true,
+}
+
 export interface Props {
   pathname?: string
 }
@@ -27,9 +32,10 @@ function handleDrawerOpen() {
 }
 </script>
 <template>
-  <div v-if="pathname !== '/'" class="flex h-full">
+  <div v-if="!fullWidthPages[pathname]" class="flex h-full">
+    {{ fullWidthPages[pathname] }}
     <!-- Consider performance implications of this and if other solutions are better in as menu grows. v-if, v-show and dynamic components -->
-    <AppDrawer class="flex lg:hidden" @close="handleDrawerClose" :show="showDrawer">
+    <AppDrawer class="flex md:hidden" @close="handleDrawerClose" :show="showDrawer">
       <AppMainMenu />
     </AppDrawer>
   </div>
@@ -44,7 +50,7 @@ function handleDrawerOpen() {
       <div class="flex flex-wrap p-4">
         <div class="w-full">
           <div class="flex items-center justify-start mx-auto">
-            <button class="inline-block pr-4 lg:hidden" @click="handleDrawerOpen">
+            <button class="inline-block pr-4 md:hidden" @click="handleDrawerOpen">
               <svg
                 class="w-8 h-8 text-red-500"
                 viewBox="0 0 24 24"
@@ -78,14 +84,20 @@ function handleDrawerOpen() {
       <div class="header-bottom"></div>
     </template>
     <template #sidebar-left>
-      <div v-if="pathname !== '/'" class="flex">
-        <div class="hidden lg:flex">
+      <div v-if="!fullWidthPages[pathname]" class="flex">
+        <div class="hidden md:flex">
           <AppMainMenu />
         </div>
       </div>
     </template>
 
-    <div :class="{ 'mx-auto': pathname === '/', 'lg:w-[calc(1200px-22.5rem)]': pathname !== '/' }" class="h-full">
+    <div
+      :class="{
+        'mx-auto max-w-screen-lg w-full': fullWidthPages[pathname],
+        'lg:w-[calc(1280px-22.5rem)]': !fullWidthPages[pathname],
+      }"
+      class="h-full"
+    >
       <slot></slot>
     </div>
   </NeueAppShell>

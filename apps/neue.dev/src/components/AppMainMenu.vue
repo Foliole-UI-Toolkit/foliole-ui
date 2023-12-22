@@ -5,7 +5,7 @@ import NeueAppRailButton from '@neue/neue-vue/src/components/AppRail/NeueAppRail
 const section = ref('docs')
 </script>
 <template>
-  <div class="flex h-screen">
+  <div class="flex w-full h-screen">
     <NeueAppRail
       activeTokenClass="bg-primary/90 shadow-sm"
       client:visible
@@ -94,7 +94,7 @@ const section = ref('docs')
       </NeueAppRailButton>
       <template #tail></template>
     </NeueAppRail>
-    <div class="px-4 pb-4 w-72 bg-neutral-light/10">
+    <div class="w-full px-4 pb-4 md:w-72 bg-neutral-light/10">
       <div v-if="section === 'docs'">
         <div class="space-y-4">
           <h3>Docs</h3>
