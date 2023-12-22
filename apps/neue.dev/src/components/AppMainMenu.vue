@@ -102,14 +102,14 @@ const section = ref('docs')
         <div class="space-y-4">
           <h3>Concepts</h3>
           <ul class="space-y-4">
-            <li><a href="concepts/css-props-classes">CSS properties and classes</a></li>
+            <li><a href="/docs/concepts/css-props-classes">CSS properties and classes</a></li>
             <li>Framework and CSS components</li>
           </ul>
         </div>
         <div class="space-y-4">
           <h3>Resources</h3>
           <ul class="space-y-4">
-            <li>Roadmap</li>
+            <li><a href="/docs/resources/roadmap">Roadmap</a></li>
             <li>Contributing</li>
           </ul>
         </div>
