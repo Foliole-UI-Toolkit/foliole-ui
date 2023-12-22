@@ -90,47 +90,47 @@ const section = ref('docs')
       </NeueAppRailButton>
       <template #tail></template>
     </NeueAppRail>
-    <div class="p-4 w-72">
+    <div class="px-4 pb-4 w-72">
       <div v-if="section === 'docs'">
-        <div>
-          <h3 class="uppercase">Docs</h3>
-          <ul>
+        <div class="space-y-4">
+          <h3>Docs</h3>
+          <ul class="space-y-4">
             <li>Intro</li>
             <li>Getting Started</li>
           </ul>
         </div>
-        <div>
-          <h3 class="uppercase">Concepts</h3>
-          <ul>
-            <li>CSS properties and classes</li>
+        <div class="space-y-4">
+          <h3>Concepts</h3>
+          <ul class="space-y-4">
+            <li><a href="concepts/css-props-classes">CSS properties and classes</a></li>
             <li>Framework and CSS components</li>
           </ul>
         </div>
-        <div>
-          <h3 class="uppercase">Resources</h3>
-          <ul>
+        <div class="space-y-4">
+          <h3>Resources</h3>
+          <ul class="space-y-4">
             <li>Roadmap</li>
             <li>Contributing</li>
           </ul>
         </div>
       </div>
-      <div v-else-if="section === 'css'">
-        <h2 class="uppercase">CSS Elements</h2>
-        <ul>
+      <div class="space-y-4" v-else-if="section === 'css'">
+        <h3>CSS Elements</h3>
+        <ul class="space-y-4">
           <li>Button</li>
         </ul>
       </div>
       <div v-else-if="section === 'components'">
-        <div>
-          <h3 class="uppercase">Examples</h3>
-          <ul>
+        <div class="space-y-4">
+          <h3>Examples</h3>
+          <ul class="space-y-4">
             <li>Examples</li>
             <li>App Shell</li>
           </ul>
         </div>
-        <div>
-          <h3 class="uppercase">Components</h3>
-          <ul>
+        <div class="space-y-4">
+          <h3>Components</h3>
+          <ul class="space-y-4">
             <li>App Shell</li>
           </ul>
         </div>
@@ -138,3 +138,8 @@ const section = ref('docs')
     </div>
   </div>
 </template>
+<style scoped>
+h3 {
+  @apply uppercase text-xl font-bold border-b pt-6 pb-1;
+}
+</style>
