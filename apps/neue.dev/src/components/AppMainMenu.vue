@@ -6,7 +6,11 @@ const section = ref('docs')
 </script>
 <template>
   <div class="flex h-screen">
-    <NeueAppRail client:visible appRailClasses="app-rail my-app-rail">
+    <NeueAppRail
+      activeTokenClass="bg-primary/90 shadow-sm"
+      client:visible
+      appRailClasses="app-rail my-app-rail border-r-2 border-primary-light bg-neutral-light/10 shadow-md"
+    >
       <NeueAppRailButton
         v-model="section"
         :selected="section === 'docs'"
@@ -90,7 +94,7 @@ const section = ref('docs')
       </NeueAppRailButton>
       <template #tail></template>
     </NeueAppRail>
-    <div class="px-4 pb-4 w-72">
+    <div class="px-4 pb-4 w-72 bg-neutral-light/10">
       <div v-if="section === 'docs'">
         <div class="space-y-4">
           <h3>Docs</h3>
@@ -140,6 +144,6 @@ const section = ref('docs')
 </template>
 <style scoped>
 h3 {
-  @apply uppercase text-xl font-bold border-b pt-6 pb-1;
+  @apply uppercase text-xl font-bold border-b-2 border-primary-light  pt-6 pb-1;
 }
 </style>

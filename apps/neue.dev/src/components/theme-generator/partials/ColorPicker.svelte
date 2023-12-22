@@ -10,7 +10,7 @@
   export let colorHex: string = '#f00a0a'
 </script>
 
-<div class="flex w-2/3 p-1 border shadow-lg my-input input-wrapper">
+<div class="flex w-2/3 p-1 border shadow-lg border-neutral-mlt my-input input-wrapper">
   {#if colorHex.length}
     <input type="color" class="flex-none input-color-base" bind:value={colorHex} on:input={emitColorChange} />
     <input

@@ -37,11 +37,11 @@ function handleDrawerOpen() {
     appShellClasses="app-shell my-app-shell"
     siteCentralWrapperClasses="site-central-wrapper mx-auto"
     siteHeaderClasses="siteheader site-header-options my-header"
-    pageClasses="page my-page"
+    pageClasses="page my-page h-screen"
     siteSidebarLeftClasses="sidebar-left site-sidebar-left-options my-side-bar-left"
   >
     <template #header>
-      <div class="flex flex-wrap p-4 bg-neutral-mlt-10">
+      <div class="flex flex-wrap p-4">
         <div class="w-full">
           <div class="flex items-center justify-start mx-auto">
             <button class="inline-block pr-4 lg:hidden" @click="handleDrawerOpen">
@@ -75,9 +75,10 @@ function handleDrawerOpen() {
           </div>
         </div>
       </div>
+      <div class="header-bottom"></div>
     </template>
     <template #sidebar-left>
-      <div v-if="pathname !== '/'" class="flex h-full">
+      <div v-if="pathname !== '/'" class="flex">
         <div class="hidden lg:flex">
           <AppMainMenu />
         </div>

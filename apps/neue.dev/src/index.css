@@ -38,6 +38,10 @@ input.nested-input {
   border: none !important;
 }
 
+body {
+  background: linear-gradient(60deg, rgb(var(--color-primary-light) / 0.1), rgb(var(--color-secondary-light) / 0.1));
+}
+
 /*  Sitewite Layout */
 /* AppShell */
 .my-app-shell {
@@ -46,6 +50,12 @@ input.nested-input {
 .my-header {
   @apply w-full mx-auto;
   @apply shadow-xl;
+  background: linear-gradient(
+    60deg,
+    rgb(var(--color-primary-light) / 0.2),
+    rgb(var(--color-secondary-light) / 0.2),
+    rgb(var(--color-tertiary-light) / 0.3)
+  );
 }
 .header-bottom {
   background: linear-gradient(
@@ -57,7 +67,7 @@ input.nested-input {
   height: 0.1875rem;
 }
 .my-side-bar-left {
-  @apply border-r shadow-sm;
+  @apply h-full border-r-2 shadow-sm border-primary-light;
 }
 .my-app-rail {
   @apply border-r w-[4.5rem];
@@ -71,7 +81,7 @@ input.nested-input {
 
 /* general global layout */
 .page-section {
-  @apply p-4 border rounded shadow-sm;
+  @apply p-4 border rounded shadow-sm border-primary-light/90 bg-neutral-light/20;
 }
 .page-heading {
   @apply pb-2 font-bold text-center;
