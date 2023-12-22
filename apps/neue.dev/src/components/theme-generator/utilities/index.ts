@@ -87,7 +87,6 @@ function generateRelativeHue(color: string, distance: number, dir: string) {
 
 export function generateColorFromHSL(hue: number, sat: number, lum: number, type = 'hex') {
   if (type === 'hex') {
-    console.log(lum)
     return chroma(hue, sat, lum, 'hsl').hex()
   }
   console.warn('You passed in an unsupported type.')

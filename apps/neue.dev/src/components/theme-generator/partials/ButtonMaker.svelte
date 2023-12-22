@@ -34,7 +34,7 @@
     <button class="self-center justify-self-center btn-md my-btn">Btn md</button>
     <button class="self-center justify-self-center btn-lg my-btn">Btn lg</button>
     <button class="self-center justify-self-center my-chip bg-neutral-light">Chip</button>
-    <div class="p-4 space-y-4 border">
+    <div class="options-sub-section">
       <p class="font-bold text-center">Base Options</p>
       <label class="options-input-wrapper" for="paddingBase"
         >Size Base (.1-1):
@@ -83,7 +83,7 @@
     </div>
 
     <!-- more options: will be hidden in a drawer when drawer is made -->
-    <div class="p-4 space-y-4 border">
+    <div class="options-sub-section">
       <p class="font-bold text-center">Interactive</p>
       <label class="options-input-wrapper" for="hoverScale">
         Hover Scale (0.8-1.2):
@@ -147,7 +147,7 @@
     </div>
 
     <!-- font sizes -->
-    <div class="p-4 space-y-4 border">
+    <div class="options-sub-section">
       <p class="font-bold text-center">Fonts</p>
       <label class="options-input-wrapper" for="fontSizeSm">
         Font Size Small:

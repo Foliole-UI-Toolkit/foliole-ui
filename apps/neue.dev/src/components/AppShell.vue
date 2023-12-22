@@ -1,13 +1,17 @@
 <script setup lang="ts">
-import { withDefaults, ref } from 'vue'
+import { ref } from 'vue'
 
+import AppMainMenu from './AppMainMenu.vue'
 import Logo from './Logo.vue'
 
 import NeueAppShell from '@neue/neue-vue/src/components/AppShell/NeueAppShell.vue'
-import NeueAppRail from '@neue/neue-vue/src/components/AppRail/NeueAppRail.vue'
-import NeueAppRailButton from '../../../../packages/neue-vue/src/components/AppRail/NeueAppRailButton.vue'
 
-const section = ref('docs')
+import AppDrawer from './AppDrawer.vue'
+
+const fullWidthPages: Record<string, boolean> = {
+  '/': true,
+  '/theme-generator': true,
+}
 
 export interface Props {
   pathname?: string
@@ -16,19 +20,50 @@ export interface Props {
 withDefaults(defineProps<Props>(), {
   pathname: '',
 })
+
+const showDrawer = ref(false)
+
+function handleDrawerClose() {
+  showDrawer.value = false
+}
+
+function handleDrawerOpen() {
+  showDrawer.value = true
+}
 </script>
 <template>
+  <div v-if="!fullWidthPages[pathname]" class="flex h-full">
+    <!-- Consider performance implications of this and if other solutions are better in as menu grows. v-if, v-show and dynamic components -->
+    <AppDrawer class="flex md:hidden" @close="handleDrawerClose" :show="showDrawer">
+      <AppMainMenu />
+    </AppDrawer>
+  </div>
   <NeueAppShell
     appShellClasses="app-shell my-app-shell"
     siteCentralWrapperClasses="site-central-wrapper mx-auto"
     siteHeaderClasses="siteheader site-header-options my-header"
-    pageClasses="page my-page"
+    pageClasses="page my-page h-screen"
     siteSidebarLeftClasses="sidebar-left site-sidebar-left-options my-side-bar-left"
   >
     <template #header>
-      <div class="flex flex-wrap p-4 bg-neutral-mlt-10">
+      <div class="flex flex-wrap p-4">
         <div class="w-full">
           <div class="flex items-center justify-start mx-auto">
+            <button v-if="!fullWidthPages[pathname]" class="inline-block pr-4 md:hidden" @click="handleDrawerOpen">
+              <svg
+                class="w-8 h-8 text-red-500"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <line x1="3" y1="12" x2="21" y2="12" />
+                <line x1="3" y1="6" x2="21" y2="6" />
+                <line x1="3" y1="18" x2="21" y2="18" />
+              </svg>
+            </button>
             <Logo />
             <ul class="container flex justify-end w-full p-2 pb-0 mx-auto space-x-4 font-bold">
               <li>
@@ -36,73 +71,32 @@ withDefaults(defineProps<Props>(), {
               </li>
               <!-- This theme generator is written in svelte! Inside of a Vue component due to Astro's features! -->
               <li>
-                <a class="uppercase" href="/examples">examples</a>
+                <a class="uppercase" href="/docs/intro">docs</a>
               </li>
               <li>
-                <a class="uppercase" href="/theme-generator">theme generator</a>
+                <a class="uppercase" href="/theme-generator">theme gen</a>
               </li>
             </ul>
           </div>
         </div>
       </div>
-      <div class="header-bottom border-primary"></div>
+      <div class="header-bottom"></div>
     </template>
     <template #sidebar-left>
-      <div v-if="pathname !== '/'" class="flex h-full">
-        <NeueAppRail client:visible appRailClasses="app-rail my-app-rail">
-          <NeueAppRailButton
-            v-model="section"
-            :selected="section === 'docs'"
-            title="docs"
-            value="docs"
-            name="sections"
-            railItemClasses="rail-item my-rail-item"
-            client:load
-          >
-            <template #lead>
-              <span class="block w-full h-full bg-secondary-50"></span>
-            </template>
-            <template #label>Docs</template>
-          </NeueAppRailButton>
-          <NeueAppRailButton
-            v-model="section"
-            :selected="section === 'styles'"
-            title="styles"
-            value="styles"
-            name="sections"
-            railItemClasses="rail-item my-rail-item"
-            client:load
-          >
-            <template #lead>
-              <span class="block w-full h-full bg-secondary-50"></span>
-            </template>
-            <template #label>Styles</template>
-          </NeueAppRailButton>
-          <NeueAppRailButton
-            v-model="section"
-            title="components"
-            :selected="section === 'components'"
-            value="components"
-            name="sections"
-            railItemClasses="rail-item my-rail-item"
-            client:load
-          >
-            <template #lead>
-              <span class="block w-full h-full bg-secondary-50"></span>
-            </template>
-            <template #label>Comps</template>
-          </NeueAppRailButton>
-          <template #tail></template>
-        </NeueAppRail>
-        <div class="p-4 w-72">
-          <h2 class="text-2xl font-bold">Sidebar Left</h2>
-          <p class="text-lg">This is the left sidebar.</p>
-          <p>{{ section }}</p>
+      <div v-if="!fullWidthPages[pathname]" class="flex">
+        <div class="hidden md:flex">
+          <AppMainMenu />
         </div>
       </div>
     </template>
 
-    <div :class="{ 'mx-auto': pathname === '/', 'lg:w-[calc(1200px-22.5rem)]': pathname !== '/' }" class="h-full">
+    <div
+      :class="{
+        'mx-auto max-w-screen-lg w-full': fullWidthPages[pathname],
+        'lg:w-[calc(1280px-22.5rem)]': !fullWidthPages[pathname],
+      }"
+      class="h-full"
+    >
       <slot></slot>
     </div>
   </NeueAppShell>
