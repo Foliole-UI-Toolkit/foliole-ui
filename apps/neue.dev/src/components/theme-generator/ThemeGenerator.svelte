@@ -251,7 +251,7 @@
       <div class="pb-2">
         {#each $themeOptionsStore.colors.filter((colorRow) => colorRow.hex !== '') as colorRow, i}
           <div
-            class="grid grid-cols-1 md:grid-cols-[220px_1fr_120px] gap-2 md:gap-4 border-b-2 md:border-0 border-neutral-mlt md:pb-2 pb-2"
+            class="grid grid-cols-1 md:grid-cols-[220px_1fr_120px] gap-2 md:gap-4 border-b-[.125rem] md:border-0 border-neutral-mlt md:pb-2 pb-2"
           >
             <ControlsLead hex={colorRow.hex} label={colorRow.label} />
             <Swatch color={colorRow.key} stops={colorRow?.stops?.split(',')} />

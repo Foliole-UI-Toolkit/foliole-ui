@@ -9,7 +9,7 @@ const section = ref('docs')
     <NeueAppRail
       activeTokenClass="bg-primary/90 shadow-sm"
       client:visible
-      appRailClasses="app-rail my-app-rail border-r-2 border-primary-light bg-neutral-light/10 shadow-md"
+      appRailClasses="app-rail my-app-rail border-r-[.125rem] border-primary-light bg-neutral-light/10 shadow-md"
     >
       <NeueAppRailButton
         v-model="section"
@@ -143,6 +143,6 @@ const section = ref('docs')
 </template>
 <style scoped>
 h3 {
-  @apply uppercase text-xl font-bold border-b-2 border-primary-light  pt-6 pb-1;
+  @apply uppercase text-xl font-bold border-b-[.125rem] border-primary-light  pt-6 pb-1;
 }
 </style>
