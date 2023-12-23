@@ -1,5 +1,12 @@
 # @neue/neue-vue
 
+## 0.5.0
+
+### Minor Changes
+
+- 96755e2: Feature: Vue, CSS - Drawer Vue Component and CSS Component classes.
+- 14f2a67: Chore: Vue - Made changes to default props in the following components: SlideToggle, Modal, AppRailAnchor, AppRailButton, AccordionItem
+
 ## 0.4.0
 
 ### Minor Changes
