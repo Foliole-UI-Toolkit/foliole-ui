@@ -78,10 +78,10 @@ export function buildBtnStrings(btnOpts: Record<string, number | string>, derive
   cssVarsBuilt += cssVars
 
   // filter/brightness
-  cssVars = buildLineFromPrefixAndValue('btn', 'hover-filter', `${btnOpts.hoverBrightnessScale}%`)
+  cssVars = buildLineFromPrefixAndValue('btn', 'hover-filter', `${btnOpts.hoverBrightnessScale}`)
   cssVarsBuilt += cssVars
 
-  cssVars = buildLineFromPrefixAndValue('btn', 'active-filter', `${btnOpts.activeBrightnessScale}%`)
+  cssVars = buildLineFromPrefixAndValue('btn', 'active-filter', `${btnOpts.activeBrightnessScale}`)
   cssVarsBuilt += cssVars
 
   // btn font sizes
