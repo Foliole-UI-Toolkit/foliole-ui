@@ -8,7 +8,6 @@ const section = ref('docs')
   <div class="flex w-full h-screen">
     <NeueAppRail
       activeTokenClass="bg-primary/90 shadow-sm"
-      client:visible
       appRailClasses="app-rail my-app-rail border-r-[.125rem] border-primary-light bg-neutral-light/10 shadow-md"
     >
       <NeueAppRailButton
@@ -18,7 +17,6 @@ const section = ref('docs')
         value="docs"
         name="sections"
         railItemClasses="rail-item my-rail-item"
-        client:load
       >
         <template #lead>
           <svg
@@ -43,7 +41,6 @@ const section = ref('docs')
         value="css"
         name="sections"
         railItemClasses="rail-item my-rail-item"
-        client:load
       >
         <template #lead>
           <svg
@@ -71,7 +68,6 @@ const section = ref('docs')
         value="components"
         name="sections"
         railItemClasses="rail-item my-rail-item"
-        client:load
       >
         <template #lead>
           <svg
