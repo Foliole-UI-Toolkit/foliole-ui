@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import NeueAccordion from '@neue/neue-vue/src/components/Accordion/NeueAccordion.vue'
 import NeueAccordionItem from '@neue/neue-vue/src/components/Accordion/NeueAccordionItem.vue'
-import SlideToggle from '@neue/neue-vue/src/components/SlideToggle/SlideToggle.vue'
+import NeueSlideToggle from '@neue/neue-vue/src/components/SlideToggle/NeueSlideToggle.vue'
 import NeueDrawer from '@neue/neue-vue/src/components/Drawer/NeueDrawer.vue'
 
 const showDrawer = ref(false)
@@ -40,6 +40,6 @@ function handleDrawerOpen() {
         ultrices turpis mi nec metus.</NeueAccordionItem
       >
     </NeueAccordion>
-    <SlideToggle label="slide toggle" />
+    <NeueSlideToggle label="slide toggle" />
   </div>
 </template>
