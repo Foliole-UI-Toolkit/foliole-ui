@@ -1,0 +1,15 @@
+{
+  "name": "neue-bun-example",
+  "module": "index.ts",
+  "type": "module",
+  "author": "Aaron Crockett",
+  "devDependencies": {
+    "@types/postcss-js": "^4.0.4",
+    "bun-types": "^1.0.19",
+    "javascript-stringify": "^2.1.0",
+    "postcss-js": "^4.0.1"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
