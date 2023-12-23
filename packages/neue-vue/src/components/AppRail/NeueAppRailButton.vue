@@ -18,9 +18,9 @@ const emits = defineEmits([
 export interface AppRailAnchorProps {
   modelValue: string
   name: string
-  title?: string
+  title: string
   value: string
-  selected: boolean
+  selected?: boolean
   railTileWrapperClasses?: string
   railTileContentWrapperClasses?: string
   railItemClasses?: string
@@ -28,10 +28,6 @@ export interface AppRailAnchorProps {
 }
 
 const props = withDefaults(defineProps<AppRailAnchorProps>(), {
-  modelValue: '',
-  name: '',
-  title: '',
-  value: '',
   selected: false,
   railTileWrapperClasses: 'rail-tile-wrapper rail-tile-wrapper-options',
   railTileContentWrapperClasses: 'rail-tile-content-wrapper',

@@ -7,7 +7,7 @@ import { withDefaults } from 'vue'
 defineEmits(['blur', 'click', 'focus', 'keydown', 'keypress', 'keyup', 'mouseleave', 'mouseover'])
 
 export interface AppRailAnchorProps {
-  selected: boolean
+  selected?: boolean
   railTileWrapperClasses?: string
   railTileContentWrapperClasses?: string
   railItemClasses?: string

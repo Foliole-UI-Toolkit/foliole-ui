@@ -1,1 +1,0 @@
-/Users/aaron/Sites/neue-ui/.prettierrc

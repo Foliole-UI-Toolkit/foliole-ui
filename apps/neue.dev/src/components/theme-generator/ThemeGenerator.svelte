@@ -131,7 +131,6 @@
     }
     const hue = getHueFromHex($themeOptionsStore.primaryHex)
     updatedColors['neutral'] = generateColorFromHSL(hue, grayHue, 0.5)
-    console.log('updatedColors', updatedColors['neutral'])
 
     // Individual differences in color schemes.
     if ($colorSchemeStore === 'triad') {
@@ -231,7 +230,7 @@
 
 <div class="p-4 space-y-4 theme-generator">
   <section class="p-8">
-    <h2 class="text-6xl page-heading">Color Generator</h2>
+    <h2 class="text-6xl page-heading">Theme Generator</h2>
     <div class="flex flex-col items-center space-y-4">
       <p class="w-2/3 text-sm text-center leading-[1.25rem]">
         <span class="hidden md:inline">Press Ctrl (or Windows Key) + space to generate a random color. </span>Enter a
@@ -288,6 +287,3 @@
 
   <pre><code class="language-javascript">{previewCSSVars}</code></pre>
 </div>
-
-<style lang="post-css">
-</style>

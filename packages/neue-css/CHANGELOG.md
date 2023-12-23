@@ -1,5 +1,12 @@
 # @neue/neue-css
 
+## 0.6.0
+
+### Minor Changes
+
+- 96755e2: Feature: Vue, CSS - Drawer Vue Component and CSS Component classes.
+- 6a01fbb: Feature: CSS - CSS naming convention changes, folder structure changes
+
 ## 0.5.0
 
 ### Minor Changes
