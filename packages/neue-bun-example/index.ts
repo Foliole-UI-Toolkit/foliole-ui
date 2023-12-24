@@ -19,8 +19,8 @@ import { uiRoundness } from './styles/properties/roundness.js'
 import { appShell } from './styles/components/app-shell.js'
 import { appRail } from './styles/components/app-rail.js'
 import { accordion } from './styles/components/accordion.js'
-import { slideToggle } from './styles/components/slide-toggle.js'
 import { drawer } from './styles/components/drawer.js'
+import { slideToggle } from './styles/components/slide-toggle.js'
 
 const AT_TW_BASE = '@tailwind base;'
 const AT_TW_COMPONENTS = '@tailwind components;'
@@ -50,10 +50,16 @@ const mergedCSSInJsCompsForTW = {
   ...slideToggle,
 }
 
-async function findUsedCompKeys(token: Record<string, string>, tokenName: string) {
-  const foundKeys = new Set()
+const mergeCSSInJSCompsAndElementsForTw = {
+  ...mergedCSSInJsCompsForTW,
+  ...btn,
+  ...input,
+}
 
-  for (const cssClass of Object.values(mergedCSSInJsCompsForTW)) {
+export async function findUsedCompKeys(token: Record<string, string>, tokenName: string) {
+  const foundKeys = new Set<string>()
+
+  for (const cssClass of Object.values(mergeCSSInJSCompsAndElementsForTw)) {
     const cssString = stringify.stringify(cssClass, null, 2)
 
     if (cssString) {
@@ -68,19 +74,19 @@ async function findUsedCompKeys(token: Record<string, string>, tokenName: string
   }
 
   const sortedKeys = [...foundKeys].sort((a: string, b: string) => {
-    const numA = parseInt(a.match(/\d+/)[0])
-    const numB = parseInt(b.match(/\d+/)[0])
+    const numA = parseInt(a.match(/\d+/)![0])
+    const numB = parseInt(b.match(/\d+/)![0])
     return numA - numB
   })
 
-  console.log(sortedKeys)
-
-  return foundKeys
+  return sortedKeys
 }
 
 const usedSpacing = await findUsedCompKeys(spacing, 'spacing')
+const usedFont = await findUsedCompKeys(font, 'font')
 
 console.log(usedSpacing)
+console.log(usedFont)
 
 let twColors: ColorTypeOfString = {}
 let backgrounds: ColorTypeOfObject = {}
