@@ -8,9 +8,10 @@ import type { ColorTypeOfString, ColorTypeOfObject, Theme } from './types'
 import neueTheme from './themes/neue'
 // Temp second theme as copy for example
 import neueThemeCopy from './themes/neue-copy'
-
+// Values used to map/generate values and for types.
 import { neueColorNames, stops } from './settings'
-import { findUsedCompKeys, generateColors, generateNeueSpecificProps, buildThemeProps } from './scripts'
+// Functions in separate file to keep this file clean.
+import { buildThemeProps, generateColors, generateNeueSpecificProps, getUsedCSSProps } from './scripts'
 
 // Elements, Properties, Components
 import { btn } from './styles/elements/btn.js'
@@ -27,24 +28,29 @@ import { slideToggle } from './styles/components/slide-toggle.js'
 // Put all the themes in a array.
 const themes = [neueTheme, neueThemeCopy]
 
+// Hold these props in an object to avoid having to pass them around. Warning we mutate this object.
 const neueCSSProps = {
   spacing,
   font,
   uiRoundness,
 }
 
+let mergedEls: Record<string, Record<string, any>> = {
+  ...btn,
+  ...input,
+}
+
+// Object for organizational purposes.
 let mergedCompsAndEls = {
   ...accordion,
   ...appRail,
   ...appShell,
   ...drawer,
   ...slideToggle,
-  ...btn,
-  ...input,
+  ...mergedEls,
 }
 
-// Taking components (elements and tokens handled by tailwind settings) and merging into an object.
-// Components use elements and tokens.
+// Object for organizational purposes. btn and input are handled in Tailwind Plugin.
 const mergedTwComps = {
   ...accordion,
   ...appRail,
@@ -53,10 +59,10 @@ const mergedTwComps = {
   ...slideToggle,
 }
 
+// Object for organizational purposes. btn and input are handled in Tailwind Plugin, but this object is used to check if props are used in btn and input.
 const mergedTwCompsAndEls = {
   ...mergedTwComps,
-  ...btn,
-  ...input,
+  ...mergedEls,
 }
 
 let twColors: ColorTypeOfString = {}
@@ -101,8 +107,8 @@ const colorsToGenerate: any = {
     await Bun.write('dist/neue-for-tw.css', mergedProcessedTwCSS)
 
     let usedTwCompKeys = []
-    const usedTwSpacingKeys = await findUsedCompKeys(spacing, 'spacing', mergedTwCompsAndEls)
-    const usedTwFontKeys = await findUsedCompKeys(font, 'font', mergedTwCompsAndEls)
+    const usedTwSpacingKeys = await getUsedCSSProps(spacing, 'spacing', mergedTwCompsAndEls)
+    const usedTwFontKeys = await getUsedCSSProps(font, 'font', mergedTwCompsAndEls)
 
     usedTwCompKeys = [...usedTwSpacingKeys, ...usedTwFontKeys]
 

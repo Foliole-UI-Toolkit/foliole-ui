@@ -28,6 +28,7 @@ const stopType = {
   dark: 'dark',
 }
 
+// Generate colors in several contexts for the theme.
 export function generateColors(colorNames: string[] | NeueColorNames[], stops: Stops[], colorTypes: ColorType) {
   colorNames.forEach((colorName: string) => {
     // TW colors
@@ -66,7 +67,8 @@ export function generateColors(colorNames: string[] | NeueColorNames[], stops: S
   })
 }
 
-export async function findUsedCompKeys(
+// Function to get only CSS Props used in our Components for TW.
+export async function getUsedCSSProps(
   token: Record<string, string>,
   tokenName: string,
   mergeCSSInJSCompsAndElementsForTw: any,
@@ -88,13 +90,11 @@ export async function findUsedCompKeys(
     }
   }
 
-  const sortedKeys = [...foundKeys].sort((a: string, b: string) => {
+  return [...foundKeys].sort((a: string, b: string) => {
     const numA = parseInt(a.match(/\d+/)![0])
     const numB = parseInt(b.match(/\d+/)![0])
     return numA - numB
   })
-
-  return sortedKeys
 }
 
 export function generateNeueSpecificProps(cssProps: Record<string, any>) {

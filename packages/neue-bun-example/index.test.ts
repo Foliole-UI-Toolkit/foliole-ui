@@ -1,7 +1,7 @@
 // Test imports
 import { expect, test } from 'bun:test'
 
-import { findUsedCompKeys } from './scripts/index.ts'
+import { getUsedCSSProps } from './scripts/index.ts'
 
 import { btn } from './styles/elements/btn.js'
 import { input } from './styles/elements/input.js'
@@ -36,8 +36,8 @@ const mergeCSSInJSCompsAndElementsForTw = {
 }
 
 // Test
-test('findUsedCompKeys function', async () => {
-  const result = await findUsedCompKeys(mockToken, 'spacing', mergeCSSInJSCompsAndElementsForTw)
+test('getUsedCSSProps function', async () => {
+  const result = await getUsedCSSProps(mockToken, 'spacing', mergeCSSInJSCompsAndElementsForTw)
   expect(result).toContain('--spacing-7: 1.75rem;')
   expect(result).toContain('--spacing-16: 4rem;')
   expect(result.some((key: string) => key.startsWith('--spacing-77:'))).toBeFalsy()
