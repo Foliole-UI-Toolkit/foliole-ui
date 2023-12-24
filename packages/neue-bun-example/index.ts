@@ -1,15 +1,13 @@
 // Package imports
 import postcssJs from 'postcss-js'
 import postcss from 'postcss'
-import stringify from 'javascript-stringify'
-import path from 'path'
 // Types
 import type { ColorTypeOfString, ColorTypeOfObject } from './types'
 
 // Settings and Themes
 import neueTheme from './themes/neue'
 import { neueColorNames, stops } from './settings'
-import { generateColors, toCSSProperties } from './scripts'
+import { generateColors, findUsedCompKeys } from './scripts'
 
 import { btn } from './styles/elements/btn.js'
 import { input } from './styles/elements/input.js'
@@ -26,11 +24,10 @@ const AT_TW_BASE = '@tailwind base;'
 const AT_TW_COMPONENTS = '@tailwind components;'
 const AT_TW_UTILITIES = '@tailwind utilities;'
 
-const baseDir = path.join(import.meta.dir, '..')
 // put all the themes in a array.
 const themes = [neueTheme]
 
-const mergedCSSInJsCompsAndElsForVanilla = {
+let mergedCSSInJsCompsAndElsForVanilla = {
   ...accordion,
   ...appRail,
   ...appShell,
@@ -56,34 +53,8 @@ const mergeCSSInJSCompsAndElementsForTw = {
   ...input,
 }
 
-export async function findUsedCompKeys(token: Record<string, string>, tokenName: string) {
-  const foundKeys = new Set<string>()
-
-  for (const cssClass of Object.values(mergeCSSInJSCompsAndElementsForTw)) {
-    const cssString = stringify.stringify(cssClass, null, 2)
-
-    if (cssString) {
-      for (const key of Object.keys(token)) {
-        const propKey = `--${tokenName}-${key.replace('.', 'pt')}`
-        const propKeyStr = `var(${propKey})`
-        if (cssString.includes(propKeyStr)) {
-          foundKeys.add(propKey)
-        }
-      }
-    }
-  }
-
-  const sortedKeys = [...foundKeys].sort((a: string, b: string) => {
-    const numA = parseInt(a.match(/\d+/)![0])
-    const numB = parseInt(b.match(/\d+/)![0])
-    return numA - numB
-  })
-
-  return sortedKeys
-}
-
-const usedSpacing = await findUsedCompKeys(spacing, 'spacing')
-const usedFont = await findUsedCompKeys(font, 'font')
+const usedSpacing = await findUsedCompKeys(spacing, 'spacing', mergeCSSInJSCompsAndElementsForTw)
+const usedFont = await findUsedCompKeys(font, 'font', mergeCSSInJSCompsAndElementsForTw)
 
 console.log(usedSpacing)
 console.log(usedFont)
@@ -100,19 +71,23 @@ const colorTypes: any = {
   variants,
 }
 
-// function generateNeueProps() {
-//   const allSpacingCSS = toCSSProperties('spacing', spacing)
-//   const allRoundnessCSS = toCSSProperties('ui-roundness', uiRoundness['ui-roundness'])
-//   const allFontCSS = toCSSProperties('font', font)
-
-//   const combinedCSS = allSpacingCSS + '\n' + allRoundnessCSS + '\n' + allFontCSS
-
-//   return combinedCSS
-// }
-
 ;(async () => {
   try {
     generateColors(neueColorNames, stops, colorTypes)
+
+    mergedCSSInJsCompsAndElsForVanilla = { ...mergedCSSInJsCompsAndElsForVanilla, ...backgrounds, ...variants }
+
+    // Vanilla CSS - post process into file for tw solution
+    // @ts-ignore
+    const resultVanilla = await postcss().process(mergedCSSInJsCompsAndElsForVanilla, { parser: postcssJs })
+    const mergedVanillaCSS = resultVanilla.css
+    await Bun.write('dist/neue.css', mergedVanillaCSS)
+
+    // @ts-ignore
+    const resultTw = await postcss().process(mergedCSSInJsCompsForTW, { parser: postcssJs })
+    const mergedTwCSS = resultTw.css
+
+    await Bun.write('dist/neue-for-tw.css', mergedTwCSS)
   } catch (error) {
     console.error('Error occurred:', error)
   }

@@ -1,5 +1,5 @@
 import type { NeueColorNames, NeueColorName, ColorType, Stops } from '../types.ts'
-const { stringify } = require('javascript-stringify')
+import { stringify } from 'javascript-stringify'
 
 export function toCSSProperties<T>(token: string, obj: Record<string, T>) {
   let cssString = ''
@@ -63,4 +63,34 @@ export function generateColors(colorNames: string[] | NeueColorNames[], stops: S
 
     // Dynamic text colors
   })
+}
+
+export async function findUsedCompKeys(
+  token: Record<string, string>,
+  tokenName: string,
+  mergeCSSInJSCompsAndElementsForTw: any,
+) {
+  const foundKeys = new Set<string>()
+
+  for (const cssClass of Object.values(mergeCSSInJSCompsAndElementsForTw)) {
+    const cssString = stringify(cssClass, null, 2)
+
+    if (cssString) {
+      for (const key of Object.keys(token)) {
+        const propKey = `--${tokenName}-${key.replace('.', 'pt')}`
+        const propKeyStr = `var(${propKey})`
+        if (cssString.includes(propKeyStr)) {
+          foundKeys.add(propKey)
+        }
+      }
+    }
+  }
+
+  const sortedKeys = [...foundKeys].sort((a: string, b: string) => {
+    const numA = parseInt(a.match(/\d+/)![0])
+    const numB = parseInt(b.match(/\d+/)![0])
+    return numA - numB
+  })
+
+  return sortedKeys
 }
