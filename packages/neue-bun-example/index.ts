@@ -2,13 +2,17 @@
 import postcssJs from 'postcss-js'
 import postcss from 'postcss'
 // Types
-import type { ColorTypeOfString, ColorTypeOfObject } from './types'
+import type { ColorTypeOfString, ColorTypeOfObject, Theme } from './types'
 
 // Settings and Themes
 import neueTheme from './themes/neue'
-import { neueColorNames, stops } from './settings'
-import { generateColors, findUsedCompKeys } from './scripts'
+// Temp second theme as copy for example
+import neueThemeCopy from './themes/neue-copy'
 
+import { neueColorNames, stops } from './settings'
+import { findUsedCompKeys, generateColors, generateNeueSpecificProps, buildThemeProps } from './scripts'
+
+// Elements, Properties, Components
 import { btn } from './styles/elements/btn.js'
 import { input } from './styles/elements/input.js'
 import { spacing } from './styles/properties/spacing.js'
@@ -20,14 +24,16 @@ import { accordion } from './styles/components/accordion.js'
 import { drawer } from './styles/components/drawer.js'
 import { slideToggle } from './styles/components/slide-toggle.js'
 
-const AT_TW_BASE = '@tailwind base;'
-const AT_TW_COMPONENTS = '@tailwind components;'
-const AT_TW_UTILITIES = '@tailwind utilities;'
+// Put all the themes in a array.
+const themes = [neueTheme, neueThemeCopy]
 
-// put all the themes in a array.
-const themes = [neueTheme]
+const neueCSSProps = {
+  spacing,
+  font,
+  uiRoundness,
+}
 
-let mergedCSSInJsCompsAndElsForVanilla = {
+let mergedCompsAndEls = {
   ...accordion,
   ...appRail,
   ...appShell,
@@ -39,7 +45,7 @@ let mergedCSSInJsCompsAndElsForVanilla = {
 
 // Taking components (elements and tokens handled by tailwind settings) and merging into an object.
 // Components use elements and tokens.
-const mergedCSSInJsCompsForTW = {
+const mergedTwComps = {
   ...accordion,
   ...appRail,
   ...appShell,
@@ -47,25 +53,18 @@ const mergedCSSInJsCompsForTW = {
   ...slideToggle,
 }
 
-const mergeCSSInJSCompsAndElementsForTw = {
-  ...mergedCSSInJsCompsForTW,
+const mergedTwCompsAndEls = {
+  ...mergedTwComps,
   ...btn,
   ...input,
 }
 
-const usedSpacing = await findUsedCompKeys(spacing, 'spacing', mergeCSSInJSCompsAndElementsForTw)
-const usedFont = await findUsedCompKeys(font, 'font', mergeCSSInJSCompsAndElementsForTw)
-
-console.log(usedSpacing)
-console.log(usedFont)
-
 let twColors: ColorTypeOfString = {}
 let backgrounds: ColorTypeOfObject = {}
 let variants: ColorTypeOfObject = {}
-let neueCSSProps = ''
 
 // object will hold a ref to these objects.
-const colorTypes: any = {
+const colorsToGenerate: any = {
   twColors,
   backgrounds,
   variants,
@@ -73,21 +72,50 @@ const colorTypes: any = {
 
 ;(async () => {
   try {
-    generateColors(neueColorNames, stops, colorTypes)
+    generateColors(neueColorNames, stops, colorsToGenerate)
 
-    mergedCSSInJsCompsAndElsForVanilla = { ...mergedCSSInJsCompsAndElsForVanilla, ...backgrounds, ...variants }
-
-    // Vanilla CSS - post process into file for tw solution
+    // Vanilla CSS
+    mergedCompsAndEls = { ...mergedCompsAndEls, ...backgrounds, ...variants }
     // @ts-ignore
-    const resultVanilla = await postcss().process(mergedCSSInJsCompsAndElsForVanilla, { parser: postcssJs })
-    const mergedVanillaCSS = resultVanilla.css
-    await Bun.write('dist/neue.css', mergedVanillaCSS)
+    const processedCSS = await postcss().process(mergedCompsAndEls, { parser: postcssJs })
+    const mergedProcessedCSS = processedCSS.css
 
+    await Bun.write('dist/neue.css', mergedProcessedCSS)
+
+    const cssPropsString = generateNeueSpecificProps(neueCSSProps)
+
+    await Promise.all(
+      themes.map(async (theme: Theme) => {
+        const builtCssPropsString = await buildThemeProps(theme, cssPropsString)
+        if (builtCssPropsString) {
+          await Bun.write(`dist/themes/theme-${theme.name}-props.css`, builtCssPropsString)
+        }
+      }),
+    )
+
+    // Tailwind CSS
     // @ts-ignore
-    const resultTw = await postcss().process(mergedCSSInJsCompsForTW, { parser: postcssJs })
-    const mergedTwCSS = resultTw.css
+    const processedTwCSS = await postcss().process(mergedTwComps, { parser: postcssJs })
+    const mergedProcessedTwCSS = processedTwCSS.css
 
-    await Bun.write('dist/neue-for-tw.css', mergedTwCSS)
+    await Bun.write('dist/neue-for-tw.css', mergedProcessedTwCSS)
+
+    let usedTwCompKeys = []
+    const usedTwSpacingKeys = await findUsedCompKeys(spacing, 'spacing', mergedTwCompsAndEls)
+    const usedTwFontKeys = await findUsedCompKeys(font, 'font', mergedTwCompsAndEls)
+
+    usedTwCompKeys = [...usedTwSpacingKeys, ...usedTwFontKeys]
+
+    let usedTwPropsString = usedTwCompKeys.join('\n')
+
+    await Promise.all(
+      themes.map(async (theme: Theme) => {
+        const builtCssPropsString = await buildThemeProps(theme, usedTwPropsString)
+        if (builtCssPropsString) {
+          await Bun.write(`dist/themes/theme-${theme.name}-tw-props.css`, builtCssPropsString)
+        }
+      }),
+    )
   } catch (error) {
     console.error('Error occurred:', error)
   }

@@ -1,7 +1,8 @@
-import type { NeueColorNames, NeueColorName, ColorType, Stops } from '../types.ts'
 import { stringify } from 'javascript-stringify'
+import type { NeueColorNames, ColorType, Stops, Theme } from '../types.ts'
+import { AT_TW_BASE, AT_TW_COMPONENTS, AT_TW_UTILITIES } from '../settings'
 
-export function toCSSProperties<T>(token: string, obj: Record<string, T>) {
+export function objectToCSSProperties<T>(token: string, obj: Record<string, T>) {
   let cssString = ''
 
   Object.keys(obj).forEach((key) => {
@@ -78,9 +79,10 @@ export async function findUsedCompKeys(
     if (cssString) {
       for (const key of Object.keys(token)) {
         const propKey = `--${tokenName}-${key.replace('.', 'pt')}`
-        const propKeyStr = `var(${propKey})`
-        if (cssString.includes(propKeyStr)) {
-          foundKeys.add(propKey)
+        const propKeyInContext = `var(${propKey})`
+        const propKeyAndValue = `${propKey}: ${token[key]};`
+        if (cssString.includes(propKeyInContext)) {
+          foundKeys.add(propKeyAndValue)
         }
       }
     }
@@ -93,4 +95,26 @@ export async function findUsedCompKeys(
   })
 
   return sortedKeys
+}
+
+export function generateNeueSpecificProps(cssProps: Record<string, any>) {
+  const spacingCSS = objectToCSSProperties('spacing', cssProps.spacing)
+  const roundnessCSS = objectToCSSProperties('ui-roundness', cssProps.uiRoundness)
+  const fontCSS = objectToCSSProperties('font', cssProps.font)
+
+  return spacingCSS + '\n' + roundnessCSS + '\n' + fontCSS
+}
+
+export async function buildThemeProps(theme: Theme, cssPropsString: string) {
+  const propsHeader = ` :root {`
+  const propsFooter = `}`
+
+  return `${propsHeader} ${cssPropsString} ${theme.contents} ${propsFooter}`
+}
+
+export async function builtTwThemeProps(theme: Theme, cssPropsString: string) {
+  const twPropsHeader = `${AT_TW_BASE} \n ${AT_TW_COMPONENTS} \n ${AT_TW_UTILITIES} \n @layer base {\n:root {`
+  const twPropsFooter = `}\n}`
+
+  return `${twPropsHeader} ${cssPropsString} ${theme.contents} ${twPropsFooter}`
 }

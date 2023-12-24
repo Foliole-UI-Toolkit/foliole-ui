@@ -38,9 +38,9 @@ const mergeCSSInJSCompsAndElementsForTw = {
 // Test
 test('findUsedCompKeys function', async () => {
   const result = await findUsedCompKeys(mockToken, 'spacing', mergeCSSInJSCompsAndElementsForTw)
-  expect(result).toContain('--spacing-16')
-  expect(result).toContain('--spacing-7')
-  expect(result).not.toContain('--spacing-77')
-  expect(result).not.toContain('--spacing-1')
-  expect(result).not.toContain('-spacing-16')
+  expect(result).toContain('--spacing-7: 1.75rem;')
+  expect(result).toContain('--spacing-16: 4rem;')
+  expect(result.some((key: string) => key.startsWith('--spacing-77:'))).toBeFalsy()
+  expect(result.some((key: string) => key.startsWith('--spacing-1:'))).toBeFalsy()
+  expect(result.some((key: string) => key.startsWith('-spacing-16:'))).toBeFalsy()
 })
