@@ -126,3 +126,14 @@ const colorsToGenerate: any = {
     console.error('Error occurred:', error)
   }
 })()
+
+export function twPlugin({ addComponents }: { addComponents: any }) {
+  for (const elementName in mergedEls) {
+    const element = mergedEls[elementName]
+    for (const name in element) {
+      addComponents({
+        [`${name}`]: element[name],
+      })
+    }
+  }
+}
