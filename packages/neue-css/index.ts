@@ -88,6 +88,9 @@ const colorsToGenerate: any = {
 
     // Vanilla CSS
     mergedCompsAndEls = { ...mergedCompsAndEls, ...backgrounds, ...variants }
+    // temp ignore until TS error is solved.
+    // Excessive stack depth comparing types 'Root_' and 'Document_ | Root_'.ts(2321)
+    // import postcssJs
     // @ts-ignore
     const processedCSS = await postcss().process(mergedCompsAndEls, { parser: postcssJs })
     const mergedProcessedCSS = processedCSS.css
@@ -106,6 +109,9 @@ const colorsToGenerate: any = {
     )
 
     // Tailwind CSS
+    // temp ignore until TS error is solved.
+    // Excessive stack depth comparing types 'Root_' and 'Document_ | Root_'.ts(2321)
+    // import postcssJs
     // @ts-ignore
     const processedTwCSS = await postcss().process(mergedTwComps, { parser: postcssJs })
     const mergedProcessedTwCSS = processedTwCSS.css
