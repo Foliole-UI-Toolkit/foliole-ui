@@ -58,3 +58,6 @@ Temporary Items
 
 # Temp in Dev
 _templates
+
+#Temp ignore old neue-css
+packages/neue-css-old/

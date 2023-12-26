@@ -11,7 +11,13 @@ import neueThemeCopy from './themes/neue-copy'
 // Values used to map/generate values and for types.
 import { neueColorNames, stops } from './settings'
 // Functions in separate file to keep this file clean.
-import { buildThemeProps, generateColors, generateNeueSpecificProps, getUsedCSSProps } from './scripts'
+import {
+  buildThemeProps,
+  builtTwThemeProps,
+  generateColors,
+  generateNeueSpecificProps,
+  getUsedCSSProps,
+} from './scripts'
 
 // Elements, Properties, Components
 import { btn } from './styles/elements/btn.js'
@@ -65,7 +71,7 @@ const mergedTwCompsAndEls = {
   ...mergedEls,
 }
 
-let twColors: ColorTypeOfString = {}
+export let twColors: ColorTypeOfString = {}
 let backgrounds: ColorTypeOfObject = {}
 let variants: ColorTypeOfObject = {}
 
@@ -116,7 +122,7 @@ const colorsToGenerate: any = {
 
     await Promise.all(
       themes.map(async (theme: Theme) => {
-        const builtCssPropsString = await buildThemeProps(theme, usedTwPropsString)
+        const builtCssPropsString = await builtTwThemeProps(theme, usedTwPropsString)
         if (builtCssPropsString) {
           await Bun.write(`dist/themes/theme-${theme.name}-tw-props.css`, builtCssPropsString)
         }
@@ -128,12 +134,6 @@ const colorsToGenerate: any = {
 })()
 
 export function twPlugin({ addComponents }: { addComponents: any }) {
-  for (const elementName in mergedEls) {
-    const element = mergedEls[elementName]
-    for (const name in element) {
-      addComponents({
-        [`${name}`]: element[name],
-      })
-    }
-  }
+  // Add Neue Elements as components to Tailwind.
+  addComponents(mergedEls)
 }

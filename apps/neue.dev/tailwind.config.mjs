@@ -1,8 +1,7 @@
-const plugin = require('tailwindcss/plugin')
+import plugin from 'tailwindcss/plugin'
+import { twColors, twPlugin } from '../../packages/neue-css/'
 
-const { twColors, twPlugin } = require('../../packages/neue-css/scripts/generate')
-
-module.exports = {
+export default {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}', '../../packages/neue-css/**/*.{js}'],
   plugins: [plugin(twPlugin)],
   theme: {

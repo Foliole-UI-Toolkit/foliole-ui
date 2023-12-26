@@ -1,19 +1,18 @@
 {
-  "name": "@neue/neue-css",
-  "version": "0.6.0",
-  "description": "",
-  "main": "",
-  "scripts": {
-    "build": "node scripts/generate.js"
-  },
+  "name": "neue-css",
+  "module": "index.ts",
+  "type": "module",
   "author": "Aaron Crockett",
-  "license": "MIT",
-  "devDependencies": {
-    "javascript-stringify": "^2.1.0",
-    "postcss-js": "^4.0.1",
-    "prettier": "^3.0.3"
+  "scripts": {
+    "build": "bun run index.ts"
   },
-  "files": [
-    "dist"
-  ]
+  "devDependencies": {
+    "@types/postcss-js": "^4.0.4",
+    "bun-types": "^1.0.19",
+    "javascript-stringify": "^2.1.0",
+    "postcss-js": "^4.0.1"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
 }
