@@ -40,7 +40,7 @@ const props = defineProps({
 }
 
 .foliole-logo-options {
-  background: linear-gradient(45deg, rgb(var(--color-primary) / 1), rgb(var(--color-secondary) / 1));
+  background: linear-gradient(45deg, rgb(var(--color-primary-mlt) / 1), rgb(var(--color-tertiary-mlt) / 1));
 }
 
 .foliole-logo-horizontal {
@@ -60,7 +60,7 @@ const props = defineProps({
 }
 
 .foliole-logo-h1 {
-  @apply font-bold whitespace-nowrap;
+  @apply font-bold whitespace-nowrap uppercase;
 }
 
 .foliole-logo-h1-horizontal {

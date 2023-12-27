@@ -61,14 +61,14 @@ body {
 .header-bottom {
   background: linear-gradient(
     90deg,
-    rgb(var(--color-primary) / 0.9),
-    rgb(var(--color-secondary) / 0.9),
-    rgb(var(--color-primary) / 0.9)
+    rgb(var(--color-primary) / 0.7),
+    rgb(var(--color-tertiary) / 0.9),
+    rgb(var(--color-primary) / 0.7)
   );
-  height: 0.25rem;
+  height: 0.375rem;
 }
 .my-side-bar-left {
-  @apply h-full border-r-[.125rem] shadow-sm border-primary-light;
+  @apply h-full border-r-[.125rem] shadow-sm border-tertiary-mlt/20;
 }
 .my-app-rail {
   @apply border-r w-[4.5rem];
@@ -82,7 +82,7 @@ body {
 
 /* general global layout */
 .page-section {
-  @apply p-4 border rounded shadow-sm border-primary-light/90 bg-neutral-light/20;
+  @apply p-4 border rounded shadow-sm border-tertiary-mlt/30 bg-neutral-light/20;
 }
 .page-heading {
   @apply pb-2 font-bold text-center;
