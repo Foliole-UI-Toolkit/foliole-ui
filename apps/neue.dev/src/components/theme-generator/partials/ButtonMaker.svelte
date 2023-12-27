@@ -116,14 +116,14 @@
       </label>
 
       <label class="options-input-wrapper" for="hoverBrightnessScale">
-        Hover Brightness (0.8-1.2):
+        Hover Brightness (0.6-1.4):
         <input
           type="number"
           id="hoverBrightnessScale"
           name="hoverBrightnessScale"
-          min="80"
-          max="120"
-          step="1"
+          min=".6"
+          max="1.4"
+          step=".05"
           class="my-input"
           bind:value={$themeOptionsStore.btnOpts.hoverBrightnessScale}
           on:input={handleInputChange}

@@ -36,7 +36,7 @@ const props = defineProps({
 
 <style>
 .neue-logo {
-  @apply flex self-center flex-shrink-0 border-2 rounded-tl-lg rounded-tr-sm rounded-bl-sm rounded-br-lg shadow-md bg-primary border-secondary;
+  @apply flex self-center flex-shrink-0 border-[.125rem] rounded-tl-lg rounded-tr-sm rounded-bl-sm rounded-br-lg shadow-md bg-primary border-secondary;
 }
 
 .neue-logo-options {

@@ -65,10 +65,10 @@ body {
     rgb(var(--color-secondary) / 0.9),
     rgb(var(--color-primary) / 0.9)
   );
-  height: 0.1375rem;
+  height: 0.25rem;
 }
 .my-side-bar-left {
-  @apply h-full border-r-2 shadow-sm border-primary-light;
+  @apply h-full border-r-[.125rem] shadow-sm border-primary-light;
 }
 .my-app-rail {
   @apply border-r w-[4.5rem];
@@ -119,6 +119,6 @@ body {
     @apply border select-base bg-neutral-light/50 border-neutral-light;
   }
   .my-btn {
-    @apply border-2 shadow-md btn-base bg-gradient-to-br from-primary to-primary/70 border-primary;
+    @apply border-[.125rem] shadow-md btn-base bg-gradient-to-br from-primary to-primary/70 border-primary;
   }
 }
