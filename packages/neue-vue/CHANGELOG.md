@@ -1,5 +1,12 @@
 # @neue/neue-vue
 
+## 0.6.0
+
+### Minor Changes
+
+- ea338fb: Chore: Vue Testing added - Vitest and Testing Library - Vue
+- 697ecc4: Chore: Vue - rename SlideToggle to NeueSlideToggle
+
 ## 0.5.0
 
 ### Minor Changes
