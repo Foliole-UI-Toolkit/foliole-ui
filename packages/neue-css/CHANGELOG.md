@@ -1,5 +1,11 @@
 # @neue/neue-css
 
+## 0.7.0
+
+### Minor Changes
+
+- 59dc7b4: Chore: CSS - Generator to Bun conversion, TypeScript conversion, Bun testing introduced
+
 ## 0.6.0
 
 ### Minor Changes
