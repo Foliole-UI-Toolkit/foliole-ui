@@ -1,5 +1,5 @@
 const theme = {
-  contents: `     --color-primary: 239 73 83;
+  contents: `--color-primary: 239 73 83;
   --color-primary-light: 255 230 225;
   --color-primary-mlt: 255 151 151;
   --color-primary-mdk: 154 0 24;
@@ -47,9 +47,7 @@ const theme = {
   --el-p-base: .5rem;
   --el-p-double: 1rem;
   --el-p-triple: 1.5rem;`,
-  name: 'neue',
+  name: 'neue-copy',
 }
 
-module.exports = {
-  theme,
-}
+export default theme
