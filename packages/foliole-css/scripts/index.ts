@@ -1,18 +1,7 @@
 import { stringify } from 'javascript-stringify'
 import type { FolioleColorNames, ColorType, Stops, Theme } from '../types.ts'
 import { AT_TW_BASE, AT_TW_COMPONENTS, AT_TW_UTILITIES } from '../settings'
-
-export function objectToCSSProperties<T>(token: string, obj: Record<string, T>) {
-  let cssString = ''
-
-  Object.keys(obj).forEach((key) => {
-    const cssKey = `--${token}-${key.replace('.', 'pt')}`
-    const cssValue = obj[key]
-    cssString += ` ${cssKey}: ${cssValue};\n`
-  })
-
-  return cssString
-}
+import { camelToKebab } from './utils.ts'
 
 const stopsMap = {
   light: 'dark',
@@ -99,12 +88,28 @@ export async function getUsedCSSProps(
   })
 }
 
-export function generateFolioleSpecificProps(cssProps: Record<string, any>) {
-  const spacingCSS = objectToCSSProperties('spacing', cssProps.spacing)
-  const roundnessCSS = objectToCSSProperties('ui-roundness', cssProps.uiRoundness)
-  const fontCSS = objectToCSSProperties('font', cssProps.font)
+export function objectToCSSProperties<T>(token: string, obj: Record<string, T>) {
+  let cssString = ''
+  const kebabToken = camelToKebab(token)
 
-  return spacingCSS + '\n' + roundnessCSS + '\n' + fontCSS
+  Object.keys(obj).forEach((key) => {
+    const cssKey = `--${kebabToken}-${key.replace('.', 'pt')}`
+    const cssValue = obj[key]
+    cssString += ` ${cssKey}: ${cssValue};\n`
+  })
+
+  return cssString
+}
+
+export function objectsToCSSProperties(cssProps: Record<string, any>) {
+  let cssString = ''
+
+  Object.keys(cssProps).forEach((key) => {
+    const cssProperties = objectToCSSProperties(key, cssProps[key])
+    cssString += cssProperties + '\n'
+  })
+
+  return cssString
 }
 
 export async function buildThemeProps(theme: Theme, cssPropsString: string) {

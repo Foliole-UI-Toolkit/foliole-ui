@@ -12,13 +12,7 @@ import folioleThemeCopy from './themes/foliole-copy'
 // Values used to map/generate values and for types.
 import { folioleColorNames, stops } from './settings'
 // Functions in separate file to keep this file clean.
-import {
-  buildThemeProps,
-  builtTwThemeProps,
-  generateColors,
-  generateFolioleSpecificProps,
-  getUsedCSSProps,
-} from './scripts'
+import { buildThemeProps, builtTwThemeProps, generateColors, getUsedCSSProps, objectsToCSSProperties } from './scripts'
 
 // Elements, Properties, Components
 import { btn } from './styles/elements/btn.js'
@@ -128,7 +122,7 @@ const colorsToGenerate: any = {
       const processedCSS = await postcss().process(mergedCompsElsAndGenColors, { parser: postcssJs })
       const mergedProcessedCSS = processedCSS.css
 
-      const cssPropsString = generateFolioleSpecificProps(folioleCSSProps)
+      const cssPropsString = objectsToCSSProperties(folioleCSSProps)
 
       await Promise.all(
         themes.map(async (theme: Theme) => {

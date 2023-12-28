@@ -2,6 +2,7 @@
 import { expect, test } from 'bun:test'
 
 import { getUsedCSSProps } from './scripts/index.ts'
+import { camelToKebab } from './scripts/utils.ts'
 
 import { btn } from './styles/elements/btn.js'
 import { input } from './styles/elements/input.js'
@@ -43,4 +44,16 @@ test('getUsedCSSProps function', async () => {
   expect(result.some((key: string) => key.startsWith('--spacing-77:'))).toBeFalsy()
   expect(result.some((key: string) => key.startsWith('--spacing-1:'))).toBeFalsy()
   expect(result.some((key: string) => key.startsWith('-spacing-16:'))).toBeFalsy()
+})
+
+test('camelToKebab function', () => {
+  expect(camelToKebab('uiRoundness')).toBe('ui-roundness')
+  expect(camelToKebab('spacing')).toBe('spacing')
+  expect(camelToKebab('font')).toBe('font')
+  expect(camelToKebab('spacing1')).toBe('spacing1') // Ends with a number
+  expect(camelToKebab('fontFamily')).toBe('font-family') // Two words
+  expect(camelToKebab('backgroundColorNew')).toBe('background-color-new') //Three words
+  expect(camelToKebab('backgroundColorNEw')).toBe('background-color-n-ew') // Double capital letter
+  expect(camelToKebab('fFFont')).toBe('f-f-font') // Double capital letter further to the front
+  expect(camelToKebab('fFFontTT')).toBe('f-f-font-t-t') // Double capital letters at the end
 })
