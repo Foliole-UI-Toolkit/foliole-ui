@@ -95,29 +95,26 @@ const section = ref('docs')
         <div class="space-y-4">
           <h3>Docs</h3>
           <ul class="space-y-4">
-            <li>Intro</li>
-            <li>Getting Started</li>
+            <li><a href="/docs/intro">Intro</a></li>
           </ul>
         </div>
         <div class="space-y-4">
           <h3>Concepts</h3>
           <ul class="space-y-4">
             <li><a href="/docs/concepts/css-props-classes">CSS properties and classes</a></li>
-            <li>Framework and CSS components</li>
           </ul>
         </div>
         <div class="space-y-4">
           <h3>Resources</h3>
           <ul class="space-y-4">
             <li><a href="/docs/resources/roadmap">Roadmap</a></li>
-            <li>Contributing</li>
           </ul>
         </div>
       </div>
       <div class="space-y-4" v-else-if="section === 'css'">
         <h3>CSS Elements</h3>
         <ul class="space-y-4">
-          <li>Button</li>
+          <li><a href="/css/button">Button</a></li>
         </ul>
       </div>
       <div v-else-if="section === 'components'">
@@ -127,12 +124,12 @@ const section = ref('docs')
             <li><a href="/examples">Examples</a></li>
           </ul>
         </div>
-        <div class="space-y-4">
+        <!-- <div class="space-y-4">
           <h3>Components</h3>
           <ul class="space-y-4">
             <li>App Shell</li>
           </ul>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
