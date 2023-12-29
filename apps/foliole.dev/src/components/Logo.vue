@@ -1,27 +1,18 @@
 <script setup lang="ts">
-import { defineProps } from 'vue'
+import { withDefaults } from 'vue'
 
-const props = defineProps({
-  flexDirection: {
-    type: String as () => 'row' | 'col',
-    default: 'row',
-  },
-  logoClasses: {
-    type: String,
-    default: 'foliole-logo foliole-logo-options foliole-logo-horizontal',
-  },
-  logoWrapperClasses: {
-    type: String,
-    default: 'foliole-logo-wrapper foliole-logo-wrapper-options',
-  },
-  logoH1: {
-    type: String,
-    default: 'foliole-logo-h1 foliole-logo-h1-horizontal',
-  },
-  logoTextUI: {
-    type: String,
-    default: 'foliole-logo-text-ui',
-  },
+export interface LogoProps {
+  logoClasses?: string
+  logoWrapperClasses?: string
+  logoH1?: string
+  logoTextUI?: string
+}
+
+withDefaults(defineProps<LogoProps>(), {
+  logoClasses: 'foliole-logo foliole-logo-options foliole-logo-horizontal',
+  logoWrapperClasses: 'foliole-logo-wrapper foliole-logo-wrapper-options',
+  logoH1: 'foliole-logo-h1 foliole-logo-h1-horizontal',
+  logoTextUI: 'foliole-logo-text-ui',
 })
 </script>
 
