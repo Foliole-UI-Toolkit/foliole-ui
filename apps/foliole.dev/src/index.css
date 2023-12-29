@@ -42,6 +42,21 @@ body {
   background: linear-gradient(60deg, rgb(var(--color-primary-light) / 0.1), rgb(var(--color-secondary-light) / 0.1));
 }
 
+h1 {
+  @apply text-3xl font-bold uppercase;
+}
+
+h2 {
+  @apply text-2xl font-bold;
+}
+h3 {
+  @apply text-xl font-bold;
+}
+
+a.inline-link {
+  @apply font-bold text-tertiary-mdk;
+}
+
 /*  Sitewite Layout */
 /* AppShell */
 .my-app-shell {
@@ -80,6 +95,9 @@ body {
 }
 
 /* general global layout */
+.page {
+  @apply space-y-4;
+}
 .page-section {
   @apply p-4 border rounded shadow-sm border-tertiary-mlt/30 bg-neutral-light/20;
 }
