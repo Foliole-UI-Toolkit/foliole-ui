@@ -1,6 +1,6 @@
 {
   "name": "@foliole/foliole-css",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "The CSS class library for Foliole.",
   "module": "index.ts",
   "type": "module",

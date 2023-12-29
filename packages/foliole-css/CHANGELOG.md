@@ -1,5 +1,11 @@
 # @foliole/foliole-css
 
+## 0.8.0
+
+### Minor Changes
+
+- 57c8f9e: Chore: CSS - ALPHA BREAKING CHANGE - outputs single css file built either as Tailwind or vanilla CSS.
+
 ## 0.7.0
 
 ### Minor Changes

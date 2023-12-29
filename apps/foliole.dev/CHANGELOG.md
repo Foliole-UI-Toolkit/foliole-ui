@@ -1,5 +1,12 @@
 # @foliole/foliole-ui-docs
 
+## 0.0.9
+
+### Patch Changes
+
+- Updated dependencies [57c8f9e]
+  - @foliole/foliole-css@0.8.0
+
 ## 0.0.8
 
 ### Patch Changes
