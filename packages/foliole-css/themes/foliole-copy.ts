@@ -1,5 +1,5 @@
 const theme = {
-contents: `--color-primary: 239 73 83;
+  contents: `--color-primary: 239 73 83;
   --color-primary-light: 255 230 225;
   --color-primary-mlt: 255 151 151;
   --color-primary-mdk: 154 0 24;
@@ -35,8 +35,8 @@ contents: `--color-primary: 239 73 83;
   --btn-p-lg: 0.625rem 2.1875rem;
   --btn-hover-scale: 1.1;
   --btn-active-scale: 0.9;
-  --btn-hover-filter: 1.05%;
-  --btn-active-filter: 0.95%;
+  --btn-hover-filter: 1.05;
+  --btn-active-filter: 0.95;
   --btn-font-sm-size: var(--font-sm);
   --btn-font-base-size: var(--font-md);
   --btn-font-lg-size: var(--font-lg);
@@ -47,7 +47,7 @@ contents: `--color-primary: 239 73 83;
   --el-p-base: .5rem;
   --el-p-double: 1rem;
   --el-p-triple: 1.5rem;`,
-name: 'foliole-copy',
+  name: 'foliole-copy',
 }
 
 export default theme

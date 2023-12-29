@@ -1,6 +1,7 @@
 // Package imports
 import postcssJs from 'postcss-js'
 import postcss from 'postcss'
+import prettier from 'prettier'
 // Types
 import type { ColorTypeOfString, ColorTypeOfObject, Theme } from './types'
 
@@ -11,13 +12,7 @@ import folioleThemeCopy from './themes/foliole-copy'
 // Values used to map/generate values and for types.
 import { folioleColorNames, stops } from './settings'
 // Functions in separate file to keep this file clean.
-import {
-  buildThemeProps,
-  builtTwThemeProps,
-  generateColors,
-  generateFolioleSpecificProps,
-  getUsedCSSProps,
-} from './scripts'
+import { buildThemeProps, builtTwThemeProps, generateColors, getUsedCSSProps, objectsToCSSProperties } from './scripts'
 
 // Elements, Properties, Components
 import { btn } from './styles/elements/btn.js'
@@ -82,56 +77,66 @@ const colorsToGenerate: any = {
 
 ;(async () => {
   try {
+    // Assigns variables by reference, backgrounds and twColors.
     generateColors(folioleColorNames, stops, colorsToGenerate)
 
-    // Vanilla CSS
-    mergedCompsAndEls = { ...mergedCompsAndEls, ...backgrounds }
-    // temp ignore until TS error is solved.
-    // Excessive stack depth comparing types 'Root_' and 'Document_ | Root_'.ts(2321)
-    // import postcssJs
-    // @ts-ignore
-    const processedCSS = await postcss().process(mergedCompsAndEls, { parser: postcssJs })
-    const mergedProcessedCSS = processedCSS.css
+    if (Bun.argv[2] === '--tw') {
+      // Build for TW.
 
-    await Bun.write('dist/foliole.css', mergedProcessedCSS)
+      // temp ignore until TS error is solved.
+      // Excessive stack depth comparing types 'Root_' and 'Document_ | Root_'.ts(2321)
+      // import postcssJs
+      // @ts-ignore
+      const processedTwCSS = await postcss().process(mergedTwComps, { parser: postcssJs })
+      const mergedProcessedTwCSS = processedTwCSS.css
 
-    const cssPropsString = generateFolioleSpecificProps(folioleCSSProps)
+      let usedTwCompKeys = []
+      const usedTwSpacingKeys = await getUsedCSSProps(spacing, 'spacing', mergedTwCompsAndEls)
+      const usedTwFontKeys = await getUsedCSSProps(font, 'font', mergedTwCompsAndEls)
 
-    await Promise.all(
-      themes.map(async (theme: Theme) => {
-        const builtCssPropsString = await buildThemeProps(theme, cssPropsString)
-        if (builtCssPropsString) {
-          await Bun.write(`dist/themes/theme-${theme.name}-props.css`, builtCssPropsString)
-        }
-      }),
-    )
+      usedTwCompKeys = [...usedTwSpacingKeys, ...usedTwFontKeys]
 
-    // Tailwind CSS
-    // temp ignore until TS error is solved.
-    // Excessive stack depth comparing types 'Root_' and 'Document_ | Root_'.ts(2321)
-    // import postcssJs
-    // @ts-ignore
-    const processedTwCSS = await postcss().process(mergedTwComps, { parser: postcssJs })
-    const mergedProcessedTwCSS = processedTwCSS.css
+      let usedTwPropsString = usedTwCompKeys.join('\n')
 
-    await Bun.write('dist/foliole-for-tw.css', mergedProcessedTwCSS)
+      await Promise.all(
+        themes.map(async (theme: Theme) => {
+          const builtCssPropsString = await builtTwThemeProps(theme, usedTwPropsString)
+          if (builtCssPropsString) {
+            const mergedTwPropsAndClassesCSS = builtCssPropsString + '\n' + mergedProcessedTwCSS
+            const processedTwCSS = await prettier.format(mergedTwPropsAndClassesCSS, { parser: 'css' })
 
-    let usedTwCompKeys = []
-    const usedTwSpacingKeys = await getUsedCSSProps(spacing, 'spacing', mergedTwCompsAndEls)
-    const usedTwFontKeys = await getUsedCSSProps(font, 'font', mergedTwCompsAndEls)
+            console.log(processedTwCSS)
 
-    usedTwCompKeys = [...usedTwSpacingKeys, ...usedTwFontKeys]
+            await Bun.write(`dist/themes/theme-${theme.name}-tw.css`, processedTwCSS)
+          }
+        }),
+      )
+    } else {
+      // Vanilla for Vanilla.
+      // colors are generated last above, so need to merge them.
+      const mergedCompsElsAndGenColors = { ...mergedCompsAndEls, ...backgrounds }
+      // temp ignore until TS error is solved.
+      // Excessive stack depth comparing types 'Root_' and 'Document_ | Root_'.ts(2321)
+      // import postcssJs
+      // @ts-ignore
+      const processedCSS = await postcss().process(mergedCompsElsAndGenColors, { parser: postcssJs })
+      const mergedProcessedCSS = processedCSS.css
 
-    let usedTwPropsString = usedTwCompKeys.join('\n')
+      const cssPropsString = objectsToCSSProperties(folioleCSSProps)
 
-    await Promise.all(
-      themes.map(async (theme: Theme) => {
-        const builtCssPropsString = await builtTwThemeProps(theme, usedTwPropsString)
-        if (builtCssPropsString) {
-          await Bun.write(`dist/themes/theme-${theme.name}-tw-props.css`, builtCssPropsString)
-        }
-      }),
-    )
+      await Promise.all(
+        themes.map(async (theme: Theme) => {
+          const builtCssPropsString = await buildThemeProps(theme, cssPropsString)
+          if (builtCssPropsString) {
+            const mergedPropsAndClassesCSS = builtCssPropsString + '\n\n' + mergedProcessedCSS
+
+            const processedCSS = await prettier.format(mergedPropsAndClassesCSS, { parser: 'css' })
+
+            await Bun.write(`dist/themes/theme-${theme.name}.css`, processedCSS)
+          }
+        }),
+      )
+    }
   } catch (error) {
     console.error('Error occurred:', error)
   }
