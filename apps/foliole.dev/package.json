@@ -1,0 +1,33 @@
+{
+  "name": "@foliole/foliole-ui-docs",
+  "type": "module",
+  "version": "0.0.9",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "vercel-build": "pnpm install --prod=false && pnpm -w @foliole/foliole-ui-docs build"
+  },
+  "dependencies": {
+    "@astrojs/svelte": "^4.0.3",
+    "@astrojs/tailwind": "^5.0.2",
+    "@astrojs/vue": "^3.0.4",
+    "@foliole/foliole-css": "workspace:*",
+    "@foliole/foliole-vue": "workspace:*",
+    "astro": "^3.5.2",
+    "chroma-js": "^2.4.2"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.3.1",
+    "@types/chroma-js": "^2.4.3",
+    "@vitejs/plugin-vue": "^4.4.1",
+    "autoprefixer": "^10.4.16",
+    "javascript-stringify": "^2.1.0",
+    "postcss": "^8.4.31",
+    "prettier": "^3.0.3",
+    "tailwindcss": "^3.3.5",
+    "typescript": "^5.2.2"
+  }
+}

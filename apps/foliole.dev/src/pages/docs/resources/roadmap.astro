@@ -1,0 +1,56 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+---
+<Layout title="Roadmap">
+  <div class="page">
+    <h1>Alpha Roadmap / TODO List</h1>
+
+    <p>This is a more broad overview of a Roadmap. Please look at <a href="https://github.com/Foliole-UI-Toolkit/foliole-ui/issues/" class="inline-link">issues</a> on github for a many more specific issues currently being worked on.</p>
+    <p>During Alpha this Roadmap will be rather loose.</p>
+    
+    <h2>GENERAL</h2>
+    <ul>
+      <li>Implement testing solution - one that will work best for various Frameworks.</li>
+      <li>Consider Github Actions.</li>
+      <li>Make Working branch the default. And/or protect master from being merged into from anywhere besides working.</li>
+      <li>Template for making docs easier. And/or automation solution for docs.</li>
+    </ul>
+    
+    <h2>Theme Generator.</h2>
+    
+    <ul>
+      <li>Add controls to fine-tune color steps from the UI (e.g., how far apart analogous steps are, change direction of color scheme).</li>
+      <li>Perhaps adjust colors visually as (possibly) mathematical solutions don't always work (e.g., some colors seem too dark in the triad color scheme). Research this.</li>
+      <li>Adjust the range of random colors that can be generated (e.g., to avoid base colors that are too dark). Consider providing options for this.</li>
+    </ul>
+    
+    
+    <h2>Tokens</h2>
+    
+    <ul>
+      <li>Space-x space-y tokens for vanilla CSS solutions.</li>
+    </ul>
+    
+    <h2>Components</h2>
+
+    <ul>
+      <li>Drop Down</li>
+      <li>Stepper</li>
+      <li>Star Ratings</li>
+      <li>Progress</li>
+      <li>Tabs</li>
+      <li>Avatar</li>
+      <li>Trees</li>
+      <li>List Boxes</li>
+      <li>File Dropzone</li>
+      <li>Tables</li>
+    </ul>
+  </div>
+
+</Layout>
+<style>
+  li {
+    margin-left: 1rem;
+    list-style-type: disc;
+  }
+</style>

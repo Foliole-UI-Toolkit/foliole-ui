@@ -11,6 +11,8 @@
   "dictionaries": ["html", "typescript", "softwareTerms", "companies"],
   "allowCompoundWords": true,
   "words": [
+    "astro",
+    "astrojs",
     "autocollapse",
     "autohide",
     "blockquote",
@@ -26,8 +28,7 @@
     "Helvetica",
     "hoverable",
     "listbox",
-    "Neue",
-    "neue",
+    "foliole",
     "Noto",
     "nowrap",
     "nuxt",
