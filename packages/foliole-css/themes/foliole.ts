@@ -35,8 +35,8 @@ const theme = {
   --btn-p-lg: 0.625rem 2.1875rem;
   --btn-hover-scale: 1.1;
   --btn-active-scale: 0.9;
-  --btn-hover-filter: 1.05%;
-  --btn-active-filter: 0.95%;
+  --btn-hover-filter: 1.05;
+  --btn-active-filter: 0.95;
   --btn-font-sm-size: var(--font-sm);
   --btn-font-base-size: var(--font-md);
   --btn-font-lg-size: var(--font-lg);
