@@ -11,6 +11,8 @@
   "dictionaries": ["html", "typescript", "softwareTerms", "companies"],
   "allowCompoundWords": true,
   "words": [
+    "astro",
+    "astrojs",
     "autocollapse",
     "autohide",
     "blockquote",
