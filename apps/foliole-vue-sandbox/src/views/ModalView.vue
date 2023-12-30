@@ -12,11 +12,11 @@ function success() {
 <template>
   <div>
     <FolioleModal
-      @cancel="show = false"
-      @confirm="success"
       :show="show"
       :title="'confirm'"
       :type="'confirm'"
+      @cancel="show = false"
+      @confirm="success"
       >SUP</FolioleModal
     >
   </div>

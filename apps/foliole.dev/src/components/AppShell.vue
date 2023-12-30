@@ -34,16 +34,16 @@ function handleDrawerOpen() {
 <template>
   <div v-if="!fullWidthPages[pathname]" class="flex h-full">
     <!-- Consider performance implications of this and if other solutions are better in as menu grows. v-if, v-show and dynamic components -->
-    <AppDrawer class="flex md:hidden" @close="handleDrawerClose" :show="showDrawer">
+    <AppDrawer class="flex md:hidden" :show="showDrawer" @close="handleDrawerClose">
       <AppMainMenu />
     </AppDrawer>
   </div>
   <FolioleAppShell
-    appShellClasses="app-shell my-app-shell"
-    siteCentralWrapperClasses="site-central-wrapper mx-auto"
-    siteHeaderClasses="siteheader site-header-options my-header"
-    pageClasses="page my-page h-screen"
-    siteSidebarLeftClasses="sidebar-left site-sidebar-left-options my-side-bar-left"
+    app-shell-classes="app-shell my-app-shell"
+    site-central-wrapper-classes="site-central-wrapper mx-auto"
+    site-header-classes="siteheader site-header-options my-header"
+    page-classes="page my-page h-screen"
+    site-sidebar-left-classes="sidebar-left site-sidebar-left-options my-side-bar-left"
   >
     <template #header>
       <div class="flex flex-wrap p-4">
