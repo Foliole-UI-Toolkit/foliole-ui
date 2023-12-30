@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 
 import AppMainMenu from './AppMainMenu.vue'
-import Logo from './Logo.vue'
+import FolioleLogo from './FolioleLogo.vue'
 
 import FolioleAppShell from '../../../../packages/foliole-vue/src/components/AppShell/FolioleAppShell.vue'
 
@@ -64,7 +64,7 @@ function handleDrawerOpen() {
                 <line x1="3" y1="18" x2="21" y2="18" />
               </svg>
             </button>
-            <Logo />
+            <FolioleLogo />
             <ul class="container flex justify-end w-full p-2 pb-0 mx-auto space-x-4 font-bold">
               <li>
                 <a class="uppercase" href="/">home</a>
