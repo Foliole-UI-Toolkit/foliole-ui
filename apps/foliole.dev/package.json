@@ -16,7 +16,8 @@
     "foliole-css": "0.8.0",
     "foliole-vue": "0.6.0",
     "astro": "^3.5.2",
-    "chroma-js": "^2.4.2"
+    "chroma-js": "^2.4.2",
+    "svelte": "^3.59.2"
   },
   "devDependencies": {
     "@astrojs/check": "^0.3.1",
