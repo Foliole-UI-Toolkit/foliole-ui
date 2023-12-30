@@ -60,8 +60,8 @@ export function generateA11yOnColor(color: any): '255 255 255' | '0 0 0' {
   return black < white ? '0 0 0' : '255 255 255'
 }
 
-function generateRelativeHue(color: string, distance: number, dir: string) {
-  const rangeMultiplier = {
+function generateRelativeHue(color: ColorName, distance: number, dir: string) {
+  const rangeMultiplier: { [key in ColorName]: number } = {
     red: 2,
     orange: 1,
     yellow: 1,
