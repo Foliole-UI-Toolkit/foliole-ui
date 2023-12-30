@@ -7,15 +7,14 @@
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro",
-    "vercel-build": "pnpm install --prod=false && pnpm -w foliole-ui-docs build"
+    "astro": "astro"
   },
   "dependencies": {
     "@astrojs/svelte": "^4.0.3",
     "@astrojs/tailwind": "^5.0.2",
     "@astrojs/vue": "^3.0.4",
-    "foliole-css": "workspace:*",
-    "foliole-vue": "workspace:*",
+    "foliole-css": "0.8.0",
+    "foliole-vue": "0.6.0",
     "astro": "^3.5.2",
     "chroma-js": "^2.4.2"
   },
@@ -25,6 +24,8 @@
     "@vitejs/plugin-vue": "^4.4.1",
     "autoprefixer": "^10.4.16",
     "javascript-stringify": "^2.1.0",
+    "foliole-css": "workspace:*",
+    "foliole-vue": "workspace:*",
     "postcss": "^8.4.31",
     "prettier": "^3.0.3",
     "tailwindcss": "^3.3.5",
