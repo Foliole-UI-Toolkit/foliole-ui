@@ -1,5 +1,5 @@
 {
-  "name": "@foliole/foliole-css",
+  "name": "foliole-css",
   "version": "0.8.0",
   "description": "The CSS class library for Foliole.",
   "module": "index.ts",

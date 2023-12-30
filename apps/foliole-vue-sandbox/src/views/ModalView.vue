@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import FolioleModal from '@foliole/foliole-vue/src/components/Modal/FolioleModal.vue'
+import FolioleModal from 'foliole-vue/src/components/Modal/FolioleModal.vue'
 import { ref } from 'vue'
 
 const show = ref(false)

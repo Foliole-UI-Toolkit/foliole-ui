@@ -24,10 +24,10 @@ importers:
         specifier: ^4.2.5
         version: 4.2.5(vue@3.3.8)
     devDependencies:
-      '@foliole/foliole-css':
+      'foliole-css':
         specifier: workspace:*
         version: link:../../packages/foliole-css
-      '@foliole/foliole-vue':
+      'foliole-vue':
         specifier: workspace:*
         version: link:../../packages/foliole-vue
       '@rushstack/eslint-patch':
@@ -99,10 +99,10 @@ importers:
       '@astrojs/vue':
         specifier: ^3.0.4
         version: 3.0.4(@babel/core@7.23.3)(astro@3.6.0)(vite@4.5.0)(vue@3.3.8)
-      '@foliole/foliole-css':
+      'foliole-css':
         specifier: workspace:*
         version: link:../../packages/foliole-css
-      '@foliole/foliole-vue':
+      'foliole-vue':
         specifier: workspace:*
         version: link:../../packages/foliole-vue
       astro:

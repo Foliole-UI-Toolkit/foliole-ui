@@ -1,4 +1,4 @@
-# @foliole/foliole-css
+# foliole-css
 
 ## 0.8.0
 

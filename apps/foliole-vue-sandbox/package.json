@@ -1,5 +1,5 @@
 {
-  "name": "@foliole/foliole-vue-sandbox",
+  "name": "foliole-vue-sandbox",
   "version": "0.1.1",
   "private": true,
   "scripts": {
@@ -16,8 +16,8 @@
     "vue-router": "^4.2.5"
   },
   "devDependencies": {
-    "@foliole/foliole-vue": "workspace:*",
-    "@foliole/foliole-css": "workspace:*",
+    "foliole-vue": "workspace:*",
+    "foliole-css": "workspace:*",
     "@rushstack/eslint-patch": "^1.3.3",
     "@tailwindcss/forms": "^0.5.6",
     "@tailwindcss/typography": "^0.5.10",
