@@ -1,35 +1,47 @@
-import { derived, get } from 'svelte/store'
+import { derived, get, type Readable } from 'svelte/store'
+import type { BtnOpts } from '../types'
 
-export function initDerivedOptions(themeOptionsStore: any) {
-  // TODO: fine tune these based on the default scale CSS Properties
-  const btnSmPaddingBase = derived(themeOptionsStore, ($store: any) => {
-    // btn padding base * sm btn padding size scale
-    return Number($store.btnOpts.paddingBase) - 0.125 * $store.btnOpts.sizeScale
+interface LocalBtnOpts {
+  paddingBase: string
+  sizeScale: string
+  paddingWidthScale: string
+}
+
+type PartialBtnOpts = Partial<BtnOpts> & LocalBtnOpts
+
+interface ThemeOptionsStore {
+  btnOpts: PartialBtnOpts
+}
+
+export function initDerivedOptions(themeOptionsStore: Readable<ThemeOptionsStore>) {
+  const btnSmPaddingBase = derived(themeOptionsStore, ($store: ThemeOptionsStore) => {
+    return Number($store.btnOpts.paddingBase) - 0.125 * Number($store.btnOpts.sizeScale)
   })
 
-  const btnLgPaddingBase = derived(themeOptionsStore, ($store: any) => {
-    return Number($store.btnOpts.paddingBase) + 0.125 * $store.btnOpts.sizeScale
+  const btnLgPaddingBase = derived(themeOptionsStore, ($store: ThemeOptionsStore) => {
+    return Number($store.btnOpts.paddingBase) - 0.125 * Number($store.btnOpts.sizeScale)
   })
 
-  const btnChipPaddingBase = derived(themeOptionsStore, ($store: any) => {
+  const btnChipPaddingBase = derived(themeOptionsStore, ($store: ThemeOptionsStore) => {
     return (
-      Number($store.btnOpts.paddingBase) - 0.25 * ($store.btnOpts.sizeScale > 1.375 ? 1.375 : $store.btnOpts.sizeScale)
+      Number($store.btnOpts.paddingBase) -
+      0.25 * (Number($store.btnOpts.sizeScale) > 1.375 ? 1.375 : Number($store.btnOpts.sizeScale))
     )
   })
 
-  const btnSmPaddingWidth = derived(themeOptionsStore, ($store: any) => {
+  const btnSmPaddingWidth = derived(themeOptionsStore, ($store: ThemeOptionsStore) => {
     return get(btnSmPaddingBase) * Number($store.btnOpts.paddingWidthScale)
   })
 
-  const btnPaddingWidth = derived(themeOptionsStore, ($store: any) => {
+  const btnPaddingWidth = derived(themeOptionsStore, ($store: ThemeOptionsStore) => {
     return Number($store.btnOpts.paddingBase) * Number($store.btnOpts.paddingWidthScale)
   })
 
-  const btnLgPaddingWidth = derived(themeOptionsStore, ($store: any) => {
+  const btnLgPaddingWidth = derived(themeOptionsStore, ($store: ThemeOptionsStore) => {
     return get(btnLgPaddingBase) * Number($store.btnOpts.paddingWidthScale)
   })
 
-  const btnChipPaddingWidth = derived(themeOptionsStore, ($store: any) => {
+  const btnChipPaddingWidth = derived(themeOptionsStore, ($store: ThemeOptionsStore) => {
     return get(btnChipPaddingBase) * Number($store.btnOpts.paddingWidthScale)
   })
 
@@ -43,5 +55,3 @@ export function initDerivedOptions(themeOptionsStore: any) {
     btnChipPaddingWidth,
   }
 }
-
-export function initDerivedBuiltStrings(themeOptionsStore: any) {}

@@ -1,4 +1,5 @@
-export const initThemeOptions = {
+import type { ThemeOptionsCollection } from '../types'
+export const initThemeOptions: ThemeOptionsCollection = {
   colors: [
     {
       key: 'primary',

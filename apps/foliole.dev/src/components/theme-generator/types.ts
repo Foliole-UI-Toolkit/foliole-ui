@@ -37,8 +37,11 @@ export interface FontOpts {
   textColorDark: string
 }
 
-export interface ColorsCollection {
-  [key: string]: string | null
+export interface RoundedOpts {
+  size: string
+  btnRoundness: string
+  inputRoundness: string
+  colorSwatchRoundness: string
 }
 
 export type FolioleColorScale = (typeof folioleColorScale)[number]
@@ -48,6 +51,8 @@ export interface ThemeOptionsCollection {
   derivedColors: ColorSettings[]
   btnOpts: BtnOpts
   fontOpts: FontOpts
+  roundedOpts: RoundedOpts
+
   roundedBase: string
   borderBase: string
   primaryHex: string

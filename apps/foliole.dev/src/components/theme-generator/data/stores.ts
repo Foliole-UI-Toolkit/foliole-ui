@@ -1,19 +1,20 @@
 import { writable } from 'svelte/store'
-
 import { getContext, setContext } from 'svelte'
-
 import { initThemeOptions } from '.'
-
 import { initDerivedOptions } from './derived-stores'
+import type { BtnOpts, ColorSettings, RoundedOpts, ThemeOptionsCollection } from '../types'
 
 const THEME_OPTIONS_KEY = 'themeOptionsStore'
 
 export interface ThemeOptionsStore {
-  subscribe: any
-  set: any
-  updateColor: (type: 'color' | 'derived', colorKey: string, value: any | string) => void
-  updateColors: (type: 'colors' | 'derivedColors', updatedColors: any) => void
-  updateBtnOpts: (value: any) => void
+  subscribe: (subscription: (value: ThemeOptionsCollection) => void) => () => void
+  set: (value: ThemeOptionsCollection) => void
+  updateColor: (type: 'color' | 'derivedColors', colorKey: string, value: Partial<ColorSettings> | string) => void
+
+  updateColors: (updatedColors: Partial<ColorSettings>[]) => void
+
+  updateBtnOpts: (value: Partial<BtnOpts>) => void
+  updateRoundedOpts: (value: Partial<RoundedOpts>) => void
 }
 
 export function getThemeOptionsStore(): ThemeOptionsStore {
@@ -35,44 +36,45 @@ export function initializeThemeOptionsStore() {
 }
 
 function themeOptionsService() {
-  // Only returning subscribe bc updates and sets should be done via these provided methods.
-  const themeOptionsStoreInstance = writable<any>(initThemeOptions)
+  const themeOptionsStoreInstance = writable<ThemeOptionsCollection>(initThemeOptions)
 
   const { subscribe, set, update } = themeOptionsStoreInstance
 
   return {
     subscribe,
     set,
-    updateColor: (type: 'color' | 'derivedColors', colorKey: string, value: any | string) => {
-      update((themeOptionsStore) => {
-        const colorIndex = themeOptionsStore[type].findIndex((color: any) => color.key === colorKey)
+    updateColor: (type: 'color' | 'derivedColors', colorKey: string, value: Partial<ColorSettings> | string) => {
+      update((themeOptionsStore: ThemeOptionsCollection) => {
+        const colorIndex = themeOptionsStore.colors.findIndex((color: ColorSettings) => color.key === colorKey)
 
-        // If the color with the given key does not exist in the array
         if (colorIndex === -1) {
           console.error(`Color with key '${colorKey}' not found.`)
-          return
+          return themeOptionsStore
         }
 
         if (typeof value === 'string') {
-          themeOptionsStore[type][colorIndex].hex = value
+          themeOptionsStore.colors[colorIndex].hex = value
         } else {
-          themeOptionsStore[type][colorIndex] = { ...themeOptionsStore[type][colorIndex], ...value }
+          themeOptionsStore.colors[colorIndex] = { ...themeOptionsStore.colors[colorIndex], ...value }
         }
         return themeOptionsStore
       })
     },
-    updateColors: (type: 'colors' | 'derivedColors', updatedColors: any) => {
+    updateColors: (updatedColors: Partial<ColorSettings>[]) => {
       update((themeOptionsStore) => {
         return {
           ...themeOptionsStore,
-          [type]: themeOptionsStore[type].map((color: any, i: number) => {
-            color.hex = updatedColors[color.key] as string
+          colors: themeOptionsStore.colors.map((color: ColorSettings) => {
+            const updatedColor = updatedColors.find((updatedColor) => updatedColor.key === color.key)
+            if (updatedColor) {
+              return { ...color, ...updatedColor }
+            }
             return color
           }),
         }
       })
     },
-    updateBtnOpts: (value: any) => {
+    updateBtnOpts: (value: Partial<BtnOpts>) => {
       update((themeOptionsStore) => {
         themeOptionsStore.btnOpts = {
           ...themeOptionsStore.btnOpts,
@@ -81,7 +83,7 @@ function themeOptionsService() {
         return themeOptionsStore
       })
     },
-    updateRoundedOpts: (value: any) => {
+    updateRoundedOpts: (value: Partial<RoundedOpts>) => {
       update((themeOptionsStore) => {
         themeOptionsStore.roundedOpts = {
           ...themeOptionsStore.roundedOpts,

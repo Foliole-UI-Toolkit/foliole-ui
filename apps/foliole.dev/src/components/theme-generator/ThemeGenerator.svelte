@@ -115,7 +115,6 @@
 
   // Generate color scheme based on base primary hex color.
   function generateBaseColorScheme(updatedColors: Record<string, string | null>) {
-    // colorsCollectionStore.update((colorsCollection) => {
     let baseColors: (string | null)[] = []
     // Array because we will have multi gray options later.
 
@@ -198,7 +197,7 @@
     // Create base color scheme values.
     let updatedColors: Record<string, string | null> = {}
     updatedColors = generateBaseColorScheme(updatedColors)
-    themeOptionsStore.updateColors('colors', updatedColors)
+    themeOptionsStore.updateColors(updatedColors)
 
     // Create shades based on base values.
     let schemeColorShades = generateColorShades()
