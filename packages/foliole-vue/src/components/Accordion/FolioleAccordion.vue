@@ -16,9 +16,7 @@ const [useProvideAccordionStore, useAccordionStore] = createInjectionState(
   () => {
     const activeItemId = ref<string | null>(null)
 
-    const isActive = computed(() => {
-      return activeItemId.value
-    })
+    const isActive = (itemId: string) => computed(() => activeItemId.value === itemId)
 
     function setActiveItem(itemId: string | null) {
       activeItemId.value = itemId
@@ -30,7 +28,9 @@ const [useProvideAccordionStore, useAccordionStore] = createInjectionState(
 )
 
 useProvideAccordionStore()
-provide('useAccordionStore', useAccordionStore)
+
+export { useAccordionStore }
+
 provide('autocollapse', props.autocollapse)
 provide('detached', props.detached)
 </script>

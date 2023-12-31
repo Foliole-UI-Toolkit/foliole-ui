@@ -1,12 +1,14 @@
 <script lang="ts" setup>
-import type { AccordionStore } from './types'
+import { useAccordionStore } from './FolioleAccordion.vue'
 import { computed, inject, ref, watch, withDefaults } from 'vue'
 import classNames from 'classnames'
 
-const useAccordionStore = inject<AccordionStore>('useAccordionStore')
+if (!useAccordionStore) {
+  throw new Error('useAccordionStore is undefined')
+}
 const autocollapse = inject<boolean>('autocollapse')
 
-const { isActive, setActiveItem } = useAccordionStore()
+const { isActive, setActiveItem } = useAccordionStore()!
 
 const emits = defineEmits(['toggle'])
 
