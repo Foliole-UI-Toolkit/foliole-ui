@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 // import { ref } from 'vue'
-import '@foliole/foliole-css/styles/index.css'
+import 'foliole-css/styles/index.css'
 
-import FolioleAppShell from '@foliole/foliole-vue/src/components/AppShell/FolioleAppShell.vue'
-// import FolioleAppRail from '@foliole/foliole-vue/src/components/AppRail/FolioleAppRail.vue'
+import FolioleAppShell from 'foliole-vue/src/components/AppShell/FolioleAppShell.vue'
+// import FolioleAppRail from 'foliole-vue/src/components/AppRail/FolioleAppRail.vue'
 
-// import FolioleAppRailAnchor from '@foliole/foliole-vue/src/components/AppRail/FolioleAppRailAnchor.vue'
-// import FolioleAppRailTile from '@foliole/foliole-vue/src/components/AppRail/FolioleAppRailTile.vue'
+// import FolioleAppRailAnchor from 'foliole-vue/src/components/AppRail/FolioleAppRailAnchor.vue'
+// import FolioleAppRailTile from 'foliole-vue/src/components/AppRail/FolioleAppRailTile.vue'
 // let currentTile = ref('1')
 </script>
 

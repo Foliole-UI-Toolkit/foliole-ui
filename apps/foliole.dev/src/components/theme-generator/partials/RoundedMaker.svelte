@@ -1,15 +1,16 @@
 <script lang="ts">
-  import { getThemeOptionsStore } from '../data/stores'
+  import { getThemeOptionsStore, type ThemeOptionsStore } from '../data/stores'
   import { roundedOpts, elementRoundness } from '../data/settings'
   import { createEventDispatcher } from 'svelte'
 
   const dispatch = createEventDispatcher()
 
-  const themeOptionsStore = getThemeOptionsStore() as any
+  const themeOptionsStore = getThemeOptionsStore() as ThemeOptionsStore
 
-  function handleInputChange(event: any) {
-    const inputName = event?.target?.name
-    const inputValue = event?.target?.value
+  function handleInputChange(event: Event) {
+    const target = event.target as HTMLInputElement
+    const inputName = target?.name
+    const inputValue = target?.value
 
     themeOptionsStore.updateRoundedOpts({ [inputName]: inputValue })
     dispatch('roundedInputChange')

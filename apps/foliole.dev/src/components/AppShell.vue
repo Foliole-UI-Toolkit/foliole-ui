@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 
 import AppMainMenu from './AppMainMenu.vue'
-import Logo from './Logo.vue'
+import FolioleLogo from './FolioleLogo.vue'
 
 import FolioleAppShell from '../../../../packages/foliole-vue/src/components/AppShell/FolioleAppShell.vue'
 
@@ -34,16 +34,16 @@ function handleDrawerOpen() {
 <template>
   <div v-if="!fullWidthPages[pathname]" class="flex h-full">
     <!-- Consider performance implications of this and if other solutions are better in as menu grows. v-if, v-show and dynamic components -->
-    <AppDrawer class="flex md:hidden" @close="handleDrawerClose" :show="showDrawer">
+    <AppDrawer class="flex md:hidden" :show="showDrawer" @close="handleDrawerClose">
       <AppMainMenu />
     </AppDrawer>
   </div>
   <FolioleAppShell
-    appShellClasses="app-shell my-app-shell"
-    siteCentralWrapperClasses="site-central-wrapper mx-auto"
-    siteHeaderClasses="siteheader site-header-options my-header"
-    pageClasses="page my-page h-screen"
-    siteSidebarLeftClasses="sidebar-left site-sidebar-left-options my-side-bar-left"
+    app-shell-classes="app-shell my-app-shell"
+    site-central-wrapper-classes="site-central-wrapper mx-auto"
+    site-header-classes="siteheader site-header-options my-header"
+    page-classes="page my-page h-screen"
+    site-sidebar-left-classes="sidebar-left site-sidebar-left-options my-side-bar-left"
   >
     <template #header>
       <div class="flex flex-wrap p-4">
@@ -64,7 +64,7 @@ function handleDrawerOpen() {
                 <line x1="3" y1="18" x2="21" y2="18" />
               </svg>
             </button>
-            <Logo />
+            <FolioleLogo />
             <ul class="container flex justify-end w-full p-2 pb-0 mx-auto space-x-4 font-bold">
               <li>
                 <a class="uppercase" href="/">home</a>

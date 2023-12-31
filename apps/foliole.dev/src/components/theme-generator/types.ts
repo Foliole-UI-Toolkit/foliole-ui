@@ -18,6 +18,7 @@ export interface ColorSettings {
 }
 
 export interface BtnOpts {
+  paddingBase: string
   paddingWidthScale: string
   sizeScale: string
   hoverScale: string
@@ -37,17 +38,21 @@ export interface FontOpts {
   textColorDark: string
 }
 
-export interface ColorsCollection {
-  [key: string]: string | null
+export interface RoundedOpts {
+  size: string
+  btnRoundness: string
+  inputRoundness: string
+  colorSwatchRoundness: string
 }
 
 export type FolioleColorScale = (typeof folioleColorScale)[number]
 
 export interface ThemeOptionsCollection {
   colors: ColorSettings[]
-  derivedColors: ColorSettings[]
   btnOpts: BtnOpts
   fontOpts: FontOpts
+  roundedOpts: RoundedOpts
+  baseFontPxSize: string
   roundedBase: string
   borderBase: string
   primaryHex: string

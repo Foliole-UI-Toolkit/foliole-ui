@@ -1,22 +1,26 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Logo from '../components/Logo.vue';
+import FolioleLogo from '../components/FolioleLogo.vue';
 ---
 
 <Layout  title="Welcome to Astro.">
 	<div class="flex flex-col p-2 mx-auto space-y-2 text-center hp">
 		<div class="rounded-md banner">
-			<div class="p-2 m-[.125rem] rounded-md banner-inner">
-				<h1 class="text-xl font-bold">Welcome to the Foliole UI - Version Alpha!</h1>
-				<p class="text-sm">
-					This is an early demo site for testing and feedback from colleagues, family, and friends. Please feel free to share this with others who would like to help out and provide constructive feedback. Currently, the focus is on preparing the project for group contributions, presentation, and basic features and examples before putting it up on NPM. There is a ton of work to do, so if you are interested in contributing, please reach out to me at aaron.crockett.00@gmail.com. See more: <a href="/docs/resources/roadmap" class="inline-link">Rough Draft Roadmap.</a>
+			<div class="p-4 m-[.125rem] rounded-md banner-inner space-y-4">
+				<h1 class="text-2xl font-bold">Welcome to the Foliole UI - Version Alpha!</h1>
+				<p>This is an initial demo site for the Foliole UI Toolkit and library!</p>
+				<p>
+					Currently, there is an early and incomplete implementation of a Theme Generator, along with basic branding and site design. I am in the process of preparing the foundational CSS and JavaScript framework implementation and making the project ready for group and open-source contributions.
+				</p>
+				<p>
+					Please feel free to share this with others who would like to help and/or provide constructive feedback. There is a ton of work to do, so if you are interested in contributing, please reach out to me at aaron.crockett.00@gmail.com. See more: <a href="/docs/resources/roadmap" class="inline-link">Rough Draft Roadmap.</a>
 				</p>
 			</div>
 		</div>
 
 		<div class="flex flex-col h-full space-x-4">
 			<div class="flex flex-col p-4 space-y-8 ">            
-				<Logo logoClasses="foliole-logo foliole-logo-options foliole-logo-vertical" logoH1="foliole-logo-h1 foliole-logo-h1-vertical" logoWrapperClasses="foliole-logo-wrapper flex-col justify-center items-center" />
+				<FolioleLogo logoClasses="foliole-logo foliole-logo-options foliole-logo-vertical" logoH1="foliole-logo-h1 foliole-logo-h1-vertical" logoWrapperClasses="foliole-logo-wrapper flex-col justify-center items-center" />
 				<div class="my-4 text-center uppercase">
 					<span class="inline-block leading-3 ">the </span><br>
 					<h2 class="ui-toolkit-h2 w-auto text-6xl font-bold text-center leading-[3.5rem]">UI Toolkit & Library <br></h2>

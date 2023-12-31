@@ -1,4 +1,5 @@
-export const initThemeOptions = {
+import type { ThemeOptionsCollection } from '../types'
+export const initThemeOptions: ThemeOptionsCollection = {
   colors: [
     {
       key: 'primary',
@@ -65,8 +66,7 @@ export const initThemeOptions = {
       stops: 'light,mlt,base,mdk,dark',
     },
   ],
-
-  primaryHex: '#3bb143',
+  primaryHex: '#1ec80a',
   roundedBase: '9999px',
   borderBase: '1px',
   baseFontPxSize: '16',

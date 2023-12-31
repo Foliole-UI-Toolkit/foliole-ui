@@ -1,127 +1,152 @@
-import { stringify } from 'javascript-stringify'
-import type { FolioleColorNames, ColorType, Stops, Theme } from '../types.ts'
-import { AT_TW_BASE, AT_TW_COMPONENTS, AT_TW_UTILITIES } from '../settings'
-import { camelToKebab } from './utils.ts'
+// Package imports
+import postcssJs from 'postcss-js'
+import postcss from 'postcss'
+import prettier from 'prettier'
+// Types
+import type { ColorTypeOfString, ColorTypeOfObject, Theme } from '../types'
 
-const stopsMap = {
-  light: 'dark',
-  mlt: 'mdk',
-  mdk: 'mlt',
-  dark: 'light',
+// Settings and Themes
+import folioleTheme from '../themes/foliole'
+// Temp second theme as copy for example
+import folioleThemeCopy from '../themes/foliole-copy'
+// Values used to map/generate values and for types.
+import { folioleColorNames, stops } from '../settings'
+// Functions in separate file to keep this file clean.
+import {
+  buildThemeProps,
+  builtTwThemeProps,
+  generateColors,
+  getUsedCSSProps,
+  objectsToCSSProperties,
+} from '../scripts/helpers.js'
+
+// Elements, Properties, Components
+import { btn } from '../styles/elements/btn.js'
+import { input } from '../styles/elements/input.js'
+import { spacing } from '../styles/properties/spacing.js'
+import { font } from '../styles/properties/font.js'
+import { uiRoundness } from '../styles/properties/roundness.js'
+import { appShell } from '../styles/components/app-shell.js'
+import { appRail } from '../styles/components/app-rail.js'
+import { accordion } from '../styles/components/accordion.js'
+import { drawer } from '../styles/components/drawer.js'
+import { slideToggle } from '../styles/components/slide-toggle.js'
+
+// Put all the themes in a array.
+const themes = [folioleTheme, folioleThemeCopy]
+
+// Hold these props in an object to avoid having to pass them around. Warning we mutate this object.
+const folioleCSSProps = {
+  spacing,
+  font,
+  uiRoundness,
 }
 
-const stopType = {
-  light: 'light',
-  mlt: 'light',
-  mdk: 'dark',
-  dark: 'dark',
+let mergedEls: Record<string, Record<string, any>> = {
+  ...btn,
+  ...input,
 }
 
-// Generate colors in several contexts for the theme.
-export function generateColors(colorNames: string[] | FolioleColorNames[], stops: Stops[], colorTypes: ColorType) {
-  colorNames.forEach((colorName: string) => {
-    // TW colors
-    colorTypes.twColors[colorName] = `rgb(var(--color-${colorName}) / <alpha-value>)`
-
-    stops.forEach((stop) => {
-      const comboName = `${colorName}-${stop}`
-      colorTypes.twColors[comboName] = `rgb(var(--color-${colorName}-${stop}) / <alpha-value>)`
-    })
-
-    // All Background, Text, Border Colors
-    colorTypes.backgrounds[`.bg-${colorName}`] = { backgroundColor: `rgb(var(--color-${colorName}))` }
-
-    stops.forEach((stop) => {
-      colorTypes.backgrounds[`.bg-${colorName}-${stop}`] = { backgroundColor: `rgb(var(--color-${colorName}))` }
-    })
-
-    // Temp commented out until flushed-out variants solution is realized. Keeping to avoid repeating work.
-
-    // Variants
-    // colorTypes.variants[`.variant-${colorName}`] = {
-    //   backgroundColor: `rgb(var(--color-${colorName}))`,
-    //   color: `rgb(var(--color-on-${colorName}))`,
-    // }
-
-    // stops.forEach((stop) => {
-    //   colorTypes.variants[`.variant-${colorName}-${stop}`] = {
-    //     backgroundColor: `rgb(var(--color-${colorName}))`,
-    //     color: `rgb(${stopType[stop] === 'light' ? '0, 0, 0' : '255, 255, 255'})`,
-    //   }
-    //   colorTypes.variants[`.dark .variant-${colorName}-${stop}`] = {
-    //     backgroundColor: `rgb(var(--color-${colorName}-${stopsMap[stop]}))`,
-    //     color: `rgb(${stopType[stop] === 'light' ? '255, 255, 255' : '0, 0, 0'})`,
-    //   }
-    // })
-
-    // Dynamic text colors
-  })
+// Object for organizational purposes.
+let mergedCompsAndEls = {
+  ...accordion,
+  ...appRail,
+  ...appShell,
+  ...drawer,
+  ...slideToggle,
+  ...mergedEls,
 }
 
-// Function to get only CSS Props used in our Components for TW.
-export async function getUsedCSSProps(
-  token: Record<string, string>,
-  tokenName: string,
-  mergeCSSInJSCompsAndElementsForTw: any,
-) {
-  const foundKeys = new Set<string>()
+// Object for organizational purposes. btn and input are handled in Tailwind Plugin.
+const mergedTwComps = {
+  ...accordion,
+  ...appRail,
+  ...appShell,
+  ...drawer,
+  ...slideToggle,
+}
 
-  for (const cssClass of Object.values(mergeCSSInJSCompsAndElementsForTw)) {
-    const cssString = stringify(cssClass, null, 2)
+// Object for organizational purposes. btn and input are handled in Tailwind Plugin, but this object is used to check if props are used in btn and input.
+const mergedTwCompsAndEls = {
+  ...mergedTwComps,
+  ...mergedEls,
+}
 
-    if (cssString) {
-      for (const key of Object.keys(token)) {
-        const propKey = `--${tokenName}-${key.replace('.', 'pt')}`
-        const propKeyInContext = `var(${propKey})`
-        const propKeyAndValue = `${propKey}: ${token[key]};`
-        if (cssString.includes(propKeyInContext)) {
-          foundKeys.add(propKeyAndValue)
-        }
-      }
+export let twColors: ColorTypeOfString = {}
+let backgrounds: ColorTypeOfObject = {}
+
+// object will hold a ref to these objects.
+const colorsToGenerate: any = {
+  twColors,
+  backgrounds,
+}
+
+;(async () => {
+  try {
+    // Assigns variables by reference, backgrounds and twColors.
+    generateColors(folioleColorNames, stops, colorsToGenerate)
+
+    if (Bun.argv[2] === '--tw') {
+      // Build for TW.
+
+      // temp ignore until TS error is solved.
+      // Excessive stack depth comparing types 'Root_' and 'Document_ | Root_'.ts(2321)
+      // import postcssJs
+      // @ts-ignore
+      const processedTwCSS = await postcss().process(mergedTwComps, { parser: postcssJs })
+      const mergedProcessedTwCSS = processedTwCSS.css
+
+      let usedTwCompKeys = []
+      const usedTwSpacingKeys = await getUsedCSSProps(spacing, 'spacing', mergedTwCompsAndEls)
+      const usedTwFontKeys = await getUsedCSSProps(font, 'font', mergedTwCompsAndEls)
+
+      usedTwCompKeys = [...usedTwSpacingKeys, ...usedTwFontKeys]
+
+      let usedTwPropsString = usedTwCompKeys.join('\n')
+
+      await Promise.all(
+        themes.map(async (theme: Theme) => {
+          const builtCssPropsString = await builtTwThemeProps(theme, usedTwPropsString)
+          if (builtCssPropsString) {
+            const mergedTwPropsAndClassesCSS = builtCssPropsString + '\n' + mergedProcessedTwCSS
+            const processedTwCSS = await prettier.format(mergedTwPropsAndClassesCSS, { parser: 'css' })
+
+            await Bun.write(`dist/themes/theme-${theme.name}-tw.css`, processedTwCSS)
+          }
+        }),
+      )
+    } else {
+      // Vanilla for Vanilla.
+      // colors are generated last above, so need to merge them.
+      const mergedCompsElsAndGenColors = { ...mergedCompsAndEls, ...backgrounds }
+      // temp ignore until TS error is solved.
+      // Excessive stack depth comparing types 'Root_' and 'Document_ | Root_'.ts(2321)
+      // import postcssJs
+      // @ts-ignore
+      const processedCSS = await postcss().process(mergedCompsElsAndGenColors, { parser: postcssJs })
+      const mergedProcessedCSS = processedCSS.css
+
+      const cssPropsString = objectsToCSSProperties(folioleCSSProps)
+
+      await Promise.all(
+        themes.map(async (theme: Theme) => {
+          const builtCssPropsString = await buildThemeProps(theme, cssPropsString)
+          if (builtCssPropsString) {
+            const mergedPropsAndClassesCSS = builtCssPropsString + '\n\n' + mergedProcessedCSS
+
+            const processedCSS = await prettier.format(mergedPropsAndClassesCSS, { parser: 'css' })
+
+            await Bun.write(`dist/themes/theme-${theme.name}.css`, processedCSS)
+          }
+        }),
+      )
     }
+  } catch (error) {
+    console.error('Error occurred:', error)
   }
+})()
 
-  return [...foundKeys].sort((a: string, b: string) => {
-    const numA = parseInt(a.match(/\d+/)![0])
-    const numB = parseInt(b.match(/\d+/)![0])
-    return numA - numB
-  })
-}
-
-export function objectToCSSProperties<T>(token: string, obj: Record<string, T>) {
-  let cssString = ''
-  const kebabToken = camelToKebab(token)
-
-  Object.keys(obj).forEach((key) => {
-    const cssKey = `--${kebabToken}-${key.replace('.', 'pt')}`
-    const cssValue = obj[key]
-    cssString += ` ${cssKey}: ${cssValue};\n`
-  })
-
-  return cssString
-}
-
-export function objectsToCSSProperties(cssProps: Record<string, any>) {
-  let cssString = ''
-
-  Object.keys(cssProps).forEach((key) => {
-    const cssProperties = objectToCSSProperties(key, cssProps[key])
-    cssString += cssProperties + '\n'
-  })
-
-  return cssString
-}
-
-export async function buildThemeProps(theme: Theme, cssPropsString: string) {
-  const propsHeader = ` :root {`
-  const propsFooter = `}`
-
-  return `${propsHeader} ${cssPropsString} ${theme.contents} ${propsFooter}`
-}
-
-export async function builtTwThemeProps(theme: Theme, cssPropsString: string) {
-  const twPropsHeader = `${AT_TW_BASE} \n ${AT_TW_COMPONENTS} \n ${AT_TW_UTILITIES} \n @layer base {\n:root {`
-  const twPropsFooter = `}\n}`
-
-  return `${twPropsHeader} ${cssPropsString} ${theme.contents} ${twPropsFooter}`
+export function twPlugin({ addComponents }: { addComponents: any }) {
+  // Add Foliole Elements as components to Tailwind.
+  addComponents(mergedEls)
 }

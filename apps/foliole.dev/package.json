@@ -1,5 +1,5 @@
 {
-  "name": "@foliole/foliole-ui-docs",
+  "name": "foliole-ui-docs",
   "type": "module",
   "version": "0.0.9",
   "scripts": {
@@ -8,22 +8,31 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "vercel-build": "pnpm install --prod=false && pnpm -w @foliole/foliole-ui-docs build"
+    "lint": "eslint 'src/**/*.{js,ts,svelte,vue}'"
   },
   "dependencies": {
     "@astrojs/svelte": "^4.0.3",
     "@astrojs/tailwind": "^5.0.2",
     "@astrojs/vue": "^3.0.4",
-    "@foliole/foliole-css": "workspace:*",
-    "@foliole/foliole-vue": "workspace:*",
     "astro": "^3.5.2",
-    "chroma-js": "^2.4.2"
+    "chroma-js": "^2.4.2",
+    "eslint": "^8.56.0",
+    "eslint-plugin-vue": "^9.19.2",
+    "foliole-css": "0.8.0",
+    "foliole-vue": "0.6.0",
+    "svelte": "^3.59.2"
   },
   "devDependencies": {
     "@astrojs/check": "^0.3.1",
     "@types/chroma-js": "^2.4.3",
+    "@typescript-eslint/eslint-plugin": "^6.16.0",
+    "@typescript-eslint/parser": "^6.16.0",
     "@vitejs/plugin-vue": "^4.4.1",
     "autoprefixer": "^10.4.16",
+    "eslint-plugin-svelte": "^2.35.1",
+    "eslint-plugin-svelte3": "^4.0.0",
+    "foliole-css": "workspace:*",
+    "foliole-vue": "workspace:*",
     "javascript-stringify": "^2.1.0",
     "postcss": "^8.4.31",
     "prettier": "^3.0.3",

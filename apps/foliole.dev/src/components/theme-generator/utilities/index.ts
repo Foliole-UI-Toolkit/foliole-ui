@@ -54,14 +54,14 @@ export function getSaturation(color: ColorInput) {
 
 // ** useGenerateColor** //
 
-export function generateA11yOnColor(color: any): '255 255 255' | '0 0 0' {
+export function generateA11yOnColor(color: string): '255 255 255' | '0 0 0' {
   const black = calculateLuminanceRatio(color, '#000000')
   const white = calculateLuminanceRatio(color, '#FFFFFF')
   return black < white ? '0 0 0' : '255 255 255'
 }
 
-function generateRelativeHue(color: string, distance: number, dir: string) {
-  const rangeMultiplier = {
+function generateRelativeHue(color: ColorName, distance: number, dir: string) {
+  const rangeMultiplier: { [key in ColorName]: number } = {
     red: 2,
     orange: 1,
     yellow: 1,
@@ -80,7 +80,7 @@ function generateRelativeHue(color: string, distance: number, dir: string) {
     return Math.floor((center + distance) * multiplier) % 360
   } else {
     // dir === 'left'
-    let hue = Math.floor((center - distance) * multiplier) % 360
+    const hue = Math.floor((center - distance) * multiplier) % 360
     return hue >= 0 ? hue : 360 + hue
   }
 }
@@ -132,8 +132,8 @@ export function generateAnalogousColors(
   by: number,
   type: 'analogous-triad' | 'analogous-quad' | 'analogous-quin',
 ) {
-  let returnColors: string[] = []
-  let map = {
+  const returnColors: string[] = []
+  const map = {
     'analogous-triad': 3,
     'analogous-quad': 4,
     'analogous-quin': 5,

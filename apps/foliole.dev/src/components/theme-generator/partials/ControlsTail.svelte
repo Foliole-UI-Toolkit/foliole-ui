@@ -4,17 +4,18 @@
 
   const dispatch = createEventDispatcher()
 
-  function handleStopChange(event: ChangeEvent<HTMLSelectElement>) {
-    const details = { colorIndex: colorsIndex, stops: event?.target?.value }
-    dispatch('stopsChange', details)
-  }
+  // function handleStopChange(event: Event) {
+  //   const target = event.target as HTMLSelectElement
+  //   const details = { colorIndex: colorsIndex, stops: target?.value }
+  //   dispatch('stopsChange', details)
+  // }
 
-  function handleTextColorChange(event: ChangeEvent<HTMLSelectElement>) {
-    const details = { colorIndex: colorsIndex, color: event?.target?.value }
+  function handleTextColorChange(event: Event) {
+    const target = event.target as HTMLSelectElement
+    const details = { colorIndex: colorsIndex, color: target.value }
     dispatch('textColorChange', details)
   }
-
-  export let stops: string
+  // export let stops: string
   export let colorOn: string
   export let colorsIndex: number
 </script>

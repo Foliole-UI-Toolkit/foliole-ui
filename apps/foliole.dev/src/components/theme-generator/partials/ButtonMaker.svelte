@@ -1,14 +1,15 @@
 <script lang="ts">
-  import { getThemeOptionsStore } from '../data/stores'
+  import { getThemeOptionsStore, type ThemeOptionsStore } from '../data/stores'
   import { createEventDispatcher } from 'svelte'
 
   const dispatch = createEventDispatcher()
 
-  const themeOptionsStore = getThemeOptionsStore() as any
+  const themeOptionsStore = getThemeOptionsStore() as ThemeOptionsStore
 
-  function handleInputChange(event: any) {
-    const inputName = event?.target?.name
-    const inputValue = event?.target?.value
+  function handleInputChange(event: Event) {
+    const target = event.target as HTMLInputElement
+    const inputName = target?.name
+    const inputValue = target?.value
 
     const value = inputName.startsWith('fontSize') ? inputValue : parseFloat(inputValue)
 

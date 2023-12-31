@@ -7,8 +7,8 @@ const section = ref('docs')
 <template>
   <div class="flex w-full h-screen">
     <FolioleAppRail
-      activeTokenClass="bg-primary/90 shadow-sm"
-      appRailClasses="app-rail my-app-rail border-r-[.125rem] border-tertiary-mlt/30 bg-neutral-light/10 shadow-md"
+      active-token-class="shadow-sm bg-primary/90"
+      app-rail-classes="app-rail my-app-rail border-r-[.125rem] border-tertiary-mlt/30 bg-neutral-light/10 shadow-md"
     >
       <FolioleAppRailButton
         v-model="section"
@@ -16,7 +16,7 @@ const section = ref('docs')
         title="docs"
         value="docs"
         name="sections"
-        railItemClasses="rail-item my-rail-item"
+        rail-item-classes="rail-item my-rail-item"
       >
         <template #lead>
           <svg
@@ -40,7 +40,7 @@ const section = ref('docs')
         title="css"
         value="css"
         name="sections"
-        railItemClasses="rail-item my-rail-item"
+        rail-item-classes="rail-item my-rail-item"
       >
         <template #lead>
           <svg
@@ -67,7 +67,7 @@ const section = ref('docs')
         :selected="section === 'components'"
         value="components"
         name="sections"
-        railItemClasses="rail-item my-rail-item"
+        rail-item-classes="rail-item my-rail-item"
       >
         <template #lead>
           <svg
@@ -111,7 +111,7 @@ const section = ref('docs')
           </ul>
         </div>
       </div>
-      <div class="space-y-4" v-else-if="section === 'css'">
+      <div v-else-if="section === 'css'" class="space-y-4">
         <h3>CSS Elements</h3>
         <ul class="space-y-4">
           <li><a href="/css/button">Button</a></li>

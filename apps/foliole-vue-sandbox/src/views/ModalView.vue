@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import FolioleModal from '@foliole/foliole-vue/src/components/Modal/FolioleModal.vue'
+import FolioleModal from 'foliole-vue/src/components/Modal/FolioleModal.vue'
 import { ref } from 'vue'
 
 const show = ref(false)
@@ -12,11 +12,11 @@ function success() {
 <template>
   <div>
     <FolioleModal
-      @cancel="show = false"
-      @confirm="success"
       :show="show"
       :title="'confirm'"
       :type="'confirm'"
+      @cancel="show = false"
+      @confirm="success"
       >SUP</FolioleModal
     >
   </div>

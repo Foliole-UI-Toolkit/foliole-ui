@@ -1,4 +1,4 @@
-# @foliole/foliole-vue-sandbox
+# foliole-vue-sandbox
 
 ## 0.1.1
 

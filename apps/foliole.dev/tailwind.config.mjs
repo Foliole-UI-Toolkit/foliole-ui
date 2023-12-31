@@ -1,9 +1,8 @@
-const plugin = require('tailwindcss/plugin')
+import plugin from 'tailwindcss/plugin'
+import { twColors, twPlugin } from 'foliole-css/'
 
-const { twColors, twPlugin } = require('../../packages/foliole-css/')
-
-module.exports = {
-  content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}', '../../packages/foliole-css/**/*.{js}'],
+export default {
+  content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}', 'foliole-css/dist/**/*.{js}'],
   plugins: [plugin(twPlugin)],
   theme: {
     colors: {

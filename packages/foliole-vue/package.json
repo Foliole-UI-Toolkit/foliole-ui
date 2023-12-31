@@ -1,5 +1,5 @@
 {
-  "name": "@foliole/foliole-vue",
+  "name": "foliole-vue",
   "private": true,
   "version": "0.6.0",
   "type": "module",
