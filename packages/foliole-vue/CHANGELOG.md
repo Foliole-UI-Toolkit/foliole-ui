@@ -1,23 +1,7 @@
 {
-  "name": "foliole-css",
-  "version": "0.8.0",
-  "description": "The CSS class library for Foliole.",
-  "module": "index.ts",
-  "type": "module",
-  "scripts": {
-    "build-v": "bun run index.ts",
-    "build-tw": "bun run index.ts --tw"
-  },
-  "author": "Aaron Crockett",
-  "license": "MIT",
-  "devDependencies": {
-    "javascript-stringify": "^2.1.0",
-    "postcss-js": "^4.0.1",
-    "prettier": "^3.0.3",
-    "@types/postcss-js": "^4.0.4",
-    "bun-types": "^1.0.19"
-  },
-  "files": [
-    "dist"
-  ]
-}
+
+## 0.6.1
+
+### Patch Changes
+
+- d5f012b: Bug: CSS, Vue - package name adjustment. CSS - output twColors and twPlugin from dist/index.ts
