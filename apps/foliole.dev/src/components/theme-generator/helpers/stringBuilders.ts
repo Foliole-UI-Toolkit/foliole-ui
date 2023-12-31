@@ -7,13 +7,14 @@ function buildLineFromPrefixAndValue(attrPrefix: string, attrBase: string, cssVa
 }
 
 // Helpers
-export function buildElStrings(btnPaddingBase: number) {
+export function buildElStrings(btnPaddingBase: string | number) {
   let cssVarsBuilt = ''
 
-  const smPadding = btnPaddingBase / 2
-  const basepadding = btnPaddingBase
-  const doublePadding = btnPaddingBase * 2
-  const triplePadding = btnPaddingBase * 3
+  const btnPaddingBaseNumber = Number(btnPaddingBase)
+  const smPadding = btnPaddingBaseNumber / 2
+  const basepadding = btnPaddingBaseNumber
+  const doublePadding = btnPaddingBaseNumber * 2
+  const triplePadding = btnPaddingBaseNumber * 3
 
   // El padding sm
   let cssVars = buildLineFromPrefixAndValue('el', 'sm', `${smPadding}rem`)

@@ -9,9 +9,9 @@ const THEME_OPTIONS_KEY = 'themeOptionsStore'
 export interface ThemeOptionsStore {
   subscribe: (subscription: (value: ThemeOptionsCollection) => void) => () => void
   set: (value: ThemeOptionsCollection) => void
-  updateColor: (type: 'color' | 'derivedColors', colorKey: string, value: Partial<ColorSettings> | string) => void
+  updateColor: (colorKey: string, value: Record<string, string | null>) => void
 
-  updateColors: (updatedColors: Partial<ColorSettings>[]) => void
+  updateColors: (updatedColors: Record<string, string | null>[]) => void
 
   updateBtnOpts: (value: Partial<BtnOpts>) => void
   updateRoundedOpts: (value: Partial<RoundedOpts>) => void
@@ -43,7 +43,7 @@ function themeOptionsService() {
   return {
     subscribe,
     set,
-    updateColor: (type: 'color' | 'derivedColors', colorKey: string, value: Partial<ColorSettings> | string) => {
+    updateColor: (colorKey: string, value: Record<string, string | null>) => {
       update((themeOptionsStore: ThemeOptionsCollection) => {
         const colorIndex = themeOptionsStore.colors.findIndex((color: ColorSettings) => color.key === colorKey)
 
@@ -60,14 +60,14 @@ function themeOptionsService() {
         return themeOptionsStore
       })
     },
-    updateColors: (updatedColors: Partial<ColorSettings>[]) => {
+    updateColors: (updatedColors: Record<string, string | null>) => {
       update((themeOptionsStore) => {
         return {
           ...themeOptionsStore,
           colors: themeOptionsStore.colors.map((color: ColorSettings) => {
-            const updatedColor = updatedColors.find((updatedColor) => updatedColor.key === color.key)
-            if (updatedColor) {
-              return { ...color, ...updatedColor }
+            const updatedColorHex = updatedColors[color.key]
+            if (updatedColorHex !== undefined && updatedColorHex !== null) {
+              return { ...color, hex: updatedColorHex }
             }
             return color
           }),
