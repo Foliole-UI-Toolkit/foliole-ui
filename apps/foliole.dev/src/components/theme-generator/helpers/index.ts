@@ -10,14 +10,16 @@ const { getRgbString } = useGetConvertedColor()
 export function buildColorShades(color: Partial<ColorSettings>) {
   const hexValidation = new RegExp(/^#[0-9a-f]{6}$/i)
 
-  if (!hexValidation.test(color.hex)) color.hex = '#CCCCCC'
+  const hex = color.hex && hexValidation.test(color.hex) ? color.hex : '#CCCCCC'
+  const key = color.key || 'primary'
+  const label = color.label || 'default'
 
-  const hex500 = `#${color.hex}`.replace('##', '#')
+  const hex500 = `#${hex}`.replace('##', '#')
 
   const response: ColorSettings[] = [
     {
-      label: color.label,
-      key: color.key,
+      label,
+      key,
       stops: '',
       hex: hex500,
       rgb: getRgbString(hex500),
@@ -26,26 +28,26 @@ export function buildColorShades(color: Partial<ColorSettings>) {
   ]
 
   ;['light', 'mlt', 'mdk', 'dark'].forEach((stop) => {
-    let hex
+    let hexStop
 
-    if (color.key.startsWith('neutral')) {
-      hex =
+    if (key.startsWith('neutral')) {
+      hexStop =
         stop.includes('light') || stop.includes('mlt')
-          ? (generateLightenedValue(color.hex, intensityMapGray[stop]) as string)
-          : (generateDarkenedValue(color.hex, intensityMapGray[stop]) as string)
+          ? (generateLightenedValue(hex, intensityMapGray[stop]) as string)
+          : (generateDarkenedValue(hex, intensityMapGray[stop]) as string)
     } else {
-      hex =
+      hexStop =
         stop.includes('light') || stop.includes('mlt')
-          ? (generateLightenedValue(color.hex, intensityMap[stop]) as string)
-          : (generateDarkenedValue(color.hex, intensityMap[stop]) as string)
+          ? (generateLightenedValue(hex, intensityMap[stop]) as string)
+          : (generateDarkenedValue(hex, intensityMap[stop]) as string)
     }
     response.push({
-      label: color.label,
-      key: color.key,
+      label,
+      key,
       stops: stop,
-      hex,
-      rgb: getRgbString(hex as string),
-      on: generateA11yOnColor(hex),
+      hex: hexStop,
+      rgb: getRgbString(hexStop as string),
+      on: generateA11yOnColor(hexStop),
     })
   })
 
