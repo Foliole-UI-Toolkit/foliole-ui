@@ -5,8 +5,8 @@
   "module": "index.ts",
   "type": "module",
   "scripts": {
-    "build-v": "bun run index.ts",
-    "build-tw": "bun run index.ts --tw"
+    "build-v": "bun run scripts/index.ts",
+    "build-tw": "bun run scripts/index.ts --tw"
   },
   "author": "Aaron Crockett",
   "license": "MIT",

@@ -1,7 +1,7 @@
 // Test imports
 import { expect, test } from 'bun:test'
 
-import { getUsedCSSProps } from './scripts/index.ts'
+import { getUsedCSSProps } from './scripts/helpers.ts'
 import { camelToKebab } from './scripts/utils.ts'
 
 import { btn } from './styles/elements/btn.js'
