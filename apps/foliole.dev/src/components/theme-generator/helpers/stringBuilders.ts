@@ -1,6 +1,6 @@
 import type { ColorSettings } from '../types'
 
-import { writable, get } from 'svelte/store'
+import { get } from 'svelte/store'
 
 function buildLineFromPrefixAndValue(attrPrefix: string, attrBase: string, cssValue: string) {
   return `    --${attrPrefix}-${attrBase}: ${cssValue};\n`

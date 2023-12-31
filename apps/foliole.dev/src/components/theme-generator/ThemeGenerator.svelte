@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { roundedOpts } from './data/settings.ts'
   // Local components
   // Colors
   import ChipOptions from './partials/ChipOptions.svelte'
@@ -34,8 +33,7 @@
 
   const { getSaturation } = useGetColorValue()
 
-  const { generateLightenedValue, generateDarkenedValue, generateRandomColor, generateColorFromHSL } =
-    useGenerateColor()
+  const { generateRandomColor, generateColorFromHSL } = useGenerateColor()
 
   // Get Color Scheme Funcs
   const { generateTriadColors, generateSplitComplimentaryColors, generateAnalogousColors } = useColorSchemes()
@@ -100,9 +98,9 @@
   }
 
   // Handle controlsTailChange Opts changed.
-  function handleTextColorChange(event: CustomEvent) {
-    // btnPaddingBase = event.detail.color
-  }
+  // function handleTextColorChange(event: CustomEvent) {
+  //   // add  on:textColorChange={handleTextColorChange} back to ControlsTail Component definition when text onColor is implimented.
+  // }
 
   function generateRoundedStrings() {
     builtUIRoundString = buildUIRoundStrings(
@@ -255,12 +253,7 @@
           >
             <ControlsLead hex={colorRow.hex} label={colorRow.label} />
             <Swatch color={colorRow.key} stops={colorRow?.stops?.split(',')} />
-            <ControlsTail
-              colorOn={colorRow.on}
-              stops={colorRow.stops ?? ''}
-              colorsIndex={i}
-              on:textColorChange={handleTextColorChange}
-            />
+            <ControlsTail colorOn={colorRow.on} stops={colorRow.stops ?? ''} colorsIndex={i} />
           </div>
         {/each}
       </div>
