@@ -112,6 +112,8 @@ const colorsToGenerate: any = {
             const processedTwCSS = await prettier.format(mergedTwPropsAndClassesCSS, { parser: 'css' })
 
             await Bun.write(`dist/themes/theme-${theme.name}-tw.css`, processedTwCSS)
+
+            await Bun.write(`../../apps/foliole.dev/src/theme-${theme.name}-tw.css`, processedTwCSS)
           }
         }),
       )
@@ -137,6 +139,7 @@ const colorsToGenerate: any = {
             const processedCSS = await prettier.format(mergedPropsAndClassesCSS, { parser: 'css' })
 
             await Bun.write(`dist/themes/theme-${theme.name}.css`, processedCSS)
+            await Bun.write(`../../apps/foliole.dev/src/theme-${theme.name}.css`, processedCSS)
           }
         }),
       )
