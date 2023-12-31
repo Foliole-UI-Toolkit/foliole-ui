@@ -66,7 +66,7 @@ export const initThemeOptions = {
     },
   ],
 
-  primaryHex: '#3bb143',
+  primaryHex: '#1ec80a',
   roundedBase: '9999px',
   borderBase: '1px',
   baseFontPxSize: '16',
