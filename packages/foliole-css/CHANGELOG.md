@@ -1,5 +1,11 @@
 # foliole-css
 
+## 0.8.2
+
+### Patch Changes
+
+- 2363d46: Bug: CSS - Adjust tailwind export paths
+
 ## 0.8.1
 
 ### Patch Changes
