@@ -1,6 +1,6 @@
 import type { ColorSettings } from '../types'
 
-import { get } from 'svelte/store'
+import { get, type Readable } from 'svelte/store'
 
 function buildLineFromPrefixAndValue(attrPrefix: string, attrBase: string, cssValue: string) {
   return `    --${attrPrefix}-${attrBase}: ${cssValue};\n`
@@ -34,7 +34,10 @@ export function buildElStrings(btnPaddingBase: number) {
   return cssVarsBuilt
 }
 
-export function buildBtnStrings(btnOpts: Record<string, number | string>, derivedBtnValues: any) {
+export function buildBtnStrings(
+  btnOpts: Record<string, number | string>,
+  derivedBtnValues: Record<string, Readable<number | string>>,
+) {
   let cssVarsBuilt = ''
 
   // btn padding sm

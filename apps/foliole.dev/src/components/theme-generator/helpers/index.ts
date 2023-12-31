@@ -7,7 +7,7 @@ const { generateA11yOnColor, generateDarkenedValue, generateLightenedValue } = u
 const { getRgbString } = useGetConvertedColor()
 
 // Build shades.
-export function buildColorShades(color: any) {
+export function buildColorShades(color: Partial<ColorSettings>) {
   const hexValidation = new RegExp(/^#[0-9a-f]{6}$/i)
 
   if (!hexValidation.test(color.hex)) color.hex = '#CCCCCC'
