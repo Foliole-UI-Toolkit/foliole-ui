@@ -66,7 +66,6 @@ export const initThemeOptions: ThemeOptionsCollection = {
       stops: 'light,mlt,base,mdk,dark',
     },
   ],
-
   primaryHex: '#1ec80a',
   roundedBase: '9999px',
   borderBase: '1px',
