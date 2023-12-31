@@ -2,7 +2,7 @@ import plugin from 'tailwindcss/plugin'
 import { twColors, twPlugin } from 'foliole-css/'
 
 export default {
-  content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}', 'foliole-css/dist/**/*.{js}'],
+  content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   plugins: [plugin(twPlugin)],
   theme: {
     colors: {
