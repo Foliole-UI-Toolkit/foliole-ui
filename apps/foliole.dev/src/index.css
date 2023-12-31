@@ -139,6 +139,6 @@ a.inline-link {
     @apply border select-base bg-neutral-light/50 border-neutral-light;
   }
   .my-btn {
-    @apply border-[.125rem] shadow-md btn-base bg-gradient-to-br from-primary to-primary/70 border-primary;
+    @apply border-[.125rem] shadow-md btn-base bg-gradient-to-br from-primary to-secondary/70 border-tertiary;
   }
 }
