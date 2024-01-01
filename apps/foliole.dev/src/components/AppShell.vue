@@ -21,8 +21,6 @@ withDefaults(defineProps<Props>(), {
   pathname: '',
 })
 
-const showDrawer = ref(false)
-
 function handleDrawerClose() {
   showDrawer.value = false
 }
@@ -48,8 +46,14 @@ function handleDrawerOpen() {
     <template #header>
       <div class="flex flex-wrap p-4">
         <div class="w-full">
-          <div class="flex flex-col items-center justify-start mx-auto md:flex-row">
-            <button v-if="!fullWidthPages[pathname]" class="inline-block pr-4 md:hidden" @click="handleDrawerOpen">
+          <div
+            class="grid grid-cols-3 space-y-2 md:space-y-0 md:grid-rows-2 md:flex md:items-center md:justify-start md:mx-auto md:flex-row"
+          >
+            <button
+              v-if="!fullWidthPages[pathname]"
+              class="self-start inline-block pr-4 md:hidden"
+              @click="handleDrawerOpen"
+            >
               <svg
                 class="w-8 h-8 text-red-500"
                 viewBox="0 0 24 24"
@@ -64,17 +68,36 @@ function handleDrawerOpen() {
                 <line x1="3" y1="18" x2="21" y2="18" />
               </svg>
             </button>
-            <FolioleLogo />
-            <ul class="container flex justify-center w-full p-1 pb-0 mx-auto space-x-4 font-bold md:p-2 md:justify-end">
-              <li>
+            <div class="items-center !mt-0 justify-self-center col-start-2">
+              <FolioleLogo />
+            </div>
+            <ul
+              class="container flex flex-col justify-center col-span-3 p-1 pb-0 mx-auto space-y-1 font-bold md:space-x-4 sm:flex-row md:ml-1/3 md:justify-end md:p-2 md:mr-0 md:w-2/3 lg:w-1/2 lg:ml-1/2"
+            >
+              <li
+                :class="[
+                  'my-hoverable md:flex md:flex-grow-0 flex-grow flex justify-center w-full ',
+                  { 'my-active': pathname === '/' },
+                ]"
+              >
                 <a class="uppercase" href="/">home</a>
               </li>
               <!-- This theme generator is written in svelte! Inside of a Vue component due to Astro's features! -->
-              <li>
+              <li
+                :class="[
+                  'my-hoverable flex-grow flex md:flex-grow-0 justify-center w-full',
+                  { 'my-active': pathname.startsWith('/docs/') },
+                ]"
+              >
                 <a class="uppercase" href="/docs/intro">docs</a>
               </li>
-              <li>
-                <a class="uppercase" href="/theme-generator">theme gen</a>
+              <li
+                :class="[
+                  'my-hoverable  flex-grow flex md:flex-grow-0 justify-center w-full ',
+                  { 'my-active': pathname === '/theme-generator' },
+                ]"
+              >
+                <a class="uppercase whitespace-nowrap" href="/theme-generator">theme gen</a>
               </li>
             </ul>
           </div>

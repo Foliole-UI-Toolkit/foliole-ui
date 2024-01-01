@@ -103,7 +103,7 @@ withDefaults(defineProps<Props>(), {
         <div class="space-y-4">
           <h3>Docs</h3>
           <ul class="space-y-4">
-            <li :class="{ 'my-hoverable': true, 'my-active': pathname === '/docs/intro' }">
+            <li :class="['my-hoverable', { 'my-active': pathname === '/docs/intro' }]">
               <a href="/docs/intro">Intro</a>
             </li>
           </ul>
@@ -111,7 +111,7 @@ withDefaults(defineProps<Props>(), {
         <div class="space-y-4">
           <h3>Concepts</h3>
           <ul class="space-y-4">
-            <li :class="{ 'my-hoverable': true, 'my-active': pathname === '/docs/concepts/css-props-classes' }">
+            <li :class="['my-hoverable', { 'my-active': pathname === '/docs/concepts/css-props-classes' }]">
               <a href="/docs/concepts/css-props-classes">CSS properties and classes</a>
             </li>
           </ul>
@@ -120,7 +120,7 @@ withDefaults(defineProps<Props>(), {
           <h3>Resources</h3>
           <ul class="space-y-4">
             <li
-              :class="{ 'my-hoverable': true, 'my-active': pathname === '/docs/resources/roadmap' }"
+              :class="['my-hoverable', { 'my-active': pathname === '/docs/resources/roadmap' }]"
               href="/docs/resources/roadmap"
             >
               <a href="/docs/resources/roadmap">Roadmap</a>
@@ -131,7 +131,7 @@ withDefaults(defineProps<Props>(), {
       <div v-else-if="section === 'css'" class="space-y-4">
         <h3>CSS Elements</h3>
         <ul class="space-y-4">
-          <li :class="{ 'my-hoverable': true, 'my-active': pathname === '/css/button' }" href="/css/button">
+          <li :class="['my-hoverable', { 'my-active': pathname === '/css/button' }]" href="/css/button">
             <a href="/css/button">Button</a>
           </li>
         </ul>
@@ -140,7 +140,7 @@ withDefaults(defineProps<Props>(), {
         <div class="space-y-4">
           <h3>Examples</h3>
           <ul class="space-y-4">
-            <li :class="{ 'my-hoverable': true, 'my-active': pathname === '/examples' }" href="/examples">
+            <li :class="['my-hoverable', { 'my-active': pathname === '/examples' }]" href="/examples">
               <a href="/examples">Examples</a>
             </li>
           </ul>
