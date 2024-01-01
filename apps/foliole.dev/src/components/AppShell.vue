@@ -65,9 +65,7 @@ function handleDrawerOpen() {
               </svg>
             </button>
             <FolioleLogo />
-            <ul
-              class="container flex justify-center w-full p-1 pb-0 mx-auto space-x-2 font-bold md:p-2 md:space-x-3 md:justify-end"
-            >
+            <ul class="container flex justify-center w-full p-1 pb-0 mx-auto space-x-4 font-bold md:p-2 md:justify-end">
               <li>
                 <a class="uppercase" href="/">home</a>
               </li>
