@@ -35,7 +35,7 @@ function handleDrawerOpen() {
   <div v-if="!fullWidthPages[pathname]" class="flex h-full">
     <!-- Consider performance implications of this and if other solutions are better in as menu grows. v-if, v-show and dynamic components -->
     <AppDrawer class="flex md:hidden" :show="showDrawer" @close="handleDrawerClose">
-      <AppMainMenu />
+      <AppMainMenu :pathname="pathname" />
     </AppDrawer>
   </div>
   <FolioleAppShell
@@ -85,7 +85,7 @@ function handleDrawerOpen() {
     <template #sidebar-left>
       <div v-if="!fullWidthPages[pathname]" class="flex">
         <div class="hidden md:flex">
-          <AppMainMenu />
+          <AppMainMenu :pathname="pathname" />
         </div>
       </div>
     </template>
