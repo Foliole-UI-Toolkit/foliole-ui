@@ -1,4 +1,4 @@
-@import url('foliole-css/dist/themes/theme-foliole-tw.css');
+@import url('theme-foliole-tw.css');
 
 body {
   background: linear-gradient(45deg, rgb(var(--color-primary-light) / 0.1), rgb(var(--color-secondary-light) / 0.2));
