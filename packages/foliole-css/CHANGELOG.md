@@ -1,5 +1,11 @@
 # foliole-css
 
+## 0.8.3
+
+### Patch Changes
+
+- 725374c: Bug: Adjust output directories
+
 ## 0.8.2
 
 ### Patch Changes
