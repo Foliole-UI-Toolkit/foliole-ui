@@ -115,7 +115,7 @@ importers:
         specifier: 0.8.3
         version: link:../../packages/foliole-css
       foliole-vue:
-        specifier: 0.6.1
+        specifier: 0.6.2
         version: link:../../packages/foliole-vue
       svelte:
         specifier: ^3.59.2
