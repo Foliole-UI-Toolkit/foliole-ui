@@ -15,7 +15,7 @@ withDefaults(defineProps<Props>(), {
 <template>
   <div class="flex w-full h-screen">
     <FolioleAppRail
-      active-token-class="shadow-sm bg-primary/90"
+      active-token-class="shadow-sm bg-gradient-to-br from-primary/90 to-secondary/80 "
       app-rail-classes="app-rail my-app-rail border-r-[.125rem] border-tertiary-mlt/30 bg-neutral-light/10 shadow-md"
     >
       <FolioleAppRailButton

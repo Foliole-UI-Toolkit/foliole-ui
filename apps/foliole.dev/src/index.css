@@ -91,7 +91,7 @@ a.inline-link {
   @apply border-r w-[4.5rem];
 }
 .my-rail-item {
-  @apply text-sm uppercase hover:bg-neutral-light/30;
+  @apply text-sm uppercase hover:bg-neutral-mlt/50;
 }
 .my-page {
   @apply relative z-0 p-4;
@@ -130,7 +130,7 @@ a.inline-link {
 @layer components {
   /* Custom Foliole element additions that use foliole elements(called components in tw) */
   .my-chip {
-    @apply btn-chip btn-base;
+    @apply shadow-sm btn-chip btn-base bg-gradient-to-br from-primary/90 to-secondary/80;
   }
   .my-input {
     @apply border input-base bg-neutral-light/50 border-neutral-light;
@@ -139,6 +139,18 @@ a.inline-link {
     @apply border select-base bg-neutral-light/50 border-neutral-light;
   }
   .my-btn {
-    @apply border-[.125rem] shadow-md btn-base bg-gradient-to-br from-primary to-secondary/70 border-tertiary;
+    @apply border-[.125rem] shadow-sm btn-base bg-gradient-to-br from-primary/90 to-secondary/80 border-primary;
+  }
+  .my-hoverable {
+    padding: var(--btn-p-sm);
+    border-radius: var(--ui-btn-roundness);
+  }
+  .my-hoverable:hover {
+    @apply hover:bg-neutral-mlt/50;
+  }
+  .my-active {
+    @apply bg-gradient-to-br from-primary/90 to-secondary/80;
+    padding: var(--btn-p-sm);
+    border-radius: var(--ui-btn-roundness);
   }
 }
