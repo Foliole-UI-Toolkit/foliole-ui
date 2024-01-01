@@ -48,7 +48,7 @@ function handleDrawerOpen() {
     <template #header>
       <div class="flex flex-wrap p-4">
         <div class="w-full">
-          <div class="flex items-center justify-start mx-auto">
+          <div class="flex flex-col items-center justify-start mx-auto md:flex-row">
             <button v-if="!fullWidthPages[pathname]" class="inline-block pr-4 md:hidden" @click="handleDrawerOpen">
               <svg
                 class="w-8 h-8 text-red-500"
@@ -65,7 +65,9 @@ function handleDrawerOpen() {
               </svg>
             </button>
             <FolioleLogo />
-            <ul class="container flex justify-end w-full p-2 pb-0 mx-auto space-x-4 font-bold">
+            <ul
+              class="container flex justify-center w-full p-1 pb-0 mx-auto space-x-2 font-bold md:p-2 md:space-x-3 md:justify-end"
+            >
               <li>
                 <a class="uppercase" href="/">home</a>
               </li>

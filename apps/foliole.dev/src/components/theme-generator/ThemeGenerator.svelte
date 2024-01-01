@@ -277,5 +277,5 @@
     </div>
   </section>
 
-  <pre><code class="language-javascript">{previewCSSVars}</code></pre>
+  <pre class="hidden lg:block"><code class="language-javascript">{previewCSSVars}</code></pre>
 </div>
