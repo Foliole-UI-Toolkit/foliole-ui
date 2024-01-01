@@ -60,9 +60,10 @@ export function generateColors(colorNames: string[] | FolioleColorNames[], stops
 
 // Function to get only CSS Props used in our Components for TW.
 export async function getUsedCSSProps(
-  token: Record<string, string>,
-  tokenName: string,
+  prop: Record<string, string>,
+  propName: string,
   mergeCSSInJSCompsAndElementsForTw: any,
+  propLookup: null | Record<string, string> = null,
 ) {
   const foundKeys = new Set<string>()
 
@@ -70,20 +71,36 @@ export async function getUsedCSSProps(
     const cssString = stringify(cssClass, null, 2)
 
     if (cssString) {
-      for (const key of Object.keys(token)) {
-        const propKey = `--${tokenName}-${key.replace('.', 'pt')}`
+      for (const key of Object.keys(prop)) {
+        const propKey = `--${propName}-${key.replace('.', 'pt')}`
+
         const propKeyInContext = `var(${propKey})`
-        const propKeyAndValue = `${propKey}: ${token[key]};`
+
+        let propKeyAndValue = ''
+
+        if (propLookup) {
+          const tailAsKey = prop[key].split('-').pop()
+          if (tailAsKey === undefined) {
+            console.error('error in key lookup')
+            return []
+          }
+          propKeyAndValue = `${prop[key]}: ${propLookup[tailAsKey]};`
+        } else {
+          propKeyAndValue = `${propKey}: ${prop[key]};`
+        }
+
         if (cssString.includes(propKeyInContext)) {
           foundKeys.add(propKeyAndValue)
         }
       }
     }
   }
-
   return [...foundKeys].sort((a: string, b: string) => {
-    const numA = parseInt(a.match(/\d+/)![0])
-    const numB = parseInt(b.match(/\d+/)![0])
+    const numA = parseInt(a.match(/\d+/)?.[0] || '0')
+    const numB = parseInt(b.match(/\d+/)?.[0] || '0')
+    if (isNaN(numA) || isNaN(numB)) {
+      return a.localeCompare(b)
+    }
     return numA - numB
   })
 }

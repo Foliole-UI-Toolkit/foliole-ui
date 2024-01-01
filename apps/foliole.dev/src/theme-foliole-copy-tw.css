@@ -3,6 +3,8 @@
 @tailwind utilities;
 @layer base {
   :root {
+    --ui-roundness-md: 0.375rem;
+    --ui-roundness-full: 9999px;
     --spacing-5: 1.25rem;
     --spacing-6: 1.5rem;
     --spacing-7: 1.75rem;
