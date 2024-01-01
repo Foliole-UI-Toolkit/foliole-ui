@@ -1,5 +1,11 @@
 {
 
+## 0.6.2
+
+### Patch Changes
+
+- Bug: move store to ts file
+
 ## 0.6.1
 
 ### Patch Changes
