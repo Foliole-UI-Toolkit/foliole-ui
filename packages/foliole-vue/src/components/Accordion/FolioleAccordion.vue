@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { computed, ref, provide } from 'vue'
-import { createInjectionState } from '@vueuse/shared'
+import { provide } from 'vue'
+import { useProvideAccordionStore } from './store.ts'
 
 interface AccordionProps {
   autocollapse?: boolean
@@ -12,24 +12,7 @@ const props = withDefaults(defineProps<AccordionProps>(), {
   detached: false,
 })
 
-const [useProvideAccordionStore, useAccordionStore] = createInjectionState(
-  () => {
-    const activeItemId = ref<string | null>(null)
-
-    const isActive = (itemId: string) => computed(() => activeItemId.value === itemId)
-
-    function setActiveItem(itemId: string | null) {
-      activeItemId.value = itemId
-    }
-
-    return { isActive, setActiveItem }
-  },
-  { injectionKey: 'AccordionStoreKey' },
-)
-
 useProvideAccordionStore()
-
-export { useAccordionStore }
 
 provide('autocollapse', props.autocollapse)
 provide('detached', props.detached)

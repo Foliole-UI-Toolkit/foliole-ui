@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { useAccordionStore } from './FolioleAccordion.vue'
+import { useAccordionStore } from './store.ts'
 import { computed, inject, ref, watch, withDefaults } from 'vue'
 import classNames from 'classnames'
 
@@ -39,7 +39,7 @@ const openedItemClass = computed(() => currentOpenState.value && 'opened')
 const mergedAccordionClasses = computed(() => classNames([props.accordionClasses, openedItemClass.value]))
 
 function onToggle(event?: MouseEvent) {
-  currentOpenState.value = autocollapse ? isActive.value === itemId.value : isOpen.value
+  currentOpenState.value = autocollapse ? isActive(itemId.value).value : isOpen.value
 
   const toggleEvent = {
     event,
@@ -71,10 +71,10 @@ watch(
 )
 
 watch(
-  () => isActive.value,
+  () => isActive(itemId.value).value,
   (isActiveValue) => {
     // When isActive changes, all items need to be notified and checked if they are the active item, and if not closed.
-    currentOpenState.value = autocollapse ? isActiveValue === itemId.value : isOpen.value
+    currentOpenState.value = autocollapse ? isActiveValue : isOpen.value
   },
 )
 
