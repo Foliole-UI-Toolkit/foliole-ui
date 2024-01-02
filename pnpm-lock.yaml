@@ -112,7 +112,7 @@ importers:
         specifier: ^9.19.2
         version: 9.19.2(eslint@8.56.0)
       foliole-css:
-        specifier: 0.8.3
+        specifier: 0.8.4
         version: link:../../packages/foliole-css
       foliole-vue:
         specifier: 0.6.2
