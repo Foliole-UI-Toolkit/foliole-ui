@@ -145,12 +145,14 @@ a.inline-link {
     padding: var(--btn-p-chip);
     border-radius: var(--ui-btn-roundness);
   }
-  .my-hoverable:hover {
-    @apply cursor-pointer hover:bg-neutral-mlt/50;
+  @media (hover: hover) {
+    .my-hoverable:hover {
+      @apply cursor-pointer hover:bg-neutral-mlt/50;
+    }
   }
   .my-active {
     @apply bg-gradient-to-br from-primary/90 to-secondary/80;
-    padding: var(--btn-p-sm);
+    padding: var(--btn-p-chip);
     border-radius: var(--ui-btn-roundness);
   }
 }
