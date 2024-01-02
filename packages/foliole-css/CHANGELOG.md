@@ -1,5 +1,11 @@
 # foliole-css
 
+## 0.8.4
+
+### Patch Changes
+
+- 9f30cb3: Bug: CSS - adjust component styles for header nav to remove unstable nav placement at upper and lower layout positions
+
 ## 0.8.3
 
 ### Patch Changes

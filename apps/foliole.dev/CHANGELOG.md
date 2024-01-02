@@ -1,5 +1,12 @@
 # foliole-ui-docs
 
+## 0.0.14
+
+### Patch Changes
+
+- Updated dependencies [9f30cb3]
+  - foliole-css@0.8.4
+
 ## 0.0.13
 
 ### Patch Changes
