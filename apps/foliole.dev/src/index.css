@@ -64,8 +64,7 @@ a.inline-link {
   @apply mx-auto;
 }
 .my-header {
-  @apply w-full mx-auto;
-  @apply shadow-xl;
+  @apply flex flex-col w-full mx-auto shadow-xl;
   background: linear-gradient(
     60deg,
     rgb(var(--color-primary-mlt) / 0.4),

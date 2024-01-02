@@ -1,16 +1,15 @@
 module.exports = {
   appShell: {
     '.app-shell': {
-      display: 'flex',
-      flexDirection: 'column',
       width: '100%',
-      height: '100%',
-      minHeight: '100vh',
-      overflow: 'hidden',
+      height: '100vh',
+      display: 'grid',
+      gridTemplateRows: 'auto 1fr auto',
     },
     '.site-header': {
       display: 'flex',
-      flex: 'none',
+      position: 'sticky',
+      top: 0,
     },
     '.site-header-options': {
       zIndex: 10,
@@ -44,6 +43,7 @@ module.exports = {
       display: 'flex',
       'flex-direction': 'column',
       flex: 1,
+      overflowY: 'scroll',
       overflowX: 'hidden',
     },
     '.page-main': {

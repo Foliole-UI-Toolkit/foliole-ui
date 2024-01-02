@@ -41,7 +41,7 @@ function handleDrawerOpen() {
   <FolioleAppShell
     app-shell-classes="app-shell my-app-shell"
     site-central-wrapper-classes="site-central-wrapper mx-auto"
-    site-header-classes="siteheader site-header-options my-header"
+    site-header-classes="site-header site-header-options my-header"
     page-classes="page my-page h-screen"
     site-sidebar-left-classes="sidebar-left site-sidebar-left-options my-side-bar-left"
   >
