@@ -25,9 +25,11 @@ module.exports = {
       borderRadius: 'var(--ui-btn-roundness)',
       transition: 'filter 0.2s ease-in-out, transform 0.2s ease-in-out',
     },
-    '.btn-base:hover': {
-      transform: 'scale(var(--btn-hover-scale))',
-      filter: 'brightness(var(--btn-hover-filter))',
+    '@media (hover: hover)': {
+      '.btn-base:hover': {
+        transform: 'scale(var(--btn-hover-scale))',
+        filter: 'brightness(var(--btn-hover-filter))',
+      },
     },
     '.btn-base:active': {
       transform: 'scale(var(--btn-active-scale))',

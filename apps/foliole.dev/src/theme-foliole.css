@@ -56,21 +56,25 @@
   --ui-roundness-3xl: 1.5rem;
   --ui-roundness-full: 9999px;
 
-  --color-primary: 59 177 67;
-  --color-primary-light: 220 255 212;
-  --color-primary-mlt: 141 254 138;
-  --color-primary-mdk: 0 105 0;
-  --color-primary-dark: 0 42 0;
-  --color-secondary: 59 177 146;
-  --color-secondary-light: 220 255 255;
-  --color-secondary-mlt: 140 254 219;
-  --color-secondary-mdk: 0 105 79;
-  --color-secondary-dark: 0 42 20;
-  --color-tertiary: 59 130 177;
-  --color-tertiary-light: 217 255 255;
-  --color-tertiary-mlt: 138 202 253;
-  --color-tertiary-mdk: 0 65 106;
-  --color-tertiary-dark: 0 1 43;
+  --ui-roundness: --ui-roundness-md;
+  --ui-btn-roundness: --ui-roundness-full;
+  --ui-input-roundness: --ui-roundness-full;
+
+  --color-primary: 48 162 246;
+  --color-primary-light: 232 255 255;
+  --color-primary-mlt: 147 236 255;
+  --color-primary-mdk: 0 94 170;
+  --color-primary-dark: 0 35 99;
+  --color-secondary: 66 48 246;
+  --color-secondary-light: 250 192 255;
+  --color-secondary-mlt: 163 118 255;
+  --color-secondary-mdk: 0 0 168;
+  --color-secondary-dark: 0 0 97;
+  --color-tertiary: 198 48 246;
+  --color-tertiary-light: 255 213 255;
+  --color-tertiary-mlt: 255 134 255;
+  --color-tertiary-mdk: 118 0 169;
+  --color-tertiary-dark: 40 0 97;
   --color-success: 83 217 38;
   --color-success-light: 251 255 197;
   --color-success-mlt: 168 255 120;
@@ -81,15 +85,15 @@
   --color-error-mlt: 255 123 102;
   --color-error-mdk: 132 0 0;
   --color-error-dark: 70 0 0;
-  --color-neutral: 121 134 122;
-  --color-neutral-light: 218 232 219;
-  --color-neutral-mlt: 178 192 179;
-  --color-neutral-mdk: 69 81 70;
-  --color-neutral-dark: 37 48 38;
+  --color-neutral: 121 128 134;
+  --color-neutral-light: 217 225 232;
+  --color-neutral-mlt: 178 185 192;
+  --color-neutral-mdk: 69 75 81;
+  --color-neutral-dark: 37 43 48;
   --btn-p-sm: 0.375rem 1.3125rem;
   --btn-p-base: 0.5rem 1.75rem;
   --btn-p-chip: 0.25rem 0.875rem;
-  --btn-p-lg: 0.625rem 2.1875rem;
+  --btn-p-lg: 0.375rem 1.3125rem;
   --btn-hover-scale: 1.1;
   --btn-active-scale: 0.9;
   --btn-hover-filter: 1.05;
@@ -193,16 +197,15 @@
   height: 0px;
 }
 .app-shell {
-  display: flex;
-  flex-direction: column;
   width: 100%;
-  height: 100%;
-  min-height: 100vh;
-  overflow: hidden;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
 }
 .site-header {
   display: flex;
-  flex: none;
+  position: sticky;
+  top: 0;
 }
 .site-header-options {
   z-index: 10;
@@ -236,6 +239,7 @@
   display: flex;
   flex-direction: column;
   flex: 1;
+  overflow-y: scroll;
   overflow-x: hidden;
 }
 .page-main {
@@ -359,9 +363,11 @@
     filter 0.2s ease-in-out,
     transform 0.2s ease-in-out;
 }
-.btn-base:hover {
-  transform: scale(var(--btn-hover-scale));
-  filter: brightness(var(--btn-hover-filter));
+@media (hover: hover) {
+  .btn-base:hover {
+    transform: scale(var(--btn-hover-scale));
+    filter: brightness(var(--btn-hover-filter));
+  }
 }
 .btn-base:active {
   transform: scale(var(--btn-active-scale));
@@ -382,10 +388,10 @@
   --webkit-appearance: none;
   border-radius: var(--ui-input-roundness);
   appearance: none;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' class='svg-triangle' width='100' height='100'%3E%3Cpath d='M 50,75 90,20 10,20 Z' stroke-width='20' stroke='black' stroke-linejoin='round' stroke-linecap='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
-  background-position: right 0.25rem center;
-  background-size: 1.5rem;
+  background-position: right 0.5rem center;
+  background-size: 0.7rem;
   padding: var(--el-p-base) var(--el-p-double);
 }
 .bg-surface .select-base {
