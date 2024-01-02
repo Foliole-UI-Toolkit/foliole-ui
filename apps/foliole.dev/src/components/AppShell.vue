@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
+const showDrawer = ref(false)
+
 import AppMainMenu from './AppMainMenu.vue'
 import FolioleLogo from './FolioleLogo.vue'
 
