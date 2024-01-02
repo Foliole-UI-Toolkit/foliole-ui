@@ -88,7 +88,7 @@ function handleDrawerOpen() {
               <li
                 :class="[
                   'my-hoverable text-center  flex-grow flex md:flex-grow-0 justify-center w-full ',
-                  { 'my-active': pathname === '/theme-generator' },
+                  { 'my-active': pathname.endsWith('/theme-generator') },
                 ]"
               >
                 <a class="w-full uppercase whitespace-nowrap" href="/theme-generator">theme gen</a>
