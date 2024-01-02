@@ -3,7 +3,7 @@ import classNames from 'classnames'
 
 import { type ComputedRef, computed, inject, ref, withDefaults } from 'vue'
 
-const emits = defineEmits([
+const emit = defineEmits([
   'blur',
   'change',
   'click',
@@ -46,7 +46,7 @@ const mergedWrapperClasses = computed(() => classNames([props.railTileWrapperCla
 
 function handleInput(e: any) {
   modelValueRef.value = e?.target?.value
-  emits('update:modelValue', modelValueRef.value)
+  emit('update:modelValue', modelValueRef.value)
 }
 </script>
 

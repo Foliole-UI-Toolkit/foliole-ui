@@ -10,7 +10,7 @@ const autocollapse = inject<boolean>('autocollapse')
 
 const { isActive, setActiveItem } = useAccordionStore()!
 
-const emits = defineEmits(['toggle'])
+const emit = defineEmits(['toggle'])
 
 interface AccordionItemProps {
   open?: boolean
@@ -47,7 +47,7 @@ function onToggle(event?: MouseEvent) {
     open: currentOpenState.value,
   }
 
-  emits('toggle', toggleEvent)
+  emit('toggle', toggleEvent)
 }
 
 function setActive(event?: MouseEvent) {
