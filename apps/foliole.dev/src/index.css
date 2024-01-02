@@ -68,11 +68,11 @@ a.inline-link {
   @apply shadow-xl;
   background: linear-gradient(
     60deg,
-    rgb(var(--color-primary-mlt) / 0.2),
-    rgb(var(--color-secondary-mlt) / 0.2),
+    rgb(var(--color-primary-mlt) / 0.4),
+    rgb(var(--color-secondary-mlt) / 0.3),
     rgb(var(--color-tertiary-mlt) / 0.2),
-    rgb(var(--color-secondary-mlt) / 0.2),
-    rgb(var(--color-primary-mlt) / 0.2)
+    rgb(var(--color-secondary-mlt) / 0.3),
+    rgb(var(--color-primary-mlt) / 0.4)
   );
 }
 .header-bottom {

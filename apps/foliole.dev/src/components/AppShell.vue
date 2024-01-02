@@ -72,7 +72,7 @@ function handleDrawerOpen() {
               <FolioleLogo />
             </div>
             <ul
-              class="container flex flex-col justify-center col-span-3 p-1 pb-0 mx-auto space-y-1 font-bold md:space-x-4 sm:flex-row md:ml-1/3 md:justify-end md:p-2 md:mr-0 md:w-2/3 lg:w-1/2 lg:ml-1/2"
+              class="container flex flex-col justify-center col-span-3 p-1 pb-0 mx-auto space-y-1 font-bold md:space-y-0 md:space-x-4 sm:flex-row md:ml-1/3 md:justify-end md:p-2 md:mr-0 md:w-2/3 lg:w-1/2 lg:ml-1/2"
             >
               <li
                 :class="[
@@ -80,7 +80,7 @@ function handleDrawerOpen() {
                   { 'my-active': pathname === '/' },
                 ]"
               >
-                <a class="uppercase" href="/">home</a>
+                <a class="w-full text-center uppercase" href="/">home</a>
               </li>
               <!-- This theme generator is written in svelte! Inside of a Vue component due to Astro's features! -->
               <li
@@ -89,15 +89,15 @@ function handleDrawerOpen() {
                   { 'my-active': pathname.startsWith('/docs/') },
                 ]"
               >
-                <a class="uppercase" href="/docs/intro">docs</a>
+                <a class="w-full text-center uppercase" href="/docs/intro">docs</a>
               </li>
               <li
                 :class="[
-                  'my-hoverable  flex-grow flex md:flex-grow-0 justify-center w-full ',
+                  'my-hoverable text-center  flex-grow flex md:flex-grow-0 justify-center w-full ',
                   { 'my-active': pathname === '/theme-generator' },
                 ]"
               >
-                <a class="uppercase whitespace-nowrap" href="/theme-generator">theme gen</a>
+                <a class="w-full uppercase whitespace-nowrap" href="/theme-generator">theme gen</a>
               </li>
             </ul>
           </div>
