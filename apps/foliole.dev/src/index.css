@@ -129,7 +129,7 @@ a.inline-link {
 @layer components {
   /* Custom Foliole element additions that use foliole elements(called components in tw) */
   .my-chip {
-    @apply shadow-sm btn-chip btn-base bg-gradient-to-br from-primary/90 to-secondary/80;
+    @apply btn-chip border-[.125rem] shadow-sm btn-base bg-gradient-to-br from-primary to-primary/70 border-primary;
   }
   .my-input {
     @apply border input-base bg-neutral-light/50 border-neutral-light;
@@ -138,20 +138,29 @@ a.inline-link {
     @apply border select-base bg-neutral-light/50 border-neutral-light;
   }
   .my-btn {
-    @apply border-[.125rem] shadow-sm btn-base bg-gradient-to-br from-primary/90 to-secondary/80 border-primary;
+    @apply border-[.1875rem] shadow-sm btn-base bg-gradient-to-br from-primary to-primary/70 border-primary;
   }
   .my-hoverable {
     padding: var(--btn-p-chip);
     border-radius: var(--ui-btn-roundness);
   }
+  .underlined-hover.my-hoverable {
+    @apply md:border-tertiary md:rounded-none p-0 pr-[.125rem];
+  }
   @media (hover: hover) {
-    .my-hoverable:hover {
+    .my-hoverable {
       @apply cursor-pointer hover:bg-neutral-mlt/50;
+    }
+    .underlined-hover {
+      @apply hover:bg-neutral/0;
     }
   }
   .my-active {
-    @apply bg-gradient-to-br from-primary/90 to-secondary/80;
+    @apply bg-gradient-to-br from-primary to-primary/70;
     padding: var(--btn-p-chip);
     border-radius: var(--ui-btn-roundness);
+  }
+  .underlined-hover.my-active {
+    @apply md:bg-none md:border-b-[.25rem] md:border-secondary;
   }
 }
