@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-const showDrawer = ref(true)
-
 import AppMainMenu from './AppMainMenu.vue'
 import FolioleLogo from './FolioleLogo.vue'
 
@@ -19,9 +17,11 @@ export interface Props {
   pathname?: string
 }
 
-withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<Props>(), {
   pathname: '',
 })
+
+const showDrawer = ref(props.pathname === '/docs' ? true : false)
 
 function handleDrawerClose() {
   showDrawer.value = false
@@ -35,7 +35,7 @@ function handleDrawerOpen() {
   <div v-if="!fullWidthPages[pathname]" class="flex h-full">
     <!-- Consider performance implications of this and if other solutions are better in as menu grows. v-if, v-show and dynamic components -->
     <AppDrawer class="flex md:hidden" :show="showDrawer" @close="handleDrawerClose">
-      <AppMainMenu :pathname="pathname" />
+      <AppMainMenu :pathname="pathname" @close-drawer="handleDrawerClose" />
     </AppDrawer>
   </div>
   <FolioleAppShell
@@ -91,7 +91,7 @@ function handleDrawerOpen() {
                   { 'my-active': pathname.startsWith('/docs/') },
                 ]"
               >
-                <a class="w-full text-center uppercase" href="/docs/intro">docs</a>
+                <a class="w-full text-center uppercase" href="/docs">docs</a>
               </li>
               <li
                 :class="[
