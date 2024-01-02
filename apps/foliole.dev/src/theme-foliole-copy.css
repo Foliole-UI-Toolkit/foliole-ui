@@ -391,7 +391,7 @@
 .bg-surface .select-base {
   background-color: rgba(var(--color-neutral-mlt));
 }
-.input-color-base[type="color"] {
+.input-color-base[type='color'] {
   width: 40px;
   height: 40px;
   border: none;
@@ -401,17 +401,17 @@
   padding: 0;
   -webkit-appearance: none;
 }
-.input-color-base[type="color"]::-webkit-color-swatch-wrapper {
+.input-color-base[type='color']::-webkit-color-swatch-wrapper {
   padding: 0;
   border: none;
   border-radius: var(--ui-input-roundness);
 }
-.input-color-base[type="color"]::-webkit-color-swatch {
+.input-color-base[type='color']::-webkit-color-swatch {
   border: none;
   border-radius: var(--ui-input-roundness);
   padding: 0;
 }
-.input-color-base[type="color"]::-moz-color-swatch {
+.input-color-base[type='color']::-moz-color-swatch {
   border: none;
   border-radius: var(--ui-input-roundness);
 }

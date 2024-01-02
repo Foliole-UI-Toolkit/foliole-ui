@@ -3,11 +3,19 @@ import { ref } from 'vue'
 import FolioleAppRail from '../../../../packages/foliole-vue/src/components/AppRail/FolioleAppRail.vue'
 import FolioleAppRailButton from '../../../../packages/foliole-vue/src/components/AppRail/FolioleAppRailButton.vue'
 const section = ref('docs')
+
+export interface Props {
+  pathname?: string
+}
+
+withDefaults(defineProps<Props>(), {
+  pathname: '',
+})
 </script>
 <template>
   <div class="flex w-full h-screen">
     <FolioleAppRail
-      active-token-class="shadow-sm bg-primary/90"
+      active-token-class="shadow-sm bg-gradient-to-br from-primary/90 to-secondary/80 "
       app-rail-classes="app-rail my-app-rail border-r-[.125rem] border-tertiary-mlt/30 bg-neutral-light/10 shadow-md"
     >
       <FolioleAppRailButton
@@ -95,41 +103,48 @@ const section = ref('docs')
         <div class="space-y-4">
           <h3>Docs</h3>
           <ul class="space-y-4">
-            <li><a href="/docs/intro">Intro</a></li>
+            <li :class="['my-hoverable', { 'my-active': pathname === '/docs/intro' }]">
+              <a href="/docs/intro">Intro</a>
+            </li>
           </ul>
         </div>
         <div class="space-y-4">
           <h3>Concepts</h3>
           <ul class="space-y-4">
-            <li><a href="/docs/concepts/css-props-classes">CSS properties and classes</a></li>
+            <li :class="['my-hoverable', { 'my-active': pathname === '/docs/concepts/css-props-classes' }]">
+              <a href="/docs/concepts/css-props-classes">CSS properties and classes</a>
+            </li>
           </ul>
         </div>
         <div class="space-y-4">
           <h3>Resources</h3>
           <ul class="space-y-4">
-            <li><a href="/docs/resources/roadmap">Roadmap</a></li>
+            <li
+              :class="['my-hoverable', { 'my-active': pathname === '/docs/resources/roadmap' }]"
+              href="/docs/resources/roadmap"
+            >
+              <a href="/docs/resources/roadmap">Roadmap</a>
+            </li>
           </ul>
         </div>
       </div>
       <div v-else-if="section === 'css'" class="space-y-4">
         <h3>CSS Elements</h3>
         <ul class="space-y-4">
-          <li><a href="/css/button">Button</a></li>
+          <li :class="['my-hoverable', { 'my-active': pathname === '/css/button' }]" href="/css/button">
+            <a href="/css/button">Button</a>
+          </li>
         </ul>
       </div>
       <div v-else-if="section === 'components'">
         <div class="space-y-4">
           <h3>Examples</h3>
           <ul class="space-y-4">
-            <li><a href="/examples">Examples</a></li>
+            <li :class="['my-hoverable', { 'my-active': pathname === '/examples' }]" href="/examples">
+              <a href="/examples">Examples</a>
+            </li>
           </ul>
         </div>
-        <!-- <div class="space-y-4">
-          <h3>Components</h3>
-          <ul class="space-y-4">
-            <li>App Shell</li>
-          </ul>
-        </div> -->
       </div>
     </div>
   </div>

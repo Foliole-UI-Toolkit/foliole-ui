@@ -67,21 +67,15 @@ import FolioleLogo from '../components/FolioleLogo.vue';
 	.banner {
 		background: linear-gradient(
 		45deg,
-			rgb(var(--color-primary) / 0.5) 0%,
-			rgb(var(--color-secondary) / 0.5) 50%,
-			rgb(var(--color-tertiary) / 0.5) 100%
+			rgb(var(--color-primary-mlt) / .4) 0%,
+			rgb(var(--color-secondary-mlt) / .3) 30%,
+			rgb(var(--color-tertiary-mlt) / .3) 80%,
+			rgb(var(--color-tertiary-mlt) / .4) 100%
 		);
-	}
-	.banner-inner {
-		background: linear-gradient(
-		45deg,
-			rgb(var(--color-primary-light) / 1) 0%,
-			rgb(var(--color-secondary-light) / 1) 50%,
-			rgb(var(--color-tertiary-light) / 1) 100%
-		);
+		@apply border-secondary-light border-2
 	}
 	.ui-toolkit-h2 {
-    background: linear-gradient(45deg, rgb(var(--color-primary) / 1), rgb(var(--color-secondary) / 1),  rgb(var(--color-tertiary) / 1));
+    background: linear-gradient(45deg, rgb(var(--color-primary) / 1), rgb(var(--color-secondary) / 1));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 	}

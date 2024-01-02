@@ -31,7 +31,7 @@ withDefaults(defineProps<LogoProps>(), {
 }
 
 .foliole-logo-options {
-  background: linear-gradient(45deg, rgb(var(--color-primary-mlt) / 1), rgb(var(--color-tertiary-mlt) / 1));
+  background: linear-gradient(45deg, rgb(var(--color-primary-mlt) / 1), rgb(var(--color-secondary-mlt) / 1));
 }
 
 .foliole-logo-horizontal {

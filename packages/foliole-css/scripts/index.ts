@@ -26,6 +26,7 @@ import { input } from '../styles/elements/input.js'
 import { spacing } from '../styles/properties/spacing.js'
 import { font } from '../styles/properties/font.js'
 import { uiRoundness } from '../styles/properties/roundness.js'
+import { ui } from '../styles/properties/tokens/ui.js'
 import { appShell } from '../styles/components/app-shell.js'
 import { appRail } from '../styles/components/app-rail.js'
 import { accordion } from '../styles/components/accordion.js'
@@ -40,6 +41,7 @@ const folioleCSSProps = {
   spacing,
   font,
   uiRoundness,
+  ui,
 }
 
 let mergedEls: Record<string, Record<string, any>> = {
@@ -99,8 +101,10 @@ const colorsToGenerate: any = {
       let usedTwCompKeys = []
       const usedTwSpacingKeys = await getUsedCSSProps(spacing, 'spacing', mergedTwCompsAndEls)
       const usedTwFontKeys = await getUsedCSSProps(font, 'font', mergedTwCompsAndEls)
+      const usedTwRoundnessKeys = await getUsedCSSProps(uiRoundness, 'ui-roundness', mergedTwCompsAndEls)
+      const usedTwUiKeys = await getUsedCSSProps(ui, 'ui', mergedTwCompsAndEls, uiRoundness)
 
-      usedTwCompKeys = [...usedTwSpacingKeys, ...usedTwFontKeys]
+      usedTwCompKeys = [...usedTwUiKeys, ...usedTwRoundnessKeys, ...usedTwSpacingKeys, ...usedTwFontKeys]
 
       let usedTwPropsString = usedTwCompKeys.join('\n')
 

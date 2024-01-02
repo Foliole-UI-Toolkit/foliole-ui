@@ -15,10 +15,11 @@ module.exports = {
       '--webkit-appearance': 'none',
       borderRadius: 'var(--ui-input-roundness)',
       appearance: 'none',
-      backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M7 10l5 5 5-5z'/></svg>")`,
+      backgroundImage: `url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' class='svg-triangle' width='100' height='100'%3E%3Cpath d='M 50,75 90,20 10,20 Z' stroke-width='20' stroke='black' stroke-linejoin='round' stroke-linecap='round'/%3E%3C/svg%3E")`,
+
       backgroundRepeat: 'no-repeat',
-      backgroundPosition: 'right .25rem center',
-      backgroundSize: '1.5rem',
+      backgroundPosition: 'right .5rem center',
+      backgroundSize: '.7rem',
       padding: 'var(--el-p-base) var(--el-p-double)',
     },
     '.bg-surface .select-base': {
