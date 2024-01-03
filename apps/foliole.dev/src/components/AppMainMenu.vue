@@ -18,7 +18,7 @@ withDefaults(defineProps<Props>(), {
   <div class="flex w-full h-screen">
     <FolioleAppRail
       active-token-class="shadow-sm bg-gradient-to-br from-primary to-primary/80 "
-      app-rail-classes="app-rail my-app-rail border-r-[.125rem] border-tertiary-mlt/30 bg-neutral-light/10 shadow-md"
+      app-rail-classes="foliole-v_0_app-rail my-app-rail border-r-[.125rem] border-tertiary-mlt/30 bg-neutral-light/10 shadow-md"
     >
       <FolioleAppRailButton
         v-model="section"

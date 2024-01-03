@@ -10,7 +10,7 @@ export interface AppRailProps {
 }
 
 const props = withDefaults(defineProps<AppRailProps>(), {
-  appRailClasses: 'app-rail app-rail-options',
+  appRailClasses: 'foliole-v_0_app-rail app-rail-options',
   activeTokenClass: 'bg-primary',
   regionLeadClasses: '',
   regionDefaultClasses: '',

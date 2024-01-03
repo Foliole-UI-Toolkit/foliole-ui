@@ -64,18 +64,23 @@
     --el-p-triple: 1.5rem;
   }
 }
-.accordion {
+.foliole-v_0_accordion-wrapper {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
-.accordion-header {
+.foliole-v_0_accordion-wrapper .accordion {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.foliole-v_0_accordion-wrapper .accordion-header {
   display: flex;
   justify-content: space-between;
   width: 100%;
   padding: var(--el-p-base);
 }
-.header-control {
+.foliole-v_0_accordion-wrapper .header-control {
   padding: var(--el-p-base) var(--el-p-double);
   background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>');
   height: 24px;
@@ -85,67 +90,67 @@
   background-size: var(--el-p-triple);
   transition: transform 0.5s ease-in-out;
 }
-.opened .header-control {
+.foliole-v_0_accordion-wrapper .opened .header-control {
   transform: rotate(-90deg);
 }
-.accordion-section-wrapper {
+.foliole-v_0_accordion-wrapper .accordion-section-wrapper {
   display: grid;
   grid-template-rows: 0fr;
   padding: 0;
   transition: grid-template-rows 0.5s ease-in-out;
 }
-.opened .accordion-section-wrapper {
+.foliole-v_0_accordion-wrapper .opened .accordion-section-wrapper {
   grid-template-rows: 1fr;
   padding: var(--el-p-base);
 }
-.accordion-section {
+.foliole-v_0_accordion-wrapper .accordion-section {
   overflow: hidden;
 }
-.app-rail {
+.foliole-v_0_app-rail {
   display: grid;
   grid-template-rows: auto 1fr auto;
   overflow-y: auto;
   height: 100%;
 }
-.app-rail-options {
+.foliole-v_0_app-rail.app-rail-options {
   width: 5rem;
 }
-.app-rail-region-lead,
+.foliole-v_0_app-rail .app-rail-region-lead,
 .app-rail-region-default,
 .app-rail-region-tail {
   box-sizing: border-box;
 }
-.rail-tile-wrapper {
+.foliole-v_0_app-rail .rail-tile-wrapper {
   display: flex;
   flex-direction: column;
   align-items: stretch;
   width: 100%;
   cursor: pointer;
 }
-.rail-tile-wrapper-options {
+.foliole-v_0_app-rail .rail-tile-wrapper-options {
   aspect-ratio: 1;
   text-align: center;
   font-size: var(--font-sm);
 }
-.rail-tile-content-wrapper {
+.foliole-v_0_app-rail .rail-tile-content-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100%;
 }
-.rail-item {
+.foliole-v_0_app-rail .rail-item {
   height: 100%;
   display: flex;
   flex-direction: column;
 }
-.rail-item-options {
+.foliole-v_0_app-rail .rail-item-options {
   padding: var(--el-sm);
 }
-.rail-label {
+.foliole-v_0_app-rail .rail-label {
   padding-top: var(--el-sm);
 }
-.app-rail-inner.hidden-radio {
+.foliole-v_0_app-rail .app-rail-inner.hidden-radio {
   overflow: hidden;
   width: 0px;
   height: 0px;
