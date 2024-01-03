@@ -10,7 +10,7 @@ export interface AppRailProps {
 }
 
 const props = withDefaults(defineProps<AppRailProps>(), {
-  appRailClasses: 'app-rail app-rail-options',
+  appRailClasses: 'f0l__app-rail f0l_app-rail-opts',
   activeTokenClass: 'bg-primary',
   regionLeadClasses: '',
   regionDefaultClasses: '',

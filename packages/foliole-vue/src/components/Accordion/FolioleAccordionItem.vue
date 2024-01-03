@@ -23,11 +23,11 @@ interface AccordionItemProps {
 
 const props = withDefaults(defineProps<AccordionItemProps>(), {
   open: false,
-  accordionClasses: 'accordion',
-  accordionHeaderClasses: 'accordion-header',
-  headerControlClasses: 'header-control',
-  accordionSectionWrapper: 'accordion-section-wrapper',
-  accordionSection: 'accordion-section',
+  accordionClasses: 'f0l_accordion',
+  accordionHeaderClasses: 'f0l_accordion-header',
+  headerControlClasses: 'f0l_header-control',
+  accordionSectionWrapper: 'f0l_accordion-section-wrapper',
+  accordionSection: 'f0l_accordion-section',
 })
 
 const isOpen = ref<boolean>(props.open)
@@ -83,7 +83,7 @@ if (autocollapse && isOpen.value) setActive()
 <template>
   <div :class="mergedAccordionClasses">
     <button :class="accordionHeaderClasses" @click="setActive">
-      <slot name="header"></slot><span class="header-control"></span>
+      <slot name="header"></slot><span class="f0l_header-control"></span>
     </button>
 
     <div :class="accordionSectionWrapper">

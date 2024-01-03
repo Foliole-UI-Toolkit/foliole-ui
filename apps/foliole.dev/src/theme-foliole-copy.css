@@ -110,18 +110,18 @@
   --el-p-triple: 1.5rem;
 }
 
-.accordion {
+.f0l__accordion-wrapper .f0l_accordion {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
-.accordion-header {
+.f0l__accordion-wrapper .f0l_accordion-header {
   display: flex;
   justify-content: space-between;
   width: 100%;
   padding: var(--el-p-base);
 }
-.header-control {
+.f0l__accordion-wrapper .f0l_header-control {
   padding: var(--el-p-base) var(--el-p-double);
   background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>');
   height: 24px;
@@ -131,139 +131,139 @@
   background-size: var(--el-p-triple);
   transition: transform 0.5s ease-in-out;
 }
-.opened .header-control {
+.f0l__accordion-wrapper .opened .f0l_header-control {
   transform: rotate(-90deg);
 }
-.accordion-section-wrapper {
+.f0l__accordion-wrapper .f0l_accordion-section-wrapper {
   display: grid;
   grid-template-rows: 0fr;
   padding: 0;
   transition: grid-template-rows 0.5s ease-in-out;
 }
-.opened .accordion-section-wrapper {
+.f0l__accordion-wrapper .opened .f0l_accordion-section-wrapper {
   grid-template-rows: 1fr;
   padding: var(--el-p-base);
 }
-.accordion-section {
+.f0l__accordion-wrapper .f0l_accordion-section {
   overflow: hidden;
 }
-.app-rail {
+.f0l__app-rail {
   display: grid;
   grid-template-rows: auto 1fr auto;
   overflow-y: auto;
   height: 100%;
 }
-.app-rail-options {
+.f0l__app-rail.f0l_app-rail-opts {
   width: 5rem;
 }
-.app-rail-region-lead,
-.app-rail-region-default,
-.app-rail-region-tail {
+.f0l__app-rail .f0l_app-rail-region-lead,
+.f0l__app-rail .f0l_app-rail-region-default,
+.f0l__app-rail .f0l_app-rail-region-tail {
   box-sizing: border-box;
 }
-.rail-tile-wrapper {
+.f0l__app-rail .f0l_rail-tile-wrapper {
   display: flex;
   flex-direction: column;
   align-items: stretch;
   width: 100%;
   cursor: pointer;
 }
-.rail-tile-wrapper-options {
+.f0l__app-rail .f0l_rail-tile-wrapper-opts {
   aspect-ratio: 1;
   text-align: center;
   font-size: var(--font-sm);
 }
-.rail-tile-content-wrapper {
+.f0l__app-rail .f0l_rail-tile-content-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100%;
 }
-.rail-item {
+.f0l__app-rail .f0l_rail-item {
   height: 100%;
   display: flex;
   flex-direction: column;
 }
-.rail-item-options {
+.f0l__app-rail .f0l_rail-item-opts {
   padding: var(--el-sm);
 }
-.rail-label {
+.f0l__app-rail .f0l_rail-label {
   padding-top: var(--el-sm);
 }
-.app-rail-inner.hidden-radio {
+.f0l__app-rail .f0l_app-rail-inner.hidden-radio {
   overflow: hidden;
   width: 0px;
   height: 0px;
 }
-.app-shell {
+.f0l__app-shell {
   width: 100%;
   height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr auto;
 }
-.site-header {
+.f0l__app-shell .f0l_site-header {
   display: flex;
   position: sticky;
   top: 0;
 }
-.site-header-options {
+.f0l__app-shell .f0l_site-header-opts {
   z-index: 10;
 }
-.site-central-wrapper {
+.f0l__app-shell .f0l_site-central-wrapper {
   display: flex;
   flex: auto;
   width: 100%;
   height: 100%;
   overflow: hidden;
 }
-.site-sidebar-left {
+.f0l__app-shell .f0l_site-sidebar-left {
   display: flex;
   flex: none;
   overflow-x: hidden;
   overflow-y: auto;
 }
-.site-sidebar-left-options {
+.f0l__app-shell .f0l_site-sidebar-left-opts {
   width: auto;
 }
-.site-sitebar-right {
+.f0l__app-shell .f0l_site-sitebar-right {
   display: flex;
   flex: none;
   overflow-x: hidden;
   overflow-y: auto;
 }
-.site-sidebar-right-options {
+.f0l__app-shell .f0l_site-sidebar-right-opts {
   width: auto;
 }
-.page {
+.f0l__app-shell .f0l_page {
   display: flex;
   flex-direction: column;
   flex: 1;
   overflow-y: scroll;
   overflow-x: hidden;
 }
-.page-main {
+.f0l__app-shell .f0l_page-main {
   display: flex;
   flex: none;
 }
-.page-header {
+.f0l__app-shell .f0l_page-header {
   display: flex;
   flex: none;
 }
-.page-footer {
+.f0l__app-shell .f0l_page-footer {
   display: flex;
   flex: none;
 }
-.site-footer {
+.f0l__app-shell .f0l_site-footer {
   display: flex;
   flex: none;
 }
-.drawer {
+.f0l__drawer-backdrop .f0l_drawer {
   background: white;
   overflow-y: auto;
   transition: transform;
 }
-.drawer-backdrop {
+.f0l__drawer-backdrop {
   position: fixed;
   top: 0;
   left: 0;
@@ -272,60 +272,60 @@
   display: flex;
   background: rgba(0, 0, 0, 0.3);
 }
-.drawer-backdrop-options {
+.f0l__drawer-backdrop.f0l_drawer-backdrop-opts {
   z-index: 40;
 }
-.drawer-top {
+.f0l__drawer-backdrop .f0l_drawer-top {
   align-items: start;
   width: 100%;
   height: 50%;
   border-radius: var(--ui-roundness) var(--ui-roundness) 0 0;
 }
-.drawer-bottom {
+.f0l__drawer-backdrop .f0l_drawer-bottom {
   align-items: end;
   width: 100%;
   height: 50%;
   border-radius: 0 0 var(--ui-roundness) var(--ui-roundness);
 }
-.drawer-left {
+.f0l__drawer-backdrop .f0l_drawer-left {
   justify-content: start;
   width: 90%;
   height: 100%;
   border-radius: 0 var(--ui-roundness) var(--ui-roundness) 0;
 }
-.drawer-right {
+.f0l__drawer-backdrop .f0l_drawer-right {
   justify-content: end;
   width: 90%;
   height: 100%;
   border-radius: var(--ui-roundness) 0 0 var(--ui-roundness);
 }
-.slide-toggle {
+.f0l__slide-toggle {
   display: flex;
   align-items: center;
   border-radius: var(--ui-input-roundness);
 }
-.track {
+.f0l__slide-toggle .f0l_track {
   cursor: pointer;
   display: flex;
   border-radius: 1000px;
 }
-.track-xl {
+.f0l__slide-toggle .f0l_track-xl {
   width: var(--spacing-16);
   height: var(--spacing-8);
 }
-.track-large {
+.f0l__slide-toggle .f0l_track-large {
   width: var(--spacing-14);
   height: var(--spacing-7);
 }
-.track-medium {
+.f0l__slide-toggle .f0l_track-medium {
   width: var(--spacing-12);
   height: var(--spacing-6);
 }
-.track-small {
+.f0l__slide-toggle .f0l_track-small {
   width: var(--spacing-10);
   height: var(--spacing-5);
 }
-.thumb {
+.f0l__slide-toggle .f0l_thumb {
   display: inline-block;
   border-radius: 1000px;
   width: 50%;
@@ -333,7 +333,7 @@
   transform: scale(0.8);
   transition: all 0.2s ease-in-out;
 }
-.on {
+.f0l__slide-toggle .f0l_is-toggle-on {
   transform: translateX(100%) scale(0.8);
 }
 .btn-sm {

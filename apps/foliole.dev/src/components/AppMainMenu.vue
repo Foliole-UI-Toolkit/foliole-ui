@@ -18,7 +18,7 @@ withDefaults(defineProps<Props>(), {
   <div class="flex w-full h-screen">
     <FolioleAppRail
       active-token-class="shadow-sm bg-gradient-to-br from-primary to-primary/80 "
-      app-rail-classes="app-rail my-app-rail border-r-[.125rem] border-tertiary-mlt/30 bg-neutral-light/10 shadow-md"
+      app-rail-classes="f0l__app-rail my-app-rail border-r-[.125rem] border-tertiary-mlt/30 bg-neutral-light/10 shadow-md"
     >
       <FolioleAppRailButton
         v-model="section"
@@ -26,7 +26,7 @@ withDefaults(defineProps<Props>(), {
         title="docs"
         value="docs"
         name="sections"
-        rail-item-classes="rail-item my-rail-item"
+        rail-item-classes="f0l_rail-item my-rail-item"
       >
         <template #lead>
           <svg
@@ -50,7 +50,7 @@ withDefaults(defineProps<Props>(), {
         title="css"
         value="css"
         name="sections"
-        rail-item-classes="rail-item my-rail-item"
+        rail-item-classes="f0l_rail-item my-rail-item"
       >
         <template #lead>
           <svg
@@ -77,7 +77,7 @@ withDefaults(defineProps<Props>(), {
         :selected="section === 'components'"
         value="components"
         name="sections"
-        rail-item-classes="rail-item my-rail-item"
+        rail-item-classes="f0l_rail-item my-rail-item"
       >
         <template #lead>
           <svg

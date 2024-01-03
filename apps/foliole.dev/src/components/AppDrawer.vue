@@ -13,8 +13,8 @@ export interface DrawerProps {
 
 withDefaults(defineProps<DrawerProps>(), {
   show: false,
-  drawerClasses: 'drawer drawer-options drawer-left',
-  drawerBackdropClasses: 'drawer-backdrop drawer-backdrop-options',
+  drawerClasses: 'f0l_drawer f0l_drawer-opts f0l_drawer-left',
+  drawerBackdropClasses: 'f0l__drawer-backdrop f0l_drawer-backdrop-opts',
   labelledby: '',
   describedby: '',
 })
