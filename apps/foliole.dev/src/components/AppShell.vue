@@ -42,7 +42,7 @@ function handleDrawerOpen() {
     app-shell-classes="app-shell my-app-shell"
     site-central-wrapper-classes="site-central-wrapper mx-auto"
     site-header-classes="site-header site-header-options my-header"
-    page-classes="page my-page h-screen"
+    page-classes="page my-page h-full"
     site-sidebar-left-classes="sidebar-left site-sidebar-left-options my-side-bar-left"
   >
     <template #header>
