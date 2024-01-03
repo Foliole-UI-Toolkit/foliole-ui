@@ -39,7 +39,7 @@ function handleDrawerOpen() {
     </AppDrawer>
   </div>
   <FolioleAppShell
-    app-shell-classes="app-shell my-app-shell"
+    app-shell-classes="foliole-v_0_app-shell my-app-shell"
     site-central-wrapper-classes="site-central-wrapper mx-auto"
     site-header-classes="site-header site-header-options my-header"
     page-classes="page my-page h-screen"

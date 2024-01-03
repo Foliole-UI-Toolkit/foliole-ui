@@ -1,64 +1,64 @@
 module.exports = {
   appShell: {
-    '.app-shell': {
+    '.foliole-v_0_app-shell': {
       width: '100%',
       height: '100vh',
       display: 'grid',
       gridTemplateRows: 'auto 1fr auto',
     },
-    '.site-header': {
+    '.foliole-v_0_app-shell .site-header': {
       display: 'flex',
       position: 'sticky',
       top: 0,
     },
-    '.site-header-options': {
+    '.foliole-v_0_app-shell .site-header-options': {
       zIndex: 10,
     },
-    '.site-central-wrapper': {
+    '.foliole-v_0_app-shell .site-central-wrapper': {
       display: 'flex',
       flex: 'auto',
       width: '100%',
       height: '100%',
       overflow: 'hidden',
     },
-    '.site-sidebar-left': {
+    '.foliole-v_0_app-shell .site-sidebar-left': {
       display: 'flex',
       flex: 'none',
       overflowX: 'hidden',
       overflowY: 'auto',
     },
-    '.site-sidebar-left-options': {
+    '.foliole-v_0_app-shell .site-sidebar-left-options': {
       width: 'auto',
     },
-    '.site-sitebar-right': {
+    '.foliole-v_0_app-shell .site-sitebar-right': {
       display: 'flex',
       flex: 'none',
       overflowX: 'hidden',
       overflowY: 'auto',
     },
-    '.site-sidebar-right-options': {
+    '.foliole-v_0_app-shell .site-sidebar-right-options': {
       width: 'auto',
     },
-    '.page': {
+    '.foliole-v_0_app-shell .page': {
       display: 'flex',
       'flex-direction': 'column',
       flex: 1,
       overflowY: 'scroll',
       overflowX: 'hidden',
     },
-    '.page-main': {
+    '.foliole-v_0_app-shell .page-main': {
       display: 'flex',
       flex: 'none',
     },
-    '.page-header': {
+    '.foliole-v_0_app-shell .page-header': {
       display: 'flex',
       flex: 'none',
     },
-    '.page-footer': {
+    '.foliole-v_0_app-shell .page-footer': {
       display: 'flex',
       flex: 'none',
     },
-    '.site-footer': {
+    '.foliole-v_0_app-shell .site-footer': {
       display: 'flex',
       flex: 'none',
     },

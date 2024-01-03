@@ -15,7 +15,7 @@ export interface AppShellProps {
 }
 
 withDefaults(defineProps<AppShellProps>(), {
-  appShellClasses: 'app-shell',
+  appShellClasses: 'foliole-v_0_app-shell',
   siteHeaderClasses: 'site-header site-header-options',
   siteCentralWrapperClasses: 'site-central-wrapper',
   siteSidebarLeftClasses: 'site-sidebar-left site-sidebar-left-options',
