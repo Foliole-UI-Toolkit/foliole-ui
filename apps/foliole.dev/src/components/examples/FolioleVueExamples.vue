@@ -1,26 +1,10 @@
 <script lang="ts" setup>
-import { ref } from 'vue'
 import FolioleAccordion from 'foliole-vue/src/components/Accordion/FolioleAccordion.vue'
 import FolioleAccordionItem from 'foliole-vue/src/components/Accordion/FolioleAccordionItem.vue'
 import FolioleSlideToggle from 'foliole-vue/src/components/SlideToggle/FolioleSlideToggle.vue'
-import FolioleDrawer from 'foliole-vue/src/components/Drawer/FolioleDrawer.vue'
-
-const showDrawer = ref(false)
-
-function handleDrawerClose() {
-  showDrawer.value = false
-}
-
-function handleDrawerOpen() {
-  showDrawer.value = true
-}
 </script>
 <template>
   <div class="inner-page-wrapper examples-vue">
-    <FolioleDrawer :show="showDrawer" @close="handleDrawerClose">
-      <div>Example Drawer.</div>
-    </FolioleDrawer>
-    <button @click="handleDrawerOpen">Open Drawer</button>
     <FolioleAccordion :autocollapse="true">
       <FolioleAccordionItem :open="true">
         <template #header>Tab 1</template> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed

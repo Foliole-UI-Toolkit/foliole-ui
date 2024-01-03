@@ -258,12 +258,12 @@
   display: flex;
   flex: none;
 }
-.drawer {
+.f0l__drawer-backdrop .f0l_drawer {
   background: white;
   overflow-y: auto;
   transition: transform;
 }
-.drawer-backdrop {
+.f0l__drawer-backdrop {
   position: fixed;
   top: 0;
   left: 0;
@@ -272,28 +272,28 @@
   display: flex;
   background: rgba(0, 0, 0, 0.3);
 }
-.drawer-backdrop-options {
+.f0l__drawer-backdrop.f0l_drawer-backdrop-opts {
   z-index: 40;
 }
-.drawer-top {
+.f0l__drawer-backdrop .f0l_drawer-top {
   align-items: start;
   width: 100%;
   height: 50%;
   border-radius: var(--ui-roundness) var(--ui-roundness) 0 0;
 }
-.drawer-bottom {
+.f0l__drawer-backdrop .f0l_drawer-bottom {
   align-items: end;
   width: 100%;
   height: 50%;
   border-radius: 0 0 var(--ui-roundness) var(--ui-roundness);
 }
-.drawer-left {
+.f0l__drawer-backdrop .f0l_drawer-left {
   justify-content: start;
   width: 90%;
   height: 100%;
   border-radius: 0 var(--ui-roundness) var(--ui-roundness) 0;
 }
-.drawer-right {
+.f0l__drawer-backdrop .f0l_drawer-right {
   justify-content: end;
   width: 90%;
   height: 100%;
