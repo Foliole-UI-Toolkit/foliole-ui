@@ -2,18 +2,23 @@
 
 module.exports = {
   accordion: {
-    '.accordion': {
+    '.foliole-v_0_accordion-wrapper': {
       display: 'flex',
       'flex-direction': 'column',
       width: '100%',
     },
-    '.accordion-header': {
+    '.foliole-v_0_accordion-wrapper .accordion': {
+      display: 'flex',
+      'flex-direction': 'column',
+      width: '100%',
+    },
+    '.foliole-v_0_accordion-wrapper .accordion-header': {
       display: 'flex',
       'justify-content': 'space-between',
       width: '100%',
       padding: 'var(--el-p-base)',
     },
-    '.header-control': {
+    '.foliole-v_0_accordion-wrapper .header-control': {
       padding: 'var(--el-p-base)',
       'background-image':
         'url(\'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>\')',
@@ -25,20 +30,20 @@ module.exports = {
       padding: 'var(--el-p-base) var(--el-p-double)',
       transition: 'transform 0.5s ease-in-out',
     },
-    '.opened .header-control': {
+    '.foliole-v_0_accordion-wrapper .opened .header-control': {
       transform: 'rotate(-90deg)',
     },
-    '.accordion-section-wrapper': {
+    '.foliole-v_0_accordion-wrapper .accordion-section-wrapper': {
       display: 'grid',
       'grid-template-rows': '0fr',
       padding: '0',
       transition: 'grid-template-rows 0.5s ease-in-out',
     },
-    '.opened .accordion-section-wrapper': {
+    '.foliole-v_0_accordion-wrapper .opened .accordion-section-wrapper': {
       'grid-template-rows': '1fr',
       padding: 'var(--el-p-base)',
     },
-    '.accordion-section': {
+    '.foliole-v_0_accordion-wrapper .accordion-section': {
       overflow: 'hidden',
     },
   },
