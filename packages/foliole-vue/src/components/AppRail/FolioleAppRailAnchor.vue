@@ -16,10 +16,10 @@ export interface AppRailAnchorProps {
 
 const props = withDefaults(defineProps<AppRailAnchorProps>(), {
   selected: false,
-  railTileWrapperClasses: 'rail-tile-wrapper rail-tile-wrapper-options',
-  railTileContentWrapperClasses: 'rail-tile-content-wrapper',
-  railItemClasses: 'rail-item rail-item-options',
-  railLabelClasses: 'rail-label',
+  railTileWrapperClasses: 'f0l_rail-tile-wrapper f0l_rail-tile-wrapper-opts',
+  railTileContentWrapperClasses: 'f0l_rail-tile-content-wrapper',
+  railItemClasses: 'f0l_rail-item f0l_rail-item-opts',
+  railLabelClasses: 'f0l_rail-label',
 })
 
 const activeClass = inject<ComputedRef<string>>('active')
@@ -44,7 +44,7 @@ const mergedWrapperClasses = computed(() => classNames([props.railTileWrapperCla
     @blur="$emit('blur'), $event"
   >
     <div :class="railItemClasses">
-      <div class="rail-tile-content-wrapper">
+      <div :class="railTileContentWrapperClasses">
         <slot name="lead"></slot>
 
         <span :class="railLabelClasses"><slot name="label"></slot></span>
