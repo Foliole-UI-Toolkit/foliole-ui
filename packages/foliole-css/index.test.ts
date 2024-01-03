@@ -9,7 +9,7 @@ import { input } from './styles/elements/input.js'
 import { appShell } from './styles/components/app-shell.js'
 import { appRail } from './styles/components/app-rail.js'
 import { accordion } from './styles/components/accordion.js'
-import { drawer } from './styles/components/drawer.js'
+import { drawer } from './styles/components/app-drawer.js'
 import { slideToggle } from './styles/components/slide-toggle.js'
 
 // Mock data

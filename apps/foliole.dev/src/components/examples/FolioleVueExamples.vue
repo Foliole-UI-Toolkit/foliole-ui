@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import FolioleAccordion from 'foliole-vue/src/components/Accordion/FolioleAccordion.vue'
 import FolioleAccordionItem from 'foliole-vue/src/components/Accordion/FolioleAccordionItem.vue'
 import FolioleSlideToggle from 'foliole-vue/src/components/SlideToggle/FolioleSlideToggle.vue'
-import FolioleDrawer from 'foliole-vue/src/components/Drawer/FolioleDrawer.vue'
+import FolioleAppDrawer from 'foliole-vue/src/components/Drawer/FolioleAppDrawer.vue'
 
 const showDrawer = ref(false)
 
@@ -17,9 +17,9 @@ function handleDrawerOpen() {
 </script>
 <template>
   <div class="w-full">
-    <FolioleDrawer :show="showDrawer" @close="handleDrawerClose">
+    <FolioleAppDrawer :show="showDrawer" @close="handleDrawerClose">
       <div>Example Drawer.</div>
-    </FolioleDrawer>
+    </FolioleAppDrawer>
     <button @click="handleDrawerOpen">Open Drawer</button>
     <FolioleAccordion :autocollapse="true">
       <FolioleAccordionItem accordion-header-classes="accordion-header" :open="true">

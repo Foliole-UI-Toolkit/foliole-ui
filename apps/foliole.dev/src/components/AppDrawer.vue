@@ -13,8 +13,8 @@ export interface DrawerProps {
 
 withDefaults(defineProps<DrawerProps>(), {
   show: false,
-  drawerClasses: 'drawer drawer-options drawer-left',
-  drawerBackdropClasses: 'drawer-backdrop drawer-backdrop-options',
+  drawerClasses: 'drawer drawer-left',
+  drawerBackdropClasses: 'foliole-v_0_app_drawer_backdrop drawer-backdrop-options',
   labelledby: '',
   describedby: '',
 })
