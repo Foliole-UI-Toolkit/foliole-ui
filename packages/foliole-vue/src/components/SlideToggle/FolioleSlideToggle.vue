@@ -5,7 +5,7 @@ import classNames from 'classnames'
 defineEmits(['click', 'keydown'])
 
 interface SlideToggleProps {
-  on?: boolean
+  isToggleOn?: boolean
   label: string
   text?: string
   slideToggleClasses?: string
@@ -14,27 +14,27 @@ interface SlideToggleProps {
 }
 
 const props = withDefaults(defineProps<SlideToggleProps>(), {
-  on: false,
+  isToggleOn: false,
   text: '',
-  slideToggleClasses: 'slide-toggle slide-toggle-options',
-  trackClasses: 'track track-small bg-neutral-mlt',
-  thumbClasses: 'thumb bg-neutral',
+  slideToggleClasses: 'f0l__slide-toggle f0l_slide-toggle-opts',
+  trackClasses: 'f0l_track f0l_track-small bg-neutral-mlt',
+  thumbClasses: 'f0l_thumb bg-neutral',
 })
 
-const isOn = ref(props.on)
+const isToggleOnRef = ref(props.isToggleOn)
 
 const onToggle = () => {
-  isOn.value = !isOn.value
+  isToggleOnRef.value = !isToggleOnRef.value
 }
 
-const onClass = computed(() => `${isOn.value ? 'on' : ''}`)
+const onClass = computed(() => `${isToggleOnRef.value ? 'f0l_is-toggle-on' : ''}`)
 
 const mergedThumbClasses = computed(() => classNames([props.thumbClasses, onClass.value]))
 </script>
 
 <template>
   <div :class="slideToggleClasses" role="switch" data-testid="slide-toggle" tabindex="0" aria-label="{label}">
-    <button :class="trackClasses" :aria-pressed="isOn" @click="onToggle" @keydown="$emit('keydown', $event)">
+    <button :class="trackClasses" :aria-pressed="isToggleOnRef" @click="onToggle" @keydown="$emit('keydown', $event)">
       <span aria-hidden="true" :class="mergedThumbClasses"></span>
     </button>
   </div>
