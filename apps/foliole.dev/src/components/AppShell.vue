@@ -48,6 +48,7 @@ function handleDrawerOpen() {
     <template #header>
       <div class="flex flex-wrap p-4">
         <div class="w-full">
+          {{ pathname }}
           <div
             class="grid grid-cols-3 space-y-2 md:space-y-0 md:grid-rows-2 md:flex md:items-center md:justify-start md:mx-auto md:flex-row"
           >
