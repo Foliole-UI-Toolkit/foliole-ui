@@ -39,11 +39,11 @@ function handleDrawerOpen() {
     </AppDrawer>
   </div>
   <FolioleAppShell
-    app-shell-classes="app-shell my-app-shell"
-    site-central-wrapper-classes="site-central-wrapper mx-auto"
-    site-header-classes="site-header site-header-options my-header"
-    page-classes="page my-page h-full"
-    site-sidebar-left-classes="sidebar-left site-sidebar-left-options my-side-bar-left"
+    app-shell-classes="f0l__app-shell my-app-shell"
+    site-central-wrapper-classes="f0l_site-central-wrapper mx-auto"
+    site-header-classes="f0l_site-header f0l_site-header-options my-header"
+    page-classes="f0l_page my-page h-full"
+    site-sidebar-left-classes="f0l_sidebar-left f0l_site-sidebar-left-options my-side-bar-left"
   >
     <template #header>
       <div class="flex flex-wrap p-4">

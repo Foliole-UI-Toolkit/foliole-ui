@@ -15,16 +15,16 @@ export interface AppShellProps {
 }
 
 withDefaults(defineProps<AppShellProps>(), {
-  appShellClasses: 'app-shell',
-  siteHeaderClasses: 'site-header site-header-options',
-  siteCentralWrapperClasses: 'site-central-wrapper',
-  siteSidebarLeftClasses: 'site-sidebar-left site-sidebar-left-options',
-  siteSidebarRightClasses: 'site-sidebar-right site-sidebar-right-options',
-  pageClasses: 'page',
-  pageHeaderClasses: 'page-header',
-  pageMainClasses: 'page-main',
-  pageFooterClasses: 'page-footer',
-  siteFooterClasses: 'site-footer',
+  appShellClasses: 'f0l__app-shell',
+  siteHeaderClasses: 'f0l_site-header f0l_site-header-options',
+  siteCentralWrapperClasses: 'f0l_site-central-wrapper',
+  siteSidebarLeftClasses: 'f0l_site-sidebar-left f0l_site-sidebar-left-options',
+  siteSidebarRightClasses: 'f0l_site-sidebar-right f0l_site-sidebar-right-options',
+  pageClasses: 'f0l_page',
+  pageHeaderClasses: 'f0l_page-header',
+  pageMainClasses: 'f0l_page-main',
+  pageFooterClasses: 'f0l_page-footer',
+  siteFooterClasses: 'f0l_site-footer',
 })
 const el = ref<HTMLElement | null>(null)
 </script>
