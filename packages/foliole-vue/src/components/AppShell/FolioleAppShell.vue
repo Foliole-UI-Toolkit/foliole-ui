@@ -16,10 +16,10 @@ export interface AppShellProps {
 
 withDefaults(defineProps<AppShellProps>(), {
   appShellClasses: 'f0l__app-shell',
-  siteHeaderClasses: 'f0l_site-header f0l_site-header-options',
+  siteHeaderClasses: 'f0l_site-header f0l_site-header-opts',
   siteCentralWrapperClasses: 'f0l_site-central-wrapper',
-  siteSidebarLeftClasses: 'f0l_site-sidebar-left f0l_site-sidebar-left-options',
-  siteSidebarRightClasses: 'f0l_site-sidebar-right f0l_site-sidebar-right-options',
+  siteSidebarLeftClasses: 'f0l_site-sidebar-left f0l_site-sidebar-left-opts',
+  siteSidebarRightClasses: 'f0l_site-sidebar-right f0l_site-sidebar-right-opts',
   pageClasses: 'f0l_page',
   pageHeaderClasses: 'f0l_page-header',
   pageMainClasses: 'f0l_page-main',

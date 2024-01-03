@@ -11,7 +11,7 @@ module.exports = {
       position: 'sticky',
       top: 0,
     },
-    '.f0l__app-shell .f0l_site-header-options': {
+    '.f0l__app-shell .f0l_site-header-opts': {
       zIndex: 10,
     },
     '.f0l__app-shell .f0l_site-central-wrapper': {
@@ -27,7 +27,7 @@ module.exports = {
       overflowX: 'hidden',
       overflowY: 'auto',
     },
-    '.f0l__app-shell .f0l_site-sidebar-left-options': {
+    '.f0l__app-shell .f0l_site-sidebar-left-opts': {
       width: 'auto',
     },
     '.f0l__app-shell .f0l_site-sitebar-right': {
@@ -36,7 +36,7 @@ module.exports = {
       overflowX: 'hidden',
       overflowY: 'auto',
     },
-    '.f0l__app-shell .f0l_site-sidebar-right-options': {
+    '.f0l__app-shell .f0l_site-sidebar-right-opts': {
       width: 'auto',
     },
     '.f0l__app-shell .f0l_page': {

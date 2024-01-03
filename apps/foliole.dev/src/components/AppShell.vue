@@ -41,9 +41,9 @@ function handleDrawerOpen() {
   <FolioleAppShell
     app-shell-classes="f0l__app-shell my-app-shell"
     site-central-wrapper-classes="f0l_site-central-wrapper mx-auto"
-    site-header-classes="f0l_site-header f0l_site-header-options my-header"
+    site-header-classes="f0l_site-header f0l_site-header-opts my-header"
     page-classes="f0l_page my-page h-full"
-    site-sidebar-left-classes="f0l_sidebar-left f0l_site-sidebar-left-options my-side-bar-left"
+    site-sidebar-left-classes="f0l_sidebar-left f0l_site-sidebar-left-opts my-side-bar-left"
   >
     <template #header>
       <div class="flex flex-wrap p-4">
