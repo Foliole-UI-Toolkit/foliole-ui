@@ -21,7 +21,7 @@ const props = withDefaults(defineProps<Props>(), {
   pathname: '',
 })
 
-const showDrawer = ref(props.pathname.startsWith('/docs') ? true : false)
+const showDrawer = ref(props.pathname.match(/\/docs\/?$/) ? true : false)
 
 function handleDrawerClose() {
   showDrawer.value = false
