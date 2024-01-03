@@ -225,7 +225,7 @@
 <svelte:window on:keydown={handleKeyDown} />
 <svelte:head>{@html `<style> ${previewCSSVars} </style>`}</svelte:head>
 
-<div class="p-4 space-y-4 theme-generator">
+<div class="inner-page-wrapper theme-generator-svelte">
   <section class="pb-2">
     <h2 class="text-6xl page-heading">Theme Generator</h2>
     <div class="flex flex-col items-center space-y-4">

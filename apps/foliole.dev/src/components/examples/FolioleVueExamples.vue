@@ -16,7 +16,7 @@ function handleDrawerOpen() {
 }
 </script>
 <template>
-  <div class="w-full">
+  <div class="inner-page-wrapper examples-vue">
     <FolioleDrawer :show="showDrawer" @close="handleDrawerClose">
       <div>Example Drawer.</div>
     </FolioleDrawer>

@@ -93,7 +93,11 @@ a.inline-link {
   @apply text-sm uppercase hover:bg-neutral-mlt/50;
 }
 .my-page {
-  @apply relative z-0 p-4;
+  @apply relative z-0;
+}
+
+.my-page .inner-page-wrapper {
+  @apply relative p-4 space-y-4;
 }
 
 /* general global layout */
@@ -118,11 +122,11 @@ a.inline-link {
 
 /* Theme Generator */
 
-.theme-generator .options-input-wrapper {
+.theme-generator-svelte .options-input-wrapper {
   @apply grid items-center gap-2 lg:grid-cols-2;
 }
 
-.theme-generator .options-sub-section {
+.theme-generator-svelte .options-sub-section {
   @apply p-4 space-y-4 border rounded border-neutral-light bg-neutral-light/20;
 }
 
