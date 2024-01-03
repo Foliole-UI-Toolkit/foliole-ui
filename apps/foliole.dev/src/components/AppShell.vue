@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-
 import AppMainMenu from './AppMainMenu.vue'
 import FolioleLogo from './FolioleLogo.vue'
 
@@ -21,7 +20,7 @@ const props = withDefaults(defineProps<Props>(), {
   pathname: '',
 })
 
-const showDrawer = ref(props.pathname === '/docs' ? true : false)
+const showDrawer = ref(props.pathname.match(/\/docs\/?$/) ? true : false)
 
 function handleDrawerClose() {
   showDrawer.value = false
@@ -88,7 +87,7 @@ function handleDrawerOpen() {
               <li
                 :class="[
                   'my-hoverable underlined-hover text-center  flex-grow flex md:flex-grow-0 justify-center w-full ',
-                  { 'my-active ': pathname.endsWith('/theme-generator') },
+                  { 'my-active ': pathname.match(/\/theme-generator\/?$/) },
                 ]"
               >
                 <a class="w-full uppercase whitespace-nowrap" href="/theme-generator">theme gen</a>
