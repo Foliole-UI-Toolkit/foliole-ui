@@ -67,11 +67,9 @@ a.inline-link {
   @apply flex flex-col w-full mx-auto shadow-xl;
   background: linear-gradient(
     60deg,
-    rgb(var(--color-primary-mlt) / 0.4),
-    rgb(var(--color-secondary-mlt) / 0.3),
-    rgb(var(--color-tertiary-mlt) / 0.2),
-    rgb(var(--color-secondary-mlt) / 0.3),
-    rgb(var(--color-primary-mlt) / 0.4)
+    rgb(var(--color-primary-light) / 1),
+    rgb(var(--color-neutral-light) / 1),
+    rgb(var(--color-primary-light) / 1)
   );
 }
 .header-bottom {
