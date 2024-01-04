@@ -1,5 +1,11 @@
 # foliole-css
 
+## 0.10.0
+
+### Minor Changes
+
+- 667e049: CSS: drawer styles adjusted for drawer open and close transition states"
+
 ## 0.9.0
 
 ### Minor Changes

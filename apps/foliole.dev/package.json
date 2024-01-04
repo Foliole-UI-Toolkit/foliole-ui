@@ -1,7 +1,7 @@
 {
   "name": "foliole-ui-docs",
   "type": "module",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -18,7 +18,7 @@
     "chroma-js": "^2.4.2",
     "eslint": "^8.56.0",
     "eslint-plugin-vue": "^9.19.2",
-    "foliole-css": "0.9.0",
+    "foliole-css": "0.10.0",
     "foliole-vue": "0.7.0",
     "svelte": "^3.59.2"
   },
