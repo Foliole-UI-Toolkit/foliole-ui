@@ -1,5 +1,11 @@
 {
 
+## 0.7.1
+
+### Patch Changes
+
+- c5fb583: Bug:Vue - open prop adjusted to name isOpen to remain consistent with other components
+
 ## 0.7.0
 
 ### Minor Changes

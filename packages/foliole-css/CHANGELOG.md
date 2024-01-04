@@ -1,5 +1,11 @@
 # foliole-css
 
+## 0.10.1
+
+### Patch Changes
+
+- 3407fec: Bug:CSS - correct margins and padding for smoother transitions
+
 ## 0.10.0
 
 ### Minor Changes
