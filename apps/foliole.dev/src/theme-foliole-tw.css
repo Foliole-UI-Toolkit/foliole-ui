@@ -91,12 +91,16 @@
 .f0l__accordion-wrapper .f0l_accordion-section-wrapper {
   display: grid;
   grid-template-rows: 0fr;
-  padding: 0;
-  transition: grid-template-rows 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  width: calc(100% - (var(--el-p-base) * 4));
+  margin: 0 auto;
+  opacity: 0;
 }
 .f0l__accordion-wrapper .opened .f0l_accordion-section-wrapper {
   grid-template-rows: 1fr;
-  padding: var(--el-p-base);
+  padding-top: var(--el-p-base);
+  padding-bottom: var(--el-p-base);
+  opacity: 1;
 }
 .f0l__accordion-wrapper .f0l_accordion-section {
   overflow: hidden;
