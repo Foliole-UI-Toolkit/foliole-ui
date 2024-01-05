@@ -1,8 +1,13 @@
 @import url('theme-foliole-tw.css');
 
 body {
-  background: linear-gradient(45deg, rgb(var(--color-primary-light) / 0.1), rgb(var(--color-secondary-light) / 0.2));
   font-size: 18px;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+}
+
+html {
+  height: -webkit-fill-available;
 }
 
 h1,
@@ -62,6 +67,7 @@ a.inline-link {
 
 .page {
   @apply relative z-0 space-y-4;
+  background: linear-gradient(45deg, rgb(var(--color-primary-light) / 0.1), rgb(var(--color-secondary-light) / 0.2));
 }
 .page-section {
   @apply p-4 border rounded shadow-sm border-tertiary-mlt/30 bg-neutral-light/20;
@@ -110,7 +116,6 @@ a.inline-link {
 .my-rail-item {
   @apply text-sm uppercase hover:bg-neutral-mlt/50;
 }
-
 .my-page .inner-page-wrapper {
   @apply relative p-4 space-y-4;
 }
