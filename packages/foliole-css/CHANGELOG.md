@@ -1,5 +1,11 @@
 # foliole-css
 
+## 0.11.0
+
+### Minor Changes
+
+- 41284a4: Chore: CSS Adjust generator script to output all UI Roundness tokens for foliole-ui.dev Theme Generator to be able to preview various roundness values.
+
 ## 0.10.1
 
 ### Patch Changes
