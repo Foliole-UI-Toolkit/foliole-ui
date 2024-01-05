@@ -98,15 +98,19 @@ const colorsToGenerate: any = {
       const processedTwCSS = await postcss().process(mergedTwComps, { parser: postcssJs })
       const mergedProcessedTwCSS = processedTwCSS.css
 
-      let usedTwCompKeys = []
+      let usedTwCompProps = []
       const usedTwSpacingKeys = await getUsedCSSProps(spacing, 'spacing', mergedTwCompsAndEls)
       const usedTwFontKeys = await getUsedCSSProps(font, 'font', mergedTwCompsAndEls)
       const usedTwRoundnessKeys = await getUsedCSSProps(uiRoundness, 'ui-roundness', mergedTwCompsAndEls)
-      const usedTwUiKeys = await getUsedCSSProps(ui, 'ui', mergedTwCompsAndEls, uiRoundness)
+      // const usedTwUiKeys = await getUsedCSSProps(ui, 'ui', mergedTwCompsAndEls, uiRoundness)
 
-      usedTwCompKeys = [...usedTwUiKeys, ...usedTwRoundnessKeys, ...usedTwSpacingKeys, ...usedTwFontKeys]
+      // we need to use all uiRoundness so theme gen has access to display previews.
+      // consider limit this to a generator only stylesheet as users won't need them all in their themes.
+      const allUiRoundnessProps = objectsToCSSProperties({ uiRoundness })
 
-      let usedTwPropsString = usedTwCompKeys.join('\n')
+      usedTwCompProps = [...usedTwRoundnessKeys, ...usedTwSpacingKeys, ...usedTwFontKeys]
+
+      let usedTwPropsString = usedTwCompProps.join('\n') + '\n' + allUiRoundnessProps
 
       await Promise.all(
         themes.map(async (theme: Theme) => {
