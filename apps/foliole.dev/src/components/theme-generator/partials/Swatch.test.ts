@@ -19,12 +19,6 @@ test('renders the "Text" label for the "base" swatch', () => {
 })
 
 test('applies the correct color classes to the swatches', () => {
-  const { getByTestId } = render(Swatch, { color: 'primary', stops: ['base'] })
-  const swatch = getByTestId('swatch')
-  expect(swatch.className).toContain('bg-primary')
-})
-
-test('applies the correct color classes to the swatches', () => {
   const { queryAllByTestId } = render(Swatch, { color: 'primary', stops: ['mlt', 'base', 'mdk'] })
   const swatches = queryAllByTestId('swatch')
 
