@@ -153,6 +153,21 @@ export const intensityMapGray: { [key: string]: number } = {
 
 export const grayHues = [0, 0.02, 0.04]
 
+export const roundedNames = ['none', 'sm', 'md', 'lg', 'xl', 'full'] as const
+
+export const elementRoundnessNames = ['none', 'rounded', 'circular'] as const
+
+export const roundedTokens = [
+  '--ui-roundness-none',
+  '--ui-roundness-sm',
+  '--ui-roundness-md',
+  '--ui-roundness-lg',
+  '--ui-roundness-xl',
+  '--ui-roundness-full',
+] as const
+
+export const elementRoundnessTokens = ['--ui-roundness-none', '--ui-roundness', '--ui-roundness-full'] as const
+
 export const roundedOpts = {
   none: '--ui-roundness-none',
   sm: '--ui-roundness-sm',

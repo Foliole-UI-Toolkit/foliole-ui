@@ -1,10 +1,27 @@
 // -- Color Generator
 
-import { folioleColorNames, folioleColorScale, folioleColorSchemes, intensityMap } from './data/settings'
+import {
+  elementRoundnessNames,
+  elementRoundnessTokens,
+  folioleColorNames,
+  folioleColorScale,
+  folioleColorSchemes,
+  intensityMap,
+  roundedNames,
+  roundedTokens,
+} from './data/settings'
 
-export type FolioleColorNames = (typeof folioleColorNames)[number] // Get the union type of the array's elements
+export type ElementRoundnessNames = (typeof elementRoundnessNames)[number]
+
+export type ElementRoundnessTokens = (typeof elementRoundnessTokens)[number]
+
+export type FolioleColorNames = (typeof folioleColorNames)[number]
 
 export type FolioleColorSchemes = (typeof folioleColorSchemes)[number]
+
+export type RoundedTokens = (typeof roundedTokens)[number]
+
+export type RoundedNames = (typeof roundedNames)[number]
 
 export type IntensityMap = (typeof intensityMap)[number]
 
@@ -39,10 +56,10 @@ export interface FontOpts {
 }
 
 export interface RoundedOpts {
-  size: string
-  btnRoundness: string
-  inputRoundness: string
-  colorSwatchRoundness: string
+  size: RoundedTokens
+  btnRoundness: ElementRoundnessTokens
+  inputRoundness: ElementRoundnessTokens
+  colorSwatchRoundness: ElementRoundnessTokens
 }
 
 export type FolioleColorScale = (typeof folioleColorScale)[number]
