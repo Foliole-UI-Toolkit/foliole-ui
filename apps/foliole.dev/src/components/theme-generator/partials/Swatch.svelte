@@ -3,7 +3,7 @@
   import { steppedSwatchColorClasses } from '../data/settings'
 
   export let color: FolioleColorNames = 'primary'
-  export let stops: string[]
+  export let stops: string[] = []
 </script>
 
 <div class="flex order-3 md:order-2">
