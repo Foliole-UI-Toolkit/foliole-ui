@@ -1,6 +1,12 @@
-import type { FolioleColorNames, FolioleColorScale } from '../types'
+// Array settings
+
+export const elementRoundnessNames = ['none', 'rounded', 'circular'] as const
+
+export const elementRoundnessTokens = ['--ui-roundness-none', '--ui-roundness', '--ui-roundness-full'] as const
 
 export const folioleColorScale = ['light', 'mlt', 'base', 'mdk', 'dark'] as const
+
+type FolioleColorScale = (typeof folioleColorScale)[number]
 
 export const folioleColorNames = [
   'primary',
@@ -17,9 +23,62 @@ export const folioleColorNames = [
   'page-contrast',
 ] as const
 
-// Colors are split up because derived colors have no stops and are handled differently.
+type FolioleColorNames = (typeof folioleColorNames)[number]
 
 export const folioleColorSchemes = ['triad', 'split-complimentary', 'analogous-triad', 'analogous-quad']
+
+export const grayHues = [0, 0.02, 0.04]
+
+export const roundedNames = ['none', 'sm', 'md', 'lg', 'xl', 'full'] as const
+
+export const roundedTokens = [
+  '--ui-roundness-none',
+  '--ui-roundness-sm',
+  '--ui-roundness-md',
+  '--ui-roundness-lg',
+  '--ui-roundness-xl',
+  '--ui-roundness-full',
+] as const
+
+// Simple Object Settings
+
+export const elementRoundness = {
+  none: '--ui-roundness-none',
+  rounded: '--ui-roundness',
+  circular: '--ui-roundness-full',
+}
+
+export const fontSettings: Record<string, string> = {
+  sans: `Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Foliole', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'`,
+  serif: `ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif`,
+  mono: `ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace`,
+  system: `system-ui`,
+}
+
+export const intensityMap: { [key: string]: number } = {
+  light: 3,
+  mlt: 1.5,
+  mdk: 1.5,
+  dark: 3,
+}
+
+export const intensityMapGray: { [key: string]: number } = {
+  light: 2,
+  mlt: 1.2,
+  mdk: 1.2,
+  dark: 2,
+}
+
+export const roundedOpts = {
+  none: '--ui-roundness-none',
+  sm: '--ui-roundness-sm',
+  md: '--ui-roundness-md',
+  lg: '--ui-roundness-lg',
+  xl: '--ui-roundness-xl',
+  full: '--ui-roundness-full',
+}
+
+// Mapped Settings
 
 const colorProps = folioleColorNames.flatMap((colorName) => {
   return folioleColorScale.map((colorShade) => {
@@ -31,6 +90,8 @@ const colorProps = folioleColorNames.flatMap((colorName) => {
   })
 })
 
+// Complicated Object Settings
+
 export const inputSettings = {
   colorProps: [{ label: 'Black', value: '0 0 0' }, { label: 'White', value: '255 255 255' }, ...colorProps],
   stops: [
@@ -41,13 +102,6 @@ export const inputSettings = {
   ],
   fonts: ['sans', 'serif', 'mono', 'system'],
   border: ['0px', '1px', '2px', '4px', '6px', '8px'],
-}
-
-export const fontSettings: Record<string, string> = {
-  sans: `Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Foliole', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'`,
-  serif: `ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif`,
-  mono: `ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace`,
-  system: `system-ui`,
 }
 
 export const steppedSwatchColorClassesMap = {
@@ -135,50 +189,4 @@ export const steppedSwatchColorClasses: Record<FolioleColorNames | string, Recor
     mdk: 'bg-neutral-mdk',
     dark: 'bg-neutral-dark',
   },
-}
-
-export const intensityMap: { [key: string]: number } = {
-  light: 3,
-  mlt: 1.5,
-  mdk: 1.5,
-  dark: 3,
-}
-
-export const intensityMapGray: { [key: string]: number } = {
-  light: 2,
-  mlt: 1.2,
-  mdk: 1.2,
-  dark: 2,
-}
-
-export const grayHues = [0, 0.02, 0.04]
-
-export const roundedNames = ['none', 'sm', 'md', 'lg', 'xl', 'full'] as const
-
-export const elementRoundnessNames = ['none', 'rounded', 'circular'] as const
-
-export const roundedTokens = [
-  '--ui-roundness-none',
-  '--ui-roundness-sm',
-  '--ui-roundness-md',
-  '--ui-roundness-lg',
-  '--ui-roundness-xl',
-  '--ui-roundness-full',
-] as const
-
-export const elementRoundnessTokens = ['--ui-roundness-none', '--ui-roundness', '--ui-roundness-full'] as const
-
-export const roundedOpts = {
-  none: '--ui-roundness-none',
-  sm: '--ui-roundness-sm',
-  md: '--ui-roundness-md',
-  lg: '--ui-roundness-lg',
-  xl: '--ui-roundness-xl',
-  full: '--ui-roundness-full',
-}
-
-export const elementRoundness = {
-  none: '--ui-roundness-none',
-  rounded: '--ui-roundness',
-  circular: '--ui-roundness-full',
 }
