@@ -6,18 +6,18 @@ import FolioleSlideToggle from 'foliole-vue/src/components/SlideToggle/FolioleSl
 <template>
   <div class="inner-page-wrapper examples-vue">
     <FolioleAccordion :autocollapse="true">
-      <FolioleAccordionItem :open="true">
+      <FolioleAccordionItem :accordion-header-classes="'f0l_accordion-header bg-neutral-light/30'" :is-open="true">
         <template #header>Tab 1</template> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed
         gravida lacus at metus cursus, ac facilisis eros blandit. Phasellus feugiat massa non quam bibendum, sed
         vestibulum metus laoreet. Vivamus dapibus leo non justo vehicula, nec elementum lorem tincidunt.
       </FolioleAccordionItem>
-      <FolioleAccordionItem>
+      <FolioleAccordionItem :accordion-header-classes="'f0l_accordion-header bg-neutral-light/30'">
         <template #header>Tab 2</template> Integer pharetra quam at arcu auctor, in tincidunt justo condimentum. Aliquam
         malesuada diam quis fermentum interdum. Duis feugiat odio eget ex ullamcorper, sit amet bibendum purus cursus.
         In hac habitasse platea dictumst. Donec tincidunt, nunc non vestibulum laoreet, lectus felis laoreet arcu, nec
         ultrices turpis mi nec metus.</FolioleAccordionItem
       >
-      <FolioleAccordionItem>
+      <FolioleAccordionItem :accordion-header-classes="'f0l_accordion-header bg-neutral-light/30'">
         <template #header>Tab 3</template> Integer pharetra quam at arcu auctor, in tincidunt justo condimentum. Aliquam
         malesuada diam quis fermentum interdum. Duis feugiat odio eget ex ullamcorper, sit amet bibendum purus cursus.
         In hac habitasse platea dictumst. Donec tincidunt, nunc non vestibulum laoreet, lectus felis laoreet arcu, nec

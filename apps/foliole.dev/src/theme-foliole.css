@@ -137,12 +137,16 @@
 .f0l__accordion-wrapper .f0l_accordion-section-wrapper {
   display: grid;
   grid-template-rows: 0fr;
-  padding: 0;
-  transition: grid-template-rows 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  width: calc(100% - (var(--el-p-base) * 4));
+  margin: 0 auto;
+  opacity: 0;
 }
 .f0l__accordion-wrapper .opened .f0l_accordion-section-wrapper {
   grid-template-rows: 1fr;
-  padding: var(--el-p-base);
+  padding-top: var(--el-p-base);
+  padding-bottom: var(--el-p-base);
+  opacity: 1;
 }
 .f0l__accordion-wrapper .f0l_accordion-section {
   overflow: hidden;
@@ -198,7 +202,7 @@
 }
 .f0l__app-shell {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   display: grid;
   grid-template-rows: auto 1fr auto;
 }
@@ -258,46 +262,39 @@
   display: flex;
   flex: none;
 }
-.f0l__drawer-backdrop .f0l_drawer {
-  background: white;
-  overflow-y: auto;
-  transition: transform;
-}
 .f0l__drawer-backdrop {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  background: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.3);
+  justify-content: start;
+  width: 0;
+  transition: background-color 0.5s;
 }
 .f0l__drawer-backdrop.f0l_drawer-backdrop-opts {
   z-index: 40;
 }
-.f0l__drawer-backdrop .f0l_drawer-top {
-  align-items: start;
+.f0l_opened.f0l__drawer-backdrop {
   width: 100%;
-  height: 50%;
-  border-radius: var(--ui-roundness) var(--ui-roundness) 0 0;
+  opacity: 1;
 }
-.f0l__drawer-backdrop .f0l_drawer-bottom {
-  align-items: end;
-  width: 100%;
-  height: 50%;
-  border-radius: 0 0 var(--ui-roundness) var(--ui-roundness);
+.f0l_opened.f0l_closing.f0l__drawer-backdrop {
+  background-color: rgba(0, 0, 0, 0);
 }
-.f0l__drawer-backdrop .f0l_drawer-left {
-  justify-content: start;
+.f0l__drawer-backdrop .f0l_drawer {
+  background: white;
+  overflow-y: auto;
+  transition: transform 0.5s;
+}
+.f0l__drawer-backdrop.f0l_drawer-left .f0l_drawer {
+  transform: translateX(-100%);
   width: 90%;
   height: 100%;
   border-radius: 0 var(--ui-roundness) var(--ui-roundness) 0;
 }
-.f0l__drawer-backdrop .f0l_drawer-right {
-  justify-content: end;
-  width: 90%;
-  height: 100%;
-  border-radius: var(--ui-roundness) 0 0 var(--ui-roundness);
+.f0l_opened.f0l__drawer-backdrop.f0l_drawer-left .f0l_drawer {
+  transform: translateX(0);
+}
+.f0l_opened.f0l_closing.f0l__drawer-backdrop.f0l_drawer-left .f0l_drawer {
+  transform: translateX(-100%);
 }
 .f0l__slide-toggle {
   display: flex;

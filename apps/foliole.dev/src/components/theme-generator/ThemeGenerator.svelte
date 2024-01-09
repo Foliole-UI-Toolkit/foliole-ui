@@ -226,6 +226,13 @@
 <svelte:head>{@html `<style> ${previewCSSVars} </style>`}</svelte:head>
 
 <div class="inner-page-wrapper theme-generator-svelte">
+  <div class="mb-4 info-banner">
+    <h3>Generator is currently under development.</h3>
+    <p>There are some incomplete features and known bugs.</p>
+    <p>
+      <a href="https://github.com/Foliole-UI-Toolkit/foliole-ui/issues/87" class="inline-link">Issue on Github.</a>
+    </p>
+  </div>
   <section class="pb-2">
     <h2 class="text-6xl page-heading">Theme Generator</h2>
     <div class="flex flex-col items-center space-y-4">

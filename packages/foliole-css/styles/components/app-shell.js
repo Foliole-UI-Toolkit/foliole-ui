@@ -2,7 +2,7 @@ module.exports = {
   appShell: {
     '.f0l__app-shell': {
       width: '100%',
-      height: '100vh',
+      height: '100%',
       display: 'grid',
       gridTemplateRows: 'auto 1fr auto',
     },

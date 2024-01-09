@@ -13,7 +13,7 @@ const { isActive, setActiveItem } = useAccordionStore()!
 const emit = defineEmits(['toggle'])
 
 interface AccordionItemProps {
-  open?: boolean
+  isOpen?: boolean
   accordionClasses?: string
   accordionHeaderClasses?: string
   headerControlClasses?: string
@@ -22,7 +22,7 @@ interface AccordionItemProps {
 }
 
 const props = withDefaults(defineProps<AccordionItemProps>(), {
-  open: false,
+  isOpen: false,
   accordionClasses: 'f0l_accordion',
   accordionHeaderClasses: 'f0l_accordion-header',
   headerControlClasses: 'f0l_header-control',
@@ -30,8 +30,8 @@ const props = withDefaults(defineProps<AccordionItemProps>(), {
   accordionSection: 'f0l_accordion-section',
 })
 
-const isOpen = ref<boolean>(props.open)
-const currentOpenState = ref(isOpen.value)
+const isOpenRef = ref<boolean>(props.isOpen)
+const currentOpenState = ref(isOpenRef.value)
 const itemId = ref(String(Math.random()))
 
 const openedItemClass = computed(() => currentOpenState.value && 'opened')
@@ -39,7 +39,7 @@ const openedItemClass = computed(() => currentOpenState.value && 'opened')
 const mergedAccordionClasses = computed(() => classNames([props.accordionClasses, openedItemClass.value]))
 
 function onToggle(event?: MouseEvent) {
-  currentOpenState.value = autocollapse ? isActive(itemId.value).value : isOpen.value
+  currentOpenState.value = autocollapse ? isActive(itemId.value).value : isOpenRef.value
 
   const toggleEvent = {
     event,
@@ -56,15 +56,15 @@ function setActive(event?: MouseEvent) {
     setActiveItem(itemId.value)
   } else {
     // Open is used to indicate multiple active items.
-    isOpen.value = !isOpen.value
+    isOpenRef.value = !isOpenRef.value
   }
   onToggle(event)
 }
 
 watch(
-  () => isOpen.value,
-  (isOpenValue) => {
-    if (isOpenValue && autocollapse) {
+  () => isOpenRef.value,
+  (isOpenRefValue) => {
+    if (isOpenRefValue && autocollapse) {
       setActive()
     }
   },
@@ -74,11 +74,11 @@ watch(
   () => isActive(itemId.value).value,
   (isActiveValue) => {
     // When isActive changes, all items need to be notified and checked if they are the active item, and if not closed.
-    currentOpenState.value = autocollapse ? isActiveValue : isOpen.value
+    currentOpenState.value = autocollapse ? isActiveValue : isOpenRef.value
   },
 )
 
-if (autocollapse && isOpen.value) setActive()
+if (autocollapse && isOpenRef.value) setActive()
 </script>
 <template>
   <div :class="mergedAccordionClasses">

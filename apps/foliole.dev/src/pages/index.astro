@@ -5,17 +5,15 @@ import FolioleLogo from '../components/FolioleLogo.vue';
 
 <Layout  title="Welcome to Astro.">
 	<div class="flex flex-col text-center inner-page-wrapper hp">
-		<div class="rounded-md banner">
-			<div class="p-4 m-[.125rem] rounded-md banner-inner space-y-4">
-				<h1 class="text-2xl font-bold">Welcome to the Foliole UI - Version Alpha!</h1>
-				<p>This is an initial demo site for the Foliole UI Toolkit and library!</p>
+		<div class="info-banner">
+				<h1 class="text-2xl font-bold">Welcome to Foliole UI - Version Alpha!</h1>
+				<p>This is an initial demo site for Foliole UI, a toolkit and library.</p>
 				<p>
-					Currently, there is an early and incomplete implementation of a Theme Generator, along with basic branding and site design. I am in the process of preparing the foundational CSS and JavaScript framework implementation and making the project ready for group and open-source contributions.
+					The state of the project is as follows: there is an early prototype of a Theme Generator written in Svelte. There is basic branding and site design. I am in the process of preparing the foundational CSS and JavaScript framework implementations. The framework development is beginning in Vue (followed by Svelte and React). Also, I am making the project ready for group and open-source contributions.
 				</p>
 				<p>
 					Please feel free to share this with others who would like to help and/or provide constructive feedback. There is a ton of work to do, so if you are interested in contributing, please reach out to me at aaron.crockett.00@gmail.com. See more: <a href="/docs/resources/roadmap" class="inline-link">Rough Draft Roadmap.</a>
 				</p>
-			</div>
 		</div>
 
 		<div class="flex flex-col h-full space-x-4">
@@ -49,43 +47,6 @@ import FolioleLogo from '../components/FolioleLogo.vue';
 					</ul>
 				</div>
 			</div>
-
 		</div>
 	</div>
 </Layout>
-<style>
-
-	/* .hp {		
-		background: linear-gradient(
-		30deg,
-			rgb(var(--color-secondary) / 0.2) 0%,
-			rgb(var(--color-secondary) / 0) 35%,
-			rgb(var(--color-secondary) / 0) 70%,
-			rgb(var(--color-tertiary) / 0.2) 100%
-		);
-	} */
-	.banner {
-		background: linear-gradient(
-		45deg,
-			rgb(var(--color-primary-mlt) / .4) 0%,
-			rgb(var(--color-tertiary-light) / .5) 40%,
-			rgb(var(--color-secondary-mlt) / .2) 100%
-		);
-		@apply border-secondary-mlt border-2
-	}
-	.ui-toolkit-h2 {
-    background: linear-gradient(45deg, rgb(var(--color-primary) / 1), rgb(var(--color-secondary) / 1));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-	}
-	.hero-card {
-		@apply p-4 border-[.125rem] rounded border-tertiary-mlt/40;
-		background: linear-gradient(
-			45deg,
-				rgb(var(--color-primary) / 0.05) 0%,
-				rgb(var(--color-secondary) / 0.05) 50%,
-				rgb(var(--color-tertiary) / 0.05) 100%
-			);
-}
-
-</style>

@@ -1,5 +1,23 @@
 # foliole-css
 
+## 0.11.0
+
+### Minor Changes
+
+- 41284a4: Chore: CSS Adjust generator script to output all UI Roundness tokens for foliole-ui.dev Theme Generator to be able to preview various roundness values.
+
+## 0.10.1
+
+### Patch Changes
+
+- 3407fec: Bug:CSS - correct margins and padding for smoother transitions
+
+## 0.10.0
+
+### Minor Changes
+
+- 667e049: CSS: drawer styles adjusted for drawer open and close transition states"
+
 ## 0.9.0
 
 ### Minor Changes

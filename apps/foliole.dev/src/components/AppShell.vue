@@ -21,9 +21,15 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const showDrawer = ref(props.pathname.match(/\/docs\/?$/) ? true : false)
+const isClosingDrawer = ref(false)
 
 function handleDrawerClose() {
-  showDrawer.value = false
+  isClosingDrawer.value = true
+
+  setTimeout(() => {
+    showDrawer.value = false
+    isClosingDrawer.value = false
+  }, 505)
 }
 
 function handleDrawerOpen() {
@@ -32,8 +38,12 @@ function handleDrawerOpen() {
 </script>
 <template>
   <div v-if="!fullWidthPages[pathname]" class="flex h-full">
-    <!-- Consider performance implications of this and if other solutions are better in as menu grows. v-if, v-show and dynamic components -->
-    <AppDrawer class="flex md:hidden" :show="showDrawer" @close="handleDrawerClose">
+    <AppDrawer
+      class="flex md:hidden"
+      :is-open="showDrawer"
+      :is-closing-drawer="isClosingDrawer"
+      @close="handleDrawerClose"
+    >
       <AppMainMenu :pathname="pathname" @close-drawer="handleDrawerClose" />
     </AppDrawer>
   </div>
