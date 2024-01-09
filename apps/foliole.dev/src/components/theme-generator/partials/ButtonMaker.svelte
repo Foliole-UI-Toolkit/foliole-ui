@@ -1,5 +1,6 @@
 <script lang="ts">
   import { getThemeOptionsStore, type ThemeOptionsStore } from '../data/stores'
+  import { fontSizeMap } from '../data/settings'
   import { createEventDispatcher } from 'svelte'
 
   const dispatch = createEventDispatcher()
@@ -17,15 +18,6 @@
 
     dispatch('btnInputChange')
   }
-
-  const fontSizeMap = {
-    xs: '--font-xs',
-    sm: '--font-sm',
-    md: '--font-md',
-    lg: '--font-lg',
-    xl: '--font-xl',
-    '2xl': '--font-2xl',
-  }
 </script>
 
 <p class="pb-4 page-subheading">Buttons</p>
@@ -34,11 +26,11 @@
     <button class="self-center justify-self-center btn-sm my-btn">Btn sm</button>
     <button class="self-center justify-self-center btn-md my-btn">Btn md</button>
     <button class="self-center justify-self-center btn-lg my-btn">Btn lg</button>
-    <button class="self-center justify-self-center my-chip bg-neutral-light">Chip</button>
+    <button class="self-center justify-self-center bg-neutral-light my-chip">Chip</button>
     <div class="options-sub-section">
       <p class="font-bold text-center">Base Options</p>
       <label class="options-input-wrapper" for="paddingBase"
-        >Size Base (.1-1):
+        >Size Base:
         <input
           type="number"
           id="paddingBase"
@@ -51,9 +43,8 @@
           on:input={handleInputChange}
         />
       </label>
-
       <label class="options-input-wrapper" for="paddingWidthScale"
-        >Width Scale Increment (2-8x):
+        >Width Scale Increment:
         <input
           type="number"
           id="paddingWidthScale"
@@ -66,9 +57,8 @@
           on:input={handleInputChange}
         />
       </label>
-
       <label class="options-input-wrapper" for="sizeScale"
-        >Size Scale (.1-.5):
+        >Size Scale:
         <input
           type="number"
           id="sizeScale"
@@ -82,12 +72,11 @@
         />
       </label>
     </div>
-
     <!-- more options: will be hidden in a drawer when drawer is made -->
     <div class="options-sub-section">
       <p class="font-bold text-center">Interactive</p>
       <label class="options-input-wrapper" for="hoverScale">
-        Hover Scale (0.8-1.2):
+        Hover Scale:
         <input
           type="number"
           id="hoverScale"
@@ -100,9 +89,8 @@
           on:input={handleInputChange}
         />
       </label>
-
       <label class="options-input-wrapper" for="activeScale">
-        Active Scale (0.8-1.2):
+        Active Scale:
         <input
           type="number"
           id="activeScale"
@@ -115,9 +103,8 @@
           on:input={handleInputChange}
         />
       </label>
-
       <label class="options-input-wrapper" for="hoverBrightnessScale">
-        Hover Brightness (0.6-1.4):
+        Hover Brightness:
         <input
           type="number"
           id="hoverBrightnessScale"
@@ -130,23 +117,21 @@
           on:input={handleInputChange}
         />
       </label>
-
       <label class="options-input-wrapper" for="activeBrightnessScale">
-        Active Brightness (0.8-1.2):
+        Active Brightness:
         <input
           type="number"
           id="activeBrightnessScale"
           name="activeBrightnessScale"
-          min="88"
-          max="120"
-          step="1"
+          min=".6"
+          max="1.4"
+          step=".05"
           class="my-input"
           bind:value={$themeOptionsStore.btnOpts.activeBrightnessScale}
           on:input={handleInputChange}
         />
       </label>
     </div>
-
     <!-- font sizes -->
     <div class="options-sub-section">
       <p class="font-bold text-center">Fonts</p>
@@ -165,7 +150,7 @@
         </select>
       </label>
       <label class="options-input-wrapper" for="fontSize">
-        Font Size (12px - 24px):
+        Font Size:
         <select
           id="fontSize"
           name="fontSize"
@@ -179,7 +164,7 @@
         </select>
       </label>
       <label class="options-input-wrapper" for="fontSizeLg">
-        Font Size (12px - 24px):
+        Font Size:
         <select
           id="fontSizeLg"
           name="fontSizeLg"

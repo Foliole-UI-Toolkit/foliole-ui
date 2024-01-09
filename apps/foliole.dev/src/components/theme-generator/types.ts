@@ -1,12 +1,52 @@
 // -- Color Generator
 
-import { folioleColorNames, folioleColorScale, folioleColorSchemes, intensityMap } from './data/settings'
+import {
+  elementRoundnessNames,
+  elementRoundnessTokens,
+  folioleColorNames,
+  folioleColorScale,
+  folioleColorSchemes,
+  intensityMap,
+  roundedNames,
+  roundedTokens,
+} from './data/settings'
 
-export type FolioleColorNames = (typeof folioleColorNames)[number] // Get the union type of the array's elements
+// Types based on settings data
+
+export type ElementRoundnessNames = (typeof elementRoundnessNames)[number]
+
+export type ElementRoundnessTokens = (typeof elementRoundnessTokens)[number]
+
+export type FolioleColorNames = (typeof folioleColorNames)[number]
+
+export type FolioleColorScale = (typeof folioleColorScale)[number]
 
 export type FolioleColorSchemes = (typeof folioleColorSchemes)[number]
 
 export type IntensityMap = (typeof intensityMap)[number]
+
+export type RoundedTokens = (typeof roundedTokens)[number]
+
+export type RoundedNames = (typeof roundedNames)[number]
+
+export interface BtnFontSizes {
+  base: number
+  lg: string
+  sm: string
+}
+
+export interface BtnOpts {
+  activeBrightnessScale: string
+  activeScale: string
+  fontSize: string
+  fontSizeLg: string
+  fontSizeSm: string
+  hoverBrightnessScale: string
+  hoverScale: string
+  paddingBase: string
+  paddingWidthScale: string
+  sizeScale: string
+}
 
 export interface ColorSettings {
   key: FolioleColorNames
@@ -15,19 +55,6 @@ export interface ColorSettings {
   rgb: string
   on: string
   stops: string
-}
-
-export interface BtnOpts {
-  paddingBase: string
-  paddingWidthScale: string
-  sizeScale: string
-  hoverScale: string
-  activeScale: string
-  hoverBrightnessScale: string
-  activeBrightnessScale: string
-  fontSizeSm: string
-  fontSize: string
-  fontSizeLg: string
 }
 
 export interface FontOpts {
@@ -39,27 +66,19 @@ export interface FontOpts {
 }
 
 export interface RoundedOpts {
-  size: string
-  btnRoundness: string
-  inputRoundness: string
-  colorSwatchRoundness: string
+  btnRoundness: ElementRoundnessTokens
+  colorSwatchRoundness: ElementRoundnessTokens
+  inputRoundness: ElementRoundnessTokens
+  size: RoundedTokens
 }
-
-export type FolioleColorScale = (typeof folioleColorScale)[number]
 
 export interface ThemeOptionsCollection {
-  colors: ColorSettings[]
-  btnOpts: BtnOpts
-  fontOpts: FontOpts
-  roundedOpts: RoundedOpts
   baseFontPxSize: string
-  roundedBase: string
   borderBase: string
+  btnOpts: BtnOpts
+  colors: ColorSettings[]
+  fontOpts: FontOpts
   primaryHex: string
-}
-
-export interface BtnFontSizes {
-  sm: string
-  base: number
-  lg: string
+  roundedBase: string
+  roundedOpts: RoundedOpts
 }
