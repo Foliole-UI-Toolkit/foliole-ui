@@ -11,7 +11,13 @@
   import ButtonMaker from './partials/ButtonMaker.svelte'
   import RoundedMaker from './partials/RoundedMaker.svelte'
 
-  import { centers, useColorSchemes, useGenerateColor, useGetColorValue, useGetConvertedColor } from './utilities'
+  import {
+    centers,
+    colorSchemes,
+    generateColors as generateColorsUtils,
+    getColorValues,
+    getConvertedColors,
+  } from './utilities'
 
   // Helpers
   import { buildBtnStrings, buildColorStrings, buildUIRoundStrings, buildElStrings } from './helpers/stringBuilders'
@@ -29,14 +35,14 @@
   import { writable } from 'svelte/store'
 
   // Get Converted Color Funcs
-  const { getHueFromHex } = useGetConvertedColor()
+  const { getHueFromHex } = getConvertedColors
 
-  const { getSaturation } = useGetColorValue()
+  const { getSaturation } = getColorValues
 
-  const { generateRandomColor, generateColorFromHSL } = useGenerateColor()
+  const { generateRandomColor, generateColorFromHSL } = generateColorsUtils
 
   // Get Color Scheme Funcs
-  const { generateTriadColors, generateSplitComplimentaryColors, generateAnalogousColors } = useColorSchemes()
+  const { generateTriadColors, generateSplitComplimentaryColors, generateAnalogousColors } = colorSchemes
 
   const colorSchemeStore = writable('analogous-triad')
 

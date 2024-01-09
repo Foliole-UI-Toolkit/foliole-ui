@@ -192,39 +192,31 @@ export function calculateNormalizedDistanceFromCenter(hue: number, color: ColorN
   return distance / rangeMultiplier[color]
 }
 
-// ColorUtils object with nested categorization
-// export const colorUtils = {
-export const useGetConvertedColor = () => {
-  return { getHueFromHex, getRgbString, getRgbValues }
+export const getConvertedColors = {
+  getHueFromHex,
+  getRgbString,
+  getRgbValues,
 }
-export const useGetColorValue = () => {
-  return {
-    getLuminance,
-    getSaturation,
-  }
+export const getColorValues = {
+  getLuminance,
+  getSaturation,
 }
-export const useGenerateColor = () => {
-  return {
-    generateA11yOnColor,
-    generateColorFromHSL,
-    generateDarkenedValue,
-    generateLightenedValue,
-    generateRandomColor,
-    generateRelativeHue,
-    generateRotatedHue,
-  }
+export const generateColors = {
+  generateA11yOnColor,
+  generateColorFromHSL,
+  generateDarkenedValue,
+  generateLightenedValue,
+  generateRandomColor,
+  generateRelativeHue,
+  generateRotatedHue,
 }
-export const useColorSchemes = () => {
-  return {
-    generateAnalogousColors,
-    generateSplitComplimentaryColors,
-    generateTriadColors,
-  }
+export const colorSchemes = {
+  generateAnalogousColors,
+  generateSplitComplimentaryColors,
+  generateTriadColors,
 }
-export const useOperations = () => {
-  return {
-    calculateLuminanceRatio,
-    calculateNormalizedDistanceFromCenter,
-  }
+export const operations = {
+  calculateLuminanceRatio,
+  calculateNormalizedDistanceFromCenter,
 }
 // }

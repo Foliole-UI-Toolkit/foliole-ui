@@ -1,10 +1,10 @@
 import { type ColorSettings } from '../types'
 
-import { useGetConvertedColor, useGenerateColor } from '../utilities'
+import { getConvertedColors, generateColors } from '../utilities'
 import { intensityMap, intensityMapGray } from '../data/settings'
 
-const { generateA11yOnColor, generateDarkenedValue, generateLightenedValue } = useGenerateColor()
-const { getRgbString } = useGetConvertedColor()
+const { generateA11yOnColor, generateDarkenedValue, generateLightenedValue } = generateColors
+const { getRgbString } = getConvertedColors
 
 // Build shades.
 export function buildColorShades(color: Partial<ColorSettings>) {
