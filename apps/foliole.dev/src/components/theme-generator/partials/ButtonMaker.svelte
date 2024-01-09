@@ -1,5 +1,6 @@
 <script lang="ts">
   import { getThemeOptionsStore, type ThemeOptionsStore } from '../data/stores'
+  import { fontSizeMap } from '../data/settings'
   import { createEventDispatcher } from 'svelte'
 
   const dispatch = createEventDispatcher()
@@ -16,15 +17,6 @@
     themeOptionsStore.updateBtnOpts({ [inputName]: value })
 
     dispatch('btnInputChange')
-  }
-
-  const fontSizeMap = {
-    xs: '--font-xs',
-    sm: '--font-sm',
-    md: '--font-md',
-    lg: '--font-lg',
-    xl: '--font-xl',
-    '2xl': '--font-2xl',
   }
 </script>
 

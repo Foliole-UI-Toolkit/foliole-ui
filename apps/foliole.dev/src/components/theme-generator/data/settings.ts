@@ -55,6 +55,15 @@ export const fontSettings: Record<string, string> = {
   system: `system-ui`,
 }
 
+export const fontSizeMap = {
+  xs: '--font-xs',
+  sm: '--font-sm',
+  md: '--font-md',
+  lg: '--font-lg',
+  xl: '--font-xl',
+  '2xl': '--font-2xl',
+}
+
 export const intensityMap: { [key: string]: number } = {
   light: 3,
   mlt: 1.5,
